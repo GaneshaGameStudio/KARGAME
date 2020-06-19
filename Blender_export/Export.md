@@ -1,1 +1,1 @@
-Place all the Blender exported files in this folder
+Place all the .fbx files in this folder

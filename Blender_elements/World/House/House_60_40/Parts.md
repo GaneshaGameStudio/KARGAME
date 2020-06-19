@@ -1,0 +1,1 @@
+Place plan for the 60_40 sized houses in this folder

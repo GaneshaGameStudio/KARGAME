@@ -1,1 +1,0 @@
-Place all parts for the MS_Alto in this folder

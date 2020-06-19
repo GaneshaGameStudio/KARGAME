@@ -1,0 +1,1 @@
+all streetlamp parts go here

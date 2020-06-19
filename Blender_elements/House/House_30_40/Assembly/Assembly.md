@@ -1,1 +1,0 @@
-Place all 30_40 sized assembled houses in this folder
