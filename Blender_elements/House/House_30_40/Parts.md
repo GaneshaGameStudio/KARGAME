@@ -1,0 +1,1 @@
+Place all parts for the 30_40 sized houses in this folder
