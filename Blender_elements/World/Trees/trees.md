@@ -1,4 +1,4 @@
-All the trees stuff goes into this folder.
+All the trees stuff goes into this folder with separate folders for each tree which contain blend files of that tree.
 
 The UV PNG image texture is in the below order for trees and stuff related to it:
 1st line - trunk
