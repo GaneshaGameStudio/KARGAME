@@ -7,3 +7,4 @@ The UV PNG image texture is in the below order for trees and stuff related to it
 4th line - flowers
 5th line - rock
 6th line - nuts
+7th line - mud
