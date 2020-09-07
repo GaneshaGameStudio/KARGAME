@@ -5,4 +5,4 @@ Below is the order in which the colors are placed in UV atlas PNG:
 2nd line - Leaves, bushes colors
 3rd line - Hexagon shade
 4th line - light stuff
-5th line - Footpath stuff
+5th line - Footpath, fence, etc
