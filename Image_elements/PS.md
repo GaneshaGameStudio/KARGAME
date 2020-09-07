@@ -1,0 +1,1 @@
+Place all photoshop files in this folder
