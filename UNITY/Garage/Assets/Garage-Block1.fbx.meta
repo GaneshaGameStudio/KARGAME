@@ -2,8 +2,40 @@ fileFormatVersion: 2
 guid: e3164b0c668c24f99a7a46769cb94ba7
 ModelImporter:
   serializedVersion: 20101
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: 6289391444063468262
+    second: Liftbox-1|Liftbox-1.DoorLAction
+  - first:
+      74: 7708036121695345585
+    second: Liftbox-1|Liftbox-1.DoorRAction
+  - first:
+      74: 4458368139267715201
+    second: Liftbox-1|LiftOpen
+  - first:
+      74: -8846642955749744230
+    second: L
+  - first:
+      74: -9203157280188139927
+    second: Liftbox-1.DoorL|Liftbox-1.DoorRAction
+  - first:
+      74: 7834866441909031095
+    second: Liftbox-1.DoorL|LiftOpen
+  - first:
+      74: -2518369660365351520
+    second: Liftbox-1.DoorR|Liftbox-1.DoorLAction
+  - first:
+      74: 4089678823368729787
+    second: Liftbox-1.DoorR|Liftbox-1.DoorRAction
+  - first:
+      74: -9040358890797004595
+    second: Liftbox-1.DoorR|LiftOpen
   externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bush
+    second: {fileID: 2100000, guid: b3f3f83109b144b73b71b22882af80e3, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -12,17 +44,42 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Material.008
+    second: {fileID: 2100000, guid: 0379c520ca3224f7d82be7dec56453e4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: No Name
-    second: {fileID: 2100000, guid: 3cf3a204454ba43ff925df682f6e8d80, type: 2}
+    second: {fileID: 2100000, guid: 0379c520ca3224f7d82be7dec56453e4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tree
+    second: {fileID: 2100000, guid: 3fb5b1732abb94b06a356bcd66d7be3d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: footpathborder
+    second: {fileID: 2100000, guid: 24e26b6b2cc39418f96b2a161c131577, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Garage
-    second: {fileID: 2800000, guid: 68b64903c2f1d498ebac57ec3e103904, type: 3}
+    second: {fileID: 2800000, guid: b2fd2c0760f304ba2999d52ddaf301e3, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: ParkStuff
+    second: {fileID: 2800000, guid: cb5e1ac9d64134e1292cdcccc724019b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: TreeStuff
+    second: {fileID: 2800000, guid: ca5cc0c1041b545f782384b155373fbd, type: 3}
   materials:
     materialImportMode: 1
-    materialName: 0
-    materialSearch: 1
+    materialName: 2
+    materialSearch: 2
     materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
@@ -38,14 +95,72 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 0
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: L
+      takeName: Liftbox-1.DoorL|Liftbox-1.DoorLAction
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Liftbox-1.DoorL|Liftbox-1.DoorRAction
+      takeName: Liftbox-1.DoorL|Liftbox-1.DoorRAction
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -82,10 +197,10 @@ ModelImporter:
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
-    tangentImportMode: 3
+    tangentImportMode: 0
     normalCalculationMode: 4
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
-    blendShapeNormalImportMode: 1
+    blendShapeNormalImportMode: 0
     normalSmoothingSource: 0
   referencedClips: []
   importAnimation: 1
