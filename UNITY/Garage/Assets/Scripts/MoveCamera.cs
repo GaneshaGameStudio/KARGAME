@@ -7,6 +7,7 @@ using TMPro;
 public class MoveCamera : MonoBehaviour
 {
     public Vector3[] Positions;
+    public Vector3[] Rotations;
     private int mCurrentIndex = 0;
     private int mCarIndex  = 0;
     public float Speed = 2.0f;
@@ -18,6 +19,8 @@ public class MoveCamera : MonoBehaviour
     public TextMeshProUGUI VehicleText;
     public GameObject[] GO;
     private int currentCar;
+    //private Animation anim;
+    
 
     //activate default objects (always the first object in the tree)
     private void SelectCar(int _index, GameObject Goarray)
@@ -49,7 +52,8 @@ public class MoveCamera : MonoBehaviour
 		Dbtn.onClick.AddListener(DTaskOnClick);
     }
 	void DTaskOnClick()
-    {
+    {   
+        //anim.Play("L");
 		Debug.Log ("You have clicked the D button!");
         mCarIndex = 0;
         if(mCurrentIndex < Positions.Length - 1)
@@ -94,6 +98,10 @@ public class MoveCamera : MonoBehaviour
     {   
         VehicleText.SetText(VehicleType[mCurrentIndex]);
         Vector3 currentPos = Positions[mCurrentIndex];
+        Vector3 currentAngle = Rotations[mCurrentIndex];
         transform.position = Vector3.Lerp(transform.position,currentPos,Speed*Time.deltaTime);
+        Quaternion target = Quaternion.Euler(currentAngle);
+        transform.rotation = Quaternion.Slerp(transform.rotation, target,  Speed*Time.deltaTime);
+    
     }
 }
