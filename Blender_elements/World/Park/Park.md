@@ -6,3 +6,4 @@ Below is the order in which the colors are placed in UV atlas PNG:
 3rd line - Hexagon shade
 4th line - light stuff
 5th line - Footpath, fence, etc
+6th line - high voltage tower
