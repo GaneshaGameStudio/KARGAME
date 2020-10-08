@@ -6,7 +6,7 @@ public class CarEngine : MonoBehaviour
 {   
     public Transform path;
     private List<Transform> nodes;
-    private int currentNode = 0;
+    public int currentNode = 0;
     public float maxSteerAngle = 40;
     public WheelCollider wheelFL;
     public WheelCollider wheelFR;
@@ -16,6 +16,7 @@ public class CarEngine : MonoBehaviour
     public float currentSpeed;
     public float maxSpeed = 30f;
     public Vector3 centerOfMass;
+    public GameObject cameraobject;
 
     [Header("Sensors")]
     public float sensorLength = 5;
@@ -43,6 +44,7 @@ public class CarEngine : MonoBehaviour
         ApplySteer();
         Drive();
         CheckWaypointDistance();
+        Destroy();
     }
     private void Sensors(){
         RaycastHit hit;
@@ -122,8 +124,8 @@ public class CarEngine : MonoBehaviour
 
     }
     private void CheckWaypointDistance(){
-        print(currentNode);
-        print(nodes.Count);
+        //print(currentNode);
+        //print(nodes.Count);
         if(Vector3.Distance(transform.position, nodes[currentNode].position) < 5f){
             if(currentNode == nodes.Count - 1){
                 currentNode = 0;
@@ -132,6 +134,15 @@ public class CarEngine : MonoBehaviour
             {
                 currentNode++;
             } 
+        }
+    }
+    private void Destroy(){
+        double checkdist = Mathf.Pow(Mathf.Pow((gameObject.transform.position.x - cameraobject.transform.position.x),2f) + Mathf.Pow((gameObject.transform.position.z - cameraobject.transform.position.z),2f),0.5f);
+        print(checkdist);
+        if(checkdist>120){
+                print("I'm going to get destroyed");
+                
+                Destroy (gameObject);
         }
     }
 }

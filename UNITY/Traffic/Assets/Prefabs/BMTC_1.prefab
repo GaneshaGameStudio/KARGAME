@@ -3523,7 +3523,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8350848134936358270}
   - component: {fileID: 8696447095691622342}
-  - component: {fileID: 8696447095691622343}
+  - component: {fileID: 2825223115519057885}
   m_Layer: 0
   m_Name: BMTC_1
   m_TagString: Untagged
@@ -3564,7 +3564,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &8696447095691622343
+--- !u!114 &2825223115519057885
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3573,20 +3573,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 8696447095691622340}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6940697e9d2294dfaa365e816b3a95fb, type: 3}
+  m_Script: {fileID: 11500000, guid: 33d65aa23fc684fb997cec6784543c73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WheelFL: {fileID: 6131434273684441635}
-  WheelFR: {fileID: 6131434273007660644}
-  WheelRL: {fileID: 6131434272895820672}
-  WheelRR: {fileID: 0}
-  frontDriverT: {fileID: 4801506978330679433}
-  frontPassengerT: {fileID: 2238052485705775294}
-  rearDriverT: {fileID: 2502261662147467028}
-  rearPassengerT: {fileID: 0}
-  maxSteerAngle: 30
-  motorForce: 500
-  steerFactor: 2
+  path: {fileID: 3555294743345567495, guid: 77bc6cc40083146f9909f8905644eee5, type: 3}
+  currentNode: 0
+  maxSteerAngle: 40
+  wheelFL: {fileID: 0}
+  wheelFR: {fileID: 0}
+  wheelRL: {fileID: 0}
+  wheelRR: {fileID: 0}
+  maxMotorTorque: -500
+  currentSpeed: 0
+  maxSpeed: 30
+  centerOfMass: {x: 0, y: 0, z: 0}
+  camera: {fileID: 2507391192689215550, guid: ad8d47ca4a78941bca55919dfd52837b, type: 3}
+  sensorLength: 5
+  frontsensorpos: {x: 0, y: 0, z: 0}
+  sidesensorpos: 1
+  sensorangle: 30
 --- !u!1 &8738158140352691537
 GameObject:
   m_ObjectHideFlags: 0
