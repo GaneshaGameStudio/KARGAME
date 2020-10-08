@@ -6,9 +6,9 @@ using UnityEditor;
 public class TrafficPool : MonoBehaviour
 {   
     private int nodenumber;
-    private GameObject[] respawns;
-    GameObject closest = null;
-    public float InstantiateTimer = 20f;
+    private GameObject[] respawnobjects;
+    private GameObject[] respawnpaths;
+    public float InstantiateTimer = 10f;
     private float InstantiationTimer;
     public GameObject goobject;
     public GameObject gopath;
@@ -16,32 +16,32 @@ public class TrafficPool : MonoBehaviour
     public float range2;
     // Start is called before the first frame update
     void Start()
-    {
-        respawns = GameObject.FindGameObjectsWithTag("node");
-        
+    {   
+        respawnpaths = GameObject.FindGameObjectsWithTag("path");
     }
     private void OnTriggerEnter(Collider other){
         gopath = other.gameObject;
     }
     void spawntraffic(){
         goobject = Resources.Load("BMTC_1") as GameObject;
-        int i = 0;
-        
-        foreach (GameObject respawn in respawns)
-        {
-            double dist = Mathf.Pow(Mathf.Pow((transform.position.x - respawn.transform.position.x),2f) + Mathf.Pow((transform.position.z - respawn.transform.position.z),2f),0.5f);
-            if(dist<range1 && dist >range2)
-            {
-                closest = respawn;
-                nodenumber = i;
-                goobject.GetComponent<CarEngine>().currentNode = nodenumber;
-                goobject.GetComponent<CarEngine>().path = gopath.transform;
-                Instantiate(goobject, respawn.transform.position, Quaternion.identity);
+        for (int j=0;j<respawnpaths.Length;j++){
+            for(int i=0; i<respawnpaths[j].transform.childCount;i++)
+            {   
+                double dist = Mathf.Pow(Mathf.Pow((transform.position.x - respawnpaths[j].transform.GetChild(i).position.x),2f) + Mathf.Pow((transform.position.z - respawnpaths[j].transform.GetChild(i).position.z),2f),0.5f);
+                if(dist<range1 && dist >range2)
+                {
+                    nodenumber = i;
+                    goobject.GetComponent<CarEngine>().currentNode = nodenumber;
+                    goobject.GetComponent<CarEngine>().path = respawnpaths[j].transform;
+                    Instantiate(goobject, respawnpaths[j].transform.GetChild(i).position, Quaternion.identity);
+
+                }
+                else
+                {
+                    continue;
+                }
             }
-            i++;
-            
         }
-        InstantiationTimer = InstantiateTimer;
     }
     private void OnDrawGizmos(){
         Handles.color = new Color(0,1,0,.1f);
