@@ -16,7 +16,6 @@ public class CarEngine : MonoBehaviour
     public float currentSpeed;
     public float maxSpeed = 30f;
     public Vector3 centerOfMass;
-    public GameObject cameraobject;
 
     [Header("Sensors")]
     public float sensorLength = 5;
@@ -137,12 +136,12 @@ public class CarEngine : MonoBehaviour
         }
     }
     private void Destroy(){
-        double checkdist = Mathf.Pow(Mathf.Pow((gameObject.transform.position.x - cameraobject.transform.position.x),2f) + Mathf.Pow((gameObject.transform.position.z - cameraobject.transform.position.z),2f),0.5f);
-        print(checkdist);
-        if(checkdist>120){
+        
+        Camera maincam = GameObject.Find("Camera").GetComponent<Camera>();
+        double checkdist = Mathf.Pow(Mathf.Pow((transform.position.x - maincam.transform.position.x),2f) + Mathf.Pow((transform.position.z - maincam.transform.position.z),2f),0.5f);
+        if(checkdist>GameObject.Find("Camera").GetComponent<TrafficPool>().range1){
                 print("I'm going to get destroyed");
-                
-                Destroy (gameObject);
+                Destroy(gameObject);
         }
     }
 }
