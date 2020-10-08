@@ -3524,9 +3524,10 @@ GameObject:
   - component: {fileID: 8350848134936358270}
   - component: {fileID: 8696447095691622342}
   - component: {fileID: 8696447095691622343}
+  - component: {fileID: 21950344025276713}
   m_Layer: 0
   m_Name: BMTC_1
-  m_TagString: Untagged
+  m_TagString: Traffic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3591,6 +3592,19 @@ MonoBehaviour:
   frontsensorpos: {x: 0, y: 0, z: 0}
   sidesensorpos: 1
   sensorangle: 30
+--- !u!65 &21950344025276713
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8696447095691622340}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.954424, y: 4.7638483, z: 14.408173}
+  m_Center: {x: 0.16675282, y: 2.5489354, z: 0.65334225}
 --- !u!1 &8738158140352691537
 GameObject:
   m_ObjectHideFlags: 0

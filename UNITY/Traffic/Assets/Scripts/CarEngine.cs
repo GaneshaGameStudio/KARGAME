@@ -140,8 +140,15 @@ public class CarEngine : MonoBehaviour
         Camera maincam = GameObject.Find("Camera").GetComponent<Camera>();
         double checkdist = Mathf.Pow(Mathf.Pow((transform.position.x - maincam.transform.position.x),2f) + Mathf.Pow((transform.position.z - maincam.transform.position.z),2f),0.5f);
         if(checkdist>GameObject.Find("Camera").GetComponent<TrafficPool>().range1){
-                print("I'm going to get destroyed");
+                
                 Destroy(gameObject);
         }
+    }
+    void OnTriggerEnter(Collider other){
+
+        if(other.gameObject.tag == "Traffic"){
+            Destroy(gameObject);
+        }
+        
     }
 }

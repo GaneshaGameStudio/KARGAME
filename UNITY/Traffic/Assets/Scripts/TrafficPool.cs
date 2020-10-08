@@ -12,6 +12,7 @@ public class TrafficPool : MonoBehaviour
     private float InstantiationTimer;
     public GameObject goobject;
     public GameObject gopath;
+    private List<Transform> makalu;
     public float range1;
     public float range2;
     // Start is called before the first frame update
@@ -33,7 +34,15 @@ public class TrafficPool : MonoBehaviour
                     nodenumber = i;
                     goobject.GetComponent<CarEngine>().currentNode = nodenumber;
                     goobject.GetComponent<CarEngine>().path = respawnpaths[j].transform;
-                    Instantiate(goobject, respawnpaths[j].transform.GetChild(i).position, Quaternion.identity);
+                    float angle;
+                    //Find angle
+                    if(i == respawnpaths[j].transform.childCount-1){
+                        angle = Mathf.Atan2((respawnpaths[j].transform.GetChild(i).position.x-respawnpaths[j].transform.GetChild(0).position.x),(respawnpaths[j].transform.GetChild(i).position.z-respawnpaths[j].transform.GetChild(0).position.z));
+                    }
+                    else{
+                        angle = Mathf.Atan2((respawnpaths[j].transform.GetChild(i).position.x - respawnpaths[j].transform.GetChild(i+1).position.x),(respawnpaths[j].transform.GetChild(i).position.z - respawnpaths[j].transform.GetChild(i+1).position.z));
+                    }
+                    Instantiate(goobject, respawnpaths[j].transform.GetChild(i).position,Quaternion.Euler(0f,angle*57.3f,0f));
 
                 }
                 else
