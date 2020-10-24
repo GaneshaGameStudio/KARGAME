@@ -21,6 +21,7 @@ public class DisplayWeather : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
+        
         StartCoroutine(GetWeatherRequest(CurrentUrl));
     }
     IEnumerator GetWeatherRequest(string uri)
@@ -36,9 +37,12 @@ public class DisplayWeather : MonoBehaviour
                     
                     string Weather = webRequest.downloadHandler.text;
                     string TempDisplay = DispWeather(Weather);
-                    TextPro.SetText(TempDisplay + "ö");
+                    GetSunRise(Weather);
+                    
+                    char[] delimiterChars = {'.'};
+                    string[] words = TempDisplay.Split(delimiterChars);
+                    TextPro.SetText(words[0] + "ö");
                     yield return new WaitForSeconds(1800f);
-            
                 }
             }
     }
@@ -57,7 +61,36 @@ public class DisplayWeather : MonoBehaviour
         }
         return temperature;
     }
-    
+    private string GetSunRise(string xml)
+    {
+        // Load the response into an XML document.
+        XmlDocument xml_doc = new XmlDocument();
+        xml_doc.LoadXml(xml);
+        string sunrise = "";
+        string sunset = "";
+        foreach (XmlNode sunrise_node in xml_doc.SelectNodes("current/city"))
+        {
+            XmlNode sun_node = sunrise_node.SelectSingleNode("sun");
+            sunrise = sun_node.Attributes["rise"].Value;
+            string[] sunrisewords = sunrise.Split('T');
+            string[] sunrisetimewords = sunrisewords[1].Split(':');
+            int hours = int.Parse(sunrisetimewords[0]) + 5;
+            int minutes = int.Parse(sunrisetimewords[1])+ 30;
+            int sunriseminuteday = hours*60 + minutes;
+            
+            sunset = sun_node.Attributes["set"].Value;
+            string[] sunsetwords = sunset.Split('T');
+            string[] sunsettimewords = sunsetwords[1].Split(':');
+            hours = int.Parse(sunsettimewords[0]) + 5;
+            minutes = int.Parse(sunsettimewords[1])+ 30;
+            int sunsetminuteday = hours*60 + minutes;
+            
+            float sunrate = 180f/(sunsetminuteday - sunriseminuteday);
+            GameObject.Find("Directional Light").GetComponent<SunPosition>().Xanglerate = sunrate;
+            GameObject.Find("Directional Light").GetComponent<SunPosition>().Timeintercept = sunriseminuteday;
+        }
+        return sunrise;
+    }    
     // Update is called once per frame
     void Update()
     {
