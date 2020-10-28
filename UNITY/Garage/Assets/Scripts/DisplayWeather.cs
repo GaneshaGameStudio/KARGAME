@@ -17,6 +17,7 @@ public class DisplayWeather : MonoBehaviour
         "http://api.openweathermap.org/data/2.5/forecast?" +
         "q=Bengaluru,IN&mode=xml&units=metric&APPID=" + API_KEY;
     public TextMeshProUGUI TextPro;
+    public Texture[] m_Texture;
 
     // Start is called before the first frame update
     void Start()
@@ -53,11 +54,44 @@ public class DisplayWeather : MonoBehaviour
         XmlDocument xml_doc = new XmlDocument();
         xml_doc.LoadXml(xml);
         string temperature = "";
+        string description = "";
+        
         foreach (XmlNode time_node in xml_doc.SelectNodes("current"))
         {
             XmlNode temp_node = time_node.SelectSingleNode("temperature");
             temperature = temp_node.Attributes["value"].Value;
-            
+
+            XmlNode weather_node = time_node.SelectSingleNode("weather");
+            description = weather_node.Attributes["value"].Value;
+            switch(description){
+                case "clear sky":
+                    GameObject.Find("Garage-Canvas/Forecast").GetComponent<RawImage>().texture = m_Texture[0];
+                    break;
+                case "few clouds":
+                    GameObject.Find("Garage-Canvas/Forecast").GetComponent<RawImage>().texture = m_Texture[1];
+                    break;
+                case "scattered clouds":
+                    GameObject.Find("Garage-Canvas/Forecast").GetComponent<RawImage>().texture = m_Texture[2];
+                    break;
+                case "broken clouds":
+                    GameObject.Find("Garage-Canvas/Forecast").GetComponent<RawImage>().texture = m_Texture[3];
+                    break;
+                case "shower rain":
+                    GameObject.Find("Garage-Canvas/Forecast").GetComponent<RawImage>().texture = m_Texture[4];
+                    break;
+                case "rain":
+                    GameObject.Find("Garage-Canvas/Forecast").GetComponent<RawImage>().texture = m_Texture[5];
+                    break;
+                case "thunderstorm":
+                    GameObject.Find("Garage-Canvas/Forecast").GetComponent<RawImage>().texture = m_Texture[6];
+                    break;
+                case "snow":
+                    GameObject.Find("Garage-Canvas/Forecast").GetComponent<RawImage>().texture = m_Texture[7];
+                    break;
+                case "mist":
+                    GameObject.Find("Garage-Canvas/Forecast").GetComponent<RawImage>().texture = m_Texture[8];
+                    break;
+            }
         }
         return temperature;
     }

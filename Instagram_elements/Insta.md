@@ -1,1 +1,0 @@
-Place all instagram related data for KARGAME in this folder
