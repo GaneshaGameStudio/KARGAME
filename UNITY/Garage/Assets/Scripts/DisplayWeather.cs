@@ -24,7 +24,7 @@ public class DisplayWeather : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
-        StartCoroutine(Minakaminaka(3f));
+        GameObject.Find("Rain").GetComponent<ParticleSystem>().Stop();
         StartCoroutine(GetWeatherRequest(CurrentUrl));
     }
     IEnumerator GetWeatherRequest(string uri)
@@ -65,8 +65,9 @@ public class DisplayWeather : MonoBehaviour
 
             XmlNode weather_node = time_node.SelectSingleNode("weather");
             description = weather_node.Attributes["value"].Value;
+            description="clear sky";
             passdescription = description;
-            GameObject.Find("Rain").SetActive(false);
+            
             RenderSettings.fogEndDistance = 40f;
             switch(description){
                 case "clear sky":
@@ -119,7 +120,7 @@ public class DisplayWeather : MonoBehaviour
                     break;
                 case "shower rain":
                     GameObject.Find("Garage-Canvas/Forecast").GetComponent<RawImage>().texture = m_Texture[4];
-                    GameObject.Find("Rain").SetActive(true);
+                    GameObject.Find("Rain").GetComponent<ParticleSystem>().Play();
                     Skybox.SetColor("Color_BE31CDF2",new Color(0f,0.3481131f,0.3679245f,1f));
                     Skybox.SetColor("Color_68FD0CD8",new Color(0.3978284f,0.5377547f,0.5660378f,1f));
                     Skybox.SetFloat("Vector1_B93A03DE",0.001f);
@@ -132,7 +133,7 @@ public class DisplayWeather : MonoBehaviour
                     break;
                 case "rain":
                     GameObject.Find("Garage-Canvas/Forecast").GetComponent<RawImage>().texture = m_Texture[5];
-                    GameObject.Find("Rain").SetActive(true);
+                    GameObject.Find("Rain").GetComponent<ParticleSystem>().Play();
                     Skybox.SetColor("Color_BE31CDF2",new Color(0.1647828f,0.2140812f,0.2169811f,1f));
                     Skybox.SetColor("Color_68FD0CD8",new Color(0.4716981f,0.4716981f,0.4716981f,1f));
                     Skybox.SetFloat("Vector1_B93A03DE",0.0005f);
@@ -145,7 +146,7 @@ public class DisplayWeather : MonoBehaviour
                     break;
                 case "thunderstorm":
                     GameObject.Find("Garage-Canvas/Forecast").GetComponent<RawImage>().texture = m_Texture[6];
-                    GameObject.Find("Rain").SetActive(true);
+                    GameObject.Find("Rain").GetComponent<ParticleSystem>().Play();
                     Skybox.SetColor("Color_BE31CDF2",new Color(0.1647828f,0.2140812f,0.2169811f,1f));
                     Skybox.SetColor("Color_68FD0CD8",new Color(0.4716981f,0.4716981f,0.4716981f,1f));
                     Skybox.SetFloat("Vector1_B93A03DE",0.0f);
@@ -155,6 +156,7 @@ public class DisplayWeather : MonoBehaviour
                     Skybox.SetFloat("Vector1_9E12CF26",0.281f);
                     Skybox.SetColor("Color_B54BEABE",new Color(0.2641509f,0.2641509f,0.2641509f,1f));
                     Skybox.SetColor("Color_424F81E0",new Color(0.3584906f,0.3584906f,0.3584906f,1f));
+                    StartCoroutine(Minakaminaka(3f));
                     break;
                 case "snow":
                     GameObject.Find("Garage-Canvas/Forecast").GetComponent<RawImage>().texture = m_Texture[7];
@@ -208,6 +210,7 @@ public class DisplayWeather : MonoBehaviour
     // Update is called once per frame
     IEnumerator Minakaminaka(float delay){
         if(passdescription == "thunderstorm"){
+            
             while(true){
                 int times = Random.Range(2,6);
                 for(int m=0;m<=times;m++){
