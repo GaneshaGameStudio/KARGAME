@@ -18,6 +18,7 @@ public class DisplayWeather : MonoBehaviour
         "q=Bengaluru,IN&mode=xml&units=metric&APPID=" + API_KEY;
     public TextMeshProUGUI TextPro;
     public Texture[] m_Texture;
+    public Material Skybox;
 
     // Start is called before the first frame update
     void Start()
@@ -66,30 +67,102 @@ public class DisplayWeather : MonoBehaviour
             switch(description){
                 case "clear sky":
                     GameObject.Find("Garage-Canvas/Forecast").GetComponent<RawImage>().texture = m_Texture[0];
+                    Skybox.SetColor("Color_BE31CDF2",new Color(0.2549019f,0.5294118f,1f,1f));
+                    Skybox.SetColor("Color_68FD0CD8",new Color(0.01321642f,0.7215686f,0.8661178f,1f));
+                    Skybox.SetFloat("Vector1_B93A03DE",0.06f);
+                    Skybox.SetFloat("Vector1_FE797C36",0.03f);
+                    Skybox.SetFloat("Vector1_FA4E5253",0.03f);
+                    Skybox.SetFloat("Vector1_249357C1",0.08f);
+                    Skybox.SetFloat("Vector1_9E12CF26",0.14f);
+                    Skybox.SetColor("Color_B54BEABE",new Color(0.764151f,0.6776432f,0.6776432f,1f));
+                    Skybox.SetColor("Color_424F81E0",new Color(0.9056604f,0.883785f,0.6237095f,1f));
                     break;
                 case "few clouds":
                     GameObject.Find("Garage-Canvas/Forecast").GetComponent<RawImage>().texture = m_Texture[1];
+                    Skybox.SetColor("Color_BE31CDF2",new Color(0.2549019f,0.5294118f,1f,1f));
+                    Skybox.SetColor("Color_68FD0CD8",new Color(0.01321642f,0.7215686f,0.8661178f,1f));
+                    Skybox.SetFloat("Vector1_B93A03DE",0.06f);
+                    Skybox.SetFloat("Vector1_FE797C36",0.03f);
+                    Skybox.SetFloat("Vector1_FA4E5253",0.03f);
+                    Skybox.SetFloat("Vector1_249357C1",0.153f);
+                    Skybox.SetFloat("Vector1_9E12CF26",0.194f);
+                    Skybox.SetColor("Color_B54BEABE",new Color(0.764151f,0.6776432f,0.6776432f,1f));
+                    Skybox.SetColor("Color_424F81E0",new Color(0.9056604f,0.883785f,0.6237095f,1f));
                     break;
                 case "scattered clouds":
                     GameObject.Find("Garage-Canvas/Forecast").GetComponent<RawImage>().texture = m_Texture[2];
+                    Skybox.SetColor("Color_BE31CDF2",new Color(0.2549019f,0.5294118f,1f,1f));
+                    Skybox.SetColor("Color_68FD0CD8",new Color(0.01321642f,0.7215686f,0.8661178f,1f));
+                    Skybox.SetFloat("Vector1_B93A03DE",0.06f);
+                    Skybox.SetFloat("Vector1_FE797C36",0.03f);
+                    Skybox.SetFloat("Vector1_FA4E5253",0.09f);
+                    Skybox.SetFloat("Vector1_249357C1",0.153f);
+                    Skybox.SetFloat("Vector1_9E12CF26",0.194f);
+                    Skybox.SetColor("Color_B54BEABE",new Color(0.764151f,0.6776432f,0.6776432f,1f));
+                    Skybox.SetColor("Color_424F81E0",new Color(0.9056604f,0.883785f,0.6237095f,1f));
                     break;
                 case "broken clouds":
                     GameObject.Find("Garage-Canvas/Forecast").GetComponent<RawImage>().texture = m_Texture[3];
+                    Skybox.SetColor("Color_BE31CDF2",new Color(0.2549019f,0.5294118f,1f,1f));
+                    Skybox.SetColor("Color_68FD0CD8",new Color(0.01321642f,0.7215686f,0.8661178f,1f));
+                    Skybox.SetFloat("Vector1_B93A03DE",0.06f);
+                    Skybox.SetFloat("Vector1_FE797C36",0.03f);
+                    Skybox.SetFloat("Vector1_FA4E5253",0.09f);
+                    Skybox.SetFloat("Vector1_249357C1",0.153f);
+                    Skybox.SetFloat("Vector1_9E12CF26",0.042f);
+                    Skybox.SetColor("Color_B54BEABE",new Color(0.764151f,0.6776432f,0.6776432f,1f));
+                    Skybox.SetColor("Color_424F81E0",new Color(0.9056604f,0.883785f,0.6237095f,1f));
                     break;
                 case "shower rain":
                     GameObject.Find("Garage-Canvas/Forecast").GetComponent<RawImage>().texture = m_Texture[4];
+                    Skybox.SetColor("Color_BE31CDF2",new Color(0f,0.3481131f,0.3679245f,1f));
+                    Skybox.SetColor("Color_68FD0CD8",new Color(0.3978284f,0.5377547f,0.5660378f,1f));
+                    Skybox.SetFloat("Vector1_B93A03DE",0.001f);
+                    Skybox.SetFloat("Vector1_FE797C36",0.03f);
+                    Skybox.SetFloat("Vector1_FA4E5253",0.03f);
+                    Skybox.SetFloat("Vector1_249357C1",0.302f);
+                    Skybox.SetFloat("Vector1_9E12CF26",0.281f);
+                    Skybox.SetColor("Color_B54BEABE",new Color(0.4622641f,0.4622641f,0.4622641f,1f));
+                    Skybox.SetColor("Color_424F81E0",new Color(0.7735849f,0.7735849f,0.7735849f,1f));
                     break;
                 case "rain":
                     GameObject.Find("Garage-Canvas/Forecast").GetComponent<RawImage>().texture = m_Texture[5];
+                    Skybox.SetColor("Color_BE31CDF2",new Color(0.1647828f,0.2140812f,0.2169811f,1f));
+                    Skybox.SetColor("Color_68FD0CD8",new Color(0.4716981f,0.4716981f,0.4716981f,1f));
+                    Skybox.SetFloat("Vector1_B93A03DE",0.0005f);
+                    Skybox.SetFloat("Vector1_FE797C36",0.03f);
+                    Skybox.SetFloat("Vector1_FA4E5253",0.03f);
+                    Skybox.SetFloat("Vector1_249357C1",0.249f);
+                    Skybox.SetFloat("Vector1_9E12CF26",0.281f);
+                    Skybox.SetColor("Color_B54BEABE",new Color(0.2641509f,0.2641509f,0.2641509f,1f));
+                    Skybox.SetColor("Color_424F81E0",new Color(0.3584906f,0.3584906f,0.3584906f,1f));
                     break;
                 case "thunderstorm":
                     GameObject.Find("Garage-Canvas/Forecast").GetComponent<RawImage>().texture = m_Texture[6];
+                    Skybox.SetColor("Color_BE31CDF2",new Color(0.1647828f,0.2140812f,0.2169811f,1f));
+                    Skybox.SetColor("Color_68FD0CD8",new Color(0.4716981f,0.4716981f,0.4716981f,1f));
+                    Skybox.SetFloat("Vector1_B93A03DE",0.0f);
+                    Skybox.SetFloat("Vector1_FE797C36",0.03f);
+                    Skybox.SetFloat("Vector1_FA4E5253",0.03f);
+                    Skybox.SetFloat("Vector1_249357C1",0.249f);
+                    Skybox.SetFloat("Vector1_9E12CF26",0.281f);
+                    Skybox.SetColor("Color_B54BEABE",new Color(0.2641509f,0.2641509f,0.2641509f,1f));
+                    Skybox.SetColor("Color_424F81E0",new Color(0.3584906f,0.3584906f,0.3584906f,1f));
                     break;
                 case "snow":
                     GameObject.Find("Garage-Canvas/Forecast").GetComponent<RawImage>().texture = m_Texture[7];
                     break;
                 case "mist":
                     GameObject.Find("Garage-Canvas/Forecast").GetComponent<RawImage>().texture = m_Texture[8];
+                    Skybox.SetColor("Color_BE31CDF2",new Color(0.2549019f,0.5294118f,1f,1f));
+                    Skybox.SetColor("Color_68FD0CD8",new Color(0.01321642f,0.7215686f,0.8661178f,1f));
+                    Skybox.SetFloat("Vector1_B93A03DE",0.06f);
+                    Skybox.SetFloat("Vector1_FE797C36",0.03f);
+                    Skybox.SetFloat("Vector1_FA4E5253",0.03f);
+                    Skybox.SetFloat("Vector1_249357C1",0.08f);
+                    Skybox.SetColor("Color_B54BEABE",new Color(0.764151f,0.6776432f,0.6776432f,1f));
+                    Skybox.SetColor("Color_424F81E0",new Color(0.9056604f,0.883785f,0.6237095f,1f));
+                    RenderSettings.fogEndDistance = 20f;
                     break;
             }
         }
