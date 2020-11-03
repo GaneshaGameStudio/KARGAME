@@ -65,7 +65,6 @@ public class DisplayWeather : MonoBehaviour
 
             XmlNode weather_node = time_node.SelectSingleNode("weather");
             description = weather_node.Attributes["value"].Value;
-            description="clear sky";
             passdescription = description;
             
             RenderSettings.fogEndDistance = 40f;
