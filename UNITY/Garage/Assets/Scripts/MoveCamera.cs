@@ -15,10 +15,13 @@ public class MoveCamera : MonoBehaviour
     public Button A_Button;
     public Button S_Button;
     public Button D_Button;
+    public Button LeftTrigger_Button;
+    public Button RightTrigger_Button;
     public string[] VehicleType;
     public TextMeshProUGUI VehicleText;
     public GameObject[] GO;
     private int currentCar;
+    public GameObject Audio;
     //private Animation anim;
     
 
@@ -46,10 +49,22 @@ public class MoveCamera : MonoBehaviour
 		Button Abtn = A_Button.GetComponent<Button>();
         Button Sbtn = S_Button.GetComponent<Button>();
         Button Dbtn = D_Button.GetComponent<Button>();
+
+        Button Lbtn = LeftTrigger_Button.GetComponent<Button>();
+        Button Rbtn = RightTrigger_Button.GetComponent<Button>();
+
         Wbtn.onClick.AddListener(WTaskOnClick);
         Abtn.onClick.AddListener(ATaskOnClick);
         Sbtn.onClick.AddListener(STaskOnClick);
 		Dbtn.onClick.AddListener(DTaskOnClick);
+        Lbtn.onClick.AddListener(LeftClick);
+    }
+    void LeftClick(){
+        AudioSource audio = Audio.GetComponent<AudioSource>();
+        if (audio.mute)
+                audio.mute = false;
+            else
+                audio.mute = true;
     }
 	void DTaskOnClick()
     {   
