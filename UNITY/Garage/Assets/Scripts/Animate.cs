@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Animate : MonoBehaviour
 {
-    public Rigidbody rb;
+    private Rigidbody rb;
     Animator anim;
     public GameObject gaadi;
     // Start is called before the first frame update
@@ -16,7 +16,8 @@ public class Animate : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {   
+        rb = GetComponentInParent<Rigidbody>();
         float vel = (float)rb.velocity.magnitude*3.6f;
         anim.SetFloat("MagVel",vel);
         float a = Input.GetAxis("Horizontal");

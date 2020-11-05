@@ -5,10 +5,13 @@ using UnityEngine.UI;
 
 public class Clamp : MonoBehaviour
 {   
-    public Text nameLabel;
+    private Text nameLabel;
     public Rigidbody rb;
     // Start is called before the first frame update
-
+    void Start(){
+        GameObject baraha = GameObject.Find("Canvas").transform.GetChild(0).gameObject;
+        nameLabel = baraha.GetComponent<Text>();
+    }
     // Update is called once per frame
     void Update()
     {

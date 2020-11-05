@@ -22,15 +22,18 @@ public class MoveCamera : MonoBehaviour
     public GameObject[] GO;
     private int currentCar;
     public GameObject Audio;
+    private string currentvehicle;
     //private Animation anim;
     
 
     //activate default objects (always the first object in the tree)
-    private void SelectCar(int _index, GameObject Goarray)
+    void SelectCar(int _index, GameObject Goarray)
     {
         for (int i =0; i < Goarray.transform.childCount; i++)
         {
             Goarray.transform.GetChild(i).gameObject.SetActive(i == _index);
+            currentvehicle = Goarray.transform.GetChild(_index).gameObject.name;
+            VehicleID.Vehicle = currentvehicle;
         }
     }
 
@@ -58,6 +61,9 @@ public class MoveCamera : MonoBehaviour
         Sbtn.onClick.AddListener(STaskOnClick);
 		Dbtn.onClick.AddListener(DTaskOnClick);
         Lbtn.onClick.AddListener(LeftClick);
+
+        currentvehicle = GO[mCurrentIndex].transform.GetChild(mCarIndex).gameObject.name;
+        VehicleID.Vehicle = currentvehicle;
     }
     void LeftClick(){
         AudioSource audio = Audio.GetComponent<AudioSource>();
@@ -68,29 +74,29 @@ public class MoveCamera : MonoBehaviour
     }
 	void DTaskOnClick()
     {   
-        //anim.Play("L");
-		Debug.Log ("You have clicked the D button!");
         mCarIndex = 0;
         if(mCurrentIndex < Positions.Length - 1)
         {
             mCurrentIndex++;
+            currentvehicle = GO[mCurrentIndex].transform.GetChild(mCarIndex).gameObject.name;
+            VehicleID.Vehicle = currentvehicle;
         }
         
 	}
     void ATaskOnClick()
     {
-		Debug.Log ("You have clicked the A button!");
         mCarIndex = 0;
         if(mCurrentIndex > 0)
         {
             mCurrentIndex--;
+            currentvehicle = GO[mCurrentIndex].transform.GetChild(mCarIndex).gameObject.name;
+            VehicleID.Vehicle = currentvehicle;
         }
         
 	}
 
     void STaskOnClick()
     {   
-		Debug.Log ("You have clicked the S button!");
         if(mCarIndex < GO[mCurrentIndex].transform.childCount - 1)
         {
             mCarIndex++;
@@ -100,7 +106,6 @@ public class MoveCamera : MonoBehaviour
 
     void WTaskOnClick()
     {
-		Debug.Log ("You have clicked the W button!");
         if(mCarIndex > 0)
         {
             mCarIndex--;
