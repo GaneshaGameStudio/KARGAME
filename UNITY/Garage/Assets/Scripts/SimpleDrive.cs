@@ -8,9 +8,20 @@ public class SimpleDrive : MonoBehaviour
     public float torque = 75;
     public float maxSteerAngle = 30;
     public GameObject Wheel;
+    public GameObject Vehicle;
     public Rigidbody rb;
-    public GameObject gaadi;
+    private PlayerActionControls playerActionControls;
+    private float a = 0;
     // Start is called before the first frame update
+    private void Awake(){
+        playerActionControls = new PlayerActionControls();
+    }
+    private void OnEnable(){
+        playerActionControls.Enable();
+    }
+    private void OnDisable(){
+        playerActionControls.Disable();
+    }
     void Start()
     {
         WC = this.GetComponent<WheelCollider>();
@@ -23,7 +34,7 @@ public class SimpleDrive : MonoBehaviour
         steer = Mathf.Clamp(steer,-1, 1) * maxSteerAngle / vel;
         float thrustTorque = accel * torque;
         WC.motorTorque = thrustTorque;
-        WC.steerAngle = steer;
+        WC.steerAngle = steer*Time.deltaTime*30f;
 
         Quaternion quat;
         Vector3 position;
@@ -34,17 +45,19 @@ public class SimpleDrive : MonoBehaviour
         var velDir = transform.InverseTransformDirection(rb.velocity);
         if (velDir.z < -0.1)
         {
-            rb.velocity = Vector3.ClampMagnitude(rb.velocity, 5*0.2776f);
+            rb.velocity = Vector3.ClampMagnitude(rb.velocity, 0.2776f);
         }
         
     }
     
     // Update is called once per frame
     void Update()
-    {
-        float w = Input.GetAxis("Vertical");
-        float a = Input.GetAxis("Horizontal");
-        if(gaadi.GetComponent<Lean>().vel > 80/3.6f)
+    {   
+        Vector2 movementInput = playerActionControls.Vehicle.Move.ReadValue<Vector2>();
+        float w = movementInput[1];
+        
+        a = Mathf.MoveTowards(movementInput[0], a, 0.7f * Time.deltaTime);
+        if(Vehicle.GetComponent<Lean>().vel > 80/3.6f)
         {
             Debug .Log("Speed limit!!");
             w=0;

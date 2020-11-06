@@ -129,8 +129,8 @@ MonoBehaviour:
   torque: 0
   maxSteerAngle: 45
   Wheel: {fileID: 3206160591963685629}
+  Vehicle: {fileID: 6947733321082644179}
   rb: {fileID: 6947733321082644178}
-  gaadi: {fileID: 6947733321082644179}
 --- !u!1 &3206160591963685629
 GameObject:
   m_ObjectHideFlags: 0
@@ -5227,7 +5227,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c0e06778a1a9438b884c130ae971204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameLabel: {fileID: 0}
   rb: {fileID: 6947733321082644178}
 --- !u!1 &5176378784632920953
 GameObject:
@@ -5326,6 +5325,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.6474954, y: 0.7672075, z: 0.45194674}
   m_Center: {x: 0.05684389, y: 0.56444633, z: 0.00000002980233}
+--- !u!114 &5908300051785382536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5501774920340467031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88493e6d02ae8421eb32a918dc66e70d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 6947733321082644178}
+  Vehicle: {fileID: 6947733321082644179}
 --- !u!1 &6746494887629549429
 GameObject:
   m_ObjectHideFlags: 0
@@ -5438,7 +5451,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSteerAngleFork: 30
   rb: {fileID: 6947733321082644178}
-  gaadi: {fileID: 6947733321082644179}
+  Vehicle: {fileID: 6947733321082644179}
 --- !u!1 &6947733321082644179
 GameObject:
   m_ObjectHideFlags: 0
@@ -5508,6 +5521,7 @@ MonoBehaviour:
   rb: {fileID: 6947733321082644178}
   isWheelie: 0
   vel: 0
+  Vehicle: {fileID: 6947733321082644179}
 --- !u!1 &6947733322783518552
 GameObject:
   m_ObjectHideFlags: 0
@@ -5637,8 +5651,8 @@ MonoBehaviour:
   torque: 150
   maxSteerAngle: 0
   Wheel: {fileID: 3790157512333284327}
+  Vehicle: {fileID: 6947733321082644179}
   rb: {fileID: 6947733321082644178}
-  gaadi: {fileID: 6947733321082644179}
 --- !u!1 &8239817515725056933
 GameObject:
   m_ObjectHideFlags: 0
@@ -5845,6 +5859,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b8f8bb735aa584e47b4ef199de5f7e03, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4221b3db4e7694e20b18a72daf5f09ab, type: 3}
+--- !u!1 &5501774920340467031 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4221b3db4e7694e20b18a72daf5f09ab, type: 3}
+  m_PrefabInstance: {fileID: 4655405839505870854}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5121133252517279725 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4221b3db4e7694e20b18a72daf5f09ab, type: 3}

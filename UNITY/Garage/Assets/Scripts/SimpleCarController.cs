@@ -4,10 +4,21 @@ using UnityEngine;
 
 public class SimpleCarController : MonoBehaviour {
 
+	private PlayerActionControls playerActionControls;
+	private void Awake(){
+        playerActionControls = new PlayerActionControls();
+    }
+	private void OnEnable(){
+        playerActionControls.Enable();
+    }
+    private void OnDisable(){
+        playerActionControls.Disable();
+    }
 	public void GetInput()
-	{
-		m_horizontalInput = Input.GetAxis("Horizontal");
-		m_verticalInput = Input.GetAxis("Vertical");
+	{	
+		Vector2 movementInput = playerActionControls.Vehicle.Move.ReadValue<Vector2>();
+		m_horizontalInput = movementInput[0];
+		m_verticalInput = movementInput[1];
 	}
 
 	private void Steer()
@@ -43,7 +54,7 @@ public class SimpleCarController : MonoBehaviour {
 	}
 
 	private void FixedUpdate()
-	{
+	{	
 		GetInput();
 		Steer();
 		Accelerate();

@@ -5,23 +5,33 @@ using UnityEngine.UI;
 
 public class Animate : MonoBehaviour
 {
-    private Rigidbody rb;
+    public Rigidbody rb;
+    public GameObject Vehicle;
     Animator anim;
-    public GameObject gaadi;
+    private PlayerActionControls playerActionControls;
     // Start is called before the first frame update
+    private void Awake(){
+        playerActionControls = new PlayerActionControls();
+    }
+
     void Start()
     {
         anim = gameObject.GetComponent<Animator>();
     }
-
+    private void OnEnable(){
+        playerActionControls.Enable();
+    }
+    private void OnDisable(){
+        playerActionControls.Disable();
+    }
     // Update is called once per frame
     void Update()
-    {   
-        rb = GetComponentInParent<Rigidbody>();
+    {
         float vel = (float)rb.velocity.magnitude*3.6f;
         anim.SetFloat("MagVel",vel);
-        float a = Input.GetAxis("Horizontal");
-        float w = Input.GetAxis("Vertical");
+        Vector2 movementInput = playerActionControls.Vehicle.Move.ReadValue<Vector2>();
+        float a = movementInput[0];
+        float w = movementInput[1];
         anim.SetFloat("MagDir",a);
         if(a!=0)
         {
@@ -41,7 +51,7 @@ public class Animate : MonoBehaviour
             anim.SetBool("notgoingReverse",true);
         }
 
-        anim.SetBool("isWheelie",gaadi.GetComponent<Lean>().isWheelie);
+        anim.SetBool("isWheelie",Vehicle.GetComponent<Lean>().isWheelie);
        
     }
 }
