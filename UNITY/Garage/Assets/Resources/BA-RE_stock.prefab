@@ -352,7 +352,7 @@ Transform:
   m_GameObject: {fileID: 4781547957284305630}
   m_LocalRotation: {x: 0.24589922, y: -0.24589922, z: 0.6629733, w: 0.6629733}
   m_LocalPosition: {x: 0.02, y: 0.416, z: 1.074}
-  m_LocalScale: {x: -5.8301797, y: -5.8301797, z: -174.57701}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6382013060831163305}
   m_RootOrder: 4
@@ -410,8 +410,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 10
-  m_Range: 12.441319
+  m_Intensity: 20
+  m_Range: 100
   m_SpotAngle: 62.424706
   m_InnerSpotAngle: 19.37822
   m_CookieSize: 10
@@ -452,7 +452,7 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 5
+  m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
@@ -523,7 +523,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5d453a5732b904700a3f1f6cb84f5aa0, type: 2}
+  - {fileID: 2100000, guid: e7584cbd43f5c4efe92d5458b8b90800, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

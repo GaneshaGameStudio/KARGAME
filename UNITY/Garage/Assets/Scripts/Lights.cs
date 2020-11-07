@@ -10,12 +10,13 @@ public class Lights : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        HeadLights = GameObject.FindGameObjectsWithTag("Lights");
+        
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {   
+        HeadLights = GameObject.FindGameObjectsWithTag("Lights");
         if(LightOn){
             for (int i = 0; i < material.Length; i++){
                 material[i].EnableKeyword("_EMISSION");
@@ -24,6 +25,7 @@ public class Lights : MonoBehaviour
                 {
                     Light myLight = headlight.GetComponent<Light>();
                     myLight.enabled = true;
+                    print("lights are ON");
                 }
         }
         else{

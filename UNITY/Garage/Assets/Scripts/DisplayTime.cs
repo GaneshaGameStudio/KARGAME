@@ -40,9 +40,8 @@ public class DisplayTime : MonoBehaviour
                             string TimeDisplay = words[5].Substring(0,5);
                             string[] wordstime = TimeDisplay.Split(delimiterCharstime);
                             TextPro.SetText(wordstime[0]+" : "+wordstime[1]);
-                            if(int.Parse(wordstime[0])<7 || int.Parse(wordstime[0])>18){
+                            if(int.Parse(wordstime[0])<7 || int.Parse(wordstime[0])>=17){
                                 Camera.main.GetComponent<Lights>().LightOn = true;
-                                print("Lights are ON");
                             }
                             else{
                                 Camera.main.GetComponent<Lights>().LightOn = false;
