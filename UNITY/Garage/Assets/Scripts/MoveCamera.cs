@@ -60,12 +60,12 @@ public class MoveCamera : MonoBehaviour
         Abtn.onClick.AddListener(ATaskOnClick);
         Sbtn.onClick.AddListener(STaskOnClick);
 		Dbtn.onClick.AddListener(DTaskOnClick);
-        Lbtn.onClick.AddListener(LeftClick);
+        Rbtn.onClick.AddListener(RightClick);
 
         currentvehicle = GO[mCurrentIndex].transform.GetChild(mCarIndex).gameObject.name;
         VehicleID.Vehicle = currentvehicle;
     }
-    void LeftClick(){
+    void RightClick(){
         AudioSource audio = Audio.GetComponent<AudioSource>();
         if (audio.mute)
                 audio.mute = false;
