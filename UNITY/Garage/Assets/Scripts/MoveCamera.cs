@@ -40,6 +40,11 @@ public class MoveCamera : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {   
+        Vector3 currentPos = Positions[0];
+        Vector3 currentAngle = Rotations[0];
+        Quaternion target = Quaternion.Euler(currentAngle);
+        transform.position = Vector3.Lerp(transform.position,currentPos,Speed*0.001f*Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, target,  Speed*0.001f*Time.deltaTime);
         for(int j =0; j < GO.Length; j++)
         {
             SelectCar(mCarIndex, GO[j]);
