@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;  
 
 public class MoveCamera : MonoBehaviour
 {
     public Vector3[] Positions;
     public Vector3[] Rotations;
-    private int mCurrentIndex = 0;
-    private int mCarIndex  = 0;
+    public Vector3[] finalPositions;
+    public Vector3[] finalRotations;
+    static public int mCurrentIndex = 0;
+    static public int mCarIndex  = 0;
     public float Speed = 2.0f;
     public Button W_Button;
     public Button A_Button;
@@ -23,6 +26,8 @@ public class MoveCamera : MonoBehaviour
     private int currentCar;
     public GameObject Audio;
     private string currentvehicle;
+    public Image Fade;
+    private float iterator;
     //private Animation anim;
     
 
@@ -43,8 +48,8 @@ public class MoveCamera : MonoBehaviour
         Vector3 currentPos = Positions[0];
         Vector3 currentAngle = Rotations[0];
         Quaternion target = Quaternion.Euler(currentAngle);
-        transform.position = Vector3.Lerp(transform.position,currentPos,Speed*0.001f*Time.deltaTime);
-        transform.rotation = Quaternion.Slerp(transform.rotation, target,  Speed*0.001f*Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position,currentPos,Speed*0.0005f*Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, target,  Speed*0.0005f*Time.deltaTime);
         for(int j =0; j < GO.Length; j++)
         {
             SelectCar(mCarIndex, GO[j]);
@@ -53,6 +58,11 @@ public class MoveCamera : MonoBehaviour
     }
     void Start()
     {   
+        mCurrentIndex = 0;
+        iterator = 0f;
+        Fade.color = new Color(Fade.color.r, Fade.color.g, Fade.color.b, 0f);
+        Vector3 finalPos =finalPositions[0];
+        Vector3 finalAngle = finalRotations[0];
         Button Wbtn = W_Button.GetComponent<Button>();
 		Button Abtn = A_Button.GetComponent<Button>();
         Button Sbtn = S_Button.GetComponent<Button>();
@@ -118,15 +128,33 @@ public class MoveCamera : MonoBehaviour
             
         }
 	}
+    private void OnTriggerExit(Collider other)
+    {
+        print("exit");
+        if(other.gameObject.name == "SceneTrigger"){
+            Fade.color = new Color(Fade.color.r, Fade.color.g, Fade.color.b, 1f);
+            SceneManager.LoadScene(VehicleID.Scene);
+        }
+        
+    }
     // Update is called once per frame
     void Update()
     {   
-        VehicleText.SetText(VehicleType[mCurrentIndex]);
-        Vector3 currentPos = Positions[mCurrentIndex];
-        Vector3 currentAngle = Rotations[mCurrentIndex];
-        transform.position = Vector3.Lerp(transform.position,currentPos,Speed*Time.deltaTime);
-        Quaternion target = Quaternion.Euler(currentAngle);
-        transform.rotation = Quaternion.Slerp(transform.rotation, target,  Speed*Time.deltaTime);
-    
+        if(mCurrentIndex!=100){
+            VehicleText.SetText(VehicleType[mCurrentIndex]);
+            Vector3 currentPos = Positions[mCurrentIndex];
+            Vector3 currentAngle = Rotations[mCurrentIndex];
+            transform.position = Vector3.Lerp(transform.position,currentPos,Speed*Time.deltaTime);
+            Quaternion target = Quaternion.Euler(currentAngle);
+            transform.rotation = Quaternion.Slerp(transform.rotation, target,  Speed*Time.deltaTime);
+        }
+        else{
+            Quaternion finaltarget = Quaternion.Euler(finalRotations[0]);
+            transform.position = Vector3.Lerp(transform.position,finalPositions[0],Speed*Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, finaltarget,  Speed*Time.deltaTime);
+            Fade.color = new Color(Fade.color.r, Fade.color.g, Fade.color.b, iterator);
+            iterator = iterator + 0.1f;
+        }
+        
     }
 }
