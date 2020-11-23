@@ -10,11 +10,25 @@ Numberofchordchanges = 100
 Durationofeachchord = 12000 # in milliseconds
 Fadein = 1000
 Fadeout =1000
-scale = "D"
+scale = "C#"
 mode = "Lydian"
-bpm = 60
+bpm = 70
 mpb = (60/bpm)*1000
 totalsonglength = 10*60*10000
+trail = 1000
+silence = AudioSegment.silent(duration=Durationofeachchord)
+def speed_change(sound, speed=1.0):
+    # Manually override the frame_rate. This tells the computer how many
+    # samples to play per second
+    sound_with_altered_frame_rate = sound._spawn(sound.raw_data, overrides={
+        "frame_rate": int(sound.frame_rate * speed)
+    })
+
+    # convert the sound with altered frame rate to a standard frame rate
+    # so that regular playback programs will work right. They often only
+    # know how to play audio at standard frame rate (like 44.1k)
+    return sound_with_altered_frame_rate.set_frame_rate(sound.frame_rate)
+
 def createkickpattern():
     kick_old = AudioSegment.from_file("Tracks/Cymatics-FireKick-D.wav")
     kick = kick_old[0:mpb]
@@ -27,36 +41,43 @@ def create():
     notearray = notesinscale(scale,mode)
     for i in range(0,Numberofchordchanges):
         createkickpattern()
-        Note1 = notearray[random.randint(0, 12)]
-        Note2 = notearray[random.randint(0, 12)]
+        Note1 = notearray[random.randint(0, 6)]
+        Note2 = notearray[random.randint(0, 6)]
         Note3 = notearray[random.randint(0, 12)]
         Note4 = notearray[random.randint(0, 12)]
         Note5 = notearray[random.randint(0, 12)]
-        Note6 = notearray[random.randint(0, 12)]
+        Note6 = notearray[random.randint(6, 12)]
         audio1 = AudioSegment.from_file("Tracks/"+str(Note1)+".wav") -5
         audio2 = AudioSegment.from_file("Tracks/"+str(Note2)+".wav")-5
         audio3 = AudioSegment.from_file("Tracks/"+str(Note3)+".wav")-5
         audio4 = AudioSegment.from_file("Tracks/"+str(Note4)+".wav")-5
         audio5 = AudioSegment.from_file("Tracks/"+str(Note5)+".wav")-5
         audio6 = AudioSegment.from_file("Tracks/"+str(Note6)+".wav")-5
-        kickpattern = AudioSegment.from_file("kickpattern.wav") - 7
-
+        kickpattern = AudioSegment.from_file("kickpattern.wav") - 10
+        FX1 = AudioSegment.from_file("Tracks/Cymatics - White Noise Upsweep - 130 BPM.wav") - 10
+        FX2 = AudioSegment.from_file("Tracks/Cymatics - Temple Impact.wav") - 10
+        loop = AudioSegment.from_file("Tracks/Cymatics - Smack Perc Loop - 125 BPM.wav") - 10
+        loop = speed_change(loop,(bpm/125)*2)
         if(i==0):
             try:
                 os.remove("mixed.wav")
                 os.remove("kickpattern.wav")
             except:
                 print("file does not exist")
-            mixed_old = audio1[:Durationofeachchord].overlay(audio2).overlay(audio3).overlay(audio4).overlay(audio5).overlay(audio6)
-            mixed_old.fade_out(Fadeout).export("mixed.wav", format='wav')
+            mixed_old = audio1.overlay(audio2).overlay(audio3).overlay(audio4).overlay(audio5).overlay(audio6)
+            mixed_old[:Durationofeachchord].fade_out(Fadeout).export("mixed.wav", format='wav')
         else:   
-            mixed_new = audio1.overlay(kickpattern).overlay(audio2).overlay(audio3).overlay(audio4).overlay(audio5).overlay(audio6)
-            
-            mixed  = mixed_old + mixed_new[0:Durationofeachchord].fade_out(Fadeout)
-            mixed_new[0:Durationofeachchord].fade_out(Fadeout).export("mixednew.wav", format='wav') 
-            mixed.fade_out(Fadeout).export("mixed.wav", format='wav') 
-            mixed_old = mixed
-            
+            mixed_new = audio1.overlay(audio2).overlay(audio3).overlay(audio4).overlay(audio5).overlay(audio6).fade_out(Fadeout)
+            mixed_old = mixed_old + silence
+            mixedtest = mixed_old.overlay(mixed_new,position= len(mixed_old) - Durationofeachchord - trail)
+            if(i>1 and i<20):
+                mixedtest = mixedtest.overlay(kickpattern,position= len(mixed_old) - Durationofeachchord - trail)
+                mixedtest = mixedtest.overlay(FX2,position= len(mixed_old) - Durationofeachchord - trail)
+                mixedtest = mixedtest.overlay(loop*2,position= len(mixed_old) - Durationofeachchord - trail)
+            if(i%10==0):
+                mixedtest = mixedtest.overlay(FX1,position= len(mixed_old) - Durationofeachchord - trail)
+            mixedtest.export("mixed.wav", format='wav') 
+            mixed_old = mixedtest
             if(i>25):
                 time.sleep(10)
             else:
