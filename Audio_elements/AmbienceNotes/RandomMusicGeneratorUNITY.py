@@ -99,6 +99,7 @@ def create():
                 os.remove("mixed.wav")
                 os.remove("kickpattern.wav")
                 os.remove("lead.wav")
+                os.remove("export/currentstamp.txt")
             except:
                 print("file does not exist")
             mixed_old = audio1.overlay(audio2).overlay(audio3).overlay(audio4).overlay(audio5).overlay(audio6)
@@ -117,6 +118,9 @@ def create():
                 mixedtest = mixedtest.overlay(FX1,position= len(mixed_old) - Durationofeachchord - trail)
             mixedtest.export("mixed.wav", format='wav') 
             mixedtest[i*Durationofeachchord:(i+1)*Durationofeachchord].export("export/mixedstream"+str(i)+".ogg", format='ogg', codec="libvorbis") 
+            f= open("export/currenttimestamp.txt","w+")
+            f.write(str(i-1))
+            f.close()
             #mixedtest.export("mixedcompatible.ogg", format='ogg', codec="libvorbis") 
             mixed_old = mixedtest
             if(i>25):

@@ -5,16 +5,24 @@ public class AudioController : MonoBehaviour
 {   
     public string url;
     private float timestamp;
+    private string currentTS;
+    private int i;
     // Start is called before the first frame update
     void Start()
     {   
         timestamp = 0;
+        //StartCoroutine(GetCurrentTimestamp());
         StartCoroutine(AudioPlayer());
         //StartCoroutine(PlayAudio());
     }
     private IEnumerator AudioPlayer(){
-        int i = 1;
+        //i = currentTS;
+        StartCoroutine(GetCurrentTimestamp());
+        yield return new WaitForSeconds(0.75f);
+        i = int.Parse(currentTS);
+        print(i);
         while(true){
+        
         WWW music = new WWW(url);
         using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(url+"mixedstream" + i + ".ogg", AudioType.OGGVORBIS))
          {
@@ -28,11 +36,16 @@ public class AudioController : MonoBehaviour
             {   
                     AudioClip myClip = DownloadHandlerAudioClip.GetContent(www);
                     if(myClip.length!=0){
-                        if (!GetComponent<AudioSource>().isPlaying){
-                            GetComponent<AudioSource>().clip = myClip;
-                            GetComponent<AudioSource>().Play();
-                            i=i+1; 
-                        }
+                        AudioPlaying:
+                            if (!GetComponent<AudioSource>().isPlaying)
+                            {
+                                GetComponent<AudioSource>().clip = myClip;
+                                GetComponent<AudioSource>().Play();
+                                i=i+1; 
+                            }
+                            else{
+                                goto AudioPlaying;
+                            }
                         
                         
                     }
@@ -40,6 +53,19 @@ public class AudioController : MonoBehaviour
             }
         }
         
+        }
+    }
+    private IEnumerator GetCurrentTimestamp(){
+        UnityWebRequest www = UnityWebRequest.Get(url + "currenttimestamp.txt");
+        yield return www.SendWebRequest();
+ 
+        if(www.isNetworkError || www.isHttpError) {
+            Debug.Log(www.error);
+        }
+        else {
+            // Show results as text
+            currentTS = (www.downloadHandler.text);
+            yield return currentTS ;
         }
     }
     
