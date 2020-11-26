@@ -8,6 +8,7 @@ public class SunPosition : MonoBehaviour
     public float Xanglerate;
     public float Timeintercept;
     public float Timecurrent;
+    public float East;
     [Range(0f,360f)]
     public float Xanglecurrent;
     // Start is called before the first frame update
@@ -19,7 +20,7 @@ public class SunPosition : MonoBehaviour
     void Update()
     {   
         Xanglecurrent = Xanglerate*Timecurrent + -Xanglerate*Timeintercept;
-        transform.rotation = Quaternion.Euler(Xanglecurrent + Time.deltaTime*(Xanglerate/60),0,0);
+        transform.rotation = Quaternion.Euler(Xanglecurrent + Time.deltaTime*(Xanglerate/60),East,0);
         DynamicGI.UpdateEnvironment();
     }
 }
