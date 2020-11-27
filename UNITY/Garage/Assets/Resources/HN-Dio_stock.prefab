@@ -131,6 +131,9 @@ MonoBehaviour:
   Wheel: {fileID: 3048856023704094614}
   Vehicle: {fileID: 7375324786553906104}
   rb: {fileID: 7375324786553906105}
+  maxSpeed: 80
+  tankcap: 0
+  mileage: 0
 --- !u!1 &3048856023704094614
 GameObject:
   m_ObjectHideFlags: 0
@@ -5658,7 +5661,7 @@ GameObject:
   - component: {fileID: 7375324787168291380}
   m_Layer: 0
   m_Name: WheelRC
-  m_TagString: Untagged
+  m_TagString: WheelRC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5774,6 +5777,9 @@ MonoBehaviour:
   Wheel: {fileID: 3650304219770787468}
   Vehicle: {fileID: 7375324786553906104}
   rb: {fileID: 7375324786553906105}
+  maxSpeed: 80
+  tankcap: 12
+  mileage: 15
 --- !u!114 &3855531895571318833
 MonoBehaviour:
   m_ObjectHideFlags: 0

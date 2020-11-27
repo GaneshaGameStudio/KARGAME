@@ -10,7 +10,7 @@ public class Musicscroll : MonoBehaviour
     public TextMeshProUGUI MoosicPro;
     private string music;
     private Vector3 final;
-    private float xtargetleft = -5f;
+    public float xtargetleft = -5f;
     private float xtargetright;
     private float xmove;
     // Start is called before the first frame update
@@ -22,11 +22,16 @@ public class Musicscroll : MonoBehaviour
     }
     IEnumerator SetMusicText(){
         while(true){
+            try{
             music = musicplaying.clip.name;
             MoosicPro.SetText(music);
+            }
+            catch(System.Exception ex){
+
+            }
             if(xmove>xtargetleft){
                 while(true){
-                    transform.localPosition = new Vector3(transform.localPosition.x - 5f, transform.localPosition.y, transform.localPosition.z);
+                    transform.localPosition = new Vector3(transform.localPosition.x -5f, transform.localPosition.y, transform.localPosition.z);
                     if(transform.localPosition.x < xtargetleft){
                         print("breaking");
                         break;
@@ -34,7 +39,7 @@ public class Musicscroll : MonoBehaviour
                     yield return new WaitForSeconds(0.2f); 
                 }
                 while(true){
-                  transform.localPosition = new Vector3(transform.localPosition.x + 5f, transform.localPosition.y, transform.localPosition.z);
+                  transform.localPosition = new Vector3(transform.localPosition.x +5f, transform.localPosition.y, transform.localPosition.z);
                     if(transform.localPosition.x > xtargetright){
                         break;
                     }

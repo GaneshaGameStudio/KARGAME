@@ -12,6 +12,9 @@ public class SimpleDrive : MonoBehaviour
     public Rigidbody rb;
     private PlayerActionControls playerActionControls;
     private float a = 0;
+    public float maxSpeed = 30f;
+    public float tankcap;
+    public float mileage;
     // Start is called before the first frame update
     private void Awake(){
         playerActionControls = new PlayerActionControls();
@@ -29,12 +32,18 @@ public class SimpleDrive : MonoBehaviour
 
     void Go(float accel, float steer)
     {   
-        float vel = Mathf.Max((float)rb.velocity.magnitude*0.5f,1);
+        float vel = Mathf.Max((float)rb.velocity.magnitude,1);
         accel = Mathf.Clamp(accel,-1, 1);
         steer = Mathf.Clamp(steer,-1, 1) * maxSteerAngle / vel;
         float thrustTorque = accel * torque;
-        WC.motorTorque = thrustTorque;
+        if(vel<maxSpeed/3.6){
+            WC.motorTorque = thrustTorque;
+        }
+        else{
+            WC.motorTorque = 0f;
+        }
         WC.steerAngle = steer*Time.deltaTime*30f;
+        
 
         Quaternion quat;
         Vector3 position;
@@ -57,14 +66,7 @@ public class SimpleDrive : MonoBehaviour
         float w = movementInput[1];
         
         a = Mathf.MoveTowards(movementInput[0], a, 0.7f * Time.deltaTime);
-        if(Vehicle.GetComponent<Lean>().vel > 80/3.6f)
-        {
-            Debug .Log("Speed limit!!");
-            w=0;
-        }
-        else
-        {
-            Go(w,a);
-        }
+        Go(w,a);
+
     }
 }

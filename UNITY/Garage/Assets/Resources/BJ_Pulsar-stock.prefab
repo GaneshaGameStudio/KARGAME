@@ -341,6 +341,9 @@ MonoBehaviour:
   Wheel: {fileID: 9209240934970735059}
   Vehicle: {fileID: 3116452864097733863}
   rb: {fileID: 3116452864097733862}
+  maxSpeed: 110
+  tankcap: 20
+  mileage: 30
 --- !u!1 &3116452863781891105
 GameObject:
   m_ObjectHideFlags: 0
@@ -5345,7 +5348,7 @@ MonoBehaviour:
   maxWheelieAngle: 50
   rb: {fileID: 3116452864097733862}
   isWheelie: 0
-  vel: 0
+  vel: 110
   Vehicle: {fileID: 3116452864097733863}
 --- !u!114 &2661932023166970041
 MonoBehaviour:
@@ -5804,6 +5807,9 @@ MonoBehaviour:
   Wheel: {fileID: 7433756235676510409}
   Vehicle: {fileID: 3116452864097733863}
   rb: {fileID: 3116452864097733862}
+  maxSpeed: 110
+  tankcap: 0
+  mileage: 0
 --- !u!1 &9209240934970735059
 GameObject:
   m_ObjectHideFlags: 0
