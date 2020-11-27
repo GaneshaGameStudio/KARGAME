@@ -153,6 +153,7 @@ public class MoveCamera : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position,finalPositions[0],Speed*Time.deltaTime);
             transform.rotation = Quaternion.Slerp(transform.rotation, finaltarget,  Speed*Time.deltaTime);
             Fade.color = new Color(Fade.color.r, Fade.color.g, Fade.color.b, iterator);
+            Audio.GetComponent<AudioSource>().volume = Audio.GetComponent<AudioSource>().volume - 0.1f*iterator;
             iterator = iterator + 0.1f;
         }
         
