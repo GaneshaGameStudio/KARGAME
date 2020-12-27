@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChunkingV2 : MonoBehaviour
 {   
-    private float xmin = 1441.5f;
+    private float xmin = 1236.5f;
     private float zmin = 2028.9f;
     private float xinterval = 205f;
     private float zinterval = 185f;
@@ -34,7 +34,7 @@ public class ChunkingV2 : MonoBehaviour
             }
             else{
                 GameObject mapobject = Resources.Load("map_4_"+zint[i]+"_"+xint[i]) as GameObject;
-                Instantiate(mapobject, new Vector3(0, 0, 0), Quaternion.Euler(new Vector3(-90, 0, 0)));
+                Instantiate(mapobject, new Vector3(0, 0, 0), Quaternion.Euler(new Vector3(0, 0, 0)));
             }
             
         }
@@ -45,25 +45,25 @@ public class ChunkingV2 : MonoBehaviour
         float xcomp = (Mathf.Sin(yanglerad))*FCP;
         float zcomp = (1-Mathf.Cos(yanglerad))*FCP; 
        
-        xint[0] = Mathf.Floor(Mathf.Abs(x - xmin)/xinterval + 11f);
+        xint[0] = Mathf.Floor(Mathf.Abs(x - xmin)/xinterval + 12f);
         zint[0] = Mathf.Floor(Mathf.Abs(z- zmin)/zinterval + 7f);
 
-        xint[1] = Mathf.Floor(Mathf.Abs(x - xmin + xcomp)/xinterval + 11f);
+        xint[1] = Mathf.Floor(Mathf.Abs(x - xmin + xcomp)/xinterval + 12f);
         zint[1] = Mathf.Floor(Mathf.Abs(z+(0.5f*FCP) - zmin - 0.5f*zcomp)/zinterval + 7f);
 
-        xint[2] = Mathf.Floor(Mathf.Abs(x - xmin + xcomp)/xinterval + 11f);
+        xint[2] = Mathf.Floor(Mathf.Abs(x - xmin + xcomp)/xinterval + 12f);
         zint[2] = Mathf.Floor(Mathf.Abs(z+(FCP) - zmin - zcomp)/zinterval + 7f);
 
-        xint[3] = Mathf.Floor(Mathf.Abs(x-Mathf.Tan(FOV)*FCP - xmin + xcomp)/xinterval + 11f);
+        xint[3] = Mathf.Floor(Mathf.Abs(x-Mathf.Tan(FOV)*FCP - xmin + xcomp)/xinterval + 12f);
         zint[3] = Mathf.Floor(Mathf.Abs(z+(FCP) - zmin - zcomp)/zinterval + 7f);
 
-        xint[4] = Mathf.Floor(Mathf.Abs(x-Mathf.Tan(FOV)*0.5f*FCP - xmin + xcomp)/xinterval + 11f);
+        xint[4] = Mathf.Floor(Mathf.Abs(x-Mathf.Tan(FOV)*0.5f*FCP - xmin + xcomp)/xinterval + 12f);
         zint[4] = Mathf.Floor(Mathf.Abs(z+(FCP*0.5f) - zmin - zcomp)/zinterval + 7f);
 
-        xint[5] = Mathf.Floor(Mathf.Abs(x+Mathf.Tan(FOV)*FCP - xmin + xcomp)/xinterval + 11f);
+        xint[5] = Mathf.Floor(Mathf.Abs(x+Mathf.Tan(FOV)*FCP - xmin + xcomp)/xinterval + 12f);
         zint[5] = Mathf.Floor(Mathf.Abs(z+(FCP) - zmin - zcomp)/zinterval + 7f);
 
-        xint[6] = Mathf.Floor(Mathf.Abs(x+Mathf.Tan(FOV)*0.5f*FCP - xmin + xcomp)/xinterval + 11f);
+        xint[6] = Mathf.Floor(Mathf.Abs(x+Mathf.Tan(FOV)*0.5f*FCP - xmin + xcomp)/xinterval + 12f);
         zint[6] = Mathf.Floor(Mathf.Abs(z+(FCP*0.5f) - zmin - zcomp)/zinterval + 7f);
     }
 
@@ -92,7 +92,7 @@ public class ChunkingV2 : MonoBehaviour
             }
             else{
                 GameObject mapobject = Resources.Load("map_4_"+zint[i]+"_"+xint[i]) as GameObject;
-                Instantiate(mapobject, new Vector3(0, 0, 0), Quaternion.Euler(new Vector3(-90, 0, 0)));
+                Instantiate(mapobject, new Vector3(0, 0, 0), Quaternion.Euler(new Vector3(0, 0, 0)));
             }
         }
     }
