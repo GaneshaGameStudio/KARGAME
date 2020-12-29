@@ -1,7 +1,7 @@
 import bpy,sys
 import bmesh
 
-cuts = 3
+cuts = 36
 ycoordList = []
 xcoordList = []
 obj = bpy.context.active_object
@@ -23,6 +23,7 @@ xinterval = abs(xmin - xmax) / cuts
 j=0
 def MakeSplit(name,interval,normal,left,right,l,axisenter,cuts):
     for i in range(0,cuts-1):
+        print(i)
         bpy.ops.object.mode_set(mode="EDIT")
         bpy.ops.mesh.select_all(action="SELECT")
         if(axisenter=='Y'):
@@ -48,26 +49,31 @@ def MakeSplit(name,interval,normal,left,right,l,axisenter,cuts):
         bpy.data.objects[name].select_set(True)
         print(name)
         if(l==0):
-            bpy.context.selected_objects[0].name = "map_4_" + str(i) + "_" + str(j) 
+            bpy.context.selected_objects[0].name = "roads_4_" + str(i) + "_" + str(j) 
         else:
-            bpy.context.selected_objects[0].name = "map_4_" +  str(j) + "_" + str(i) 
+            bpy.context.selected_objects[0].name = "roads_4_" +  str(j) + "_" + str(i) 
         bpy.ops.object.select_all(action='DESELECT')
         bpy.data.objects[name + ".001"].select_set(True) 
         name = "Plane"
         bpy.context.selected_objects[0].name = name
         ob = bpy.context.scene.objects[name]
         bpy.context.view_layer.objects.active = ob 
-    if(l==0):
-        bpy.context.selected_objects[0].name = "map_4_" + str(cuts-1) + "_" + str(j)
-    else:
-        bpy.context.selected_objects[0].name = "map_4_" +  str(j) + "_" + str(cuts-1)
+        if(l==0):
+            bpy.context.selected_objects[0].name = "roads_4_" + str(cuts-1) + "_" + str(j)
+        else:
+            bpy.context.selected_objects[0].name = "roads_4_" +  str(j) + "_" + str(cuts-1)
+    
 
 MakeSplit("Plane",yinterval,(0,1,0),ymin,ymax,0,'Y',cuts)
-
+'''
 for j in range(0,cuts):
-    newname = "map_4_" + str(j) + "_0"
-    o = bpy.context.scene.objects["map_4_" + str(j) + "_0"]
+    newname = "roads_4_" + str(j) + "_0"
+    o = bpy.context.scene.objects["roads_4_" + str(j) + "_0"]
     bpy.context.view_layer.objects.active = o
     bpy.ops.object.select_all(action='DESELECT')
-    bpy.data.objects["map_4_" + str(j) + "_0"].select_set(True)
-    MakeSplit("map_4_" + str(j) + "_0",xinterval,(1,0,0),xmin,xmax,1,'X',cuts)
+    bpy.data.objects["roads_4_" + str(j) + "_0"].select_set(True)
+    try:
+        MakeSplit("roads_4_" + str(j) + "_0",xinterval,(1,0,0),xmin,xmax,1,'X',cuts)
+    except:
+        continue
+'''
