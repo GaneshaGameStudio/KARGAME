@@ -1,7 +1,7 @@
 import bpy
 
 for collection in bpy.data.collections:
-       if(collection.name == "Collection"):
+       if(collection.name == "Buildings"):
            for obj in collection.all_objects:
               print('   obj: ', obj.name)
               bpy.data.objects[obj.name].select_set(True)
