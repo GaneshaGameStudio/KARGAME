@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ChunkingV2 : MonoBehaviour
 {   
-    private float xmin = 3697f;
-    private float zmin = 3321f;
-    private float xinterval = 210.8f;
-    private float zinterval = 185.6f;
+    private float xmin = 3697.1f;
+    private float zmin = 3321.4f;
+    private float xinterval = 205f;
+    private float zinterval = 184.7f;
     private float[] xint;
     private float[] zint;
     private float[] xdefault,zdefault;
@@ -49,13 +49,13 @@ public class ChunkingV2 : MonoBehaviour
        
         xint[0] = Mathf.Floor(Mathf.Abs(x - xmin)/xinterval + 0f);
         zint[0] = Mathf.Floor(Mathf.Abs(z- zmin)/zinterval + 0f);
-    
+        
         xint[1] = Mathf.Floor(Mathf.Abs(x - xmin + xcomp)/xinterval + 0f);
         zint[1] = Mathf.Floor(Mathf.Abs(z+(0.5f*FCP) - zmin - 0.5f*zcomp)/zinterval + 0f);
 
         xint[2] = Mathf.Floor(Mathf.Abs(x - xmin + xcomp)/xinterval + 0f);
         zint[2] = Mathf.Floor(Mathf.Abs(z+(FCP) - zmin - zcomp)/zinterval + 0f);
-
+        
         xint[3] = Mathf.Floor(Mathf.Abs(x-Mathf.Tan(FOV)*FCP - xmin + xcomp)/xinterval + 0f);
         zint[3] = Mathf.Floor(Mathf.Abs(z+(FCP) - zmin - zcomp)/zinterval + 0f);
 
@@ -67,18 +67,19 @@ public class ChunkingV2 : MonoBehaviour
 
         xint[6] = Mathf.Floor(Mathf.Abs(x+Mathf.Tan(FOV)*0.5f*FCP - xmin + xcomp)/xinterval + 0f);
         zint[6] = Mathf.Floor(Mathf.Abs(z+(FCP*0.5f) - zmin - zcomp)/zinterval + 0f);
+        
     }
 
     void DetectChangeandUnload(float x, float z,int i){
         
         if((x - xdefault[i])!=0){
-            print("xchanged");
+            
             Destroy(GameObject.Find("map_4_"+zdefault[i]+"_"+xdefault[i]+"(Clone)"));
             Destroy(GameObject.Find("roads_4_"+zdefault[i]+"_"+xdefault[i]+"(Clone)"));
             xdefault[i] = x;
         }
         else if((z - zdefault[i])!=0){
-            print("zchanged");
+            
             Destroy(GameObject.Find("map_4_"+zdefault[i]+"_"+xdefault[i]+"(Clone)"));  
             Destroy(GameObject.Find("roads_4_"+zdefault[i]+"_"+xdefault[i]+"(Clone)")); 
             zdefault[i] = z;
