@@ -54,7 +54,7 @@ public class SimpleDrive : MonoBehaviour
         var velDir = transform.InverseTransformDirection(rb.velocity);
         if (velDir.z < -0.1)
         {
-            rb.velocity = Vector3.ClampMagnitude(rb.velocity, 0.2776f);
+            rb.velocity = Vector3.ClampMagnitude(rb.velocity, 5f*0.2776f);
         }
         
     }

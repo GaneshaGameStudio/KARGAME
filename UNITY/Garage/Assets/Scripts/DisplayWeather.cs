@@ -69,14 +69,14 @@ public class DisplayWeather : MonoBehaviour
             description = weather_node.Attributes["value"].Value;
             passdescription = description;
             
-            RenderSettings.fogEndDistance = 40f;
+            RenderSettings.fogEndDistance = 100f;
             
             switch(description){
                 case "clear sky":
                     GameObject.Find("Garage-Canvas/Forecast").GetComponent<RawImage>().texture = m_Texture[0];
                     Skybox.SetColor("Color_BE31CDF2",new Color(0.2549019f,0.5294118f,1f,1f));
                     Skybox.SetColor("Color_68FD0CD8",new Color(0.01321642f,0.7215686f,0.8661178f,1f));
-                    Skybox.SetFloat("Vector1_B93A03DE",0.06f);
+                    Skybox.SetFloat("Vector1_B93A03DE",0.01f);
                     Skybox.SetFloat("Vector1_FE797C36",0.03f);
                     Skybox.SetFloat("Vector1_FA4E5253",0.03f);
                     Skybox.SetFloat("Vector1_249357C1",0.08f);
@@ -88,7 +88,7 @@ public class DisplayWeather : MonoBehaviour
                     GameObject.Find("Garage-Canvas/Forecast").GetComponent<RawImage>().texture = m_Texture[1];
                     Skybox.SetColor("Color_BE31CDF2",new Color(0.2549019f,0.5294118f,1f,1f));
                     Skybox.SetColor("Color_68FD0CD8",new Color(0.01321642f,0.7215686f,0.8661178f,1f));
-                    Skybox.SetFloat("Vector1_B93A03DE",0.06f);
+                    Skybox.SetFloat("Vector1_B93A03DE",0.01f);
                     Skybox.SetFloat("Vector1_FE797C36",0.03f);
                     Skybox.SetFloat("Vector1_FA4E5253",0.03f);
                     Skybox.SetFloat("Vector1_249357C1",0.153f);
@@ -100,7 +100,7 @@ public class DisplayWeather : MonoBehaviour
                     GameObject.Find("Garage-Canvas/Forecast").GetComponent<RawImage>().texture = m_Texture[2];
                     Skybox.SetColor("Color_BE31CDF2",new Color(0.2549019f,0.5294118f,1f,1f));
                     Skybox.SetColor("Color_68FD0CD8",new Color(0.01321642f,0.7215686f,0.8661178f,1f));
-                    Skybox.SetFloat("Vector1_B93A03DE",0.06f);
+                    Skybox.SetFloat("Vector1_B93A03DE",0.01f);
                     Skybox.SetFloat("Vector1_FE797C36",0.03f);
                     Skybox.SetFloat("Vector1_FA4E5253",0.09f);
                     Skybox.SetFloat("Vector1_249357C1",0.153f);
@@ -112,7 +112,7 @@ public class DisplayWeather : MonoBehaviour
                     GameObject.Find("Garage-Canvas/Forecast").GetComponent<RawImage>().texture = m_Texture[3];
                     Skybox.SetColor("Color_BE31CDF2",new Color(0.2549019f,0.5294118f,1f,1f));
                     Skybox.SetColor("Color_68FD0CD8",new Color(0.01321642f,0.7215686f,0.8661178f,1f));
-                    Skybox.SetFloat("Vector1_B93A03DE",0.06f);
+                    Skybox.SetFloat("Vector1_B93A03DE",0.01f);
                     Skybox.SetFloat("Vector1_FE797C36",0.03f);
                     Skybox.SetFloat("Vector1_FA4E5253",0.09f);
                     Skybox.SetFloat("Vector1_249357C1",0.153f);
@@ -184,7 +184,7 @@ public class DisplayWeather : MonoBehaviour
                     GameObject.Find("Garage-Canvas/Forecast").GetComponent<RawImage>().texture = m_Texture[8];
                     Skybox.SetColor("Color_BE31CDF2",new Color(0.2549019f,0.5294118f,1f,1f));
                     Skybox.SetColor("Color_68FD0CD8",new Color(0.01321642f,0.7215686f,0.8661178f,1f));
-                    Skybox.SetFloat("Vector1_B93A03DE",0.06f);
+                    Skybox.SetFloat("Vector1_B93A03DE",0.01f);
                     Skybox.SetFloat("Vector1_FE797C36",0.03f);
                     Skybox.SetFloat("Vector1_FA4E5253",0.03f);
                     Skybox.SetFloat("Vector1_249357C1",0.08f);

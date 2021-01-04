@@ -25,7 +25,7 @@ xinterval = abs(xmin - xmax) / cuts
 j=0
 def MakeSplit(name,interval,normal,left,right,l,axisenter,cuts):
     print(left)
-    for i in range(0,cuts-1):
+    for i in range(0,cuts):
         bpy.ops.object.mode_set(mode="EDIT")
         bpy.ops.mesh.select_all(action="SELECT")
         if(axisenter=='Y'):
@@ -43,7 +43,7 @@ def MakeSplit(name,interval,normal,left,right,l,axisenter,cuts):
                     mesh.select_history.add(v)
                 else:
                     print('')
-                    #v.select = False
+                    v.select = False
                 k=k+1
         #print(v)
         bpy.ops.mesh.select_axis(axis=axisenter)    
@@ -56,9 +56,9 @@ def MakeSplit(name,interval,normal,left,right,l,axisenter,cuts):
         bpy.data.objects[name].select_set(True)
         print(name)
         if(l==0):
-            bpy.context.selected_objects[0].name = "Map_4_" + str(i) + "_" + str(j) 
+            bpy.context.selected_objects[0].name = "Footpath_4_" + str(i) + "_" + str(j) 
         else:
-            bpy.context.selected_objects[0].name = "Map_4_" +  str(j) + "_" + str(i) 
+            bpy.context.selected_objects[0].name = "Footpath_4_" +  str(j) + "_" + str(i) 
         bpy.ops.object.select_all(action='DESELECT')
         bpy.data.objects[name + ".001"].select_set(True) 
         name = "Plane"
@@ -66,27 +66,27 @@ def MakeSplit(name,interval,normal,left,right,l,axisenter,cuts):
         ob = bpy.context.scene.objects[name]
         bpy.context.view_layer.objects.active = ob 
     if(l==0):
-        bpy.context.selected_objects[0].name = "Map_4_" + str(cuts-1) + "_" + str(j)
+        bpy.context.selected_objects[0].name = "Footpath_4_" + str(cuts-1) + "_" + str(j)
     else:
-        bpy.context.selected_objects[0].name = "Map_4_" +  str(j) + "_" + str(cuts-1)
+        bpy.context.selected_objects[0].name = "Footpath_4_" +  str(j) + "_" + str(cuts-1)
     if(i==cuts-1):
-        bpy.data.objects["Map_4_" + str(j) + "_" + str(i)].select_set(True)
+        bpy.data.objects["Footpath_4_" + str(j) + "_" + str(i)].select_set(True)
         bpy.ops.object.delete() 
-        bpy.data.objects["Map_4_" + str(j) + "_" + str(i) + ".001"].select_set(True)
-        bpy.context.selected_objects[0].name = "Map_4_" + str(j) + "_" + str(i)
+        bpy.data.objects["Footpath_4_" + str(j) + "_" + str(i) + ".001"].select_set(True)
+        bpy.context.selected_objects[0].name = "Footpath_4_" + str(j) + "_" + str(i)
         bpy.ops.object.select_all(action='DESELECT')
     #v.select = False
     
-#MakeSplit("Plane",yinterval,(0,1,0),ymin,ymax,0,'Y',cuts)
+MakeSplit("Plane",yinterval,(0,1,0),ymin,ymax,0,'Y',cuts)
 
-for j in range(35,36):
-    newname = "Map_4_" + str(j) + "_0"
+for j in range(0,36):
+    newname = "Footpath_4_" + str(j) + "_0"
     
-    o = bpy.context.scene.objects["Map_4_" + str(j) + "_0"]
+    o = bpy.context.scene.objects["Footpath_4_" + str(j) + "_0"]
     o.select_set(True)
     bpy.context.view_layer.objects.active = o
     bpy.ops.object.select_all(action='DESELECT')
-    bpy.data.objects["Map_4_" + str(j) + "_0"].select_set(True)
-    MakeSplit("Map_4_" + str(j) + "_0",xinterval,(1,0,0),xmin,xmax,1,'X',cuts)
+    bpy.data.objects["Footpath_4_" + str(j) + "_0"].select_set(True)
+    MakeSplit("Footpath_4_" + str(j) + "_0",xinterval,(1,0,0),xmin,xmax,1,'X',cuts)
 
     

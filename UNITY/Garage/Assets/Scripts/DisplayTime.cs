@@ -24,10 +24,8 @@ public class DisplayTime : MonoBehaviour
             char[] delimiterChars = { ' ', ':'};
             string Time = DateTime.Now.ToString("mm/dd/yyyy HH:mm:ss");
             string[] wordstime = Time.Split(delimiterChars);
-            //print(words[1]);
-            //print(words[2]);
             TextPro.SetText(wordstime[1]+" : "+wordstime[2]);
-            if(int.Parse(wordstime[1])<7 || int.Parse(wordstime[2])>=17){
+            if(int.Parse(wordstime[1])<7 || int.Parse(wordstime[1])>=17){
                     Camera.main.GetComponent<Lights>().LightOn = true;
                  }
             else{
