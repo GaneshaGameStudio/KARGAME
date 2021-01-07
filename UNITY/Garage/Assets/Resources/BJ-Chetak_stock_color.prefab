@@ -126,14 +126,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WC: {fileID: 2383913749253148113}
-  torque: 0
+  torque: 150
   maxSteerAngle: 45
   Wheel: {fileID: 3206160591963685629}
   Vehicle: {fileID: 6947733321082644179}
   rb: {fileID: 6947733321082644178}
   maxSpeed: 60
-  tankcap: 0
-  mileage: 0
+  tankcap: 10
+  mileage: 17
 --- !u!1 &3206160591963685629
 GameObject:
   m_ObjectHideFlags: 0
@@ -5538,10 +5538,9 @@ GameObject:
   - component: {fileID: 6947733322783518556}
   - component: {fileID: 6947733322783518557}
   - component: {fileID: 6947733322783518554}
-  - component: {fileID: 6947733322783518559}
   m_Layer: 0
   m_Name: WheelRC
-  m_TagString: Untagged
+  m_TagString: WheelRC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5639,27 +5638,6 @@ WheelCollider:
     m_AsymptoteValue: 0.75
     m_Stiffness: 1
   m_Enabled: 1
---- !u!114 &6947733322783518559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6947733322783518552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58b0dbb475edb42b180a4b9717600908, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  WC: {fileID: 0}
-  torque: 150
-  maxSteerAngle: 0
-  Wheel: {fileID: 3790157512333284327}
-  Vehicle: {fileID: 6947733321082644179}
-  rb: {fileID: 6947733321082644178}
-  maxSpeed: 60
-  tankcap: 10
-  mileage: 17
 --- !u!1 &7722728765585799183
 GameObject:
   m_ObjectHideFlags: 0
@@ -6000,13 +5978,13 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b8f8bb735aa584e47b4ef199de5f7e03, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4221b3db4e7694e20b18a72daf5f09ab, type: 3}
---- !u!1 &5501774920340467031 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4221b3db4e7694e20b18a72daf5f09ab, type: 3}
-  m_PrefabInstance: {fileID: 4655405839505870854}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5121133252517279725 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4221b3db4e7694e20b18a72daf5f09ab, type: 3}
+  m_PrefabInstance: {fileID: 4655405839505870854}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5501774920340467031 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4221b3db4e7694e20b18a72daf5f09ab, type: 3}
   m_PrefabInstance: {fileID: 4655405839505870854}
   m_PrefabAsset: {fileID: 0}

@@ -43,9 +43,23 @@ public class fuelreader : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
+
         GO = GameObject.Find(VehicleID.Vehicle + "(Clone)");
-        TC = GameObject.FindWithTag("WheelRC").GetComponent<SimpleDrive>().tankcap;
-        M = GameObject.FindWithTag("WheelRC").GetComponent<SimpleDrive>().mileage;
+        if(GameObject.Find(VehicleID.Vehicle+"(Clone)").tag == "4Wheeler")
+        {
+            TC = GameObject.FindWithTag("4Wheeler").GetComponent<SimpleCarController>().tankcap;
+            M = GameObject.FindWithTag("4Wheeler").GetComponent<SimpleCarController>().mileage;
+        }
+        else if (GameObject.Find(VehicleID.Vehicle + "(Clone)").tag == "6Wheeler")
+        {
+            TC = GameObject.FindWithTag("6Wheeler").GetComponent<SimpleCarController>().tankcap;
+            M = GameObject.FindWithTag("6Wheeler").GetComponent<SimpleCarController>().mileage;
+        }
+        else
+        {
+            TC = GameObject.FindWithTag("WheelFC").GetComponent<SimpleDrive>().tankcap;
+            M = GameObject.FindWithTag("WheelFC").GetComponent<SimpleDrive>().mileage;
+        }
         Rigidbody rb = GO.GetComponent<Rigidbody>();
         TotalDistance += (rb.velocity.magnitude * Time.deltaTime);
         float remainingnorm = (CT*M - TotalDistance)/(TC*M);

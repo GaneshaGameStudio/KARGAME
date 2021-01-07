@@ -4840,7 +4840,7 @@ GameObject:
   - component: {fileID: 6423282102580023318}
   m_Layer: 0
   m_Name: WheelFL
-  m_TagString: Untagged
+  m_TagString: WheelFC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5320,7 +5320,7 @@ GameObject:
   - component: {fileID: 4931108858413446682}
   m_Layer: 0
   m_Name: MS-Alto_AssemblyStock
-  m_TagString: Untagged
+  m_TagString: 4Wheeler
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5358,6 +5358,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6940697e9d2294dfaa365e816b3a95fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 4931108858413446682}
+  maxSpeed: 100
+  tankcap: 10
+  mileage: 20
   WheelFL: {fileID: 6423282102580023318}
   WheelFR: {fileID: 1813930906208761272}
   WheelRL: {fileID: 1610372226532604799}
@@ -5399,7 +5403,7 @@ GameObject:
   - component: {fileID: 8967602714095286308}
   m_Layer: 0
   m_Name: WheelRR
-  m_TagString: Untagged
+  m_TagString: WheelRC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

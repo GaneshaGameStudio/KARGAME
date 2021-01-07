@@ -12,6 +12,7 @@ public class MoveCamera : MonoBehaviour
     public Vector3[] finalPositions;
     public Vector3[] finalRotations;
     static public int mCurrentIndex = 0;
+    static public int mCameraIndex = 0;
     static public int mCarIndex  = 0;
     public float Speed = 2.0f;
     public Button W_Button;
@@ -45,20 +46,26 @@ public class MoveCamera : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {   
+        mCameraIndex  = 0;
+        mCurrentIndex  = 0;
+        mCarIndex  = 0;
         Vector3 currentPos = Positions[0];
         Vector3 currentAngle = Rotations[0];
         Quaternion target = Quaternion.Euler(currentAngle);
         transform.position = Vector3.Lerp(transform.position,currentPos,Speed*0.0005f*Time.deltaTime);
         transform.rotation = Quaternion.Slerp(transform.rotation, target,  Speed*0.0005f*Time.deltaTime);
+        
         for(int j =0; j < GO.Length; j++)
         {
-            SelectCar(mCarIndex, GO[j]);
+            SelectCar(0, GO[j]);
+
         }
+        //SelectCar(mCarIndex, GO[mCurrentIndex]);
+        
         
     }
     void Start()
     {   
-        mCurrentIndex = 0;
         iterator = 0f;
         Fade.color = new Color(Fade.color.r, Fade.color.g, Fade.color.b, 0f);
         Vector3 finalPos =finalPositions[0];
@@ -140,7 +147,7 @@ public class MoveCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        if(mCurrentIndex!=100){
+        if(mCameraIndex!=100){
             VehicleText.SetText(VehicleType[mCurrentIndex]);
             Vector3 currentPos = Positions[mCurrentIndex];
             Vector3 currentAngle = Rotations[mCurrentIndex];

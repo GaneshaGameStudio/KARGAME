@@ -5,6 +5,10 @@ using UnityEngine;
 public class SimpleCarController : MonoBehaviour {
 
 	private PlayerActionControls playerActionControls;
+	public Rigidbody rb;
+	public float maxSpeed = 30f;
+    public float tankcap;
+    public float mileage;
 	private void Awake(){
         playerActionControls = new PlayerActionControls();
     }
@@ -29,9 +33,18 @@ public class SimpleCarController : MonoBehaviour {
 	}
 
 	private void Accelerate()
-	{
-		WheelFL.motorTorque = m_verticalInput * motorForce;
-		WheelFR.motorTorque = m_verticalInput * motorForce;
+	{	
+		float vel = Mathf.Max((float)rb.velocity.magnitude,1);
+		if(vel<maxSpeed/3.6){
+            WheelFL.motorTorque = m_verticalInput * motorForce;
+			WheelFR.motorTorque = m_verticalInput * motorForce;
+        }
+        else{
+            WheelFL.motorTorque = 0f;
+			WheelFR.motorTorque = 0f;
+        }
+		
+
 	}
 
 	private void UpdateWheelPoses()

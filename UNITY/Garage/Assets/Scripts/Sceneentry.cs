@@ -6,7 +6,7 @@ public class Sceneentry: MonoBehaviour {
 
     public void btn_change_scene(string scene_name){
 
-        MoveCamera.mCurrentIndex  = 100;
+        MoveCamera.mCameraIndex  = 100;
         VehicleID.Scene = VehicleID.Vehicle;
     }   
 }
