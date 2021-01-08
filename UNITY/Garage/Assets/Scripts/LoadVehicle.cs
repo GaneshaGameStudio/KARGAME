@@ -8,6 +8,7 @@ public class LoadVehicle : MonoBehaviour
     void Start()
     {
         Instantiate(Resources.Load(VehicleID.Vehicle), new Vector3(1045.6f, 0f, 2115.6f), Quaternion.Euler(new Vector3(0f, 180f, 0f)));
+        ChunkingV2.directionquadINIT = (int)((180f -45f)/90f);;
     }
 
     // Update is called once per frame
