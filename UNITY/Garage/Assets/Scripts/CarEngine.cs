@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class CarEngine : MonoBehaviour
 {   
@@ -44,6 +45,7 @@ public class CarEngine : MonoBehaviour
         Drive();
         CheckWaypointDistance();
         Destroy();
+        
     }
     private void Sensors(){
         RaycastHit hit;
@@ -103,11 +105,18 @@ public class CarEngine : MonoBehaviour
         
     }
     private void ApplySteer(){
-        Vector3 relativeVector = transform.InverseTransformPoint(nodes[currentNode].position);
-        relativeVector = relativeVector / relativeVector.magnitude;
-        float newSteer = (relativeVector.x / relativeVector.magnitude)*-maxSteerAngle;
-        wheelFL.steerAngle = newSteer;
-        wheelFR.steerAngle = newSteer;
+        try{
+            Vector3 relativeVector = transform.InverseTransformPoint(nodes[currentNode].position);
+            relativeVector = relativeVector / relativeVector.magnitude;
+            float newSteer = (relativeVector.x / relativeVector.magnitude)*-maxSteerAngle;
+            wheelFL.steerAngle = newSteer;
+            wheelFR.steerAngle = newSteer;
+        }
+        catch (Exception e)
+        {
+            Destroy(this.gameObject);
+        }
+        
     }
     private void Drive(){
         currentSpeed = - 2 * Mathf.PI * wheelRL.radius * wheelRL.rpm * 60/1000;
@@ -125,29 +134,39 @@ public class CarEngine : MonoBehaviour
     private void CheckWaypointDistance(){
         //print(currentNode);
         //print(nodes.Count);
-        if(Vector3.Distance(transform.position, nodes[currentNode].position) < 5f){
-            if(currentNode == nodes.Count - 1){
-                currentNode = 0;
-            }
+        try{
+            if(Vector3.Distance(transform.position, nodes[currentNode].position) < 5f){
+                if(currentNode == nodes.Count - 1){
+                    currentNode = 0;
+                }
             else
             {
                 currentNode++;
             } 
         }
+        }
+        catch (Exception e)
+        {
+            Destroy(this.gameObject);
+        }
+        
     }
     private void Destroy(){
         
         Camera maincam = GameObject.Find("Camera").GetComponent<Camera>();
-        double checkdist = Mathf.Pow(Mathf.Pow((transform.position.x - maincam.transform.position.x),2f) + Mathf.Pow((transform.position.z - maincam.transform.position.z),2f),0.5f);
+        double checkdist = Mathf.Pow(Mathf.Pow((transform.position.x - maincam.transform.position.x),2f) + Mathf.Pow((transform.position.z - maincam.transform.position.z),2f) + Mathf.Pow((transform.position.y - maincam.transform.position.y),2f),0.5f);
         if(checkdist>GameObject.Find("Camera").GetComponent<TrafficPool>().range1){
                 
-                Destroy(gameObject);
+                Destroy(this.gameObject);
+                return;
         }
     }
+    
     void OnTriggerEnter(Collider other){
 
         if(other.gameObject.tag == "Traffic"){
-            Destroy(gameObject);
+            Destroy(this.gameObject);
+            return;
         }
         
     }

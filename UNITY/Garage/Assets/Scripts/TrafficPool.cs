@@ -60,13 +60,15 @@ public class TrafficPool : MonoBehaviour
         Handles.color = new Color(1,0,0,.4f);
         Handles.DrawSolidArc(transform.position,new Vector3(0, 1, 0),new Vector3(1, 0, 0),360,range2);
     }
+
+    
     // Update is called once per frame
     void Update()
     {   
         respawnpaths = GameObject.FindGameObjectsWithTag("path");
         
         InstantiationTimer -= Time.deltaTime;
-        if(InstantiationTimer<=0 && GameObject.FindGameObjectsWithTag("Traffic").Length <=2)
+        if(InstantiationTimer<=0 && GameObject.FindGameObjectsWithTag("Traffic").Length < 2)
         {
             spawntraffic();
             InstantiationTimer = InstantiateTimer;

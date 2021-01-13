@@ -25,7 +25,7 @@ public class Lights : MonoBehaviour
                 {
                     Light myLight = headlight.GetComponent<Light>();
                     myLight.enabled = true;
-                    print("lights are ON");
+                    //print("lights are ON");
                 }
         }
         else{
