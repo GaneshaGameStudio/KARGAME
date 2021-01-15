@@ -1,8 +1,19 @@
+#not the best optimised but it gets us there
 import lxml.etree
 import math
 import os
+
+routetype = "platform"
+
 if not os.path.exists('bus_routes'):
     os.makedirs('bus_routes')
+if not os.path.exists('platforms'):
+    os.makedirs('platforms')
+
+if(routetype == ""):
+    routedirectory = "bus_routes/"
+elif(routetype == "platform"):
+    routedirectory = "platforms/"
 
 earthradius = 6371
 org_coord=[13.0151,77.5548,13.0157,77.5555] # window
@@ -16,8 +27,6 @@ def haversine(x1,y1,x2,y2):
 
 totalwide = haversine(org_coord[0],org_coord[1],org_coord[0],org_coord[3]) 
 totalheight = haversine(org_coord[0],org_coord[1],org_coord[2],org_coord[1])
-print(totalwide)
-print(totalheight)
 org_dist=[-totalwide/2.,-totalheight/2.,totalwide/2.,totalheight/2.] #viewport
 sx = (org_dist[2]-org_dist[0])/(org_coord[2]-org_coord[0])
 sy = (org_dist[3]-org_dist[1])/(org_coord[3]-org_coord[1])
@@ -37,38 +46,37 @@ def getwayid():
     for member in tag.getparent():
         if(member.get('type') == "node"):
             noderef = member.get('ref')
-            member.get('role')
-            getcoords(noderef,member.get('role'))
+            if(member.get('role')==routetype):
+                getcoords(noderef,member.get('role'))
         else:
             wayref = member.get('ref')
             for wyref in tree.findall('//way[@id="'+str(wayref)+'"]'):
                 for noderef in wyref:
-                    getcoords(noderef.get('ref'),member.get('role'))
+                    if(member.get('role')==routetype):
+                        getcoords(noderef.get('ref'),member.get('role'))
 
 tree = lxml.etree.parse('map-3.xml')
 for tag in tree.findall('//relation//tag[@k="operator"][@v="BMTC"]'):
     routenumbercheck = tag.getprevious().getprevious().get('k')
     if(routenumbercheck == "name"):
         print(tag.getprevious().getprevious().get('v'))
-        if not os.path.exists('bus_routes/'+str(tag.getprevious().getprevious().get('v'))+'.csv'):
-            with open('bus_routes/'+str(tag.getprevious().getprevious().get('v'))+'.csv', 'a') as myfile: 
+        if not os.path.exists(routedirectory+str(tag.getprevious().getprevious().get('v'))+'.csv'):
+            with open(routedirectory+str(tag.getprevious().getprevious().get('v'))+'.csv', 'a') as myfile: 
                 getwayid()
         else:
-            os.remove('bus_routes/'+str(tag.getprevious().getprevious().get('v'))+'.csv')
-            with open('bus_routes/'+str(tag.getprevious().getprevious().get('v'))+'.csv', 'a') as myfile: 
+            os.remove(routedirectory+str(tag.getprevious().getprevious().get('v'))+'.csv')
+            with open(routedirectory+str(tag.getprevious().getprevious().get('v'))+'.csv', 'a') as myfile: 
                 getwayid()
 
     else:
         print(tag.getprevious().getprevious().getprevious().get('v'))
-        if not os.path.exists('bus_routes/'+str(tag.getprevious().getprevious().getprevious().get('v'))+'.csv'):
-            with open('bus_routes/'+str(tag.getprevious().getprevious().getprevious().get('v'))+'.csv', 'a') as myfile: 
+        if not os.path.exists(routedirectory+str(tag.getprevious().getprevious().getprevious().get('v'))+'.csv'):
+            with open(routedirectory+str(tag.getprevious().getprevious().getprevious().get('v'))+'.csv', 'a') as myfile: 
                 getwayid()
         else:
-            os.remove('bus_routes/'+str(tag.getprevious().getprevious().get('v'))+'.csv')
-            with open('bus_routes/'+str(tag.getprevious().getprevious().get('v'))+'.csv', 'a') as myfile: 
+            os.remove(routedirectory+str(tag.getprevious().getprevious().getprevious().get('v'))+'.csv')
+            with open(routedirectory+str(tag.getprevious().getprevious().getprevious().get('v'))+'.csv', 'a') as myfile: 
                 getwayid()
-    #print("relation id: " + str(tag.getparent().get('id')))
-    #break
 
 
 
