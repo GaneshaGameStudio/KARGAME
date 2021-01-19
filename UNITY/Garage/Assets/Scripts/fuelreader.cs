@@ -20,7 +20,7 @@ public class fuelreader : MonoBehaviour
     {
         gradient = new Gradient();
         rectwidth = 110;
-        CT = 9f; //this is where player tank capacity needs to go!!
+        //CT = 9f; //this is where player tank capacity needs to go!!
         colorKey = new GradientColorKey[3];
         colorKey[0].color = Color.red;
         colorKey[0].time = 0.0f;
@@ -62,7 +62,7 @@ public class fuelreader : MonoBehaviour
         }
         Rigidbody rb = GO.GetComponent<Rigidbody>();
         TotalDistance += (rb.velocity.magnitude * Time.deltaTime);
-        float remainingnorm = (CT*M - TotalDistance)/(TC*M);
+        float remainingnorm = (TC*M - TotalDistance)/(TC*M);
         GetComponent<RectTransform>().sizeDelta = new Vector2(Mathf.Max(remainingnorm*rectwidth,rectwidth*0.05f), 15f);
         gradient.SetKeys(colorKey, alphaKey);
         GetComponent<Image>().color = gradient.Evaluate(remainingnorm);

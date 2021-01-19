@@ -59,8 +59,8 @@ public class CameraFollowController : MonoBehaviour {
 		else
 		{	
 			offset.x = 0f;
-			offset.y = 2.0f;
-			offset.z = -3.8f;
+			offset.y = 3.5f;
+			offset.z = -4.8f;
 			followSpeed = 13;
 			lookSpeed = 10;
 		}
