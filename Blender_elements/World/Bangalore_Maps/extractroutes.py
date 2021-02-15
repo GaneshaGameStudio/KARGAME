@@ -4,13 +4,13 @@ import csv
 
 filepath = bpy.data.filepath
 print(filepath)
-directory = os.path.dirname(filepath) + "/bus_routes_collect/"
+directory = os.path.dirname(filepath) + "/OSMroutes_parser/bus_routes/"
 for filename in os.listdir(directory):
     if filename.endswith(".csv"): 
-        #print(filename.split(".")[0])
+        print(filename.split(".")[0])
         #create parent object here
         if not(bpy.context.scene.objects.get(filename.split(".")[0])):
-            #print(filename.split(".")[0])
+            print(filename.split(".")[0])
             bpy.ops.mesh.primitive_cube_add()
             par = bpy.context.selected_objects[0]
             # change name
@@ -22,7 +22,6 @@ for filename in os.listdir(directory):
             i = 0
             with open(directory + filename, "rt", encoding='ascii') as infile:
                 read = csv.reader(infile)
-                print(filename)
                 for row in read :
                     bpy.ops.mesh.primitive_cube_add()
                     chld = bpy.context.selected_objects[0]
