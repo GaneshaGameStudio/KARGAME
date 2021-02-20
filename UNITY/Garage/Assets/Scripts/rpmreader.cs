@@ -22,7 +22,6 @@ public class rpmreader : MonoBehaviour
         GO = GameObject.Find(VehicleID.Vehicle + "(Clone)");
         rb = GO.GetComponent<Rigidbody>();
         wheelradius = GameObject.FindWithTag("WheelFC").GetComponent<WheelCollider>().radius;
-        print(wheelradius);
         float currentrpm = rb.velocity.magnitude*3.6f/(wheelradius*0.10472f);
         
         if(GO.tag=="4Wheeler" || GO.tag=="6Wheeler"){

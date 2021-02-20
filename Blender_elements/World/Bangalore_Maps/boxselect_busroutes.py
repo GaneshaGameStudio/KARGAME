@@ -50,12 +50,14 @@ with open('Map4_Busroute_tracker.csv','w') as csvfile:
     for i in range(1,cuts+1):
         #bpy.ops.wm.save_as_mainfile(filepath="C:\\Users\\vibe\\Desktop\\KARGAME\\MASTER.blend")
         bpy.ops.object.select_all(action='DESELECT')
+        
         for j in range(1,cuts+1):
             if(j==17 or j==18):
+                csvfile.write(str(i-1) + ' , '+str(j-1) + ' ,\n ')
                 continue
             
             bpy.ops.object.select_all(action='DESELECT')
-            csvfile.write(str(i) + ' , '+str(j) + ' , ')
+            csvfile.write(str(i-1) + ' , '+str(j-1) + ' , ')
             SelectObjectsInBound(Vector((xmini, ymini, -1000)), Vector((xmini + xinterval, ymini + yinterval , 1000)))
             selection_names = [obj.name for obj in bpy.context.selected_objects]
            

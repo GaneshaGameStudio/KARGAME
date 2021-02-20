@@ -22,6 +22,7 @@ public class TrafficPool : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other){
         if(other.tag == "path"){
+            print("bmtc");
             gopath = other.gameObject;
         }
     }
@@ -44,8 +45,9 @@ public class TrafficPool : MonoBehaviour
                     else{
                         angle = Mathf.Atan2((respawnpaths[j].transform.GetChild(i).position.x - respawnpaths[j].transform.GetChild(i+1).position.x),(respawnpaths[j].transform.GetChild(i).position.z - respawnpaths[j].transform.GetChild(i+1).position.z));
                     }
-                    Instantiate(goobject, respawnpaths[j].transform.GetChild(i).position,Quaternion.Euler(0f,angle*57.3f,0f));
-
+                    if(GameObject.FindGameObjectsWithTag("Traffic").Length < 2){
+                        Instantiate(goobject, respawnpaths[j].transform.GetChild(i).position,Quaternion.Euler(0f,angle*57.3f,0f));
+                    }
                 }
                 else
                 {
@@ -66,7 +68,6 @@ public class TrafficPool : MonoBehaviour
     void Update()
     {   
         respawnpaths = GameObject.FindGameObjectsWithTag("path");
-        
         InstantiationTimer -= Time.deltaTime;
         if(InstantiationTimer<=0 && GameObject.FindGameObjectsWithTag("Traffic").Length < 2)
         {

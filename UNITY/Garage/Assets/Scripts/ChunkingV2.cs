@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class ChunkingV2 : MonoBehaviour
 {   
@@ -15,6 +16,7 @@ public class ChunkingV2 : MonoBehaviour
     static public float directionquadINIT;
     private float FOV;
     private float FCP;
+    private string[] busroute = new string[1296];
     // Start is called before the first frame update
     void Start()
     {   
@@ -24,8 +26,24 @@ public class ChunkingV2 : MonoBehaviour
         zdefault = new float[7];
         FOV = Camera.main.fieldOfView;
         FCP = Camera.main.farClipPlane;
+        readcsv();
         StartCoroutine("deletenonexisting");
-        
+    }
+
+    void readcsv()
+    {   
+        int bs = 0;
+        using(var reader = new StreamReader("Assets/Resources/Map4_Busroute_tracker.csv"))
+        {
+            
+            while (!reader.EndOfStream)
+            {
+                var line = reader.ReadLine();
+                var values = line.Split(',');
+                busroute[bs] = values[2];
+                bs=bs+1;
+            }
+        }
     }
     void Calcarray(float x, float z){
         float yangledeg = transform.rotation.eulerAngles.y;
@@ -136,7 +154,7 @@ public class ChunkingV2 : MonoBehaviour
                     Destroy(GameObject.Find("map_4_"+zdefault[2]+"_"+xdefault[2]+"(Clone)"));
                     Destroy(GameObject.Find("roads_4_"+zdefault[2]+"_"+xdefault[2]+"(Clone)"));
                     directionquadINIT = directionquad;
-                    print("dir changed");
+                    //print("dir changed");
                     xdefault[2] = x;
                     zdefault[2] = z;
                 } 
@@ -175,6 +193,8 @@ public class ChunkingV2 : MonoBehaviour
         }
         
     }
+
+
     // Update is called once per frame
     void Update()
     {   
@@ -190,8 +210,20 @@ public class ChunkingV2 : MonoBehaviour
                 GameObject mapobject = Resources.Load("Map_prefabs/map_4_"+zint[i]+"_"+xint[i]) as GameObject;
                 Instantiate(roadobject, new Vector3(0, -990, 0), Quaternion.Euler(new Vector3(0, 0, 0)));
                 Instantiate(mapobject, new Vector3(0, -90, 0), Quaternion.Euler(new Vector3(0, 0, 0)));
+            }
+            if(GameObject.Find(busroute[((int)xint[0]*36 + (int)zint[0])-1]+"(Clone)")){
                 
             }
+            else{
+                Destroy (GameObject.FindWithTag("path"));
+                if(busroute[((int)xint[0]*36 + (int)zint[0])-1]!=null){
+                    GameObject busrouteobject = Resources.Load("BusRoutes_prefabs/" + busroute[((int)xint[0]*36 + (int)zint[0])-1]) as GameObject;
+                    Instantiate(busrouteobject, new Vector3(0, -9, 0), Quaternion.Euler(new Vector3(-90, 0, 0)));
+                }
+                
+            }
+            
+        
         xdefault[i] = xint[i];
         zdefault[i] = zint[i];
         }

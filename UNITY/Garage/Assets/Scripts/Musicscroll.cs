@@ -33,7 +33,7 @@ public class Musicscroll : MonoBehaviour
                 while(true){
                     transform.localPosition = new Vector3(transform.localPosition.x -5f, transform.localPosition.y, transform.localPosition.z);
                     if(transform.localPosition.x < xtargetleft){
-                        print("breaking");
+                        //print("breaking");
                         break;
                     }
                     yield return new WaitForSeconds(0.2f); 
