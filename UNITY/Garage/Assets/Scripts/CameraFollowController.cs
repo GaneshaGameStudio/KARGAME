@@ -39,7 +39,19 @@ public class CameraFollowController : MonoBehaviour {
 					offset.z = 0f;
 					
 				}
-				else
+			else if(GameObject.Find(VehicleID.Vehicle+"(Clone)").GetComponent<Chat>().isCrash == true){
+					
+					offset.x = 0.05f;
+					offset.y = 4f;
+					offset.z = -9f;
+			}
+			else if(GameObject.Find(VehicleID.Vehicle+"(Clone)").GetComponent<Chat>().isKhalicheck == true){
+					
+					offset.x = 0.05f;
+					offset.y = 4f;
+					offset.z = -9f;
+			}
+			else
 				{	
 					
 					offset.x = 0f;

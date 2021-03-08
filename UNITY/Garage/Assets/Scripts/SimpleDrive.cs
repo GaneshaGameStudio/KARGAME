@@ -15,6 +15,7 @@ public class SimpleDrive : MonoBehaviour
     public float maxSpeed = 30f;
     public float tankcap;
     public float mileage;
+    public float remainingfuel;
     // Start is called before the first frame update
     private void Awake(){
         playerActionControls = new PlayerActionControls();

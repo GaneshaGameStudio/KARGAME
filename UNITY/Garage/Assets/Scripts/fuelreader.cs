@@ -9,12 +9,15 @@ public class fuelreader : MonoBehaviour
     private float TotalDistance;
     private GameObject GO;
     private float CT;
-    private float TC;
+    public float TC;
     private float M;
+    private float RF;
+    public float remful;
     private float rectwidth;
     Gradient gradient;
     GradientColorKey[] colorKey;
     GradientAlphaKey[] alphaKey;
+    public bool isKhali = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,36 +41,43 @@ public class fuelreader : MonoBehaviour
         alphaKey[2].time = 0.4f;
         gradient.SetKeys(colorKey, alphaKey);
         GetComponent<Image>().color = gradient.Evaluate(1f);
+
+        
     }
 
     // Update is called once per frame
     void Update()
     {   
-
-        GO = GameObject.Find(VehicleID.Vehicle + "(Clone)");
         if(GameObject.Find(VehicleID.Vehicle+"(Clone)").tag == "4Wheeler")
         {
             TC = GameObject.FindWithTag("4Wheeler").GetComponent<SimpleCarController>().tankcap;
             M = GameObject.FindWithTag("4Wheeler").GetComponent<SimpleCarController>().mileage;
+            RF = GameObject.FindWithTag("4Wheeler").GetComponent<SimpleCarController>().remainingfuel;
         }
         else if (GameObject.Find(VehicleID.Vehicle + "(Clone)").tag == "6Wheeler")
         {
             TC = GameObject.FindWithTag("6Wheeler").GetComponent<SimpleCarController>().tankcap;
             M = GameObject.FindWithTag("6Wheeler").GetComponent<SimpleCarController>().mileage;
+            RF = GameObject.FindWithTag("6Wheeler").GetComponent<SimpleCarController>().remainingfuel;
         }
         else
         {
             TC = GameObject.FindWithTag("WheelFC").GetComponent<SimpleDrive>().tankcap;
             M = GameObject.FindWithTag("WheelFC").GetComponent<SimpleDrive>().mileage;
+            RF = GameObject.FindWithTag("WheelFC").GetComponent<SimpleDrive>().remainingfuel;
         }
+        GO = GameObject.Find(VehicleID.Vehicle + "(Clone)");
         Rigidbody rb = GO.GetComponent<Rigidbody>();
         TotalDistance += (rb.velocity.magnitude * Time.deltaTime);
-        float remainingnorm = (TC*M - TotalDistance)/(TC*M);
+        float remainingnorm = (TC*M*RF - TotalDistance)/(TC*M*RF);
+        remful = remainingnorm * TC * RF;
+        if(remful <= 0){
+            isKhali = true;
+        }
         GetComponent<RectTransform>().sizeDelta = new Vector2(Mathf.Max(remainingnorm*rectwidth,rectwidth*0.05f), 15f);
         gradient.SetKeys(colorKey, alphaKey);
         GetComponent<Image>().color = gradient.Evaluate(remainingnorm);
         
-        //print(gradient.Evaluate(remainingnorm));
 
     }
 }
