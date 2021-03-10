@@ -15,10 +15,12 @@ public class SimpleDrive : MonoBehaviour
     public float maxSpeed = 30f;
     public float tankcap;
     public float mileage;
-    public float remainingfuel;
+    public float FR = 1f;
+    static public float remainingfuel;
     // Start is called before the first frame update
     private void Awake(){
         playerActionControls = new PlayerActionControls();
+        
     }
     private void OnEnable(){
         playerActionControls.Enable();
@@ -29,6 +31,7 @@ public class SimpleDrive : MonoBehaviour
     void Start()
     {
         WC = this.GetComponent<WheelCollider>();
+        remainingfuel = FR;
     }
 
     void Go(float accel, float steer)

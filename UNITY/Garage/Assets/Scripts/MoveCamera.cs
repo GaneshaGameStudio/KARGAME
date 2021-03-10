@@ -46,6 +46,7 @@ public class MoveCamera : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {   
+        Time.timeScale = 1;
         mCameraIndex  = 0;
         mCurrentIndex  = 0;
         mCarIndex  = 0;
@@ -137,7 +138,6 @@ public class MoveCamera : MonoBehaviour
 	}
     private void OnTriggerExit(Collider other)
     {
-        print("exit");
         if(other.gameObject.name == "SceneTrigger"){
             Fade.color = new Color(Fade.color.r, Fade.color.g, Fade.color.b, 1f);
             SceneManager.LoadScene(VehicleID.Scene);

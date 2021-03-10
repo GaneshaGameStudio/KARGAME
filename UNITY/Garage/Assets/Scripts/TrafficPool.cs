@@ -22,7 +22,7 @@ public class TrafficPool : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other){
         if(other.tag == "path"){
-            print("bmtc");
+            //print("bmtc");
             gopath = other.gameObject;
         }
     }

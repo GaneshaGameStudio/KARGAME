@@ -11,8 +11,9 @@ public class fuelreader : MonoBehaviour
     private float CT;
     public float TC;
     private float M;
-    private float RF;
+    static public float RF;
     public float remful;
+    public float remainingnorm;
     private float rectwidth;
     Gradient gradient;
     GradientColorKey[] colorKey;
@@ -64,20 +65,23 @@ public class fuelreader : MonoBehaviour
         {
             TC = GameObject.FindWithTag("WheelFC").GetComponent<SimpleDrive>().tankcap;
             M = GameObject.FindWithTag("WheelFC").GetComponent<SimpleDrive>().mileage;
-            RF = GameObject.FindWithTag("WheelFC").GetComponent<SimpleDrive>().remainingfuel;
+            RF = SimpleDrive.remainingfuel;
+            //print(RF);
         }
+        
         GO = GameObject.Find(VehicleID.Vehicle + "(Clone)");
         Rigidbody rb = GO.GetComponent<Rigidbody>();
         TotalDistance += (rb.velocity.magnitude * Time.deltaTime);
-        float remainingnorm = (TC*M*RF - TotalDistance)/(TC*M*RF);
-        remful = remainingnorm * TC * RF;
+        
+        remful = RF*TC - (rb.velocity.magnitude * Time.deltaTime/M);
+        remainingnorm = remful/TC;
+        RF = remainingnorm;
+        SimpleDrive.remainingfuel = remainingnorm;
         if(remful <= 0){
             isKhali = true;
         }
         GetComponent<RectTransform>().sizeDelta = new Vector2(Mathf.Max(remainingnorm*rectwidth,rectwidth*0.05f), 15f);
         gradient.SetKeys(colorKey, alphaKey);
         GetComponent<Image>().color = gradient.Evaluate(remainingnorm);
-        
-
     }
 }
