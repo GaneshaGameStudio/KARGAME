@@ -14,7 +14,7 @@ Preset:
   m_Properties:
   - target: {fileID: 0}
     propertyPath: m_ExternalObjects.Array.size
-    value: 5
+    value: 10
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_ExternalObjects.Array.data[0].first.type
@@ -90,10 +90,90 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_ExternalObjects.Array.data[4].first.name
-    value: roads_secondary
+    value: Intersection
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_ExternalObjects.Array.data[4].second
+    value: 
+    objectReference: {fileID: 2100000, guid: 53f07acaa22f36e4686213ea3032a2c5, type: 2}
+  - target: {fileID: 0}
+    propertyPath: m_ExternalObjects.Array.data[5].first.type
+    value: UnityEngine:Material
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ExternalObjects.Array.data[5].first.assembly
+    value: UnityEngine.CoreModule
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ExternalObjects.Array.data[5].first.name
+    value: road_service
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ExternalObjects.Array.data[5].second
+    value: 
+    objectReference: {fileID: 2100000, guid: 8ac712bf28b353f4eaa314976abfc9b4, type: 2}
+  - target: {fileID: 0}
+    propertyPath: m_ExternalObjects.Array.data[6].first.type
+    value: UnityEngine:Material
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ExternalObjects.Array.data[6].first.assembly
+    value: UnityEngine.CoreModule
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ExternalObjects.Array.data[6].first.name
+    value: road_tertiary
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ExternalObjects.Array.data[6].second
+    value: 
+    objectReference: {fileID: 2100000, guid: 630cbb50f2f99ee438ac615b75b8703f, type: 2}
+  - target: {fileID: 0}
+    propertyPath: m_ExternalObjects.Array.data[7].first.type
+    value: UnityEngine:Material
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ExternalObjects.Array.data[7].first.assembly
+    value: UnityEngine.CoreModule
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ExternalObjects.Array.data[7].first.name
+    value: road_unclassified
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ExternalObjects.Array.data[7].second
+    value: 
+    objectReference: {fileID: 2100000, guid: 8ac712bf28b353f4eaa314976abfc9b4, type: 2}
+  - target: {fileID: 0}
+    propertyPath: m_ExternalObjects.Array.data[8].first.type
+    value: UnityEngine:Material
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ExternalObjects.Array.data[8].first.assembly
+    value: UnityEngine.CoreModule
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ExternalObjects.Array.data[8].first.name
+    value: roads_primary
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ExternalObjects.Array.data[8].second
+    value: 
+    objectReference: {fileID: 2100000, guid: 5f6da1e9d69404d25a8e40f79788253f, type: 2}
+  - target: {fileID: 0}
+    propertyPath: m_ExternalObjects.Array.data[9].first.type
+    value: UnityEngine:Material
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ExternalObjects.Array.data[9].first.assembly
+    value: UnityEngine.CoreModule
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ExternalObjects.Array.data[9].first.name
+    value: roads_secondary
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ExternalObjects.Array.data[9].second
     value: 
     objectReference: {fileID: 2100000, guid: 5f6da1e9d69404d25a8e40f79788253f, type: 2}
   - target: {fileID: 0}
