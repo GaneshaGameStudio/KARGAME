@@ -208,7 +208,7 @@ public class ChunkingV2 : MonoBehaviour
             else{
                 GameObject roadobject = Resources.Load("Roads_prefabs/roads_4_"+zint[i]+"_"+xint[i]) as GameObject;
                 GameObject mapobject = Resources.Load("Map_prefabs/map_4_"+zint[i]+"_"+xint[i]) as GameObject;
-                Instantiate(roadobject, new Vector3(0, -990, 0), Quaternion.Euler(new Vector3(0, 0, 0)));
+                Instantiate(roadobject, new Vector3(0, -89.8f, 0), Quaternion.Euler(new Vector3(0, 0, 0)));
                 Instantiate(mapobject, new Vector3(0, -90, 0), Quaternion.Euler(new Vector3(0, 0, 0)));
             }
             if(GameObject.Find(busroute[((int)xint[0]*36 + (int)zint[0])-1]+"(Clone)")){
