@@ -43,35 +43,42 @@ public class Example
 
         folderObjs = Resources.LoadAll<GameObject>("Roads_prefabs");
 
-        //int j = 0;
+        int j = 0;
 
        // foreach (GameObject pars in folderObjs)
        for(int k=0; k<folderObjs.Length; k++)
-        {
-            GameObject pars = folderObjs[k];
-           // j++;
+        {   
+            GameObject pars = null;
+            pars = folderObjs[k];
             
             EditorUtility.SetDirty(pars);
             pars.AddComponent<MeshCollider>();
+            MCP = null;
             MCP = pars.GetComponent<MeshCollider>();
             MCP.sharedMaterial = phymMaterial;
             //par.AddComponent<MeshCollider>();
             Debug.Log(pars.name);
             for (int i = 0; i < pars.transform.childCount; i++){
-                GameObject childobjects = pars.transform.GetChild(i).gameObject;
+                GameObject childobjects = null;
+                childobjects = pars.transform.GetChild(i).gameObject;
                 EditorUtility.SetDirty(childobjects);
                 childobjects.AddComponent<MeshCollider>();
+                MC = null;
                 MC = childobjects.GetComponent<MeshCollider>();
 
                 MC.sharedMaterial = phymMaterial;
                // Debug.Log(childobjects.name);
             }
-
-            /*if (j >= 2)
+            System.Threading.Thread.Sleep(50);
+            /*
+            if (j >= 5)
             {
-                Debug.Log(j);
+                
                 break;
             }*/
+            Debug.Log(j);
+            j++;
+            
 
             //PrefabUtility.SaveAsPrefabAsset(pars,"Roads_prefabs");
             //break;

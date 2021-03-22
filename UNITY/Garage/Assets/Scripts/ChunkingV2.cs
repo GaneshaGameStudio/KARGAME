@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System;
 
 public class ChunkingV2 : MonoBehaviour
 {   
@@ -218,7 +219,13 @@ public class ChunkingV2 : MonoBehaviour
                 Destroy (GameObject.FindWithTag("path"));
                 if(busroute[((int)xint[0]*36 + (int)zint[0])-1]!=null){
                     GameObject busrouteobject = Resources.Load("BusRoutes_prefabs/" + busroute[((int)xint[0]*36 + (int)zint[0])-1]) as GameObject;
-                    Instantiate(busrouteobject, new Vector3(0, -9, 0), Quaternion.Euler(new Vector3(-90, 0, 0)));
+                    try{
+                        Instantiate(busrouteobject, new Vector3(0, -9, 0), Quaternion.Euler(new Vector3(-90, 0, 0)));
+                    }
+                    catch (Exception e)
+                    {
+                    }
+                    
                 }
                 
             }
