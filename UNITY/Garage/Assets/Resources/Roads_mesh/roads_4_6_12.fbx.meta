@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: c627ab5937b2b4c73a357a46e18cb311
 ModelImporter:
-  serializedVersion: 20101
+  serializedVersion: 20200
   internalIDToNameTable: []
   externalObjects:
   - first:
@@ -32,12 +32,27 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Intersection.004
+    second: {fileID: 2100000, guid: 53f07acaa22f36e4686213ea3032a2c5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: road_service
     second: {fileID: 2100000, guid: 8ac712bf28b353f4eaa314976abfc9b4, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: road_service.004
+    second: {fileID: 2100000, guid: 8ac712bf28b353f4eaa314976abfc9b4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: road_tertiary
+    second: {fileID: 2100000, guid: 630cbb50f2f99ee438ac615b75b8703f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: road_tertiary.004
     second: {fileID: 2100000, guid: 630cbb50f2f99ee438ac615b75b8703f, type: 2}
   - first:
       type: UnityEngine:Material
@@ -54,6 +69,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: roads_secondary
     second: {fileID: 2100000, guid: 5f6da1e9d69404d25a8e40f79788253f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: roads_secondary.004
+    second: {fileID: 2100000, guid: 630cbb50f2f99ee438ac615b75b8703f, type: 2}
   materials:
     materialImportMode: 1
     materialName: 1
@@ -145,6 +165,7 @@ ModelImporter:
   animationType: 2
   humanoidOversampling: 1
   avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
