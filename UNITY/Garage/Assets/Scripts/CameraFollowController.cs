@@ -68,6 +68,14 @@ public class CameraFollowController : MonoBehaviour {
 			followSpeed = 20;
 			lookSpeed = 10;
 		}
+		
+		else if(GameObject.Find(VehicleID.Vehicle+"(Clone)").tag == "Manushya"){
+			offset.x = 0f;
+			offset.y = 1.91f;
+			offset.z = -2.12f;
+			followSpeed = 20;
+			lookSpeed = 10;
+		}
 		else
 		{	
 			offset.x = 0f;
@@ -81,7 +89,7 @@ public class CameraFollowController : MonoBehaviour {
 		
 	}
 
-	private Transform objectToFollow;
+	public static Transform objectToFollow;
 	public Vector3 offset;
 	public float followSpeed = 10;
 	public float lookSpeed = 10;

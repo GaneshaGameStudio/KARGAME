@@ -20,8 +20,8 @@ bpm = 70
 mpb = (60/bpm)*1000
 totalsonglength = 10*60*10000
 trail = 1000
-HOST = 'localhost'
-PORT = 60000 
+HOST = '127.0.0.1'
+PORT = 8000
 looporg = "Cymatics - Caribbean Hihat Loop - 103 BPM" # without.wav
 loopbpm = 103/2
 #######################################################################################################################
@@ -225,17 +225,17 @@ def notesinscale(note,scale):
 def letsstream():
     time.sleep(3)
     for m in range(1,Numberofchordchanges):
-        #if not(os.path.exists("export/mixedstream"+str(m))):
-        #    time.sleep(1)
-        os.system('ffmpeg -re -i export/mixedstream'+str(m)+'.wav -ab 128k -f ogg udp://127.0.0.1:' + str(PORT))
+        if not(os.path.exists("export/mixedstream"+str(m))):
+            time.sleep(10)
+        #os.system('ffmpeg -re -i export/mixedstream'+str(m)+'.wav -ab 128k -f ogg udp://127.0.0.1:' + str(PORT))
         if(m%10 == 0):
-            for d in range(1,9):
-                #os.remove('export/mixedstream'+str(m - d)+'.wav')
+            for d in range(0,10):
+                os.remove('export/mixedstream'+str(m - d)+'.ogg')
                 print("")
 
 def startserver():
     Handler = http.server.SimpleHTTPRequestHandler
-    httpd = socketserver.TCPServer(("", PORT), Handler)
+    httpd = socketserver.TCPServer((HOST, PORT), Handler)
     print("serving at port", PORT)
     httpd.serve_forever()
 
@@ -245,10 +245,10 @@ def playserver():
 if __name__ == '__main__':
     p1 = Process(target=create)
     p1.start()
-    #p2 = Process(target=letsstream)
+    p2 = Process(target=letsstream)
     p3 = Process(target=startserver)
-    #p2.start()
+    p2.start()
     p3.start()
     p1.join()
-    #p2.join()
+    p2.join()
     p3.join()
