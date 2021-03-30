@@ -9,7 +9,12 @@ public class SimpleCarController : MonoBehaviour {
 	public float maxSpeed = 30f;
     public float tankcap;
     public float mileage;
-	public float remainingfuel;
+	public float FR = 1f;
+	static public float remainingfuel;
+	void Start()
+    {
+        remainingfuel = FR;
+    }
 	private void Awake(){
         playerActionControls = new PlayerActionControls();
     }

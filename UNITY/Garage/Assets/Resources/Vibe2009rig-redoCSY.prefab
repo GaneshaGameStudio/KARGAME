@@ -1078,6 +1078,7 @@ GameObject:
   - component: {fileID: 4067336833475964420}
   - component: {fileID: 5755240615143072238}
   - component: {fileID: 455338516661634190}
+  - component: {fileID: 2916094216031101945}
   m_Layer: 0
   m_Name: Vibe2009rig-redoCSY
   m_TagString: Manushya
@@ -1167,14 +1168,29 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3797515926642198978}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 37.5
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2916094216031101945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3797515926642198978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb4b4856b44cc4b98bd13de5467d0d72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tankcap: 2
+  mileage: 100
+  FR: 1
 --- !u!1 &3807903524935973546
 GameObject:
   m_ObjectHideFlags: 0
@@ -1573,6 +1589,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5699704670255162136}
   - component: {fileID: 2441577722003480450}
+  - component: {fileID: 4769975915704426264}
   m_Layer: 0
   m_Name: Bag_1
   m_TagString: Untagged
@@ -1675,6 +1692,22 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.000000003259629, y: 0.0098665785, z: 0.0018982409}
     m_Extent: {x: 0.004145217, y: 0.0042837393, z: 0.0043194313}
   m_DirtyAABB: 0
+--- !u!54 &4769975915704426264
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5452470730803227334}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5753667177162990460
 GameObject:
   m_ObjectHideFlags: 0

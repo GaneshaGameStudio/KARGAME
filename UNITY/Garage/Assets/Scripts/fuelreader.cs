@@ -49,34 +49,57 @@ public class fuelreader : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        if(GameObject.Find(VehicleID.Vehicle+"(Clone)").tag == "4Wheeler")
+        GO = GameObject.Find(VehicleID.Vehicle + "(Clone)");
+        if(GO.tag == "4Wheeler")
         {
             TC = GameObject.FindWithTag("4Wheeler").GetComponent<SimpleCarController>().tankcap;
             M = GameObject.FindWithTag("4Wheeler").GetComponent<SimpleCarController>().mileage;
-            RF = GameObject.FindWithTag("4Wheeler").GetComponent<SimpleCarController>().remainingfuel;
+            RF = SimpleCarController.remainingfuel;
+            Rigidbody rb = GO.GetComponent<Rigidbody>();
+            TotalDistance += (rb.velocity.magnitude * Time.deltaTime);
+            remful = RF*TC - (rb.velocity.magnitude * Time.deltaTime/M);
+            remainingnorm = remful/TC;
+            RF = remainingnorm;
+            SimpleCarController.remainingfuel = remainingnorm;
         }
-        else if (GameObject.Find(VehicleID.Vehicle + "(Clone)").tag == "6Wheeler")
+        else if (GO.tag == "6Wheeler")
         {
             TC = GameObject.FindWithTag("6Wheeler").GetComponent<SimpleCarController>().tankcap;
             M = GameObject.FindWithTag("6Wheeler").GetComponent<SimpleCarController>().mileage;
-            RF = GameObject.FindWithTag("6Wheeler").GetComponent<SimpleCarController>().remainingfuel;
+            RF = SimpleCarController.remainingfuel;
+            Rigidbody rb = GO.GetComponent<Rigidbody>();
+            TotalDistance += (rb.velocity.magnitude * Time.deltaTime);
+            remful = RF*TC - (rb.velocity.magnitude * Time.deltaTime/M);
+        }
+        else if (GO.tag == "Manushya")
+        {
+            TC = GameObject.FindWithTag("Manushya").GetComponent<SimpleBodyController>().tankcap;
+            M = GameObject.FindWithTag("Manushya").GetComponent<SimpleBodyController>().mileage;
+            RF = SimpleBodyController.remainingfuel;
+            if(RF == 1f){
+                TotalDistance = 0f;
+            }
+            CharacterController rb = GO.GetComponent<CharacterController>();
+            TotalDistance += (rb.velocity.magnitude * Time.deltaTime);
+            remful = TC - (TotalDistance/M);
+            remainingnorm = remful/TC;
+            RF = remainingnorm;
+            SimpleBodyController.remainingfuel = remainingnorm;
         }
         else
         {
             TC = GameObject.FindWithTag("WheelFC").GetComponent<SimpleDrive>().tankcap;
             M = GameObject.FindWithTag("WheelFC").GetComponent<SimpleDrive>().mileage;
             RF = SimpleDrive.remainingfuel;
-            //print(RF);
+            Rigidbody rb = GO.GetComponent<Rigidbody>();
+            TotalDistance += (rb.velocity.magnitude * Time.deltaTime);
+            remful = RF*TC - (rb.velocity.magnitude * Time.deltaTime/M);
+            remainingnorm = remful/TC;
+            RF = remainingnorm;
+            SimpleDrive.remainingfuel = remainingnorm;
         }
         
-        GO = GameObject.Find(VehicleID.Vehicle + "(Clone)");
-        Rigidbody rb = GO.GetComponent<Rigidbody>();
-        TotalDistance += (rb.velocity.magnitude * Time.deltaTime);
         
-        remful = RF*TC - (rb.velocity.magnitude * Time.deltaTime/M);
-        remainingnorm = remful/TC;
-        RF = remainingnorm;
-        SimpleDrive.remainingfuel = remainingnorm;
         if(remful <= 0){
             isKhali = true;
         }
