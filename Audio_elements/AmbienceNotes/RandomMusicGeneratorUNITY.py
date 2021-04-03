@@ -8,27 +8,46 @@ import socket
 import http.server
 import socketserver
 import shutil
+import json
+import os
+
+################### Load JSON ###################
+with open(os.getcwd()+'/AudioConfig.json') as f:
+  data = json.load(f)
+
+#################################################
 
 ######################################## PARAMS #######################################################################
 Numberofchordchanges = 100
 cpb = 8
 Fadein = 1000
 Fadeout =1000
-scale = "C#"
-mode = "Aeolian"
-bpm = 70
+scale = data['scale']
+mode = data['mode']
+bpm = data['bpm']
+
+
+
 mpb = (60/bpm)*1000
 totalsonglength = 10*60*10000
 trail = 1000
 HOST = '127.0.0.1'
-PORT = 8000
+#http://106.51.137.163:5500/export/
+PORT = 5500
 looporg = "Cymatics - Caribbean Hihat Loop - 103 BPM" # without.wav
 loopbpm = 103/2
 #######################################################################################################################
 
 Durationofeachchord = mpb * cpb # in milliseconds
 silence = AudioSegment.silent(duration=Durationofeachchord)
-chopduration = Durationofeachchord
+chopduration = 3000+1000
+
+def loadJSON():
+    with open(os.getcwd()+'/AudioConfig.json') as f:
+      data = json.load(f)
+      scale = data['scale']
+      mode = data['mode']
+      bpm = data['bpm']
 
 def speed_change(sound, speed=1.0):
     # Manually override the frame_rate. This tells the computer how many
@@ -74,6 +93,9 @@ def create():
     except:
         print('dir does not exist')
     for i in range(0,Numberofchordchanges):
+        if(i%5==0):
+            loadJSON()
+
         createkickpattern()
         createlead(notearray)
         Note1 = notearray[random.randint(0, 6)]
@@ -119,14 +141,14 @@ def create():
             mixedtest.export("mixed.wav", format='wav') 
             mixedtest[i*Durationofeachchord:(i+1)*Durationofeachchord].export("export/mixedstream"+str(i)+".ogg", format='ogg', codec="libvorbis") 
             f= open("export/currenttimestamp.txt","w+")
-            f.write(str(i-1))
+            f.write(str(i-2))
             f.close()
             #mixedtest.export("mixedcompatible.ogg", format='ogg', codec="libvorbis") 
             mixed_old = mixedtest
             if(i>25):
                 time.sleep(chopduration/1000)
             else:
-                time.sleep((Durationofeachchord-2000)/1000)
+                time.sleep(chopduration/1000)
 
 def stopwatch(sec):
     while sec:
@@ -246,9 +268,9 @@ if __name__ == '__main__':
     p1 = Process(target=create)
     p1.start()
     p2 = Process(target=letsstream)
-    p3 = Process(target=startserver)
+  #  p3 = Process(target=startserver)
     p2.start()
-    p3.start()
+  #  p3.start()
     p1.join()
     p2.join()
-    p3.join()
+   # p3.join()
