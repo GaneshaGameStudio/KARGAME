@@ -1,0 +1,118 @@
+Using pre-set license
+
+ COMMAND LINE ARGUMENTS:
+/Users/vishakhbegari/Documents/UNITY_installation/2020.3.0f1/Unity.app/Contents/MacOS/Unity
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+/Users/vishakhbegari/Documents/GGS/kargame/UNITY/Garage
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+65401
+Successfully changed project path to: /Users/vishakhbegari/Documents/GGS/kargame/UNITY/Garage
+/Users/vishakhbegari/Documents/GGS/kargame/UNITY/Garage
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 106.43 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.0f1 (c7b5465681fb)
+[Subsystems] Discovering subsystems at path /Users/vishakhbegari/Documents/UNITY_installation/2020.3.0f1/Unity.app/Contents/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path /Users/vishakhbegari/Documents/GGS/kargame/UNITY/Garage/Assets
+GfxDevice: creating device client; threaded=0
+2021-04-08 10:33:17.277 Unity[30190:1169857] Color LCD preferred device: AMD Radeon Pro 5300M (high power)
+2021-04-08 10:33:17.277 Unity[30190:1169857] Metal devices available: 2
+2021-04-08 10:33:17.277 Unity[30190:1169857] 0: AMD Radeon Pro 5300M (high power)
+2021-04-08 10:33:17.277 Unity[30190:1169857] 1: Intel(R) UHD Graphics 630 (low power)
+2021-04-08 10:33:17.277 Unity[30190:1169857] Using device AMD Radeon Pro 5300M (high power)
+Initializing Metal device caps: AMD Radeon Pro 5300M
+Initialize mono
+Mono path[0] = '/Users/vishakhbegari/Documents/UNITY_installation/2020.3.0f1/Unity.app/Contents/Managed'
+Mono path[1] = '/Users/vishakhbegari/Documents/UNITY_installation/2020.3.0f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = '/Users/vishakhbegari/Documents/UNITY_installation/2020.3.0f1/Unity.app/Contents/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56190
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: /Users/vishakhbegari/Documents/UNITY_installation/2020.3.0f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Register platform support module: /Users/vishakhbegari/Documents/UNITY_installation/2020.3.0f1/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Register platform support module: /Users/vishakhbegari/Documents/UNITY_installation/2020.3.0f1/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
+Registered in 0.000805 seconds.
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 79.73 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  3.156 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.001909 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 110.32 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.225 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Launching external process: /Users/vishakhbegari/Documents/UNITY_installation/2020.3.0f1/Unity.app/Contents/Tools/UnityShaderCompiler
+Launched and connected shader compiler UnityShaderCompiler after 0.01 seconds
+Refreshing native plugins compatible for Editor in 1.10 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3100 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 231.8 MB.
+System memory in use after: 227.0 MB.
+
+Unloading 105 unused Assets to reduce memory usage. Loaded Objects now: 3565.
+Total: 6.376556 ms (FindLiveObjects: 0.446865 ms CreateObjectMapping: 0.225111 ms MarkObjects: 2.547081 ms  DeleteObjects: 3.156128 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/YashaswiClassRoom.fbx
+  artifactKey: Guid(a2f968340c1bc4a1faf2966b7fa25085) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/YashaswiClassRoom.fbx using Guid(a2f968340c1bc4a1faf2966b7fa25085) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c8669d320119ce8c4959d35cb4443225') in 3.159503 seconds
+  Import took 3.168422 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000268 seconds.
+  path: Assets/MS-Alto_AssemblyStock.fbx
+  artifactKey: Guid(b771f0bcba09e472084f4e8dbe6bda8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MS-Alto_AssemblyStock.fbx using Guid(b771f0bcba09e472084f4e8dbe6bda8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1d78c19e60643fd1683f2b9515553bab') in 0.395858 seconds
+  Import took 0.400902 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000230 seconds.
+  path: Assets/Scorpio_AssemblyStock.fbx
+  artifactKey: Guid(3897e6290f90f411d95d9d958aa43c73) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scorpio_AssemblyStock.fbx using Guid(3897e6290f90f411d95d9d958aa43c73) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8abf369d224f780922c4bc8d29eadbdb') in 0.064620 seconds
+  Import took 0.069704 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000235 seconds.
+  path: Assets/Nano_AssemblyStock.fbx
+  artifactKey: Guid(02de8437b26ce41eeaa5fc14b904b2da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Nano_AssemblyStock.fbx using Guid(02de8437b26ce41eeaa5fc14b904b2da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '22df89f7e9a59f018312b7569dd02ab5') in 0.424987 seconds
+  Import took 0.429934 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000233 seconds.
+  path: Assets/Map_4_busroutes.fbx
+  artifactKey: Guid(3c540da26b73a40cb8d98d4b6c354422) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Map_4_busroutes.fbx using Guid(3c540da26b73a40cb8d98d4b6c354422) Importer(815301076,1909f56bfc062723c751e8b465ee728b) AssetImportWorkerClient::OnTransportError - code=2 error=End of file
