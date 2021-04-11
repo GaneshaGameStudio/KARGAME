@@ -31,6 +31,12 @@ public class Scaler : MonoBehaviour
             GameObject.FindWithTag("UserText").GetComponent<Text>().text = "SÁ°";
             InvokeRepeating("Khali",0.0f,0.005f);
         }
+        else if(GameObject.Find(VehicleID.Vehicle+"(Clone)").GetComponent<Chat>().isLicensetwoWheelercheck == true){
+            GameObject.FindWithTag("UserText").GetComponent<Text>().text = "xxx";
+            InvokeRepeating("Khali",0.0f,0.005f);
+
+        }
+        
     }
     void EnableBW(bool enabled)
     {
@@ -73,7 +79,6 @@ public class Scaler : MonoBehaviour
                 else
                 {
                     GameObject.FindWithTag("WheelFC").GetComponent<SimpleDrive>().torque = 0f;
-                    
                 }
                 m_Volume.sharedProfile = BW;
                 //Time.timeScale = 0;

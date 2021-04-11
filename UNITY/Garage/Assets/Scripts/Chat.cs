@@ -6,6 +6,7 @@ public class Chat : MonoBehaviour
 {   
     public bool isCrash = false;
     public bool isKhalicheck = false;
+    public bool isLicensetwoWheelercheck = false;
     //public GameObject gun;
     // Start is called before the first frame update
     void Start()
@@ -20,9 +21,17 @@ public class Chat : MonoBehaviour
                 isCrash = true;
                 transform.Find("LogoAPPchatanim").gameObject.SetActive(true);
             }
-            
         }
     }
+
+    void OnTriggerEnter(Collider other){
+        if(other.tag == "License" )
+        {
+            isLicensetwoWheelercheck = true;
+            transform.Find("LogoAPPchatanim").gameObject.SetActive(true);
+        }
+    }
+        
     // Update is called once per frame
     void Update()
     {
@@ -30,6 +39,5 @@ public class Chat : MonoBehaviour
             isKhalicheck = true;
             transform.Find("LogoAPPchatanim").gameObject.SetActive(true);
         }
-
     }
 }
