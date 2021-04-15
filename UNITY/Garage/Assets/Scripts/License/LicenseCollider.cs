@@ -12,7 +12,7 @@ public class LicenseCollider : MonoBehaviour
         
     }
     void OnTriggerEnter(Collider other){
-        if(other.tag=="2Wheeler"){
+        if(other.tag=="2Wheeler" || other.tag =="3Wheeler" || other.tag=="4Wheeler"){
             FC1.tag ="Untagged";
             FC2.tag ="License";
         
