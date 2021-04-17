@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class fuelreader : MonoBehaviour
 {   
@@ -19,6 +20,7 @@ public class fuelreader : MonoBehaviour
     GradientColorKey[] colorKey;
     GradientAlphaKey[] alphaKey;
     public bool isKhali = false;
+    private TextMeshProUGUI DistancePro;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +44,7 @@ public class fuelreader : MonoBehaviour
         alphaKey[2].time = 0.4f;
         gradient.SetKeys(colorKey, alphaKey);
         GetComponent<Image>().color = gradient.Evaluate(1f);
-
+        DistancePro = GameObject.Find("Distance-number").GetComponent<TextMeshProUGUI>();
         
     }
 
@@ -99,7 +101,7 @@ public class fuelreader : MonoBehaviour
             SimpleDrive.remainingfuel = remainingnorm;
         }
         
-        
+        DistancePro.SetText((Mathf.Round(TotalDistance*0.001f*10.0f)/10.0f).ToString());
         if(remful <= 0){
             isKhali = true;
         }
