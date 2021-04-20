@@ -12,57 +12,57 @@ AssetImportWorker0
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-63026
+51976
 Successfully changed project path to: /Users/vishakhbegari/Documents/GGS.local/kargame/UNITY/Garage
 /Users/vishakhbegari/Documents/GGS.local/kargame/UNITY/Garage
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 125.14 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 96.90 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.0f1 (c7b5465681fb)
 [Subsystems] Discovering subsystems at path /Users/vishakhbegari/Documents/UNITY_installation/2020.3.0f1/Unity.app/Contents/Resources/UnitySubsystems
 [Subsystems] Discovering subsystems at path /Users/vishakhbegari/Documents/GGS.local/kargame/UNITY/Garage/Assets
 GfxDevice: creating device client; threaded=0
-2021-04-17 14:40:19.221 Unity[12241:604026] Color LCD preferred device: Intel(R) UHD Graphics 630 (low power)
-2021-04-17 14:40:19.221 Unity[12241:604026] Metal devices available: 2
-2021-04-17 14:40:19.221 Unity[12241:604026] 0: AMD Radeon Pro 5300M (high power)
-2021-04-17 14:40:19.221 Unity[12241:604026] 1: Intel(R) UHD Graphics 630 (low power)
-2021-04-17 14:40:19.222 Unity[12241:604026] Using device AMD Radeon Pro 5300M (high power)
+2021-04-21 00:44:42.982 Unity[3666:114213] Color LCD preferred device: Intel(R) UHD Graphics 630 (low power)
+2021-04-21 00:44:42.982 Unity[3666:114213] Metal devices available: 2
+2021-04-21 00:44:42.982 Unity[3666:114213] 0: AMD Radeon Pro 5300M (high power)
+2021-04-21 00:44:42.982 Unity[3666:114213] 1: Intel(R) UHD Graphics 630 (low power)
+2021-04-21 00:44:42.983 Unity[3666:114213] Using device AMD Radeon Pro 5300M (high power)
 Initializing Metal device caps: AMD Radeon Pro 5300M
 Initialize mono
 Mono path[0] = '/Users/vishakhbegari/Documents/UNITY_installation/2020.3.0f1/Unity.app/Contents/Managed'
 Mono path[1] = '/Users/vishakhbegari/Documents/UNITY_installation/2020.3.0f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = '/Users/vishakhbegari/Documents/UNITY_installation/2020.3.0f1/Unity.app/Contents/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56241
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56666
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: /Users/vishakhbegari/Documents/UNITY_installation/2020.3.0f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
 Register platform support module: /Users/vishakhbegari/Documents/UNITY_installation/2020.3.0f1/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
 Register platform support module: /Users/vishakhbegari/Documents/UNITY_installation/2020.3.0f1/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
-Registered in 0.000799 seconds.
+Registered in 0.000826 seconds.
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 77.62 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 87.24 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.773 seconds
+- Completed reload, in  2.785 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.001883 seconds.
+Registered in 0.001927 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 97.41 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 130.59 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.126 seconds
+- Completed reload, in  1.246 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
@@ -70,211 +70,47 @@ Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Ren
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
 Launching external process: /Users/vishakhbegari/Documents/UNITY_installation/2020.3.0f1/Unity.app/Contents/Tools/UnityShaderCompiler
 Launched and connected shader compiler UnityShaderCompiler after 0.01 seconds
-Refreshing native plugins compatible for Editor in 0.99 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.93 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3106 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 249.1 MB.
-System memory in use after: 244.5 MB.
+Unloading 3107 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 252.6 MB.
+System memory in use after: 248.0 MB.
 
-Unloading 99 unused Assets to reduce memory usage. Loaded Objects now: 3582.
-Total: 5.534324 ms (FindLiveObjects: 0.368906 ms CreateObjectMapping: 0.163734 ms MarkObjects: 2.329766 ms  DeleteObjects: 2.670869 ms)
-
-========================================================================
-Received Import Request.
-  path: Assets/Resources/Garage-Canvas.prefab
-  artifactKey: Guid(8c7a75d75ce974a5fa6a8af88b47280f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Garage-Canvas.prefab using Guid(8c7a75d75ce974a5fa6a8af88b47280f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e246075bbe67e02f1ae49f5f13da8ca6') in 1.342883 seconds
-  Import took 1.352173 seconds .
+Unloading 99 unused Assets to reduce memory usage. Loaded Objects now: 3583.
+Total: 5.171539 ms (FindLiveObjects: 0.360223 ms CreateObjectMapping: 0.171555 ms MarkObjects: 2.097985 ms  DeleteObjects: 2.540554 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 41.898856 seconds.
-  path: Assets/UI_buttons/A.png
-  artifactKey: Guid(fb116f04be06445f6bb1435fcd747f25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/UI_buttons/A.png using Guid(fb116f04be06445f6bb1435fcd747f25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2e42e5ee181b411d40004f835c6c00e9') in 2.261530 seconds
-  Import took 2.267807 seconds .
+  path: Assets/Editor
+  artifactKey: Guid(bc2ffb6c5b8e94951b81b3929cb05359) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Editor using Guid(bc2ffb6c5b8e94951b81b3929cb05359) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a4b13ee32994e625fa89620eb911ecbc') in 0.005911 seconds
+  Import took 0.014430 seconds .
 
 ========================================================================
-Received Import Request.
-  Time since last request: 0.000268 seconds.
-  path: Assets/UI_buttons/UI_0009_Rectangle-3-copy.png
-  artifactKey: Guid(87857e97d29b24a9eb6cc2b6589b1ee7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/UI_buttons/UI_0009_Rectangle-3-copy.png using Guid(87857e97d29b24a9eb6cc2b6589b1ee7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ef291601aa29f798388bf44120a9911a') in 0.008544 seconds
-  Import took 0.014890 seconds .
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002647 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.90 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.977 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 1.02 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3025 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 249.7 MB.
+System memory in use after: 245.1 MB.
 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000238 seconds.
-  path: Assets/UI_buttons/rpm.png
-  artifactKey: Guid(baeca8ef7b6f34769ac71a5402a2e7b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/UI_buttons/rpm.png using Guid(baeca8ef7b6f34769ac71a5402a2e7b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fd7792dc737befddd1e09729dbd2f12b') in 0.007777 seconds
-  Import took 0.013255 seconds .
+Unloading 92 unused Assets to reduce memory usage. Loaded Objects now: 3586.
+Total: 6.771928 ms (FindLiveObjects: 0.631434 ms CreateObjectMapping: 0.299953 ms MarkObjects: 2.798389 ms  DeleteObjects: 3.039131 ms)
 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000261 seconds.
-  path: Assets/UI_buttons/Fade.png
-  artifactKey: Guid(78df4a29b9e904a41a54d22f01d31b08) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/UI_buttons/Fade.png using Guid(78df4a29b9e904a41a54d22f01d31b08) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cfeab3104267b0ab859c0a57b21c6ebe') in 0.020416 seconds
-  Import took 0.026327 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000246 seconds.
-  path: Assets/UI_buttons/Weathericons_0000_clearsky.png
-  artifactKey: Guid(4127e5c7a11094b6d9f71141a6a8fb73) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/UI_buttons/Weathericons_0000_clearsky.png using Guid(4127e5c7a11094b6d9f71141a6a8fb73) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1625f722a22b69a4e6e9e32221ee5c5c') in 0.010094 seconds
-  Import took 0.015577 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000322 seconds.
-  path: Assets/UI_buttons/Left_BG.png
-  artifactKey: Guid(61fe95ed47fda45a9a7e9144a36f2240) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/UI_buttons/Left_BG.png using Guid(61fe95ed47fda45a9a7e9144a36f2240) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2023bda1b62d5d1cb6602b8276c3ccbf') in 0.023952 seconds
-  Import took 0.030152 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000239 seconds.
-  path: Assets/UI_buttons/A.png
-  artifactKey: Guid(fb116f04be06445f6bb1435fcd747f25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/UI_buttons/A.png using Guid(fb116f04be06445f6bb1435fcd747f25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2e42e5ee181b411d40004f835c6c00e9') in 0.010305 seconds
-  Import took 0.017163 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000339 seconds.
-  path: Assets/UI_buttons/S.png
-  artifactKey: Guid(e25f2d695e4904d5e9619f682512885a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/UI_buttons/S.png using Guid(e25f2d695e4904d5e9619f682512885a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1c9102b1892618b9ed8522e9cb518b7c') in 0.012942 seconds
-  Import took 0.020731 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000243 seconds.
-  path: Assets/UI_buttons/rupee.png
-  artifactKey: Guid(3df14ddce9c8449778bd067566a7c6a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/UI_buttons/rupee.png using Guid(3df14ddce9c8449778bd067566a7c6a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ef06c4f990a1cd8155d9c00e9df8098e') in 0.023263 seconds
-  Import took 0.032221 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000296 seconds.
-  path: Assets/UI_buttons/Trigger_right.png
-  artifactKey: Guid(75d08d97114314b87ab1a2df1196f541) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/UI_buttons/Trigger_right.png using Guid(75d08d97114314b87ab1a2df1196f541) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5a98655a4fb48fcc6c4038f1f492d8ed') in 0.012713 seconds
-  Import took 0.021106 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000258 seconds.
-  path: Assets/UI_buttons/W.png
-  artifactKey: Guid(2c1fd8f1f63414fc4872bd3047bfb46d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/UI_buttons/W.png using Guid(2c1fd8f1f63414fc4872bd3047bfb46d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '125c735bb0c95b000eb610fa5cc30368') in 0.010625 seconds
-  Import took 0.016163 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000290 seconds.
-  path: Assets/UI_buttons/Right_BG.png
-  artifactKey: Guid(9c2913faebf26402dba73c8a122e5e5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/UI_buttons/Right_BG.png using Guid(9c2913faebf26402dba73c8a122e5e5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '393d444a0660ed1d81f1a14fd69b61de') in 0.022342 seconds
-  Import took 0.031745 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000270 seconds.
-  path: Assets/UI_buttons/D.png
-  artifactKey: Guid(104657c03d54f47ada708f6e4a375c63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/UI_buttons/D.png using Guid(104657c03d54f47ada708f6e4a375c63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '49ebdb25fa1e7944266fc22e8d412575') in 0.011443 seconds
-  Import took 0.018725 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000316 seconds.
-  path: Assets/UI_buttons/Weathericons_0002_scattered-clouds.png
-  artifactKey: Guid(e9835a443de514182b7304a5bf2b37cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/UI_buttons/Weathericons_0002_scattered-clouds.png using Guid(e9835a443de514182b7304a5bf2b37cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6b61062c0630a947a78f1ed3063996c8') in 0.015078 seconds
-  Import took 0.024472 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000319 seconds.
-  path: Assets/UI_buttons/Weathericons_0007_snow.png
-  artifactKey: Guid(49f586e2e79de44caa0e71da2ecfff0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/UI_buttons/Weathericons_0007_snow.png using Guid(49f586e2e79de44caa0e71da2ecfff0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dfb9cc3d18eb86757063295364fe8111') in 0.011636 seconds
-  Import took 0.017419 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000267 seconds.
-  path: Assets/UI_buttons/UI_0010_Rectangle-3.png
-  artifactKey: Guid(04a49d187c0404be5a6655e7d230a7a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/UI_buttons/UI_0010_Rectangle-3.png using Guid(04a49d187c0404be5a6655e7d230a7a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7740fe03fecee171a4354e4645288344') in 0.011409 seconds
-  Import took 0.018795 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000284 seconds.
-  path: Assets/UI_buttons/Weathericons_0001_few-clouds.png
-  artifactKey: Guid(5a53be5bfccba41428a5967e9ee878f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/UI_buttons/Weathericons_0001_few-clouds.png using Guid(5a53be5bfccba41428a5967e9ee878f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6eb3cfed275f7c8f1089a0808c4e0799') in 0.014712 seconds
-  Import took 0.023967 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000276 seconds.
-  path: Assets/UI_buttons/Weathericons_0008_mist.png
-  artifactKey: Guid(ea856f0b1484541e29a14baba963a9bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/UI_buttons/Weathericons_0008_mist.png using Guid(ea856f0b1484541e29a14baba963a9bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '91eed8afa6fb761ccbb6139f1b5c009a') in 0.013472 seconds
-  Import took 0.021649 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000359 seconds.
-  path: Assets/UI_buttons/Main_BG.png
-  artifactKey: Guid(fe626d39185c8495d8c7d4affb69956e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/UI_buttons/Main_BG.png using Guid(fe626d39185c8495d8c7d4affb69956e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7e6ba0a2c5087a9bde5a1c696bd44bd0') in 0.019975 seconds
-  Import took 0.026359 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000268 seconds.
-  path: Assets/UI_buttons/Weathericons_0006_thunderstorm.png
-  artifactKey: Guid(bf6b4f03f06304e969ce59c904b469e1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/UI_buttons/Weathericons_0006_thunderstorm.png using Guid(bf6b4f03f06304e969ce59c904b469e1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bb971cc6e0a7ea5663e6e59ff9452c8b') in 0.009127 seconds
-  Import took 0.016240 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000408 seconds.
-  path: Assets/UI_buttons/Trigger_left.png
-  artifactKey: Guid(97242b8ab0bfd43a2b2d61ca938d0f00) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/UI_buttons/Trigger_left.png using Guid(97242b8ab0bfd43a2b2d61ca938d0f00) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3fa25477423064096468ae8a789c5bd5') in 0.015256 seconds
-  Import took 0.024745 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000257 seconds.
-  path: Assets/UI_buttons/Weathericons_0005_rain.png
-  artifactKey: Guid(90801a59d69b8406d9ed749542ca568e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/UI_buttons/Weathericons_0005_rain.png using Guid(90801a59d69b8406d9ed749542ca568e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc900234fa5b56714d0671f8fe9b94e1') in 0.010250 seconds
-  Import took 0.016864 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000227 seconds.
-  path: Assets/UI_buttons/Weathericons_0004_shower-rain.png
-  artifactKey: Guid(c414cf3224b784a399f768b2ee768815) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/UI_buttons/Weathericons_0004_shower-rain.png using Guid(c414cf3224b784a399f768b2ee768815) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '131f910a067c923c705ed797f5f4f74f') in 0.013460 seconds
-  Import took 0.019150 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000480 seconds.
-  path: Assets/UI_buttons/Weathericons_0003_broken-clouds.png
-  artifactKey: Guid(657db8987e93145c8b3d29bb9e37bab4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/UI_buttons/Weathericons_0003_broken-clouds.png using Guid(657db8987e93145c8b3d29bb9e37bab4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd525ff9eb6a95e3a6d5d9ba8db05e9d0') in 0.011906 seconds
-  Import took 0.020725 seconds .
-
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file

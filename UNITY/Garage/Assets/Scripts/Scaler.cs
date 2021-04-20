@@ -13,13 +13,13 @@ public class Scaler : MonoBehaviour
     private float cSize = 0.0f;
     public bool playanim = false;
     
+    
     // Start is called before the first frame update
     void OnEnable()
     {   
         
         m_Volume = GameObject.Find("Post-process Volume").GetComponent<Volume>();
         //VolumeProfile profile = m_Volume.sharedProfile;
-
         playanim = true;
         mSize = 100.0f;
         cSize = 0.0f;
