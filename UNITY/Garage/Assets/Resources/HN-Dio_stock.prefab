@@ -729,6 +729,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCrash: 0
   isKhalicheck: 0
+  isLicensetwoWheelercheck: 0
 --- !u!1 &7375324786837242750
 GameObject:
   m_ObjectHideFlags: 0
@@ -5953,6 +5954,10 @@ PrefabInstance:
     - target: {fileID: 3193047587617552923, guid: a36b78ac1489d4f0ab72e358030b13e0, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5679564179659184172, guid: a36b78ac1489d4f0ab72e358030b13e0, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a36b78ac1489d4f0ab72e358030b13e0, type: 3}
