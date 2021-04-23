@@ -134,6 +134,20 @@ public class DisplayWeather : MonoBehaviour
                     Skybox.SetColor("Color_B54BEABE",new Color(0.4622641f,0.4622641f,0.4622641f,1f));
                     Skybox.SetColor("Color_424F81E0",new Color(0.7735849f,0.7735849f,0.7735849f,1f));
                     break;
+                case "moderate rain":
+                    GameObject.Find("Garage-Canvas/Forecast").GetComponent<RawImage>().texture = m_Texture[4];
+                    emission.rateOverTime = 4000;
+                    GameObject.Find("Rain").GetComponent<ParticleSystem>().Play();
+                    Skybox.SetColor("Color_BE31CDF2",new Color(0f,0.3481131f,0.3679245f,1f));
+                    Skybox.SetColor("Color_68FD0CD8",new Color(0.3978284f,0.5377547f,0.5660378f,1f));
+                    Skybox.SetFloat("Vector1_B93A03DE",0.001f);
+                    Skybox.SetFloat("Vector1_FE797C36",0.03f);
+                    Skybox.SetFloat("Vector1_FA4E5253",0.03f);
+                    Skybox.SetFloat("Vector1_249357C1",0.302f);
+                    Skybox.SetFloat("Vector1_9E12CF26",0.281f);
+                    Skybox.SetColor("Color_B54BEABE",new Color(0.4622641f,0.4622641f,0.4622641f,1f));
+                    Skybox.SetColor("Color_424F81E0",new Color(0.7735849f,0.7735849f,0.7735849f,1f));
+                    break;
                 case "rain":
                     GameObject.Find("Garage-Canvas/Forecast").GetComponent<RawImage>().texture = m_Texture[5];
                     emission.rateOverTime = 4000;

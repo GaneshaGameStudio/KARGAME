@@ -12,21 +12,22 @@ public class Chat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Life = 3;
+        Life = 2;
     }
     void OnCollisionEnter(Collision other)
     {
         if(other.gameObject.tag == "Traffic" ){
             if(other.impulse.magnitude / Time.fixedDeltaTime > 6000){
-                if(Life <= 1){
-                    Life=Life-1;
+                if(Life <= 0){
                     GameObject.Find("Life"+Life.ToString()).SetActive(false);
+                    Life=Life-1;
                     isCrash = true;
                     transform.Find("LogoAPPchatanim").gameObject.SetActive(true);
                 }
                 else{
-                    Life=Life-1;
                     GameObject.Find("Life"+Life.ToString()).SetActive(false);
+                    Life=Life-1;
+                    
                 }
                 
             
