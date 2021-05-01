@@ -148,12 +148,23 @@ public class MoveCamera : MonoBehaviour
     void Update()
     {   
         if(mCameraIndex!=100){
-            VehicleText.SetText(VehicleType[mCurrentIndex]);
-            Vector3 currentPos = Positions[mCurrentIndex];
-            Vector3 currentAngle = Rotations[mCurrentIndex];
-            transform.position = Vector3.Lerp(transform.position,currentPos,Speed*Time.deltaTime);
-            Quaternion target = Quaternion.Euler(currentAngle);
-            transform.rotation = Quaternion.Slerp(transform.rotation, target,  Speed*Time.deltaTime);
+            if(GameObject.Find("Stats")){
+                //VehicleText.SetText(VehicleType[1]);
+                Vector3 currentPos = Positions[2];
+                Vector3 currentAngle = Rotations[2];
+                transform.position = Vector3.Lerp(transform.position,currentPos,Speed*Time.deltaTime);
+                Quaternion target = Quaternion.Euler(currentAngle);
+                transform.rotation = Quaternion.Slerp(transform.rotation, target,  Speed*Time.deltaTime);
+            }
+            else{
+                VehicleText.SetText(VehicleType[mCurrentIndex]);
+                Vector3 currentPos = Positions[mCurrentIndex];
+                Vector3 currentAngle = Rotations[mCurrentIndex];
+                transform.position = Vector3.Lerp(transform.position,currentPos,Speed*Time.deltaTime);
+                Quaternion target = Quaternion.Euler(currentAngle);
+                transform.rotation = Quaternion.Slerp(transform.rotation, target,  Speed*Time.deltaTime);
+            }
+            
         }
         else{
             Quaternion finaltarget = Quaternion.Euler(finalRotations[0]);
