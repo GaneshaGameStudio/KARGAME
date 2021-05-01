@@ -16,7 +16,6 @@ public class GameCenter : MonoBehaviour {
     // Note that if the operation is successful, Social.localUser will contain data from the server. 
     void ProcessAuthentication (bool success) {
         if (success) {
-            Debug.Log ("Authenticated, checking achievements");
             Debug.Log(Social.localUser.userName);
             Debug.Log("UniqueID="+SystemInfo.deviceUniqueIdentifier);
             Rect rect = new Rect (0, 0, Social.localUser.image.width, Social.localUser.image.width);
