@@ -56,12 +56,12 @@ public class TrafficPool : MonoBehaviour
             }
         }
     }
-    private void OnDrawGizmos(){
-        Handles.color = new Color(0,1,0,.1f);
-        Handles.DrawSolidArc(transform.position,new Vector3(0, 1, 0),new Vector3(1, 0, 0),360,range1);
-        Handles.color = new Color(1,0,0,.4f);
-        Handles.DrawSolidArc(transform.position,new Vector3(0, 1, 0),new Vector3(1, 0, 0),360,range2);
-    }
+    // private void OnDrawGizmos(){
+    //     Handles.color = new Color(0,1,0,.1f);
+    //     Handles.DrawSolidArc(transform.position,new Vector3(0, 1, 0),new Vector3(1, 0, 0),360,range1);
+    //     Handles.color = new Color(1,0,0,.4f);
+    //     Handles.DrawSolidArc(transform.position,new Vector3(0, 1, 0),new Vector3(1, 0, 0),360,range2);
+    // }
 
     
     // Update is called once per frame
