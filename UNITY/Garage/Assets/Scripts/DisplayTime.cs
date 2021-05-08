@@ -11,6 +11,7 @@ using System;
 public class DisplayTime : MonoBehaviour
 {   
     public TextMeshProUGUI TextPro;
+    public static string[] wordstime;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +24,7 @@ public class DisplayTime : MonoBehaviour
         while (true){
             char[] delimiterChars = { ' ', ':'};
             string Time = DateTime.Now.ToString("mm/dd/yyyy HH:mm:ss");
-            string[] wordstime = Time.Split(delimiterChars);
+            wordstime = Time.Split(delimiterChars);
             TextPro.SetText(wordstime[1]+" : "+wordstime[2]);
             if(int.Parse(wordstime[1])<7 || int.Parse(wordstime[1])>=17){
                     Camera.main.GetComponent<Lights>().LightOn = true;
