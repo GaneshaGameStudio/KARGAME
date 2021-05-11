@@ -9,4 +9,7 @@ public class Sceneexit: MonoBehaviour {
         MoveCamera.mCameraIndex  = 0;
         SceneManager.LoadScene(scene_name);
     }   
+    public void btn_exit_scene(){
+        Application.Quit();
+    }
 }
