@@ -125,25 +125,29 @@ def create():
             except:
                 print("file does not exist")
             mixed_old = audio1.overlay(audio2).overlay(audio3).overlay(audio4).overlay(audio5).overlay(audio6)
-            mixed_old[:Durationofeachchord].fade_out(Fadeout).export("mixed.wav", format='wav')
+            mixed_old[i*Durationofeachchord:(i+1)*Durationofeachchord].export("export/mixedstream"+str(i)+".ogg", format='ogg', codec="libvorbis")
+        
             
         else:   
-            mixed_new = audio1.overlay(audio2).overlay(audio3).overlay(audio4).overlay(audio5).overlay(audio6).fade_out(Fadeout)
+            mixed_new = audio1.overlay(audio2).overlay(audio3).overlay(audio4).overlay(audio5).overlay(audio6)
+            mixed_new=mixed_new[:Durationofeachchord].fade_out(Fadeout)
             mixed_old = mixed_old + silence
             
-            mixedtest = mixed_old.overlay(mixed_new,position= len(mixed_old) - Durationofeachchord - trail)
+            mixedtest = mixed_old.overlay(mixed_new,position= Durationofeachchord)
+            
             if((i>1 and i<20) or(i>22 and i<65)):
-                mixedtest = mixedtest.overlay(kickpattern,position= len(mixed_old) - Durationofeachchord - trail).overlay(lead,position= len(mixed_old) - Durationofeachchord - trail)
-                mixedtest = mixedtest.overlay(FX2,position= len(mixed_old) - Durationofeachchord - trail)
-                mixedtest = mixedtest.overlay(loop*2,position= len(mixed_old) - Durationofeachchord - trail)
+                mixedtest = mixedtest.overlay(kickpattern,position= Durationofeachchord).overlay(lead,position= len(mixed_old))
+                mixedtest = mixedtest.overlay(FX2,position= Durationofeachchord)
+                mixedtest = mixedtest.overlay(loop*2,position= Durationofeachchord)
+            
             if(i%10==0):
-                mixedtest = mixedtest.overlay(FX1,position= len(mixed_old) - Durationofeachchord - trail)
-            mixedtest.export("mixed.wav", format='wav') 
-            mixedtest[i*Durationofeachchord:(i+1)*Durationofeachchord].export("export/mixedstream"+str(i)+".ogg", format='ogg', codec="libvorbis") 
+                mixedtest = mixedtest.overlay(FX1,position= len(mixed_old))
+            
+            mixedtest = mixedtest[Durationofeachchord:2*Durationofeachchord]
+            mixedtest.export("export/mixedstream"+str(i)+".ogg", format='ogg', codec="libvorbis") 
             f= open("export/currenttimestamp.txt","w+")
             f.write(str(i-2))
             f.close()
-            #mixedtest.export("mixedcompatible.ogg", format='ogg', codec="libvorbis") 
             mixed_old = mixedtest
             if(i>25):
                 time.sleep(chopduration/1000)
