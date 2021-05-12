@@ -10,6 +10,7 @@ import socketserver
 import shutil
 import json
 import os
+import re
 
 ################### Load JSON ###################
 with open(os.getcwd()+'/AudioConfig.json') as f:
@@ -18,7 +19,7 @@ with open(os.getcwd()+'/AudioConfig.json') as f:
 #################################################
 
 ######################################## PARAMS #######################################################################
-Numberofchordchanges = 100
+Numberofchordchanges = 10000
 cpb = 8
 Fadein = 1000
 Fadeout =1000
@@ -40,7 +41,7 @@ loopbpm = 103/2
 
 Durationofeachchord = mpb * cpb # in milliseconds
 silence = AudioSegment.silent(duration=Durationofeachchord)
-chopduration = 3000+1000
+chopduration = 2000
 
 def loadJSON():
     with open(os.getcwd()+'/AudioConfig.json') as f:
@@ -136,7 +137,7 @@ def create():
             mixedtest = mixed_old.overlay(mixed_new,position= Durationofeachchord)
             
             if((i>1 and i<20) or(i>22 and i<65)):
-                mixedtest = mixedtest.overlay(kickpattern,position= Durationofeachchord).overlay(lead,position= len(mixed_old))
+                mixedtest = mixedtest.overlay(kickpattern,position= Durationofeachchord).overlay(lead,position= Durationofeachchord)
                 mixedtest = mixedtest.overlay(FX2,position= Durationofeachchord)
                 mixedtest = mixedtest.overlay(loop*2,position= Durationofeachchord)
             
@@ -251,17 +252,55 @@ def notesinscale(note,scale):
 def letsstream():
     time.sleep(3)
     for m in range(1,Numberofchordchanges):
-        if not(os.path.exists("export/mixedstream"+str(m))):
-            time.sleep(10)
-        #os.system('ffmpeg -re -i export/mixedstream'+str(m)+'.wav -ab 128k -f ogg udp://127.0.0.1:' + str(PORT))
-        if(m%10 == 0):
-            for d in range(0,10):
-                os.remove('export/mixedstream'+str(m - d)+'.ogg')
-                print("")
+        newest(os.getcwd()+"/export")
+        
+        time.sleep(15)
+
+def newest(path):
+    files = os.listdir(path)
+    paths = [os.path.join(path, basename) for basename in files]
+    for p in paths:
+        if "currenttimestamp.txt" in p:
+            paths.remove(p)
+    
+    # print(paths)
+    latestPath = ""
+    
+    try:
+        latestPath = str(max(paths, key=os.path.getctime))
+    except ValueError:
+        print("latestpath not found")
+    
+
+    if latestPath != "":
+        splitpath = latestPath.split('m')
+        numSizestr = splitpath[-1].split('.')[0]
+        numSize = len(numSizestr)
+
+        if numSize>1:
+            # print(numSizestr[:numSize-1])
+            startdigits = numSizestr[:numSize-1]+'0'
+            
+
+            for path in paths:
+                number = re.search(r'\d+', str(path))
+                if number:
+                    number = re.search(r'\d+', str(path)).group()
+                else:
+                    continue
+                # print(path)
+                if int(number) < int(startdigits)-2:
+                    try:
+                        os.remove(path)
+                        # print("Deleting :",path)
+                    except OSError:
+                        pass
+                else:
+                    continue
 
 def startserver():
     Handler = http.server.SimpleHTTPRequestHandler
-    httpd = socketserver.TCPServer((HOST, PORT), Handler)
+    httpd = socketserver.TCPServer(("", PORT), Handler)
     print("serving at port", PORT)
     httpd.serve_forever()
 
@@ -272,9 +311,9 @@ if __name__ == '__main__':
     p1 = Process(target=create)
     p1.start()
     p2 = Process(target=letsstream)
-  #  p3 = Process(target=startserver)
+    p3 = Process(target=startserver)
     p2.start()
-  #  p3.start()
+    p3.start()
     p1.join()
     p2.join()
-   # p3.join()
+    p3.join()
