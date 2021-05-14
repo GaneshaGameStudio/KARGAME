@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 11686425}
-  m_IndirectSpecularColor: {r: 0.78209466, g: 1.0893841, b: 1.0260895, a: 1}
+  m_IndirectSpecularColor: {r: 0.24448805, g: 0.24729644, b: 0.25066808, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1034,6 +1034,7 @@ GameObject:
   - component: {fileID: 142235853}
   - component: {fileID: 142235852}
   - component: {fileID: 142235851}
+  - component: {fileID: 142235858}
   m_Layer: 0
   m_Name: GarageCamera
   m_TagString: MainCamera
@@ -1220,6 +1221,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -184.29, z: 0}
+--- !u!114 &142235858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142235849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f3a255462b924a5792fdbbe1d6364c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &156329099
 GameObject:
   m_ObjectHideFlags: 0

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.6127698, g: 0.84282756, b: 0.80123454, a: 1}
+  m_IndirectSpecularColor: {r: 0.20969817, g: 0.21132371, b: 0.21946783, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10537,6 +10537,7 @@ GameObject:
   - component: {fileID: 1172533420}
   - component: {fileID: 1172533419}
   - component: {fileID: 1172533418}
+  - component: {fileID: 1172533422}
   m_Layer: 0
   m_Name: 2WC9
   m_TagString: Untagged
@@ -10609,6 +10610,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1172533416}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1172533422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172533416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b8bb79554aca45e8a04ed039c0bd0e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  varname: 2WwheelerLicense
+  mainname: 2Wheeler
 --- !u!1001 &1178497042
 PrefabInstance:
   m_ObjectHideFlags: 0
