@@ -87,6 +87,7 @@ public class MoveCamera : MonoBehaviour
 
         currentvehicle = GO[mCurrentIndex].transform.GetChild(mCarIndex).gameObject.name;
         VehicleID.Vehicle = currentvehicle;
+        VehicleID.VehicleTag = GO[mCurrentIndex].transform.GetChild(mCarIndex).gameObject.tag;
     }
     void RightClick(){
         AudioSource audio = Audio.GetComponent<AudioSource>();
@@ -103,6 +104,7 @@ public class MoveCamera : MonoBehaviour
             mCurrentIndex++;
             currentvehicle = GO[mCurrentIndex].transform.GetChild(mCarIndex).gameObject.name;
             VehicleID.Vehicle = currentvehicle;
+            VehicleID.VehicleTag = GO[mCurrentIndex].transform.GetChild(mCarIndex).gameObject.tag;
         }
         
 	}
@@ -114,6 +116,7 @@ public class MoveCamera : MonoBehaviour
             mCurrentIndex--;
             currentvehicle = GO[mCurrentIndex].transform.GetChild(mCarIndex).gameObject.name;
             VehicleID.Vehicle = currentvehicle;
+            VehicleID.VehicleTag = GO[mCurrentIndex].transform.GetChild(mCarIndex).gameObject.tag;
         }
         
 	}

@@ -46,9 +46,12 @@ public class Chat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
+        
         if(GameObject.FindWithTag("fuel").GetComponent<fuelreader>().isKhali == true){
-            isKhalicheck = true;
-            transform.Find("LogoAPPchatanim").gameObject.SetActive(true);
+        isKhalicheck = true;
+        transform.Find("LogoAPPchatanim").gameObject.SetActive(true);
+        
         }
+        
     }
 }

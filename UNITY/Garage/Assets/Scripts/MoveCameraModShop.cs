@@ -49,7 +49,7 @@ public class MoveCameraModShop : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {   
-        VehicleID.Vehicle = "HN-Dio_stock";
+        //VehicleID.Vehicle = "HN-Dio_stock";
         Time.timeScale = 1;
         mCameraIndex  = 0;
         mCurrentIndex  = 0;
@@ -63,12 +63,15 @@ public class MoveCameraModShop : MonoBehaviour
         Instantiate(Resources.Load(VehicleID.Vehicle), new Vector3(1.34f, 1f, 0), Quaternion.Euler(new Vector3(0, 0, 0)));
         //disable unwanted 
         GameObject.Find("Sphere").SetActive(false);
-        GameObject.FindGameObjectWithTag("Manushya").SetActive(false);
-        GameObject.FindWithTag("2Wheeler").GetComponent<Chat>().enabled = false;
+        if(GameObject.FindGameObjectWithTag("Manushya")){
+            GameObject.FindGameObjectWithTag("Manushya").SetActive(false);
+        }
         
-        for(int i=0;i<GameObject.FindWithTag("2Wheeler").transform.childCount;i++){
-            if(GameObject.FindWithTag("2Wheeler").transform.GetChild(i).tag == "Kit"){
-                GO.Add(GameObject.FindWithTag("2Wheeler").transform.GetChild(i).gameObject);
+        GameObject.FindWithTag(VehicleID.VehicleTag).GetComponent<Chat>().enabled = false;
+        
+        for(int i=0;i<GameObject.FindWithTag(VehicleID.VehicleTag).transform.childCount;i++){
+            if(GameObject.FindWithTag(VehicleID.VehicleTag).transform.GetChild(i).tag == "Kit"){
+                GO.Add(GameObject.FindWithTag(VehicleID.VehicleTag).transform.GetChild(i).gameObject);
             };
         }
         Texture2D Tex = GO[mCurrentIndex].GetComponent<TexturesCollect>().TexturesCollection[mCarIndex];
