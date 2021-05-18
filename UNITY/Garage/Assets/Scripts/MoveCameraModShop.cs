@@ -60,9 +60,9 @@ public class MoveCameraModShop : MonoBehaviour
         Instantiate(Resources.Load(VehicleID.Vehicle), new Vector3(1.34f, 1f, 0), Quaternion.Euler(new Vector3(0, 0, 0)));
         //disable unwanted 
         GameObject.Find("Sphere").SetActive(false);
-        if(GameObject.FindGameObjectWithTag("Manushya")){
-            GameObject.FindGameObjectWithTag("Manushya").SetActive(false);
-        }
+        //if(GameObject.FindGameObjectWithTag("Manushya")){
+         //   GameObject.FindGameObjectWithTag("Manushya").SetActive(false);
+        //}
         
         GameObject.FindWithTag(VehicleID.VehicleTag).GetComponent<Chat>().enabled = false;
         GameObject.FindWithTag(VehicleID.VehicleTag).GetComponent<VehicleINIT>().enabled = false;
@@ -74,6 +74,9 @@ public class MoveCameraModShop : MonoBehaviour
         }
         else if(VehicleID.VehicleTag=="4Wheeler"){
             VehicleText.SetText(VehicleType[2]);
+        }
+        else{
+            VehicleText.SetText(VehicleType[4]);
         }
         
         for(int i=0;i<GameObject.FindWithTag(VehicleID.VehicleTag).transform.childCount;i++){
