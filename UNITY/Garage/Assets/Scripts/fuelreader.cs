@@ -54,8 +54,8 @@ public class fuelreader : MonoBehaviour
         GO = GameObject.Find(VehicleID.Vehicle + "(Clone)");
         if(GO.tag == "4Wheeler")
         {
-            TC = GameObject.FindWithTag("4Wheeler").GetComponent<SimpleCarController>().tankcap;
-            M = GameObject.FindWithTag("4Wheeler").GetComponent<SimpleCarController>().mileage;
+            TC = GameObject.FindWithTag("Kit").GetComponent<SimpleCarController>().tankcap;
+            M = GameObject.FindWithTag("Kit").GetComponent<SimpleCarController>().mileage;
             RF = SimpleCarController.remainingfuel;
             Rigidbody rb = GO.GetComponent<Rigidbody>();
             TotalDistance += (rb.velocity.magnitude * Time.deltaTime);

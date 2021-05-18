@@ -11,6 +11,7 @@ public class SimpleCarController : MonoBehaviour {
     public float mileage;
 	public float FR = 1f;
 	static public float remainingfuel;
+	private float a = 0;
 	void Start()
     {
         remainingfuel = FR;
@@ -31,13 +32,13 @@ public class SimpleCarController : MonoBehaviour {
 		m_verticalInput = movementInput[1];
 	}
 
-	private void Steer()
+	private void Steer(float steer)
 	{
 		m_steeringAngle = maxSteerAngle * m_horizontalInput * steerFactor;
-		WheelFL.steerAngle = m_steeringAngle;
-		WheelFR.steerAngle = m_steeringAngle;
+		steer = Mathf.Clamp(steer,-1, 1) * maxSteerAngle;
+		WheelFL.steerAngle = Mathf.Lerp(WheelFL.steerAngle, steer, Time.deltaTime*15f);
+		WheelFR.steerAngle = Mathf.Lerp(WheelRL.steerAngle, steer, Time.deltaTime*15f);
 	}
-
 	private void Accelerate()
 	{	
 		float vel = Mathf.Max((float)rb.velocity.magnitude,1);
@@ -75,9 +76,14 @@ public class SimpleCarController : MonoBehaviour {
 	private void FixedUpdate()
 	{	
 		GetInput();
-		Steer();
+		
 		Accelerate();
 		UpdateWheelPoses();
+	}
+	void Update(){
+		Vector2 movementInput = playerActionControls.Vehicle.Move.ReadValue<Vector2>();
+		a = movementInput[0];
+		Steer(a);
 	}
 
 	private float m_horizontalInput;

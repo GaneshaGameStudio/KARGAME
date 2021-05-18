@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;  
-
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 public class MoveCameraModShop : MonoBehaviour
 {
     public Vector3[] Positions;
@@ -23,7 +24,6 @@ public class MoveCameraModShop : MonoBehaviour
     public Button RightTrigger_Button;
     public string[] VehicleType;
     public TextMeshProUGUI VehicleText;
-    //private GameObject[] GO;
     private int currentCar;
     public GameObject Audio;
     private string currentvehicle;
@@ -31,25 +31,22 @@ public class MoveCameraModShop : MonoBehaviour
     private float iterator;
     private List<GameObject> GO = new List<GameObject>();
     private Material mat; 
-    //private Animation anim;
-    
-
+    private Volume m_Volume;
+    public VolumeProfile Glitch;
+    public VolumeProfile Default;
     //activate default objects (always the first object in the tree)
     void SelectCar(int _index, List<GameObject> Goarray)
     {
         for (int i = 0; i < Goarray.Count; i++)
         {
             Goarray[i].SetActive(i == _index);
-            //Goarray[i].name;
-            //currentvehicle = Goarray.transform.GetChild(_index).gameObject.name;
-            //VehicleID.Vehicle = currentvehicle;
+            PlayerPrefs.SetString(VehicleID.Vehicle + "_KIT", Goarray[_index].name);
         }
     }
 
     // Start is called before the first frame update
     private void Awake()
     {   
-        //VehicleID.Vehicle = "HN-Dio_stock";
         Time.timeScale = 1;
         mCameraIndex  = 0;
         mCurrentIndex  = 0;
@@ -68,6 +65,16 @@ public class MoveCameraModShop : MonoBehaviour
         }
         
         GameObject.FindWithTag(VehicleID.VehicleTag).GetComponent<Chat>().enabled = false;
+        GameObject.FindWithTag(VehicleID.VehicleTag).GetComponent<VehicleINIT>().enabled = false;
+        if(VehicleID.VehicleTag=="2Wheeler"){
+            VehicleText.SetText(VehicleType[0]);
+        }
+        else if(VehicleID.VehicleTag=="3Wheeler"){
+            VehicleText.SetText(VehicleType[1]);
+        }
+        else if(VehicleID.VehicleTag=="4Wheeler"){
+            VehicleText.SetText(VehicleType[2]);
+        }
         
         for(int i=0;i<GameObject.FindWithTag(VehicleID.VehicleTag).transform.childCount;i++){
             if(GameObject.FindWithTag(VehicleID.VehicleTag).transform.GetChild(i).tag == "Kit"){
@@ -77,14 +84,12 @@ public class MoveCameraModShop : MonoBehaviour
         Texture2D Tex = GO[mCurrentIndex].GetComponent<TexturesCollect>().TexturesCollection[mCarIndex];
         mat = GO[mCurrentIndex].GetComponent<Renderer>().sharedMaterial;
         mat.SetTexture("_BaseMap",Tex);
+        PlayerPrefs.SetString(VehicleID.Vehicle + "_MAT", Tex.name);
         
-        //loop though child 
-        
-    
     }
     void Start()
     {   
-        
+        m_Volume = GameObject.Find("Post-process Volume").GetComponent<Volume>();
         iterator = 0f;
         Fade.color = new Color(Fade.color.r, Fade.color.g, Fade.color.b, 0f);
         //Vector3 finalPos =finalPositions[0];
@@ -117,11 +122,15 @@ public class MoveCameraModShop : MonoBehaviour
         
         if(mCurrentIndex < GO.Count - 1)
         {   
+            StartCoroutine("StartGlitch");
             mCurrentIndex++;
             Texture2D Tex = GO[mCurrentIndex].GetComponent<TexturesCollect>().TexturesCollection[mCarIndex];
             mat = GO[mCurrentIndex].GetComponent<Renderer>().sharedMaterial;
             mat.SetTexture("_BaseMap",Tex);
+            PlayerPrefs.SetString(VehicleID.Vehicle + "_MAT", Tex.name);
             SelectCar(mCurrentIndex, GO);
+            
+            
             //VehicleID.Vehicle = currentvehicle;
         }
         
@@ -132,11 +141,14 @@ public class MoveCameraModShop : MonoBehaviour
         
         if(mCurrentIndex > 0)
         {   
+            StartCoroutine("StartGlitch");
             mCurrentIndex--;
             Texture2D Tex = GO[mCurrentIndex].GetComponent<TexturesCollect>().TexturesCollection[mCarIndex];
             mat = GO[mCurrentIndex].GetComponent<Renderer>().sharedMaterial;
             mat.SetTexture("_BaseMap",Tex);
+            PlayerPrefs.SetString(VehicleID.Vehicle + "_MAT", Tex.name);
             SelectCar(mCurrentIndex, GO);
+            
             //VehicleID.Vehicle = currentvehicle;
         }
         
@@ -149,6 +161,7 @@ public class MoveCameraModShop : MonoBehaviour
             Texture2D Tex = GO[mCurrentIndex].GetComponent<TexturesCollect>().TexturesCollection[mCarIndex];
             mat = GO[mCurrentIndex].GetComponent<Renderer>().sharedMaterial;
             mat.SetTexture("_BaseMap",Tex);
+            PlayerPrefs.SetString(VehicleID.Vehicle + "_MAT", Tex.name);
         }
         
     }
@@ -160,7 +173,7 @@ public class MoveCameraModShop : MonoBehaviour
             mat = GO[mCurrentIndex].GetComponent<Renderer>().sharedMaterial;
             Texture2D Tex = GO[mCurrentIndex].GetComponent<TexturesCollect>().TexturesCollection[mCarIndex];
             mat.SetTexture("_BaseMap",Tex);
-            
+            PlayerPrefs.SetString(VehicleID.Vehicle + "_MAT", Tex.name);
         }
 	}
     private void OnTriggerExit(Collider other)
@@ -202,5 +215,11 @@ public class MoveCameraModShop : MonoBehaviour
             iterator = iterator + 0.1f;
         }
         
+    }
+    private IEnumerator StartGlitch(){
+        m_Volume.sharedProfile = Glitch;
+        yield return new WaitForSeconds(0.5f);
+        m_Volume.sharedProfile = Default;
+
     }
 }

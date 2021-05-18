@@ -61,12 +61,14 @@ public class MoveCamera : MonoBehaviour
             SelectCar(0, GO[j]);
 
         }
-        //SelectCar(mCarIndex, GO[mCurrentIndex]);
-        
-        
+
+        currentvehicle = GO[mCurrentIndex].transform.GetChild(mCarIndex).gameObject.name;
+        VehicleID.Vehicle = currentvehicle;
+        VehicleID.VehicleTag = GO[mCurrentIndex].transform.GetChild(mCarIndex).gameObject.tag;
     }
     void Start()
     {   
+        
         iterator = 0f;
         Fade.color = new Color(Fade.color.r, Fade.color.g, Fade.color.b, 0f);
         Vector3 finalPos =finalPositions[0];
@@ -85,9 +87,7 @@ public class MoveCamera : MonoBehaviour
 		Dbtn.onClick.AddListener(DTaskOnClick);
         Rbtn.onClick.AddListener(RightClick);
 
-        currentvehicle = GO[mCurrentIndex].transform.GetChild(mCarIndex).gameObject.name;
-        VehicleID.Vehicle = currentvehicle;
-        VehicleID.VehicleTag = GO[mCurrentIndex].transform.GetChild(mCarIndex).gameObject.tag;
+        
     }
     void RightClick(){
         AudioSource audio = Audio.GetComponent<AudioSource>();

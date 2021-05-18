@@ -11,10 +11,7 @@ public class Clicktoscene : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick (PointerEventData eventData)
      {  
         MoveCamera.mCameraIndex  = 100;
+        PlayerPrefs.Save();
         VehicleID.Scene = scene_name;
      }
-    void Update()
-    {
-    
-    }
 }

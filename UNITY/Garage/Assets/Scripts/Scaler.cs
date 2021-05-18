@@ -68,7 +68,7 @@ public class Scaler : MonoBehaviour
                 CancelInvoke("Khali");
                 if(GameObject.Find(VehicleID.Vehicle+"(Clone)").tag == "4Wheeler")
                 {
-                    GameObject.FindWithTag("4Wheeler").GetComponent<SimpleCarController>().motorForce = 0f;
+                    GameObject.FindWithTag("Kit").GetComponent<SimpleCarController>().motorForce = 0f;
                     
                 }
                 else if (GameObject.Find(VehicleID.Vehicle + "(Clone)").tag == "6Wheeler")
