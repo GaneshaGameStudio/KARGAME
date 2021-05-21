@@ -107,7 +107,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1478495314102065025}
   m_LocalRotation: {x: 0, y: 0.85947335, z: 0.51118064, w: 0}
-  m_LocalPosition: {x: -0, y: 0.239, z: -0.082}
+  m_LocalPosition: {x: 0, y: 0.256, z: -0.11}
   m_LocalScale: {x: 1.375, y: 1.027, z: 1.027}
   m_Children: []
   m_Father: {fileID: 7303260722587105802}
@@ -221,7 +221,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1868823805198031008}
   m_LocalRotation: {x: 0, y: 0.85947335, z: 0.51118064, w: 0}
-  m_LocalPosition: {x: -0, y: 0.264, z: -0.149}
+  m_LocalPosition: {x: 0, y: 0.257, z: -0.113}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7303260722587105802}
@@ -5914,8 +5914,8 @@ MonoBehaviour:
   Vehicle: {fileID: 6382013060831163311}
   rb: {fileID: 6382013060831163310}
   maxSpeed: 75
-  tankcap: 0
-  mileage: 0
+  tankcap: 30
+  mileage: 50
   FR: 1
 --- !u!1 &6382013060831163311
 GameObject:

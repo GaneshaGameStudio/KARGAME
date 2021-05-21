@@ -152,7 +152,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 706968580868635260}
-  m_Mesh: {fileID: -4736947588520929583, guid: b3c63c1793a754184b346a3f8ed50e47, type: 3}
+  m_Mesh: {fileID: -4736947588520929583, guid: b16cdd494db8740e59a3f479b5806c33, type: 3}
 --- !u!23 &3218997056131726245
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -235,7 +235,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 754770948838640162}
-  m_Mesh: {fileID: -4736947588520929583, guid: b3c63c1793a754184b346a3f8ed50e47, type: 3}
+  m_Mesh: {fileID: -4736947588520929583, guid: b16cdd494db8740e59a3f479b5806c33, type: 3}
 --- !u!23 &5185050414599219226
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -449,7 +449,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1804325493334289084}
-  m_Mesh: {fileID: -7101257542541877176, guid: b16cdd494db8740e59a3f479b5806c33, type: 3}
+  m_Mesh: {fileID: -7101257542541877176, guid: 6808c31b535b94e56a5553306149a194, type: 3}
 --- !u!23 &2338654165762062091
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -629,7 +629,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2266676330535525652}
-  m_Mesh: {fileID: -4736947588520929583, guid: b3c63c1793a754184b346a3f8ed50e47, type: 3}
+  m_Mesh: {fileID: -4736947588520929583, guid: c88def62ded044083a063ecae47db124, type: 3}
 --- !u!23 &7306214949178012834
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1194,7 +1194,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4185181487829018064}
-  m_Mesh: {fileID: -7101257542541877176, guid: b3c63c1793a754184b346a3f8ed50e47, type: 3}
+  m_Mesh: {fileID: -7101257542541877176, guid: c88def62ded044083a063ecae47db124, type: 3}
 --- !u!23 &3251556396155664463
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1275,7 +1275,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4223976504710853118}
-  m_Mesh: {fileID: -4736947588520929583, guid: b3c63c1793a754184b346a3f8ed50e47, type: 3}
+  m_Mesh: {fileID: -4736947588520929583, guid: c88def62ded044083a063ecae47db124, type: 3}
 --- !u!23 &4951158724158885072
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1806,6 +1806,7 @@ GameObject:
   - component: {fileID: 4783330642957176101}
   - component: {fileID: 417821054093565236}
   - component: {fileID: 4048666267227930497}
+  - component: {fileID: 3120729912733686557}
   m_Layer: 0
   m_Name: WheelRC
   m_TagString: WheelRC
@@ -1834,7 +1835,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5967810515861690158}
-  m_Mesh: {fileID: -7101257542541877176, guid: b3c63c1793a754184b346a3f8ed50e47, type: 3}
+  m_Mesh: {fileID: -7101257542541877176, guid: b16cdd494db8740e59a3f479b5806c33, type: 3}
 --- !u!23 &417821054093565236
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1906,6 +1907,28 @@ WheelCollider:
     m_AsymptoteValue: 0.75
     m_Stiffness: 1
   m_Enabled: 1
+--- !u!114 &3120729912733686557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5967810515861690158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58b0dbb475edb42b180a4b9717600908, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WC: {fileID: 4048666267227930497}
+  torque: 0
+  maxSteerAngle: 0
+  Wheel: {fileID: 1436647109464319627}
+  Vehicle: {fileID: 7375324786553906104}
+  rb: {fileID: 7375324786553906105}
+  maxSpeed: 80
+  tankcap: 12
+  mileage: 180
+  FR: 1
 --- !u!1 &6588764706193477804
 GameObject:
   m_ObjectHideFlags: 0
@@ -7304,6 +7327,7 @@ GameObject:
   - component: {fileID: 7375324787168291383}
   - component: {fileID: 7375324787168291382}
   - component: {fileID: 7375324787168291377}
+  - component: {fileID: 8568272639123226602}
   m_Layer: 0
   m_Name: WheelRC
   m_TagString: WheelRC
@@ -7404,6 +7428,28 @@ WheelCollider:
     m_AsymptoteValue: 0.75
     m_Stiffness: 1
   m_Enabled: 1
+--- !u!114 &8568272639123226602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7375324787168291379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58b0dbb475edb42b180a4b9717600908, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WC: {fileID: 7375324787168291377}
+  torque: 0
+  maxSteerAngle: 0
+  Wheel: {fileID: 7375324787168291379}
+  Vehicle: {fileID: 7375324786553906104}
+  rb: {fileID: 7375324786553906105}
+  maxSpeed: 80
+  tankcap: 12
+  mileage: 180
+  FR: 1
 --- !u!1 &7599527596370278133
 GameObject:
   m_ObjectHideFlags: 0
@@ -7594,6 +7640,7 @@ GameObject:
   - component: {fileID: 7313306726012538296}
   - component: {fileID: 198241239770862959}
   - component: {fileID: 7000315167571907103}
+  - component: {fileID: 8372979779033642055}
   m_Layer: 0
   m_Name: WheelRC
   m_TagString: WheelRC
@@ -7622,7 +7669,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8047435543031803218}
-  m_Mesh: {fileID: -7101257542541877176, guid: b3c63c1793a754184b346a3f8ed50e47, type: 3}
+  m_Mesh: {fileID: -7101257542541877176, guid: c88def62ded044083a063ecae47db124, type: 3}
 --- !u!23 &198241239770862959
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7694,6 +7741,28 @@ WheelCollider:
     m_AsymptoteValue: 0.75
     m_Stiffness: 1
   m_Enabled: 1
+--- !u!114 &8372979779033642055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8047435543031803218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58b0dbb475edb42b180a4b9717600908, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WC: {fileID: 7000315167571907103}
+  torque: 0
+  maxSteerAngle: 0
+  Wheel: {fileID: 4185181487829018064}
+  Vehicle: {fileID: 7375324786553906104}
+  rb: {fileID: 7375324786553906105}
+  maxSpeed: 80
+  tankcap: 12
+  mileage: 180
+  FR: 1
 --- !u!1 &8266576901708040020
 GameObject:
   m_ObjectHideFlags: 0
@@ -8032,6 +8101,7 @@ GameObject:
   - component: {fileID: 804036751378705431}
   - component: {fileID: 7502980360633706755}
   - component: {fileID: 9165702600103428054}
+  - component: {fileID: 290586860355933222}
   m_Layer: 0
   m_Name: WheelRC
   m_TagString: WheelRC
@@ -8060,7 +8130,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9194361147222326404}
-  m_Mesh: {fileID: -7101257542541877176, guid: b3c63c1793a754184b346a3f8ed50e47, type: 3}
+  m_Mesh: {fileID: -7101257542541877176, guid: 6808c31b535b94e56a5553306149a194, type: 3}
 --- !u!23 &7502980360633706755
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8132,6 +8202,28 @@ WheelCollider:
     m_AsymptoteValue: 0.75
     m_Stiffness: 1
   m_Enabled: 1
+--- !u!114 &290586860355933222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9194361147222326404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58b0dbb475edb42b180a4b9717600908, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WC: {fileID: 9165702600103428054}
+  torque: 0
+  maxSteerAngle: 0
+  Wheel: {fileID: 1804325493334289084}
+  Vehicle: {fileID: 0}
+  rb: {fileID: 7375324786553906105}
+  maxSpeed: 80
+  tankcap: 12
+  mileage: 180
+  FR: 1
 --- !u!1001 &7944134481456848606
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8275,7 +8367,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4221b3db4e7694e20b18a72daf5f09ab, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Manushya
       objectReference: {fileID: 0}
     - target: {fileID: 2910067321131759040, guid: 4221b3db4e7694e20b18a72daf5f09ab, type: 3}
       propertyPath: m_Materials.Array.data[0]

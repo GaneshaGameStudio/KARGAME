@@ -68,6 +68,7 @@ public class MoveCameraModShop : MonoBehaviour
         GameObject.FindWithTag(VehicleID.VehicleTag).GetComponent<VehicleINIT>().enabled = false;
         if(VehicleID.VehicleTag=="2Wheeler"){
             VehicleText.SetText(VehicleType[0]);
+            GameObject.FindGameObjectWithTag("Manushya").SetActive(false);
         }
         else if(VehicleID.VehicleTag=="3Wheeler"){
             VehicleText.SetText(VehicleType[1]);
