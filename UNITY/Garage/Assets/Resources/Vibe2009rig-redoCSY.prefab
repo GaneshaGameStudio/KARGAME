@@ -3142,6 +3142,7 @@ GameObject:
   - component: {fileID: 8225421579451995521}
   - component: {fileID: 694461302821446264}
   - component: {fileID: 5311301831825867885}
+  - component: {fileID: 7553145775672866981}
   m_Layer: 0
   m_Name: Stock
   m_TagString: Kit
@@ -3226,6 +3227,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7553145775672866981
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8568125139148794623}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.4976174, z: 0.714013}
+  m_Center: {x: 0, y: 0.8779802, z: 0.1429935}
 --- !u!1 &8889411344923338789
 GameObject:
   m_ObjectHideFlags: 0

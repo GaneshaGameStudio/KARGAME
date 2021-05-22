@@ -9,10 +9,10 @@ public class CarEngine : MonoBehaviour
     private List<Transform> nodes;
     public int currentNode = 0;
     public float maxSteerAngle = 40;
-    public WheelCollider wheelFL;
-    public WheelCollider wheelFR;
-    public WheelCollider wheelRL;
-    public WheelCollider wheelRR;
+    public WheelCollider wheelFL, wheelFR;
+	public WheelCollider wheelRL, wheelRR;
+	public Transform frontDriverT, frontPassengerT;
+	public Transform rearDriverT, rearPassengerT;
     public float maxMotorTorque = -500f;
     public float currentSpeed;
     public float maxSpeed = 30f;
@@ -43,6 +43,7 @@ public class CarEngine : MonoBehaviour
         Sensors();
         ApplySteer();
         Drive();
+        UpdateWheelPoses();
         CheckWaypointDistance();
         Destroy();
         
@@ -55,7 +56,7 @@ public class CarEngine : MonoBehaviour
         bool avoiding = false;
         //frontcenter
         if(Physics.Raycast(sensorStartPos, -1*transform.forward, out hit, sensorLength)){
-            if(hit.collider.CompareTag("Signal") || hit.collider.CompareTag("Traffic") || hit.collider.CompareTag("2Wheeler")){
+            if(hit.collider.CompareTag("Signal") || hit.collider.CompareTag("Traffic") || hit.collider.CompareTag("Kit")){
                 Debug.DrawLine(sensorStartPos, hit.point);
                 avoiding = true;
             }
@@ -72,7 +73,7 @@ public class CarEngine : MonoBehaviour
         
         //frontrightangle
         if(Physics.Raycast(sensorStartPos, Quaternion.AngleAxis(-sensorangle, transform.up)*transform.forward*-1, out hit, sensorLength)){
-            if(hit.collider.CompareTag("Signal") || hit.collider.CompareTag("Traffic")|| hit.collider.CompareTag("2Wheeler")){
+            if(hit.collider.CompareTag("Signal") || hit.collider.CompareTag("Traffic")|| hit.collider.CompareTag("Kit")){
                 Debug.DrawLine(sensorStartPos, hit.point);
                 avoiding = true;
             }
@@ -81,7 +82,7 @@ public class CarEngine : MonoBehaviour
         //frontleft
         sensorStartPos -= transform.right*sidesensorpos*2;
         if(Physics.Raycast(sensorStartPos, -1*transform.forward, out hit, sensorLength)){
-            if(hit.collider.CompareTag("Signal") || hit.collider.CompareTag("Traffic")|| hit.collider.CompareTag("2Wheeler")){
+            if(hit.collider.CompareTag("Signal") || hit.collider.CompareTag("Traffic")|| hit.collider.CompareTag("Kit")){
                 Debug.DrawLine(sensorStartPos, hit.point);
                 avoiding = true;
             }
@@ -89,7 +90,7 @@ public class CarEngine : MonoBehaviour
         
         //frontleftangle
         if(Physics.Raycast(sensorStartPos, Quaternion.AngleAxis(sensorangle, transform.up)*transform.forward*-1, out hit, sensorLength)){
-            if(hit.collider.CompareTag("Signal") || hit.collider.CompareTag("Traffic")|| hit.collider.CompareTag("2Wheeler")){
+            if(hit.collider.CompareTag("Signal") || hit.collider.CompareTag("Traffic")|| hit.collider.CompareTag("Kit")){
                 Debug.DrawLine(sensorStartPos, hit.point);
                 avoiding = true;
             }
@@ -151,6 +152,23 @@ public class CarEngine : MonoBehaviour
         }
         
     }
+    private void UpdateWheelPose(WheelCollider _collider, Transform _transform)
+	{
+		Vector3 _pos = _transform.position;
+		Quaternion _quat = _transform.rotation;
+
+		_collider.GetWorldPose(out _pos, out _quat);
+
+		_transform.position = _pos;
+		_transform.rotation = _quat;
+	}
+    private void UpdateWheelPoses()
+	{
+		UpdateWheelPose(wheelFL, frontDriverT);
+		UpdateWheelPose(wheelFR, frontPassengerT);
+		UpdateWheelPose(wheelRL, rearDriverT);
+		UpdateWheelPose(wheelRR, rearPassengerT);
+	}
     private void Destroy(){
         
         Camera maincam = GameObject.Find("Camera").GetComponent<Camera>();

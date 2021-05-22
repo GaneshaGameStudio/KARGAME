@@ -216,20 +216,25 @@ public class ChunkingV2 : MonoBehaviour
                 
             }
             else{
-                Destroy (GameObject.FindWithTag("path"));
-                if(busroute[((int)xint[0]*36 + (int)zint[0])-1]!=null){
-                    GameObject busrouteobject = Resources.Load("BusRoutes_prefabs/" + busroute[((int)xint[0]*36 + (int)zint[0])-1]) as GameObject;
-                    try{
-                        Instantiate(busrouteobject, new Vector3(0, -9, 0), Quaternion.Euler(new Vector3(-90, 0, 0)));
-                    }
-                    catch (Exception e)
-                    {
-                    }
+                if(GameObject.FindWithTag("TrafficVehicle")){
+                    if(GameObject.FindWithTag("TrafficVehicle").GetComponent<Renderer>().isVisible){
                     
+                    }
                 }
-                
+                else{
+                    Destroy (GameObject.FindWithTag("path"));
+                    if(busroute[((int)xint[0]*36 + (int)zint[0])-1]!=null){
+                        GameObject busrouteobject = Resources.Load("BusRoutes_prefabs/" + busroute[((int)xint[0]*36 + (int)zint[0])-1]) as GameObject;
+                        try{
+                            Instantiate(busrouteobject, new Vector3(0, -9, 0), Quaternion.Euler(new Vector3(-90, 0, 0)));
+                        }
+                        catch (Exception e)
+                        {
+                        }
+                        
+                    }
+                }
             }
-            
         
         xdefault[i] = xint[i];
         zdefault[i] = zint[i];

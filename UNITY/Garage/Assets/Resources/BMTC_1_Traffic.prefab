@@ -769,6 +769,7 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!1 &1956217012660188212
@@ -1914,6 +1915,7 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!1 &5841149633816145253
@@ -2977,6 +2979,7 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!1 &7146724721120747638
@@ -3863,6 +3866,10 @@ MonoBehaviour:
   wheelFR: {fileID: 6131434273007660644}
   wheelRL: {fileID: 6131434272895820672}
   wheelRR: {fileID: 5595248277418725331}
+  frontDriverT: {fileID: 4801506978330679433}
+  frontPassengerT: {fileID: 2238052485705775294}
+  rearDriverT: {fileID: 2502261662147467028}
+  rearPassengerT: {fileID: 6740746640584724530}
   maxMotorTorque: -500
   currentSpeed: 0
   maxSpeed: 30
@@ -4123,6 +4130,7 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!1 &8869909127571074436
@@ -4221,7 +4229,7 @@ GameObject:
   - component: {fileID: 4449547620773725669}
   m_Layer: 0
   m_Name: Body
-  m_TagString: Lights
+  m_TagString: TrafficVehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4334,7 +4342,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8989042355854864125}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
@@ -4386,6 +4394,7 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!65 &4449547620773725669
