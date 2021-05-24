@@ -23,7 +23,7 @@ public class RoadBoard : MonoBehaviour
         while(true){
             road.transform.localPosition = new Vector3(road.transform.localPosition.x, road.transform.localPosition.y+5f, road.transform.localPosition.z);
             
-            if(road.transform.localPosition.y>100){
+            if(road.transform.localPosition.y>90){
                 break;
             }
             yield return new WaitForSeconds(0.01f); 
