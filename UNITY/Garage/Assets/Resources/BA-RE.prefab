@@ -162,37 +162,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &1708043613077187599
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5573785522222197260}
-  m_Layer: 0
-  m_Name: Vibe2009rig-redoCSY (Missing Prefab)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &5573785522222197260
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1708043613077187599}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 883291574834718674}
-  m_Father: {fileID: 6382013060831163305}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1868823805198031008
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,12 +288,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WC: {fileID: 1868823805198031021}
-  torque: 0
+  torque: 400
   maxSteerAngle: 30
   Wheel: {fileID: 1478495314102065025}
   Vehicle: {fileID: 6382013060831163311}
   rb: {fileID: 6382013060831163310}
-  maxSpeed: 30
+  maxSpeed: 60
   tankcap: 30
   mileage: 40
   FR: 1
@@ -562,71 +531,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2874193, y: 0.54941565, z: 0.30026177}
   m_Center: {x: 0.034542784, y: -0.08178448, z: 0.09053235}
---- !u!1 &6075389712181940957
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b6fa578e90ce84cb5bf5ed9cec99159f, type: 3}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 883291574834718674}
-  - component: {fileID: 6382013060896780174}
-  - component: {fileID: 6382013060896780168}
-  m_Layer: 0
-  m_Name: Missing Prefab (Dummy)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &883291574834718674
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6075389712181940957}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5573785522222197260}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &6382013060896780174
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6075389712181940957}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: b6fa578e90ce84cb5bf5ed9cec99159f, type: 3}
-  m_Controller: {fileID: 9100000, guid: b721eac4a03e146539ed70a4b7a8dce9, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6382013060896780168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6075389712181940957}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88493e6d02ae8421eb32a918dc66e70d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  Vehicle: {fileID: 0}
 --- !u!1 &6382013060312351813
 GameObject:
   m_ObjectHideFlags: 0
@@ -720,7 +624,7 @@ GameObject:
   - component: {fileID: 6382013060472633888}
   - component: {fileID: 6382013060472633889}
   - component: {fileID: 6382013060472633894}
-  - component: {fileID: 6382013060472633891}
+  - component: {fileID: 3052572397651932252}
   m_Layer: 0
   m_Name: WheelRC
   m_TagString: WheelRC
@@ -821,7 +725,7 @@ WheelCollider:
     m_AsymptoteValue: 0.75
     m_Stiffness: 1
   m_Enabled: 1
---- !u!114 &6382013060472633891
+--- !u!114 &3052572397651932252
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -830,19 +734,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6382013060472633892}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58b0dbb475edb42b180a4b9717600908, type: 3}
+  m_Script: {fileID: 11500000, guid: edc86333985c84edea6c7ebe5728ddc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   WC: {fileID: 6382013060472633894}
-  torque: 75
-  maxSteerAngle: 0
   Wheel: {fileID: 892664460682938011}
-  Vehicle: {fileID: 6382013060831163311}
-  rb: {fileID: 6382013060831163310}
-  maxSpeed: 75
-  tankcap: 30
-  mileage: 50
-  FR: 1
 --- !u!1 &6382013060528261213
 GameObject:
   m_ObjectHideFlags: 0
@@ -5794,7 +5690,7 @@ GameObject:
   - component: {fileID: 6382013060547561127}
   - component: {fileID: 6382013060547561124}
   - component: {fileID: 6382013060547561125}
-  - component: {fileID: 6382013060547561114}
+  - component: {fileID: 8770616826647020440}
   m_Layer: 0
   m_Name: WheelR2C
   m_TagString: Untagged
@@ -5895,7 +5791,7 @@ WheelCollider:
     m_AsymptoteValue: 0.75
     m_Stiffness: 1
   m_Enabled: 1
---- !u!114 &6382013060547561114
+--- !u!114 &8770616826647020440
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5904,19 +5800,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6382013060547561112}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58b0dbb475edb42b180a4b9717600908, type: 3}
+  m_Script: {fileID: 11500000, guid: edc86333985c84edea6c7ebe5728ddc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   WC: {fileID: 6382013060547561125}
-  torque: 75
-  maxSteerAngle: 0
   Wheel: {fileID: 6382013060312351813}
-  Vehicle: {fileID: 6382013060831163311}
-  rb: {fileID: 6382013060831163310}
-  maxSpeed: 75
-  tankcap: 30
-  mileage: 50
-  FR: 1
 --- !u!1 &6382013060831163311
 GameObject:
   m_ObjectHideFlags: 0
@@ -5928,6 +5816,8 @@ GameObject:
   - component: {fileID: 6382013060831163305}
   - component: {fileID: 6382013060831163310}
   - component: {fileID: 8747548816869929008}
+  - component: {fileID: 6364301687071960039}
+  - component: {fileID: 7672570673429321416}
   m_Layer: 0
   m_Name: BA-RE
   m_TagString: 3Wheeler
@@ -5950,7 +5840,7 @@ Transform:
   - {fileID: 6382013060541977460}
   - {fileID: 6382013060528261212}
   - {fileID: 8615030613551019109}
-  - {fileID: 5573785522222197260}
+  - {fileID: 3947578100983152403}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5988,6 +5878,33 @@ MonoBehaviour:
   isWheelie: 0
   vel: 60
   Vehicle: {fileID: 6382013060831163311}
+--- !u!114 &6364301687071960039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6382013060831163311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f720db3be9df94a9c803f4654da0d970, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCrash: 0
+  isKhalicheck: 0
+  isLicensetwoWheelercheck: 0
+--- !u!114 &7672570673429321416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6382013060831163311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56352d559408b41e2b3341c49bd8452e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7303260722587105801
 GameObject:
   m_ObjectHideFlags: 0
@@ -6113,9 +6030,10 @@ GameObject:
   - component: {fileID: 9163708833385795073}
   - component: {fileID: 9163708833385795078}
   - component: {fileID: 9163708833385795076}
+  - component: {fileID: 1597962917963538000}
   m_Layer: 0
-  m_Name: Body
-  m_TagString: 3Wheeler
+  m_Name: Stock
+  m_TagString: Kit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6198,3 +6116,83 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.6474954, y: 0.7672075, z: 0.45194674}
   m_Center: {x: 0.05684389, y: 0.56444633, z: 0.00000002980233}
+--- !u!114 &1597962917963538000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9163708833385795077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0969e457a9cb43f9a90c2f09d03ed08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TexturesCollection:
+  - {fileID: 2800000, guid: c1f0e1db613854be5bfeb8baef1fa15f, type: 3}
+--- !u!1001 &997242575436453238
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6382013060831163305}
+    m_Modifications:
+    - target: {fileID: 3482873660124917983, guid: b1ae6989a380b4c058d4b6500915d9f2, type: 3}
+      propertyPath: m_Name
+      value: LogoAPPchatanim
+      objectReference: {fileID: 0}
+    - target: {fileID: 3482873660124917983, guid: b1ae6989a380b4c058d4b6500915d9f2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259973726088407653, guid: b1ae6989a380b4c058d4b6500915d9f2, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259973726088407653, guid: b1ae6989a380b4c058d4b6500915d9f2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259973726088407653, guid: b1ae6989a380b4c058d4b6500915d9f2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.635
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259973726088407653, guid: b1ae6989a380b4c058d4b6500915d9f2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259973726088407653, guid: b1ae6989a380b4c058d4b6500915d9f2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259973726088407653, guid: b1ae6989a380b4c058d4b6500915d9f2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.00000008146034
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259973726088407653, guid: b1ae6989a380b4c058d4b6500915d9f2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259973726088407653, guid: b1ae6989a380b4c058d4b6500915d9f2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259973726088407653, guid: b1ae6989a380b4c058d4b6500915d9f2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259973726088407653, guid: b1ae6989a380b4c058d4b6500915d9f2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259973726088407653, guid: b1ae6989a380b4c058d4b6500915d9f2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b1ae6989a380b4c058d4b6500915d9f2, type: 3}
+--- !u!4 &3947578100983152403 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4259973726088407653, guid: b1ae6989a380b4c058d4b6500915d9f2, type: 3}
+  m_PrefabInstance: {fileID: 997242575436453238}
+  m_PrefabAsset: {fileID: 0}

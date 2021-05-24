@@ -1806,7 +1806,7 @@ GameObject:
   - component: {fileID: 4783330642957176101}
   - component: {fileID: 417821054093565236}
   - component: {fileID: 4048666267227930497}
-  - component: {fileID: 3120729912733686557}
+  - component: {fileID: 7677470590091969770}
   m_Layer: 0
   m_Name: WheelRC
   m_TagString: WheelRC
@@ -1907,7 +1907,7 @@ WheelCollider:
     m_AsymptoteValue: 0.75
     m_Stiffness: 1
   m_Enabled: 1
---- !u!114 &3120729912733686557
+--- !u!114 &7677470590091969770
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1916,19 +1916,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5967810515861690158}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58b0dbb475edb42b180a4b9717600908, type: 3}
+  m_Script: {fileID: 11500000, guid: edc86333985c84edea6c7ebe5728ddc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   WC: {fileID: 4048666267227930497}
-  torque: 0
-  maxSteerAngle: 0
   Wheel: {fileID: 1436647109464319627}
-  Vehicle: {fileID: 7375324786553906104}
-  rb: {fileID: 7375324786553906105}
-  maxSpeed: 80
-  tankcap: 12
-  mileage: 180
-  FR: 1
 --- !u!1 &6588764706193477804
 GameObject:
   m_ObjectHideFlags: 0
@@ -7327,7 +7319,7 @@ GameObject:
   - component: {fileID: 7375324787168291383}
   - component: {fileID: 7375324787168291382}
   - component: {fileID: 7375324787168291377}
-  - component: {fileID: 8568272639123226602}
+  - component: {fileID: 8592463277168482903}
   m_Layer: 0
   m_Name: WheelRC
   m_TagString: WheelRC
@@ -7428,7 +7420,7 @@ WheelCollider:
     m_AsymptoteValue: 0.75
     m_Stiffness: 1
   m_Enabled: 1
---- !u!114 &8568272639123226602
+--- !u!114 &8592463277168482903
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7437,19 +7429,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7375324787168291379}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58b0dbb475edb42b180a4b9717600908, type: 3}
+  m_Script: {fileID: 11500000, guid: edc86333985c84edea6c7ebe5728ddc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   WC: {fileID: 7375324787168291377}
-  torque: 0
-  maxSteerAngle: 0
   Wheel: {fileID: 3650304219770787468}
-  Vehicle: {fileID: 7375324786553906104}
-  rb: {fileID: 7375324786553906105}
-  maxSpeed: 80
-  tankcap: 12
-  mileage: 180
-  FR: 1
 --- !u!1 &7599527596370278133
 GameObject:
   m_ObjectHideFlags: 0
@@ -7640,7 +7624,7 @@ GameObject:
   - component: {fileID: 7313306726012538296}
   - component: {fileID: 198241239770862959}
   - component: {fileID: 7000315167571907103}
-  - component: {fileID: 8372979779033642055}
+  - component: {fileID: 7576377787581130884}
   m_Layer: 0
   m_Name: WheelRC
   m_TagString: WheelRC
@@ -7741,7 +7725,7 @@ WheelCollider:
     m_AsymptoteValue: 0.75
     m_Stiffness: 1
   m_Enabled: 1
---- !u!114 &8372979779033642055
+--- !u!114 &7576377787581130884
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7750,19 +7734,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8047435543031803218}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58b0dbb475edb42b180a4b9717600908, type: 3}
+  m_Script: {fileID: 11500000, guid: edc86333985c84edea6c7ebe5728ddc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   WC: {fileID: 7000315167571907103}
-  torque: 0
-  maxSteerAngle: 0
   Wheel: {fileID: 4185181487829018064}
-  Vehicle: {fileID: 7375324786553906104}
-  rb: {fileID: 7375324786553906105}
-  maxSpeed: 80
-  tankcap: 12
-  mileage: 180
-  FR: 1
 --- !u!1 &8266576901708040020
 GameObject:
   m_ObjectHideFlags: 0
@@ -8101,7 +8077,7 @@ GameObject:
   - component: {fileID: 804036751378705431}
   - component: {fileID: 7502980360633706755}
   - component: {fileID: 9165702600103428054}
-  - component: {fileID: 290586860355933222}
+  - component: {fileID: 7589863306194605853}
   m_Layer: 0
   m_Name: WheelRC
   m_TagString: WheelRC
@@ -8202,7 +8178,7 @@ WheelCollider:
     m_AsymptoteValue: 0.75
     m_Stiffness: 1
   m_Enabled: 1
---- !u!114 &290586860355933222
+--- !u!114 &7589863306194605853
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8211,19 +8187,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 9194361147222326404}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58b0dbb475edb42b180a4b9717600908, type: 3}
+  m_Script: {fileID: 11500000, guid: edc86333985c84edea6c7ebe5728ddc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   WC: {fileID: 9165702600103428054}
-  torque: 0
-  maxSteerAngle: 0
   Wheel: {fileID: 1804325493334289084}
-  Vehicle: {fileID: 0}
-  rb: {fileID: 7375324786553906105}
-  maxSpeed: 80
-  tankcap: 12
-  mileage: 180
-  FR: 1
 --- !u!1001 &7944134481456848606
 PrefabInstance:
   m_ObjectHideFlags: 0
