@@ -58,8 +58,12 @@ public class AudioController : MonoBehaviour
         
         yield return wwe.SendWebRequest();
             // Show results as text
-            currentTS = (wwe.downloadHandler.text);
+            try{
+                currentTS = (wwe.downloadHandler.text);
             i = int.Parse(currentTS);
+            }catch(FormatException e){
+                // Debug.Log("Not connected to DB");
+            }
             
             yield return currentTS ;
     }
