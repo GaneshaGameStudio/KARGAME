@@ -29,6 +29,8 @@ public class MoveCamera : MonoBehaviour
     private string currentvehicle;
     public Image Fade;
     private float iterator;
+    public Vector3 spawnloc;
+    public Vector3 spawnrot;
     //private Animation anim;
     
 
@@ -140,7 +142,25 @@ public class MoveCamera : MonoBehaviour
         }
 	}
     private void OnTriggerExit(Collider other)
-    {
+    {   if(GameObject.Find(VehicleID.VehicleTag+"Gate")){
+            PlayerPrefs.SetFloat("SpawnLoc.x",32.23f);
+            PlayerPrefs.SetFloat("SpawnLoc.y",0.0f);
+            PlayerPrefs.SetFloat("SpawnLoc.z",95.5f);
+            PlayerPrefs.SetFloat("SpawnRot.x",0.0f);
+            PlayerPrefs.SetFloat("SpawnRot.y",-107.13f);
+            PlayerPrefs.SetFloat("SpawnRot.z",0.0f);
+
+        }
+        else{
+            PlayerPrefs.SetFloat("SpawnLoc.x",spawnloc[0]);
+            PlayerPrefs.SetFloat("SpawnLoc.y",spawnloc[1]);
+            PlayerPrefs.SetFloat("SpawnLoc.z",spawnloc[2]);
+            PlayerPrefs.SetFloat("SpawnRot.x",spawnrot[0]);
+            PlayerPrefs.SetFloat("SpawnRot.y",spawnrot[1]);
+            PlayerPrefs.SetFloat("SpawnRot.z",spawnrot[2]);
+        }
+        
+
         if(other.gameObject.name == "SceneTrigger"){
             Fade.color = new Color(Fade.color.r, Fade.color.g, Fade.color.b, 1f);
             SceneManager.LoadScene(VehicleID.Scene);

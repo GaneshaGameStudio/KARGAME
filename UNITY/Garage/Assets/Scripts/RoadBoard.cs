@@ -32,7 +32,7 @@ public class RoadBoard : MonoBehaviour
         yield return new WaitForSeconds (3f);
         while(true){
             road.transform.localPosition = new Vector3(road.transform.localPosition.x, road.transform.localPosition.y-10f, road.transform.localPosition.z);
-            if(road.transform.position.y<0f){
+            if(road.transform.localPosition.y<-230f){
                 break;
             }
             yield return new WaitForSeconds(0.01f); 

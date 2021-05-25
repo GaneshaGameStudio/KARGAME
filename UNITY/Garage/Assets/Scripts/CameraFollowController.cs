@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;  
 public class CameraFollowController : MonoBehaviour {
 
 	private bool isWheelieE;
 	void Start()
-	{
+	{	MoveCamera.mCameraIndex  = 0;
 		objectToFollow = GameObject.Find(VehicleID.Vehicle+"(Clone)").transform;
 	}
 	public void LookAtTarget()
@@ -86,9 +86,12 @@ public class CameraFollowController : MonoBehaviour {
 		}
 		LookAtTarget();
 		MoveToTarget();
+		if(MoveCamera.mCameraIndex==100){
+			SceneManager.LoadScene(VehicleID.Scene);
+		}
 		
 	}
-
+	
 	public static Transform objectToFollow;
 	public Vector3 offset;
 	public float followSpeed = 10;

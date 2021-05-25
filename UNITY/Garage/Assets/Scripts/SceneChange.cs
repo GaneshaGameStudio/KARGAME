@@ -8,7 +8,15 @@ public class SceneChange: MonoBehaviour {
         MoveCamera.mCameraIndex  = 100;
         MoveCameraModShop.mCameraIndex  = 100;
         PlayerPrefs.Save();
-        VehicleID.Scene = scene_name;
+        if(GameObject.Find(VehicleID.VehicleTag+"Gate")){
+            
+            VehicleID.Scene = "VehicleLicense";
+
+        }
+        else{
+            VehicleID.Scene = scene_name;
+        }
+        
         
     }
     

@@ -9,7 +9,6 @@ public class GetPlayerData : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
-        PlayerPrefs.SetInt("2WheelerLicense",0);
         for(int i = 0; i < ListDisabledObjects.Length; i++){
             if(PlayerPrefs.GetInt(Listvarnames[i]) == 0){
                 ListDisabledObjects[i].SetActive(true);

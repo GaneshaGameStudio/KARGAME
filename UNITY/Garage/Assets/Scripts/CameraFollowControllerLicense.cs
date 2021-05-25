@@ -7,8 +7,8 @@ public class CameraFollowControllerLicense : MonoBehaviour {
 	private bool isWheelieE;
 	void Start()
 	{	
-		VehicleID.Vehicle = "HN-Dio_stock";
-		objectToFollow = GameObject.Find("HN-Dio_stock(Clone)").transform;
+		
+		objectToFollow = GameObject.Find(VehicleID.Vehicle + "(Clone)").transform;
 	}
 	public void LookAtTarget()
 	{
