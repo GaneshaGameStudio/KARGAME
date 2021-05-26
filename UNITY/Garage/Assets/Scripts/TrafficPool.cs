@@ -27,7 +27,7 @@ public class TrafficPool : MonoBehaviour
         }
     }
     void spawntraffic(){
-        goobject = Resources.Load("BMTC_1_Traffic") as GameObject;
+        goobject = Resources.Load("Vehicles_prefabs/" + "BMTC_1_Traffic") as GameObject;
         for (int j=0;j<respawnpaths.Length;j++){
             for(int i=0; i<respawnpaths[j].transform.childCount;i++)
             {   

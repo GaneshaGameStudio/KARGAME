@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine.SceneManagement;  
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
-public class MoveCameraModShop : MonoBehaviour
+public class MoveCameraHajaam : MonoBehaviour
 {
     public Vector3[] Positions;
     public Vector3[] Rotations;
@@ -34,6 +34,8 @@ public class MoveCameraModShop : MonoBehaviour
     private Volume m_Volume;
     public VolumeProfile Glitch;
     public VolumeProfile Default;
+    private string oldVehicle;
+    private string oldVehicleTag;
     //activate default objects (always the first object in the tree)
     void SelectCar(int _index, List<GameObject> Goarray)
     {
@@ -47,8 +49,12 @@ public class MoveCameraModShop : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {   
+        oldVehicle = VehicleID.Vehicle;
+        oldVehicleTag = VehicleID.VehicleTag;
+        VehicleID.Vehicle = "Vibe2009rig-redoCSY";
+        VehicleID.VehicleTag = "Manushya";
         Time.timeScale = 1;
-        mCameraIndex  = 0;
+        MoveCameraModShop.mCameraIndex  = 0;
         mCurrentIndex  = 0;
         mCarIndex  = 0;
         Vector3 currentPos = Positions[0];
@@ -191,7 +197,7 @@ public class MoveCameraModShop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        if(mCameraIndex!=100){
+        if(MoveCameraModShop.mCameraIndex!=100){
             if(GameObject.Find("Stats")){
                 //VehicleText.SetText(VehicleType[1]);
                 Vector3 currentPos = Positions[2];
@@ -211,6 +217,8 @@ public class MoveCameraModShop : MonoBehaviour
             
         }
         else{
+            VehicleID.Vehicle = oldVehicle ;
+            VehicleID.VehicleTag = oldVehicleTag ;
             Quaternion finaltarget = Quaternion.Euler(finalRotations[0]);
             transform.position = Vector3.Lerp(transform.position,finalPositions[0],Speed*Time.deltaTime);
             transform.rotation = Quaternion.Slerp(transform.rotation, finaltarget,  Speed*Time.deltaTime);

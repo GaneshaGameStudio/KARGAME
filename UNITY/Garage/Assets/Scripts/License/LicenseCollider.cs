@@ -6,22 +6,12 @@ public class LicenseCollider : MonoBehaviour
 {   
     public GameObject FC1;
     public GameObject FC2;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
     void OnTriggerEnter(Collider other){
-        if(other.tag=="2Wheeler" || other.tag =="3Wheeler" || other.tag=="4Wheeler"){
+        if(other.tag=="2Wheeler" || other.tag =="3Wheeler" || other.tag=="4Wheeler" || other.tag=="6Wheeler"){
             FC1.tag ="Untagged";
             FC2.tag ="License";
-        
         }
-        
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
