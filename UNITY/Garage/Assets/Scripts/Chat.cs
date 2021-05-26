@@ -7,6 +7,7 @@ public class Chat : MonoBehaviour
     public bool isCrash = false;
     public bool isKhalicheck = false;
     public bool isLicensetwoWheelercheck = false;
+    public bool isDisplayMessage = false;
     public static int Life;
     //public GameObject gun;
     // Start is called before the first frame update
@@ -39,6 +40,10 @@ public class Chat : MonoBehaviour
         if(other.tag == "License" )
         {
             isLicensetwoWheelercheck = true;
+            transform.Find("LogoAPPchatanim").gameObject.SetActive(true);
+        }
+        else if(other.tag == "Finish"){
+            isDisplayMessage = true;
             transform.Find("LogoAPPchatanim").gameObject.SetActive(true);
         }
     }

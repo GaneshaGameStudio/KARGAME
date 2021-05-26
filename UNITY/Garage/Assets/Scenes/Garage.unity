@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.5938029, g: 0.82480687, b: 0.7928087, a: 1}
+  m_IndirectSpecularColor: {r: 0.560927, g: 0.7916254, b: 0.78168124, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10669,6 +10669,11 @@ Cloth:
   - {x: 0.6666667, y: 0.16666667, z: 0.16666667}
   - {x: 0.5, y: 0.5, z: 0}
   m_VirtualParticleIndices: 
+--- !u!1 &372510097 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 600930607742459626, guid: 0e634e1a1c1444a2e8d1ef3a38b4ecb0, type: 3}
+  m_PrefabInstance: {fileID: 5506615298428744389}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &374293488 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5326658723734646221, guid: 61f1cb91d1ae54629a9443439e9e5812, type: 3}
@@ -10981,6 +10986,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a656138c2af604adc8431d3d466f369d, type: 3}
+--- !u!1 &531267626 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4917229597042828775, guid: 61f1cb91d1ae54629a9443439e9e5812, type: 3}
+  m_PrefabInstance: {fileID: 702861265}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &535523524 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3932224600256297676, guid: 8e4f012df1ab24d4682edc352da579cc, type: 3}
@@ -11748,7 +11758,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4917229597042828775, guid: 61f1cb91d1ae54629a9443439e9e5812, type: 3}
       propertyPath: m_Name
-      value: "U\xC1\xE5g\xC9\xC3e\xEF (1)"
+      value: 3WheelerGarage
       objectReference: {fileID: 0}
     - target: {fileID: 5326658723734646221, guid: 61f1cb91d1ae54629a9443439e9e5812, type: 3}
       propertyPath: m_RootOrder
@@ -11817,7 +11827,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4917229597042828775, guid: 61f1cb91d1ae54629a9443439e9e5812, type: 3}
       propertyPath: m_Name
-      value: "U\xC1\xE5g\xC9\xC3e\xEF (2)"
+      value: 4WheelerGarage
       objectReference: {fileID: 0}
     - target: {fileID: 5326658723734646221, guid: 61f1cb91d1ae54629a9443439e9e5812, type: 3}
       propertyPath: m_RootOrder
@@ -16676,6 +16686,10 @@ MonoBehaviour:
   - {fileID: 299894499}
   - {fileID: 1791016954}
   - {fileID: 1311383505}
+  ListEnabledObjects:
+  - {fileID: 372510097}
+  - {fileID: 2121746972}
+  - {fileID: 531267626}
   Listvarnames:
   - 2WheelerLicense
   - 3WheelerLicense
@@ -32552,6 +32566,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c07ebbf8c7ca46f5b74d8de44d553a1, type: 3}
+--- !u!1 &2121746972 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4917229597042828775, guid: 61f1cb91d1ae54629a9443439e9e5812, type: 3}
+  m_PrefabInstance: {fileID: 692037050}
+  m_PrefabAsset: {fileID: 0}
 --- !u!146 &2128930457 stripped
 WheelCollider:
   m_CorrespondingSourceObject: {fileID: 1868823805198031021, guid: a385e441e1f974d16a46a13b28655ac4, type: 3}
@@ -35481,7 +35500,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 600930607742459626, guid: 0e634e1a1c1444a2e8d1ef3a38b4ecb0, type: 3}
       propertyPath: m_Name
-      value: "U\xC1\xE5g\xC9\xC3e\xEF"
+      value: 2WheelerGarage
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e634e1a1c1444a2e8d1ef3a38b4ecb0, type: 3}

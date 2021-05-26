@@ -24,7 +24,7 @@ public class Scaler : MonoBehaviour
         mSize = 100.0f;
         cSize = 0.0f;
         if(GameObject.Find(VehicleID.Vehicle+"(Clone)").GetComponent<Chat>().isCrash == true){
-            GameObject.FindWithTag("UserText").GetComponent<Text>().text = "ºÉÆUÉ";
+            GameObject.FindWithTag("UserText").GetComponent<Text>().text = "ºÉÆUÉ >:0";
             InvokeRepeating("Hoge",0.0f,0.005f);
         }
         else if(GameObject.FindWithTag("fuel").GetComponent<fuelreader>().isKhali == true){
@@ -32,8 +32,13 @@ public class Scaler : MonoBehaviour
             InvokeRepeating("Khali",0.0f,0.005f);
         }
         else if(GameObject.Find(VehicleID.Vehicle+"(Clone)").GetComponent<Chat>().isLicensetwoWheelercheck == true){
-            GameObject.FindWithTag("UserText").GetComponent<Text>().text = "xxx";
+            GameObject.FindWithTag("UserText").GetComponent<Text>().text = "xÀÆ !!";
             InvokeRepeating("Khali",0.0f,0.005f);
+
+        }
+        else if(GameObject.Find(VehicleID.Vehicle+"(Clone)").GetComponent<Chat>().isDisplayMessage == true){
+            GameObject.FindWithTag("UserText").GetComponent<Text>().text = SetPlayerData.DisplayMessage;
+            InvokeRepeating("Hoge",0.0f,0.005f);
 
         }
         
@@ -91,10 +96,6 @@ public class Scaler : MonoBehaviour
         cSize = cSize + 2f*Time.deltaTime;
         mSize = mSize - 200f*Time.deltaTime;
         }
-        
-    }
-    void Update()
-    {
         
     }
 }
