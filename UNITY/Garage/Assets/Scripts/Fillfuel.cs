@@ -2,46 +2,43 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using SimpleJSON;
 
 public class Fillfuel : MonoBehaviour
 {   
     private float tofill;
     public string id;
     private Init petrolData;
-
-    private JsonList petData  = null;
+    private JSONNode dbPetData;
     
 
 
     // Start is called before the first frame update
     void Start()
     {
-        petrolData = new Init();
-        petrolData.apiParam = "bunks/"+id;
-        StartCoroutine(petrolData.Download(petrolData.apiParam, result => {
-            // Debug.Log(result);
-            petData = result;
-            // Debug.Log("Loc "+petData.data[0].RemainingFuel);
-            // Debug.Log("Name "+petData.data[0].Location);
-        }));
+        // petrolData = new Init();
+        // petrolData.apiParam = "bunks/"+id;
+        // StartCoroutine(petrolData.Download(petrolData.apiParam, result => {
+        //     dbPetData = result;
+        // }));
         
         
     }
     private void OnTriggerEnter(Collider vahana)
     {   
+        petrolData = new Init();
         if(vahana.name=="Body"){
             if(GameObject.Find(VehicleID.Vehicle+"(Clone)").tag == "4Wheeler")
             {
                 tofill = GameObject.FindWithTag("4Wheeler").GetComponent<SimpleCarController>().tankcap*(1-fuelreader.RF); 
                 print(tofill + "litres");
-                // SimpleCarController.remainingfuel = 1f;
 
                 StartCoroutine(petrolData.Download("fuelCheck/"+id+"/"+tofill, result => {
-                petData = result;
+                dbPetData = result;
                 // Debug.Log("Fuel "+petData.data[0].RemainingFuel);
 
-                if(petData != null){
-                    if(petData.data[0].RemainingFuel != 0){
+                if(dbPetData != null){
+                    if(dbPetData["data"][0]["RemainingFuel"] != 0){
                         SimpleCarController.remainingfuel = 1f;
                     }else{
                         Debug.Log("No petrol in the petrol bunk");
@@ -69,11 +66,11 @@ public class Fillfuel : MonoBehaviour
 
                     
                         StartCoroutine(petrolData.Download("fuelCheck/"+id+"/"+tofill, result => {
-                        petData = result;
+                        dbPetData = result;
                         // Debug.Log("Fuel "+petData.data[0].RemainingFuel);
 
-                        if(petData != null){
-                            if(petData.data[0].RemainingFuel != 0){
+                        if(dbPetData != null){
+                            if(dbPetData["data"][0]["RemainingFuel"] != 0){
                                 SimpleDrive.remainingfuel = 1f;
                             }else{
                                 Debug.Log("No petrol in the petrol bunk");
