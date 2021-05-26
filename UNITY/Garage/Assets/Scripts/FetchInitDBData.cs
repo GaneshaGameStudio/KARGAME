@@ -26,9 +26,20 @@ public class FetchInitDBData : MonoBehaviour
     public void GetDBDataOnClick()
     {
         bool skipTimeCheck = false;
+        string playerID="0";
         unityUserID = PlayerPrefs.GetString("unity.cloud_userid");
         //Check if playerID is 0 in playerprefs and initialize all PP with default values
-        string playerID = PlayerPrefs.GetString("PlayerID");
+        if (PlayerPrefs.HasKey("PlayerID"))
+        {
+            Debug.Log("The key PlayerID exists");
+            playerID = PlayerPrefs.GetString("PlayerID");
+        }
+        else{
+            // Debug.Log("The key PlayerID does not exist "+playerID);
+            //Do nothing
+        }
+            
+        
         initData = new Init();
         if(playerID.Equals("0")){
             PlayerPrefs.SetString("PlayerID",unityUserID);
