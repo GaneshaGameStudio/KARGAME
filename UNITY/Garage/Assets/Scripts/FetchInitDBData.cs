@@ -12,6 +12,7 @@ public class FetchInitDBData : MonoBehaviour
 
     private string unityUserID;
     private JSONNode dbInitData;
+    private string NetworkCheck = "";
 
     public string id = "1";
     SimpleJSON.JSONObject playerJson = new SimpleJSON.JSONObject();
@@ -20,11 +21,16 @@ public class FetchInitDBData : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Init initDat = new Init();
+        StartCoroutine(initDat.Download("", result => {
+            NetworkCheck = result;
+            Debug.Log(NetworkCheck);
+        }));
     }
 
     public void GetDBDataOnClick()
     {
+        // Debug.Log(NetworkCheck);
         bool skipTimeCheck = false;
         string playerID="0";
         unityUserID = PlayerPrefs.GetString("unity.cloud_userid");
@@ -42,7 +48,10 @@ public class FetchInitDBData : MonoBehaviour
         
         initData = new Init();
         if(playerID.Equals("0")){
-            PlayerPrefs.SetString("PlayerID",unityUserID);
+            if(NetworkCheck != null){
+                PlayerPrefs.SetString("PlayerID",unityUserID);
+            }
+            
             PlayerPrefs.SetString("Timestamp",DateTime.Now.ToString());
             PlayerPrefs.SetInt("2WheelerLicense",0);
             PlayerPrefs.SetInt("4WheelerLicense",0);
@@ -127,7 +136,10 @@ public class FetchInitDBData : MonoBehaviour
                 }
             }else{
                 //initializing PP for the first time with DB data
-                pushDataToPlayerPrefs();
+                if(NetworkCheck != null){
+                    pushDataToPlayerPrefs();
+                }
+                
                 PlayerPrefs.SetString("Timestamp",DateTime.Now.ToString());
             }
 
