@@ -80,6 +80,7 @@ public class FetchInitDBData : MonoBehaviour
             Debug.Log(initData.apiParam);
             skipTimeCheck = true;
         }else{
+            PlayerPrefs.SetString("Timestamp",DateTime.Now.ToString());
             id = PlayerPrefs.GetString("PlayerID");
             initData.apiParam = "playerStats/"+id;
         }
