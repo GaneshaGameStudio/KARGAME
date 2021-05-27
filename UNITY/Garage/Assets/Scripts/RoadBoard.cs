@@ -11,7 +11,6 @@ public class RoadBoard : MonoBehaviour
     // Start is called before the first frame update
     void OnTriggerEnter(Collider other)
     {   
-        
         if(other.tag=="Kit"){
             road = GameObject.Find("RoadBoard");
             road.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().SetText(Areaname);
