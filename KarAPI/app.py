@@ -4,22 +4,6 @@ from decimal import Decimal
 from sqlalchemy import create_engine
 
 
-tasks = [
-    {
-        'id': 1,
-        'title': u'Buy groceries',
-        'description': u'Milk, Cheese, Pizza, Fruit, Tylenol', 
-        'done': False
-    },
-    {
-        'id': 2,
-        'title': u'Learn Python',
-        'description': u'Need to find a good Python tutorial on the web', 
-        'done': False
-    }
-]
-
-
 
 # Assuming KarDB.db is in your app root folder
 e = create_engine('sqlite:///KarDB.db')  # loads db into memory
@@ -89,19 +73,6 @@ def playerStatsDefaultData(player_uuid):
         
     return jsonify(result)
 
-# @app.route('/', methods=['PUT'])
-# def create_record():
-#     record = json.loads(request.data)
-#     with open('/tmp/data.txt', 'r') as f:
-#         data = f.read()
-#     if not data:
-#         records = [record]
-#     else:
-#         records = json.loads(data)
-#         records.append(record)
-#     with open('/tmp/data.txt', 'w') as f:
-#         f.write(json.dumps(records, indent=2))
-#     return jsonify(record)
 
 @app.route('/playerprefspush', methods=['POST'])
 def update_db_with_pp():
@@ -117,35 +88,7 @@ def update_db_with_pp():
     return "Successfully posted"
 
 
-@app.route('/todo/api/v1.0/tasks', methods=['POST'])
-def create_task():
-    if not request.json or not 'title' in request.json:
-        abort(400)
-    task = {
-        'id': tasks[-1]['id'] + 1,
-        'title': "Test"+request.json['title'],
-        'description': request.json.get('description', ""),
-        'done': False
-    }
-    tasks.append(task)
-    return jsonify({'task': task}), 201
-    
-# @app.route('/', methods=['DELETE'])
-# def delte_record():
-#     record = json.loads(request.data)
-#     new_records = []
-#     with open('/tmp/data.txt', 'r') as f:
-#         data = f.read()
-#         records = json.loads(data)
-#         for r in records:
-#             if r['name'] == record['name']:
-#                 continue
-#             new_records.append(r)
-#     with open('/tmp/data.txt', 'w') as f:
-#         f.write(json.dumps(new_records, indent=2))
-#     return jsonify(record)
 
-# app.run(debug=True)
 
 if __name__ == "__main__":
     from waitress import serve

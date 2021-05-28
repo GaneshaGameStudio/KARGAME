@@ -57,6 +57,31 @@ public class Init
     }
 
 
+    public IEnumerator NetCheck(string id, System.Action<string> callback = null)
+    {
+        using (UnityWebRequest request = UnityWebRequest.Get(apiUrl + id))
+        {
+            yield return request.SendWebRequest();
+
+            if ((request.result == UnityWebRequest.Result.ConnectionError) || (request.result == UnityWebRequest.Result.ProtocolError))
+            {
+                Debug.Log(request.error);
+                if (callback != null)
+                {
+                    callback.Invoke(request.error);
+                }
+            }
+            else
+            {
+                if (callback != null)
+                {
+                    callback.Invoke(request.downloadHandler.text);
+                }
+            }
+        }
+    }
+
+
 
     public IEnumerator Post(JSONObject jobject,System.Action<string> callback = null)
     {
