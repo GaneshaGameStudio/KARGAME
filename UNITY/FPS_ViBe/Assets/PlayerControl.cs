@@ -41,6 +41,14 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Strike"",
+                    ""type"": ""Button"",
+                    ""id"": ""3da61253-622b-4d9a-b8cb-a8293f1bd441"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -120,6 +128,17 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
                     ""action"": ""Draw"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cb735371-d9a9-449d-b626-c1d0ca761ac4"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Strike"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -131,6 +150,7 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
         m_Vehicle_Move = m_Vehicle.FindAction("Move", throwIfNotFound: true);
         m_Vehicle_Wheelie = m_Vehicle.FindAction("Wheelie", throwIfNotFound: true);
         m_Vehicle_Draw = m_Vehicle.FindAction("Draw", throwIfNotFound: true);
+        m_Vehicle_Strike = m_Vehicle.FindAction("Strike", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -183,6 +203,7 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Vehicle_Move;
     private readonly InputAction m_Vehicle_Wheelie;
     private readonly InputAction m_Vehicle_Draw;
+    private readonly InputAction m_Vehicle_Strike;
     public struct VehicleActions
     {
         private @PlayerActionControls m_Wrapper;
@@ -190,6 +211,7 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
         public InputAction @Move => m_Wrapper.m_Vehicle_Move;
         public InputAction @Wheelie => m_Wrapper.m_Vehicle_Wheelie;
         public InputAction @Draw => m_Wrapper.m_Vehicle_Draw;
+        public InputAction @Strike => m_Wrapper.m_Vehicle_Strike;
         public InputActionMap Get() { return m_Wrapper.m_Vehicle; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -208,6 +230,9 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
                 @Draw.started -= m_Wrapper.m_VehicleActionsCallbackInterface.OnDraw;
                 @Draw.performed -= m_Wrapper.m_VehicleActionsCallbackInterface.OnDraw;
                 @Draw.canceled -= m_Wrapper.m_VehicleActionsCallbackInterface.OnDraw;
+                @Strike.started -= m_Wrapper.m_VehicleActionsCallbackInterface.OnStrike;
+                @Strike.performed -= m_Wrapper.m_VehicleActionsCallbackInterface.OnStrike;
+                @Strike.canceled -= m_Wrapper.m_VehicleActionsCallbackInterface.OnStrike;
             }
             m_Wrapper.m_VehicleActionsCallbackInterface = instance;
             if (instance != null)
@@ -221,6 +246,9 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
                 @Draw.started += instance.OnDraw;
                 @Draw.performed += instance.OnDraw;
                 @Draw.canceled += instance.OnDraw;
+                @Strike.started += instance.OnStrike;
+                @Strike.performed += instance.OnStrike;
+                @Strike.canceled += instance.OnStrike;
             }
         }
     }
@@ -230,5 +258,6 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnWheelie(InputAction.CallbackContext context);
         void OnDraw(InputAction.CallbackContext context);
+        void OnStrike(InputAction.CallbackContext context);
     }
 }

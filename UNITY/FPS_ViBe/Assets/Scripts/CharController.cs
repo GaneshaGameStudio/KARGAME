@@ -50,17 +50,17 @@ public class CharController : NetworkBehaviour
         ApplyInput(l,n,wheelieInput);
     }
     public void TakeDamage(float damage){
-        if(IsLocalPlayer){
+       
             health.Value -=damage;
             print(health.Value);
-        }
+        
         
     }
     private void OnTriggerEnter(Collider collision){
-            
+            if(!IsLocalPlayer){
             if(collision.gameObject.tag=="Weapon"){
-            TakeDamage(10f);
-            
+                    TakeDamage(10f);
+            }
         
         }
         
