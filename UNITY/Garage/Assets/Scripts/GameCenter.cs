@@ -5,7 +5,7 @@ using System.Collections;
 
 public class GameCenter : MonoBehaviour {
     
-    void Start () {
+    void OnEnable () {
         // Authenticate and register a ProcessAuthentication callback
         // This call needs to be made before we can proceed to other calls in the Social API
         Social.localUser.Authenticate (ProcessAuthentication);

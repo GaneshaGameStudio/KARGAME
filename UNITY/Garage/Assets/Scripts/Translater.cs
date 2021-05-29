@@ -160,13 +160,10 @@ public class Translater : MonoBehaviour
                     }
                 }
             }
+        if(s==""){
+            translatedinput += "001";
+            }
         Translated.SetText((translatedinput).ToString());
 
-    }
-    // Update is called once per frame
-    void Update()
-    {   
-        //check vowel
-        
     }
 }

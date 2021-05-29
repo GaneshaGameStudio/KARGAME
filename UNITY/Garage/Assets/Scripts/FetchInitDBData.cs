@@ -15,12 +15,15 @@ public class FetchInitDBData : MonoBehaviour
     private string NetworkCheck = "";
 
     public string id = "1";
+    public GameObject[] Objectlistshow;
+    public GameObject[] Objectlisthide;
     SimpleJSON.JSONObject playerJson = new SimpleJSON.JSONObject();
 
 
     // Start is called before the first frame update
     void Start()
-    {
+    {   
+        HideTheseObjects();
         Init initDat = new Init();
         StartCoroutine(initDat.Download("", result => {
             NetworkCheck = result;
@@ -195,7 +198,22 @@ public class FetchInitDBData : MonoBehaviour
         PlayerPrefs.SetFloat("BJ_Chetak_TotalDistance",float.Parse(dbInitData["data"][0]["BJ_Chetak_TotalDistance"]));
     }
 
-
+    private void HideTheseObjects(){
+        for(int i =0;i<Objectlisthide.Length;i++){
+            (Objectlisthide[i]).SetActive(false);
+        }
+        for(int j =0;j<Objectlistshow.Length;j++){
+            (Objectlistshow[j]).SetActive(true);
+        }
+    }
+    public void UnHideTheseObjects(){
+        for(int i =0;i<Objectlisthide.Length;i++){
+            (Objectlisthide[i]).SetActive(true);
+        }
+        for(int j =0;j<Objectlistshow.Length;j++){
+            (Objectlistshow[j]).SetActive(false);
+        }
+    }
     // Update is called once per frame
     void Update()
     {
