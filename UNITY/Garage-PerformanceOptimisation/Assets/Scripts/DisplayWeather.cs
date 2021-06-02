@@ -70,7 +70,7 @@ public class DisplayWeather : MonoBehaviour
             passdescription = description;
             
             RenderSettings.fogEndDistance = 100f;
-            
+            description="few clouds";
             switch(description){
                 case "clear sky":
                     GameObject.Find("Garage-Canvas/Forecast").GetComponent<RawImage>().texture = m_Texture[0];
