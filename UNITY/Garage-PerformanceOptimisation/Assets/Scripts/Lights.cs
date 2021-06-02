@@ -6,7 +6,7 @@ public class Lights : MonoBehaviour
 {   
     public bool LightOn;
     public Material[] material;
-    //private GameObject[] HeadLights;
+    private GameObject[] HeadLights;
     // Start is called before the first frame update
     void OnEnable()
     {
@@ -15,27 +15,27 @@ public class Lights : MonoBehaviour
     private IEnumerator CheckLights(){
         yield return new WaitForSeconds(1f);
         while(true){
-                //HeadLights = GameObject.FindGameObjectsWithTag("Lights");
+                HeadLights = GameObject.FindGameObjectsWithTag("Lights");
         if(LightOn){
             for (int i = 0; i < material.Length; i++){
                 material[i].EnableKeyword("_EMISSION");
             }
-            //foreach (GameObject headlight in HeadLights)
-                //{
-                    //Light myLight = headlight.GetComponent<Light>();
-                    //myLight.enabled = true;
-                    //print("lights are ON");
-                //}
+            foreach (GameObject headlight in HeadLights)
+                {
+                    Light myLight = headlight.GetComponent<Light>();
+                    myLight.enabled = true;
+                    print("lights are ON");
+                }
         }
         else{
             for (int i = 0; i < material.Length; i++){
                 material[i].DisableKeyword("_EMISSION");
             }
-            //foreach (GameObject headlight in HeadLights)
-            //{
-                //Light myLight = headlight.GetComponent<Light>();
-                //myLight.enabled = false;
-            //}
+            foreach (GameObject headlight in HeadLights)
+            {
+                Light myLight = headlight.GetComponent<Light>();
+                myLight.enabled = false;
+            }
         }
         yield return new WaitForSeconds(10f);
         }

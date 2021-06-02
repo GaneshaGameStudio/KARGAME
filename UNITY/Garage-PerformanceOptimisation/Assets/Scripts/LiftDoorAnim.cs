@@ -12,7 +12,7 @@ public class LiftDoorAnim : MonoBehaviour
     {
         if(other.CompareTag("MainCamera"))
         {   
-            //Debug.Log("trigger enter");
+            Debug.Log("trigger enter");
             animcontroller1.SetBool("playspin2",true);
             animcontroller2.SetBool("playspin",true);
         }
