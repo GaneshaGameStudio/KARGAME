@@ -13,8 +13,9 @@ public class Lights : MonoBehaviour
         StartCoroutine("CheckLights");
     }
     private IEnumerator CheckLights(){
-        yield return new WaitForSeconds(1f);
+        
         while(true){
+                yield return new WaitForSeconds(1f);
                 HeadLights = GameObject.FindGameObjectsWithTag("Lights");
         if(LightOn){
             for (int i = 0; i < material.Length; i++){
@@ -39,11 +40,6 @@ public class Lights : MonoBehaviour
         }
         yield return new WaitForSeconds(10f);
         }
-        
-    }
-    // Update is called once per frame
-    void Update()
-    {   
         
     }
 }

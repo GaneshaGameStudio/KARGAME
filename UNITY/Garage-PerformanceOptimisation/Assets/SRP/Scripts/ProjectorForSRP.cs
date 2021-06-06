@@ -183,7 +183,8 @@ namespace ProjectorForSRP
 		{
 #if UNITY_EDITOR
 			if (!material.IsKeywordEnabled(PROJECTOR_SHADER_KEYWORD))
-			{
+			{	
+				material.EnableKeyword(PROJECTOR_SHADER_KEYWORD);
 				Debug.LogError(PROJECTOR_SHADER_KEYWORD + " is not enabled for " + material.name + " material! Please check 'Build for Universal RP' property of the material", this);
 			}
 #endif
