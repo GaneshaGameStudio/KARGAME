@@ -50,34 +50,37 @@ public class FetchInitDBData : MonoBehaviour
             
         
         initData = new Init();
-        if(playerID.Equals("0")){
+        if(playerID=="0"){
             if(NetworkCheck != null){
                 PlayerPrefs.SetString("PlayerID",unityUserID);
             }
-            
+            print("zero");
             PlayerPrefs.SetString("Timestamp",DateTime.Now.ToString());
-            PlayerPrefs.SetInt("2WheelerLicense",0);
+            PlayerPrefs.SetInt("2WheelerLicense",1);
+            PlayerPrefs.SetInt("3WheelerLicense",1);
             PlayerPrefs.SetInt("4WheelerLicense",0);
             PlayerPrefs.SetFloat("Money",1000);
             PlayerPrefs.SetInt("Health",50);
             PlayerPrefs.SetFloat("MoneyPerHealth",5);
             PlayerPrefs.SetFloat("TotalDistanceTraveled",0);
-            //HN_Dio
-            PlayerPrefs.SetString("HN_Dio_Unlocked","1");
-            PlayerPrefs.SetFloat("HN_Dio_Torque",75);
-            PlayerPrefs.SetFloat("HN_Dio_MaxSpeed",80);
-            PlayerPrefs.SetFloat("HN_Dio_TankCapacity",12);
-            PlayerPrefs.SetFloat("HN_Dio_Mileage",180);
-            PlayerPrefs.SetFloat("HN_Dio_FR",1);
-            PlayerPrefs.SetFloat("HN_Dio_TotalDistance",0);
-            //BJ_Chetak
-            PlayerPrefs.SetString("BJ_Chetak_Unlocked","0");
-            PlayerPrefs.SetFloat("BJ_Chetak_Torque",150);
-            PlayerPrefs.SetFloat("BJ_Chetak_MaxSpeed",70);
-            PlayerPrefs.SetFloat("BJ_Chetak_TankCapacity",10);
-            PlayerPrefs.SetFloat("BJ_Chetak_Mileage",17);
-            PlayerPrefs.SetFloat("BJ_Chetak_FR",1);
-            PlayerPrefs.SetFloat("BJ_Chetak_TotalDistance",0);
+            //HN-Dio
+            PlayerPrefs.SetString("HN-Dio_Unlocked","1");
+            PlayerPrefs.SetFloat("HN-Dio_Torque",75);
+            PlayerPrefs.SetFloat("HN-Dio_MaxSpeed",80);
+            PlayerPrefs.SetFloat("HN-Dio_TankCapacity",12);
+            PlayerPrefs.SetFloat("HN-Dio_Mileage",180);
+            PlayerPrefs.SetFloat("HN-Dio_FR",1);
+            PlayerPrefs.SetFloat("HN-Dio_TotalDistance",0);
+            PlayerPrefs.SetString("HN-Dio_KIT","Stock");
+            PlayerPrefs.SetString("HN-Dio_MAT","HN-Dio_Stock");
+            //BJ-Chetak
+            PlayerPrefs.SetString("BJ-Chetak_Unlocked","0");
+            PlayerPrefs.SetFloat("BJ-Chetak_Torque",150);
+            PlayerPrefs.SetFloat("BJ-Chetak_MaxSpeed",70);
+            PlayerPrefs.SetFloat("BJ-Chetak_TankCapacity",10);
+            PlayerPrefs.SetFloat("BJ-Chetak_Mileage",17);
+            PlayerPrefs.SetFloat("BJ-Chetak_FR",1);
+            PlayerPrefs.SetFloat("BJ-Chetak_TotalDistance",0);
 
             initData.apiParam = "playerStats/default/"+unityUserID;
             Debug.Log(initData.apiParam);
@@ -164,8 +167,8 @@ public class FetchInitDBData : MonoBehaviour
         playerJson.Add("Money",PlayerPrefs.GetFloat("Money"));
         playerJson.Add("Health",PlayerPrefs.GetInt("Health"));
         playerJson.Add("TotalDistanceTraveled",PlayerPrefs.GetFloat("TotalDistanceTraveled"));
-        playerJson.Add("HN_Dio_TotalDistance",PlayerPrefs.GetFloat("HN_Dio_TotalDistance"));
-        playerJson.Add("BJ_Chetak_TotalDistance",PlayerPrefs.GetFloat("BJ_Chetak_TotalDistance"));
+        playerJson.Add("HN-Dio_TotalDistance",PlayerPrefs.GetFloat("HN-Dio_TotalDistance"));
+        playerJson.Add("BJ-Chetak_TotalDistance",PlayerPrefs.GetFloat("BJ-Chetak_TotalDistance"));
 
 
         // Debug.Log(playerJson.ToString());
@@ -180,22 +183,24 @@ public class FetchInitDBData : MonoBehaviour
         PlayerPrefs.SetInt("Health",int.Parse(dbInitData["data"][0]["Health"]));
         PlayerPrefs.SetFloat("MoneyPerHealth",float.Parse(dbInitData["data"][0]["MoneyPerHealth"]));
         PlayerPrefs.SetFloat("TotalDistanceTraveled",float.Parse(dbInitData["data"][0]["TotalDistanceTraveled"]));
-        //HN_Dio
-        PlayerPrefs.SetString("HN_Dio_Unlocked",dbInitData["data"][0]["HN_Dio_Unlocked"]);
-        PlayerPrefs.SetFloat("HN_Dio_Torque",float.Parse(dbInitData["data"][0]["HN_Dio_Torque"]));
-        PlayerPrefs.SetFloat("HN_Dio_MaxSpeed",float.Parse(dbInitData["data"][0]["HN_Dio_MaxSpeed"]));
-        PlayerPrefs.SetFloat("HN_Dio_TankCapacity",float.Parse(dbInitData["data"][0]["HN_Dio_TankCapacity"]));
-        PlayerPrefs.SetFloat("HN_Dio_Mileage",float.Parse(dbInitData["data"][0]["HN_Dio_Mileage"]));
-        PlayerPrefs.SetFloat("HN_Dio_FR",float.Parse(dbInitData["data"][0]["HN_Dio_FR"]));
-        PlayerPrefs.SetFloat("HN_Dio_TotalDistance",float.Parse(dbInitData["data"][0]["HN_Dio_TotalDistance"]));
-        //BJ_Chetak
-        PlayerPrefs.SetString("BJ_Chetak_Unlocked",dbInitData["data"][0]["BJ_Chetak_Unlocked"]);
-        PlayerPrefs.SetFloat("BJ_Chetak_Torque",float.Parse(dbInitData["data"][0]["BJ_Chetak_Torque"]));
-        PlayerPrefs.SetFloat("BJ_Chetak_MaxSpeed",float.Parse(dbInitData["data"][0]["BJ_Chetak_MaxSpeed"]));
-        PlayerPrefs.SetFloat("BJ_Chetak_TankCapacity",float.Parse(dbInitData["data"][0]["BJ_Chetak_TankCapacity"]));
-        PlayerPrefs.SetFloat("BJ_Chetak_Mileage",float.Parse(dbInitData["data"][0]["BJ_Chetak_Mileage"]));
-        PlayerPrefs.SetFloat("BJ_Chetak_FR",float.Parse(dbInitData["data"][0]["BJ_Chetak_FR"]));
-        PlayerPrefs.SetFloat("BJ_Chetak_TotalDistance",float.Parse(dbInitData["data"][0]["BJ_Chetak_TotalDistance"]));
+        //HN-Dio
+        PlayerPrefs.SetString("HN-Dio_Unlocked",dbInitData["data"][0]["HN-Dio_Unlocked"]);
+        PlayerPrefs.SetFloat("HN-Dio_Torque",float.Parse(dbInitData["data"][0]["HN-Dio_Torque"]));
+        PlayerPrefs.SetFloat("HN-Dio_MaxSpeed",float.Parse(dbInitData["data"][0]["HN-Dio_MaxSpeed"]));
+        PlayerPrefs.SetFloat("HN-Dio_TankCapacity",float.Parse(dbInitData["data"][0]["HN-Dio_TankCapacity"]));
+        PlayerPrefs.SetFloat("HN-Dio_Mileage",float.Parse(dbInitData["data"][0]["HN-Dio_Mileage"]));
+        PlayerPrefs.SetFloat("HN-Dio_FR",float.Parse(dbInitData["data"][0]["HN-Dio_FR"]));
+        PlayerPrefs.SetFloat("HN-Dio_TotalDistance",float.Parse(dbInitData["data"][0]["HN-Dio_TotalDistance"]));
+        PlayerPrefs.SetString("HN-Dio_KIT",dbInitData["data"][0]["HN-Dio_KIT"]);
+        PlayerPrefs.SetString("HN-Dio_MAT",dbInitData["data"][0]["HN-Dio_MAT"]);
+        //BJ-Chetak
+        PlayerPrefs.SetString("BJ-Chetak_Unlocked",dbInitData["data"][0]["BJ-Chetak_Unlocked"]);
+        PlayerPrefs.SetFloat("BJ-Chetak_Torque",float.Parse(dbInitData["data"][0]["BJ-Chetak_Torque"]));
+        PlayerPrefs.SetFloat("BJ-Chetak_MaxSpeed",float.Parse(dbInitData["data"][0]["BJ-Chetak_MaxSpeed"]));
+        PlayerPrefs.SetFloat("BJ-Chetak_TankCapacity",float.Parse(dbInitData["data"][0]["BJ-Chetak_TankCapacity"]));
+        PlayerPrefs.SetFloat("BJ-Chetak_Mileage",float.Parse(dbInitData["data"][0]["BJ-Chetak_Mileage"]));
+        PlayerPrefs.SetFloat("BJ-Chetak_FR",float.Parse(dbInitData["data"][0]["BJ-Chetak_FR"]));
+        PlayerPrefs.SetFloat("BJ-Chetak_TotalDistance",float.Parse(dbInitData["data"][0]["BJ-Chetak_TotalDistance"]));
     }
 
     private void HideTheseObjects(){

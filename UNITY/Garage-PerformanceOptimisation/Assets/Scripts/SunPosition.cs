@@ -14,13 +14,17 @@ public class SunPosition : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
+        StartCoroutine("SunPositionUpdate");
         //xtransform.rotation = Quaternion.Euler(0,0,0);
     }
-    // Update is called once per frame
-    void Update()
-    {   
-        Xanglecurrent = Xanglerate*Timecurrent + -Xanglerate*Timeintercept;
-        transform.rotation = Quaternion.Euler(Xanglecurrent + Time.deltaTime*(Xanglerate/60),East,0);
-        DynamicGI.UpdateEnvironment();
+    private IEnumerator SunPositionUpdate(){
+        while(true){
+            Xanglecurrent = Xanglerate*Timecurrent + -Xanglerate*Timeintercept;
+            transform.rotation = Quaternion.Euler(Xanglecurrent + Time.deltaTime*(Xanglerate/60),East,0);
+            DynamicGI.UpdateEnvironment();
+            yield return new WaitForSeconds(10f);
+            }
+        
     }
+    
 }
