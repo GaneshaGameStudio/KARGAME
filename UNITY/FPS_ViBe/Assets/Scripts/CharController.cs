@@ -57,12 +57,13 @@ public class CharController : NetworkBehaviour
         
     }
     private void OnTriggerEnter(Collider collision){
+        /*
             if(!IsLocalPlayer){
             if(collision.gameObject.tag=="Weapon"){
                     TakeDamage(10f);
             }
         
-        }
+        }*/
         
     }
     

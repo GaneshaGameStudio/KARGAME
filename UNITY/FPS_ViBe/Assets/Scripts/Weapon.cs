@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MLAPI;
+using MLAPI.Messaging;
 public class Weapon : NetworkBehaviour
 {   
     public Vector3 Weaponlocation;
@@ -38,13 +39,26 @@ public class Weapon : NetworkBehaviour
             emission.enabled = true;
             anim.SetBool("WeaponDraw",true);
             release.SetActive(false);
+            ReleaseServerRpc(false);
+            ReleaseClientRpc(false);
         }
         else{
             var emission = ps.emission;
             anim.SetBool("WeaponDraw",false);
             release.SetActive(true);
             emission.enabled = false;
+            ReleaseServerRpc(true);
+            ReleaseClientRpc(true);
         }
+        
+    }
+    [ServerRpc]
+    void ReleaseServerRpc(bool status){
+        release.SetActive(status);
+    }
+    [ClientRpc]
+    void ReleaseClientRpc(bool status){
+        release.SetActive(status);
     }
     void Strike(){
         float strikeweapon = playerActionControls.Vehicle.Strike.ReadValue<float>();
@@ -62,7 +76,7 @@ public class Weapon : NetworkBehaviour
     }
     // Update is called once per frame
     private void OnTriggerEnter(Collider other){
-      if(IsLocalPlayer){
+      
           if(other.gameObject.name == "Equip"){
               
                 gameObject.transform.parent=Holder.transform;
@@ -83,7 +97,7 @@ public class Weapon : NetworkBehaviour
 
             
             
-        }
+        
     }
     void Update()
     {
