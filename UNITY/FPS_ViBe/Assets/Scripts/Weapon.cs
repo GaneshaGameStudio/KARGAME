@@ -82,15 +82,21 @@ public class Weapon : NetworkBehaviour
                 gameObject.transform.parent=Holder.transform;
                 gameObject.transform.localPosition = Weaponlocation;
                 gameObject.transform.localEulerAngles = Weaponrotation;
-                Camera.main.GetComponent<CameraFollowController>().offset = new Vector3(0.83f,1.81f,-3.33f);
+                if(IsLocalPlayer){
+                     Camera.main.GetComponent<CameraFollowController>().offset = new Vector3(0.83f,1.81f,-3.33f);
+                }
+               
                 
             }
-        if(other.gameObject.name == "Release"){
+        if(other.gameObject.name == "Release" && anim.GetBool("WeaponDraw")==false){
               
                 gameObject.transform.parent=Def.transform;
                 gameObject.transform.localPosition = Weapondeflocation;
                 gameObject.transform.localEulerAngles = Weapondefrotation;
-                Camera.main.GetComponent<CameraFollowController>().offset = new Vector3(0.0f,2.66f,-3.8f);
+                if(IsLocalPlayer){
+                    Camera.main.GetComponent<CameraFollowController>().offset = new Vector3(0.0f,2.66f,-3.8f);
+                }
+                
                 
             }
             

@@ -10,6 +10,7 @@ public class CharController : NetworkBehaviour
     NetworkVariableFloat health = new NetworkVariableFloat(100f);
     private PlayerActionControls playerActionControls;
     Animator anim;
+    public float actualhealth;
     // Start is called before the first frame update
     
     private void Awake(){
@@ -52,18 +53,16 @@ public class CharController : NetworkBehaviour
     public void TakeDamage(float damage){
        
             health.Value -=damage;
-            print(health.Value);
-        
         
     }
     private void OnTriggerEnter(Collider collision){
-        /*
-            if(!IsLocalPlayer){
-            if(collision.gameObject.tag=="Weapon"){
+        
+            if(IsLocalPlayer)
+            if(collision.gameObject.tag=="Weapon" && collision.transform.root.gameObject.GetComponent<NetworkObject>().IsLocalPlayer==false){
                     TakeDamage(10f);
             }
         
-        }*/
+        
         
     }
     
@@ -73,5 +72,6 @@ public class CharController : NetworkBehaviour
         if(IsLocalPlayer){
             MovePlayer();
         }
+        actualhealth = health.Value;
     }
 }

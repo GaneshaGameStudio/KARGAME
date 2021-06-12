@@ -633,7 +633,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: dfab0675c94e94b48bdbbd86920ac9da, type: 3}
   m_Controller: {fileID: 9100000, guid: 82df0ce1981e7482394c69a69025d1b9, type: 2}
-  m_CullingMode: 0
+  m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
@@ -782,6 +782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationRate: 36
+  actualhealth: 0
 --- !u!1 &2303817974582940832
 GameObject:
   m_ObjectHideFlags: 0
