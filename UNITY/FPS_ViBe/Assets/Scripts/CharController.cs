@@ -11,10 +11,13 @@ public class CharController : NetworkBehaviour
     private PlayerActionControls playerActionControls;
     Animator anim;
     public float actualhealth;
+    
+    
     // Start is called before the first frame update
     
     private void Awake(){
         playerActionControls = new PlayerActionControls();
+        
     }
     
     
@@ -57,15 +60,16 @@ public class CharController : NetworkBehaviour
     }
     private void OnTriggerEnter(Collider collision){
         
-            if(IsLocalPlayer)
+            if(IsLocalPlayer){
             if(collision.gameObject.tag=="Weapon" && collision.transform.root.gameObject.GetComponent<NetworkObject>().IsLocalPlayer==false){
+                    
+                    print("damaged");
                     TakeDamage(10f);
-            }
-        
-        
-        
+                    
+                }
+            }  
     }
-    
+  
     // Update is called once per frame
     void Update()
     {   

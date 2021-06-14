@@ -15,7 +15,8 @@ public class Weapon : NetworkBehaviour
     public GameObject Holder;
     public GameObject Def;
     public GameObject release;
-    private ParticleSystem ps;
+    public ParticleSystem ps1;
+    public ParticleSystem ps2;
     
     // Start is called before the first frame update
     void Awake()
@@ -26,16 +27,19 @@ public class Weapon : NetworkBehaviour
     private void OnEnable(){
         playerActionControls.Enable();
         release.SetActive(false);
-        ps = GetComponent<ParticleSystem>();
-        var emission = ps.emission;
+        ps1 = GetComponent<ParticleSystem>();
+        var emission = ps1.emission;
         emission.enabled = false;
+        emission = ps2.emission;
+        emission.enabled = false;
+        
       
         
     }
     void DrawWeapon(){
         float drawweapon = playerActionControls.Vehicle.Draw.ReadValue<float>();
         if(drawweapon>0f){
-            var emission = ps.emission;
+            var emission = ps1.emission;
             emission.enabled = true;
             anim.SetBool("WeaponDraw",true);
             release.SetActive(false);
@@ -43,7 +47,7 @@ public class Weapon : NetworkBehaviour
             ReleaseClientRpc(false);
         }
         else{
-            var emission = ps.emission;
+            var emission = ps1.emission;
             anim.SetBool("WeaponDraw",false);
             release.SetActive(true);
             emission.enabled = false;
@@ -65,11 +69,13 @@ public class Weapon : NetworkBehaviour
          if(strikeweapon>0f){
             
             anim.SetBool("Strike",true);
+            
           
         }
         else{
             anim.SetBool("Strike",false);
-            
+            var emission = ps2.emission;
+            emission.enabled = false;
         }
          
 
@@ -99,11 +105,14 @@ public class Weapon : NetworkBehaviour
                 
                 
             }
-            
+            if(IsLocalPlayer){
+                if(other.gameObject.tag=="Manushya" && other.transform.root.gameObject.GetComponent<NetworkObject>().IsLocalPlayer==false){
+                    var emission = ps2.emission;
+                    emission.enabled = true;
 
+                 }
+            }
             
-            
-        
     }
     void Update()
     {
