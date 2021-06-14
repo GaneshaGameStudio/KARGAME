@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using MLAPI;
 using MLAPI.NetworkVariable;
-
 public class CharController : NetworkBehaviour
 {   
     public float rotationRate = 360;
@@ -38,8 +37,27 @@ public class CharController : NetworkBehaviour
         Move(moveInput, wheelieInput);
         Turn(turnInput);
     }
+    
     private void Move(float input, float wheelieInput){
-        anim.SetFloat("Mag",input + (wheelieInput*0.5f));
+        //print(transform.eulerAngles);
+        float animspeed = 0f;
+        if(input!=0){
+            anim.SetBool("Walk",true);
+            if(anim.GetBool("WeaponDraw")==true){
+                animspeed = 0.2f;
+            }
+            else{
+                animspeed=1.0f;
+            }
+            
+            anim.SetFloat("Mag",input + (wheelieInput*0.5f));
+            transform.position += transform.forward * Time.deltaTime * animspeed * (input + (wheelieInput*0.5f));
+        }
+        else{
+            anim.SetBool("Walk",false);
+        }
+        
+        
         
     }
     private void Turn(float input){
