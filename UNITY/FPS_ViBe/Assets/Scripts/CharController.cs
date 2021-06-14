@@ -71,9 +71,24 @@ public class CharController : NetworkBehaviour
         float n = movementInput[0];
         ApplyInput(l,n,wheelieInput);
     }
+    public void Fall(){
+        if(health.Value<0){
+                //turn off character control
+                gameObject.GetComponent<CharacterController>().enabled = false;
+                //turn on root motion
+                anim.applyRootMotion = true;
+                //turn off animator
+                anim.enabled = false;
+                gameObject.transform.Find("Weapon").GetComponent<BoxCollider>().isTrigger = false;
+                gameObject.transform.Find("Weapon").GetComponent<Rigidbody>().isKinematic = false;
+                gameObject.transform.Find("Weapon").GetComponent<Rigidbody>().useGravity = true;
+                
+            }
+    }
     public void TakeDamage(float damage){
        
             health.Value -=damage;
+            
         
     }
     private void OnTriggerEnter(Collider collision){
@@ -81,11 +96,11 @@ public class CharController : NetworkBehaviour
             if(IsLocalPlayer){
             if(collision.gameObject.tag=="Weapon" && collision.transform.root.gameObject.GetComponent<NetworkObject>().IsLocalPlayer==false){
                     
-                    print("damaged");
-                    TakeDamage(10f);
+                    TakeDamage(5f);
                     
                 }
             }  
+            Fall();
     }
   
     // Update is called once per frame
