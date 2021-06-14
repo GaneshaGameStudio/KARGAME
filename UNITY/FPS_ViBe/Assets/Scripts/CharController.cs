@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MLAPI;
 using MLAPI.NetworkVariable;
+using MLAPI.Messaging;
 public class CharController : NetworkBehaviour
 {   
     public float rotationRate = 360;
@@ -85,7 +86,8 @@ public class CharController : NetworkBehaviour
                 
             }
     }
-    public void TakeDamage(float damage){
+    [ServerRpc]
+    public void TakeDamageServerRpc(float damage){
        
             health.Value -=damage;
             
@@ -96,7 +98,7 @@ public class CharController : NetworkBehaviour
             if(IsLocalPlayer){
             if(collision.gameObject.tag=="Weapon" && collision.transform.root.gameObject.GetComponent<NetworkObject>().IsLocalPlayer==false){
                     
-                    TakeDamage(5f);
+                    TakeDamageServerRpc(5f);
                     
                 }
             }  
