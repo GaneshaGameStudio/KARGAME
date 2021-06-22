@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MLAPI;
 
-public class SimpleDrive : MonoBehaviour
+public class SimpleDrive : NetworkBehaviour
 {   
     public WheelCollider WC;
     public float torque = 75;
@@ -52,7 +53,7 @@ public class SimpleDrive : MonoBehaviour
     
     // Update is called once per frame
     void Update()
-    {   
+    {   if(IsLocalPlayer){
         Vector2 movementInput = playerActionControls.Vehicle.Move.ReadValue<Vector2>();
         float w = movementInput[1];
         a = Mathf.MoveTowards(movementInput[0], a, 0.7f * Time.deltaTime);
@@ -65,5 +66,8 @@ public class SimpleDrive : MonoBehaviour
         {
             Go(w,a);
         }
+
+    }
+        
     }
 }
