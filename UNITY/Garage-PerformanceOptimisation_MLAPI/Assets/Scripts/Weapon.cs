@@ -38,7 +38,7 @@ public class Weapon : NetworkBehaviour
     }
     void DrawWeapon(){
         float drawweapon = playerActionControls.Vehicle.Draw.ReadValue<float>();
-        if(drawweapon>0f){
+        if(drawweapon>0f || ActivateRight.btactright == true){
             var emission = ps1.emission;
             emission.enabled = true;
             anim.SetBool("WeaponDraw",true);
@@ -65,7 +65,7 @@ public class Weapon : NetworkBehaviour
         release.SetActive(status);
     }
     void Strike(){
-        float strikeweapon = playerActionControls.Vehicle.Strike.ReadValue<float>();
+        float strikeweapon = playerActionControls.Vehicle.Wheelie.ReadValue<float>();
          if(strikeweapon>0f){
             
             anim.SetBool("Strike",true);

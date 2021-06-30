@@ -45,7 +45,7 @@ public class SimpleBodyController: NetworkBehaviour
     }
     
     private void Move(float input, float wheelieInput){
-        //print(transform.eulerAngles);
+
         float animspeed = 0f;
         if(input!=0){
             anim.SetBool("Walk",true);

@@ -6,11 +6,8 @@ public class CameraFollowController : MonoBehaviour {
 
 	private bool isWheelieE;
 	void Start()
-
-	{	
-		MoveCamera.mCameraIndex  = 0;
+	{	MoveCamera.mCameraIndex  = 0;
 		//objectToFollow = GameObject.Find(VehicleID.Vehicle+"(Clone)").transform;
-		
 	}
 	public void LookAtTarget()
 	{
