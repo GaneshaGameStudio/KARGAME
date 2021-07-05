@@ -85,8 +85,10 @@ public class SimpleBodyController: NetworkBehaviour
     }
     public void Fall(){
         if(health.Value<0){
+            if(!IsLocalPlayer){
+
                 //turn off character control
-                gameObject.GetComponent<CharacterController>().enabled = false;
+                //gameObject.GetComponent<CharacterController>().enabled = false;
                 //turn on root motion
                 anim.applyRootMotion = true;
                 //turn off animator
@@ -104,23 +106,40 @@ public class SimpleBodyController: NetworkBehaviour
             for (int r=0;r<allCCs.Length;r++) {
                       allCCs[r].enabled = true;
                 }
-                
             }
+            else{
+            Chat.Life = 0;
+            transform.GetChild(3).gameObject.SetActive(true);
+            Chat.isCrash = true;
+            GameObject.Find("Life"+Chat.Life.ToString()).SetActive(false);
+            }
+            
+
+            }
+
     }
     [ServerRpc]
     public void TakeDamageServerRpc(float damage){
        
             health.Value -=damage;
-            Chat.Life = (int)Mathf.Ceil(maxhealth/health.Value);
             
-        
+            
     }
     private void OnTriggerEnter(Collider collision){
-        
+
             if(IsLocalPlayer){
-            if(collision.gameObject.tag=="Weapon" && collision.transform.root.gameObject.GetComponent<NetworkObject>().IsLocalPlayer==false){
+                if(collision.gameObject.tag=="Weapon" && collision.transform.root.gameObject.GetComponent<NetworkObject>().IsLocalPlayer==false){
                     
                     TakeDamageServerRpc(5f);
+                    if(Chat.Life <= 0){
+                        //GameObject.Find("Life"+Chat.Life.ToString()).SetActive(false);
+                        //Chat.Life=Chat.Life-1;
+                        Chat.isCrash = true;
+                        transform.GetChild(3).gameObject.SetActive(true);
+                    }
+                    else{
+                        GameObject.Find("Life"+Chat.Life.ToString()).SetActive(false);
+                    }
                     
                 }
             }  
@@ -134,5 +153,7 @@ public class SimpleBodyController: NetworkBehaviour
             MovePlayer();
         }
         actualhealth = health.Value;
+        Chat.Life=(int)Mathf.Min(2f,(maxhealth/(Mathf.Max(maxhealth-health.Value,1f))));
+        
     }
 }

@@ -66,8 +66,10 @@ public class CheckPlayer : MonoBehaviour
             gameObject.GetComponent<RigBuilder>().enabled=false;
             gameObject.transform.GetChild(2).gameObject.GetComponent<Collider>().enabled=true;
             gameObject.GetComponent<Rigidbody>().useGravity = true;
-            gameObject.GetComponent<CapsuleCollider>().enabled = true;
-
+            allCCs = GetComponents<Collider>();
+            for (int r=0;r<allCCs.Length;r++) {
+                      allCCs[r].enabled = true;
+                }
         }
         
     }

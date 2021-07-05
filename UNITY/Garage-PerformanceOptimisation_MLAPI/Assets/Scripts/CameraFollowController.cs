@@ -44,8 +44,7 @@ public class CameraFollowController : MonoBehaviour {
 					offset.z = 0f;
 					
 				}
-			else if(GameObject.Find(VehicleID.Vehicle+"(Clone)").GetComponent<Chat>().isCrash == true){
-					
+			else if(Chat.isCrash == true){
 					offset.x = 0.05f;
 					offset.y = 4f;
 					offset.z = -9f;
@@ -75,11 +74,19 @@ public class CameraFollowController : MonoBehaviour {
 		}
 		
 		else if(GameObject.Find(VehicleID.Vehicle+"(Clone)").tag == "Manushya"){
-			offset.x = 0f;
+			if(Chat.isCrash == true){
+					offset.x = 0.05f;
+					offset.y = 4f;
+					offset.z = -9f;
+			}
+			else{
+				offset.x = 0f;
 			offset.y = 1.91f;
 			offset.z = -2.12f;
 			followSpeed = 20;
 			lookSpeed = 10;
+			}
+			
 		}
 		else
 		{	

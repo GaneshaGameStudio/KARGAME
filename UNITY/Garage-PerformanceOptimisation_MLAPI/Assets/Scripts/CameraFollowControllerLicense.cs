@@ -40,7 +40,7 @@ public class CameraFollowControllerLicense : MonoBehaviour {
 					offset.z = 0f;
 					
 				}
-			else if(GameObject.Find(VehicleID.Vehicle+"(Clone)").GetComponent<Chat>().isCrash == true  ||	GameObject.Find(VehicleID.Vehicle+"(Clone)").GetComponent<Chat>().isLicensetwoWheelercheck == true){
+			else if(Chat.isCrash == true  ||	GameObject.Find(VehicleID.Vehicle+"(Clone)").GetComponent<Chat>().isLicensetwoWheelercheck == true){
 					
 					offset.x = 0.05f;
 					offset.y = 4f;

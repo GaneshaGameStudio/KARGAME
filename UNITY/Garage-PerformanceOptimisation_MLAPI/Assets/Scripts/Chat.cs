@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class Chat : MonoBehaviour
 {   
-    public bool isCrash = false;
+    public static bool isCrash = false;
     public bool isKhalicheck = false;
     public bool isLicensetwoWheelercheck = false;
     public bool isDisplayMessage = false;
     public static int Life;
-    //public GameObject gun;
     // Start is called before the first frame update
     void Start()
     {
