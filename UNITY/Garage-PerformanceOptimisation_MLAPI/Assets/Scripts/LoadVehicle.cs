@@ -13,7 +13,8 @@ public class LoadVehicle : NetworkBehaviour
     void Start()
     {   
         ulong id =  NetworkManager.Singleton.LocalClientId;
-        SpawnServerRpc(id);
+        string Vehicletype = VehicleID.Vehicle;
+        SpawnServerRpc(id, Vehicletype);
         if(IsLocalPlayer){
             Camera.main.GetComponent<CameraFollowController>().enabled = true;
             GameObject.Find("fuel").GetComponent<fuelreader>().enabled = true;
@@ -22,9 +23,9 @@ public class LoadVehicle : NetworkBehaviour
             }
     }
     [ServerRpc]
-    void SpawnServerRpc(ulong id){
+    void SpawnServerRpc(ulong id, string Vehicletype){
 
-        GameObject prefab = Resources.Load("Vehicles_prefabs/" + VehicleID.Vehicle) as GameObject;
+        GameObject prefab = Resources.Load("Vehicles_prefabs/" + Vehicletype) as GameObject;
         GameObject go = Instantiate(prefab, new Vector3(PlayerPrefs.GetFloat("SpawnLoc.x"), PlayerPrefs.GetFloat("SpawnLoc.y"), PlayerPrefs.GetFloat("SpawnLoc.z")), Quaternion.Euler(new Vector3(PlayerPrefs.GetFloat("SpawnRot.x"), PlayerPrefs.GetFloat("SpawnRot.y"), PlayerPrefs.GetFloat("SpawnRot.z"))));
         go.GetComponent<NetworkObject>().SpawnAsPlayerObject(id);
         go.GetComponent<NetworkObject>().ChangeOwnership(id);

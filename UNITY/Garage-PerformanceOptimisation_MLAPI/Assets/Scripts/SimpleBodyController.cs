@@ -4,10 +4,11 @@ using UnityEngine;
 using MLAPI;
 using MLAPI.NetworkVariable;
 using MLAPI.Messaging;
+using UnityEngine.Animations.Rigging;
 public class SimpleBodyController: NetworkBehaviour
 {   
     public float rotationRate = 360;
-    NetworkVariableFloat health = new NetworkVariableFloat(100f);
+    
     private PlayerActionControls playerActionControls;
     Animator anim;
     public float actualhealth;
@@ -15,18 +16,21 @@ public class SimpleBodyController: NetworkBehaviour
     public float mileage;
 	public static float remainingfuel;
     public float FR = 1.0f;
+    public float maxhealth = 100f;
+    NetworkVariableFloat health = new NetworkVariableFloat(100f);
     
     
     // Start is called before the first frame update
     
     private void Awake(){
         playerActionControls = new PlayerActionControls();
-        
+        health.Value = maxhealth;
     }
     
     
     private void OnEnable(){
         playerActionControls.Enable();
+        
         
     }
     private void OnDisable(){
@@ -39,6 +43,7 @@ public class SimpleBodyController: NetworkBehaviour
             
         }
         anim = gameObject.GetComponent<Animator>();
+        
     }
     private void ApplyInput(float moveInput, float turnInput, float wheelieInput){
         Move(moveInput, wheelieInput);
@@ -89,6 +94,16 @@ public class SimpleBodyController: NetworkBehaviour
                 gameObject.transform.Find("Weapon").GetComponent<BoxCollider>().isTrigger = false;
                 gameObject.transform.Find("Weapon").GetComponent<Rigidbody>().isKinematic = false;
                 gameObject.transform.Find("Weapon").GetComponent<Rigidbody>().useGravity = true;
+
+                Rigidbody[] allRBs = GetComponentsInChildren<Rigidbody>();
+            for (int r=0;r<allRBs.Length;r++) {
+                //allRBs[r].isKinematic = true;
+                allRBs[r].useGravity = true;
+            }
+            Collider[] allCCs = GetComponentsInChildren<Collider>();
+            for (int r=0;r<allCCs.Length;r++) {
+                      allCCs[r].enabled = true;
+                }
                 
             }
     }
@@ -96,6 +111,7 @@ public class SimpleBodyController: NetworkBehaviour
     public void TakeDamageServerRpc(float damage){
        
             health.Value -=damage;
+            Chat.Life = (int)Mathf.Ceil(maxhealth/health.Value);
             
         
     }

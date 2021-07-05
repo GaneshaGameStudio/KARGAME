@@ -632,18 +632,19 @@ GameObject:
   - component: {fileID: 1501957178733165938}
   - component: {fileID: 4771610861653534472}
   - component: {fileID: 3927300626652347819}
+  - component: {fileID: 8115147458072702503}
   - component: {fileID: 4417038039794363064}
   - component: {fileID: -4222848483086667679}
+  - component: {fileID: 7499151502883985331}
   - component: {fileID: 767074208130456822}
   - component: {fileID: -6079656899085387867}
   - component: {fileID: 655509302227528703}
-  - component: {fileID: 4655077382715888646}
   - component: {fileID: 4032566862733356233}
   - component: {fileID: 4391698266196266477}
   - component: {fileID: 7815837703865600333}
-  - component: {fileID: 7388408962754806855}
   - component: {fileID: 294331887276413455}
   - component: {fileID: 7538335436126612750}
+  - component: {fileID: 6243289197109816011}
   m_Layer: 0
   m_Name: Vibe2009rig-redoCSY
   m_TagString: Manushya
@@ -711,6 +712,18 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.86, z: 0}
+--- !u!114 &8115147458072702503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2275398306149214152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e5847e290d1648cbb2b65eba606d3db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4417038039794363064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -776,6 +789,20 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!136 &7499151502883985331
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2275398306149214152}
+  m_Material: {fileID: 13400000, guid: c03cdc343c5f445caa45b1dbdf5d1f91, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.07
+  m_Height: 0.32
+  m_Direction: 0
+  m_Center: {x: 0, y: 0.07, z: 0}
 --- !u!136 &767074208130456822
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -786,7 +813,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.29
+  m_Radius: 0.17
   m_Height: 1.6163137
   m_Direction: 1
   m_Center: {x: 0, y: 0.85184324, z: 0}
@@ -821,20 +848,6 @@ MonoBehaviour:
   SendRate: 0.1
   m_Animator: {fileID: 4771610861653534472}
   m_TrackedParamFlags: 0
---- !u!136 &4655077382715888646
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2275398306149214152}
-  m_Material: {fileID: 13400000, guid: c03cdc343c5f445caa45b1dbdf5d1f91, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.12055993
-  m_Height: 0.45917165
-  m_Direction: 0
-  m_Center: {x: 0.0084504485, y: 0.1003806, z: 0.15510425}
 --- !u!114 &4032566862733356233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -880,19 +893,6 @@ MonoBehaviour:
   tankcap: 20
   mileage: 30
   FR: 1
---- !u!65 &7388408962754806855
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2275398306149214152}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.352821, y: 0.18465632, z: 0.24580726}
-  m_Center: {x: -0.007643819, y: 0.07134256, z: 0.09682204}
 --- !u!114 &294331887276413455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -927,6 +927,18 @@ MonoBehaviour:
   - m_Rig: {fileID: 7454167387349779078}
     m_Active: 1
   m_Effectors: []
+--- !u!114 &6243289197109816011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2275398306149214152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e5847e290d1648cbb2b65eba606d3db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2303817974582940832
 GameObject:
   m_ObjectHideFlags: 0
@@ -13723,7 +13735,7 @@ BoxCollider:
   m_GameObject: {fileID: 8858301680204874469}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.1103843, y: 0.1746831, z: 0.1273155}
   m_Center: {x: 0.0002365277, y: 0.06601737, z: -0.01192834}
