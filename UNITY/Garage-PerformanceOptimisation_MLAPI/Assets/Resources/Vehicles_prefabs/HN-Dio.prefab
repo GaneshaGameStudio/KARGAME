@@ -2490,7 +2490,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f720db3be9df94a9c803f4654da0d970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isCrash: 0
   isKhalicheck: 0
   isLicensetwoWheelercheck: 0
   isDisplayMessage: 0
@@ -8874,6 +8873,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5879622642055974991}
     - target: {fileID: 1497432039869667490, guid: c700408919afb410c92797f94ee9fc46, type: 3}
+      propertyPath: rearweapon
+      value: 
+      objectReference: {fileID: 7375324787168291377}
+    - target: {fileID: 1497432039869667490, guid: c700408919afb410c92797f94ee9fc46, type: 3}
       propertyPath: Weaponlocation.x
       value: -0.015
       objectReference: {fileID: 0}
@@ -8961,6 +8964,10 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.x
       value: -0.2085746
       objectReference: {fileID: 0}
+    - target: {fileID: 2235186417256031181, guid: c700408919afb410c92797f94ee9fc46, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2275398306149214152, guid: c700408919afb410c92797f94ee9fc46, type: 3}
       propertyPath: m_Name
       value: Vibe2009rig-redoCSY
@@ -8973,6 +8980,10 @@ PrefabInstance:
       propertyPath: m_Data.m_SourceObjects.m_Item0.transform
       value: 
       objectReference: {fileID: 2683189589976250473}
+    - target: {fileID: 3180086467356560384, guid: c700408919afb410c92797f94ee9fc46, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3426161709915065996, guid: c700408919afb410c92797f94ee9fc46, type: 3}
       propertyPath: m_Data.m_SourceObjects.m_Item0.transform
       value: 

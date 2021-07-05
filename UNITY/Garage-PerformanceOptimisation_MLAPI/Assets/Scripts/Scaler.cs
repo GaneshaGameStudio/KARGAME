@@ -23,7 +23,9 @@ public class Scaler : MonoBehaviour
         playanim = true;
         mSize = 100.0f;
         cSize = 0.0f;
+        print(Chat.isCrash);
         if(Chat.isCrash == true){
+            
             GameObject.FindWithTag("UserText").GetComponent<Text>().text = "ºÉÆUÉ >:0";
             InvokeRepeating("Hoge",0.0f,0.005f);
         }
@@ -53,8 +55,6 @@ public class Scaler : MonoBehaviour
             if(mSize <=0.0f)
             {
                 CancelInvoke("Hoge");
-                //set camera
-                
                 Time.timeScale = 0;
             }
         if(cSize >=1.0f){

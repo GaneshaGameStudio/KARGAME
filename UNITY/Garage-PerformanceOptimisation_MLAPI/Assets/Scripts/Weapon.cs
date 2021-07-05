@@ -20,6 +20,7 @@ public class Weapon : NetworkBehaviour
     public GameObject release;
     public ParticleSystem ps1;
     public ParticleSystem ps2;
+    public WheelCollider rearweapon;
     
     // Start is called before the first frame update
     void Awake()
@@ -40,33 +41,43 @@ public class Weapon : NetworkBehaviour
         gameObject.transform.localEulerAngles = Weapondefrotation;
         gameObject.GetComponent<Collider>().enabled = true;
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
-        Holder.transform.GetChild(1).GetComponent<Collider>().enabled = false;
-        
-
-    }
-    void DrawWeapon(){
-        float drawweapon = playerActionControls.Vehicle.Draw.ReadValue<float>();
-        if(drawweapon>0f || ActivateRight.btactright == true){
-            Rigger.layers[1].active = false;
+        if(transform.root.gameObject.tag =="Manushya"){
             Holder.transform.GetChild(1).GetComponent<Collider>().enabled = true;
-            var emission = ps1.emission;
-            emission.enabled = true;
-            anim.SetBool("WeaponDraw",true);
-            release.SetActive(false);
-            ReleaseServerRpc(false);
-            ReleaseClientRpc(false);
         }
         else{
-            //Rigger.layers[1].active = true;
-            anim.SetBool("WeaponDraw",false);
-            //release.GetComponent<Collider>().enabled = false;
-            var emission = ps1.emission;
-            Holder.transform.GetChild(1).GetComponent<Collider>().enabled = false;
-            release.SetActive(true);
-            emission.enabled = false;
-            ReleaseServerRpc(true);
-            ReleaseClientRpc(true);
+            
+            //Holder.transform.GetChild(1).GetComponent<Collider>().enabled = false;
         }
+    }
+    void DrawWeapon(){
+        
+            float drawweapon = playerActionControls.Vehicle.Draw.ReadValue<float>();
+            if(drawweapon>0f || ActivateRight.btactright == true){
+                Rigger.layers[1].active = false;
+                Holder.transform.GetChild(1).GetComponent<Collider>().enabled = true;
+                var emission = ps1.emission;
+                emission.enabled = true;
+                anim.SetBool("WeaponDraw",true);
+                release.SetActive(false);
+                ReleaseServerRpc(false);
+                ReleaseClientRpc(false);
+                
+            }
+            else{
+                //Rigger.layers[1].active = true;
+                anim.SetBool("WeaponDraw",false);
+                //release.GetComponent<Collider>().enabled = false;
+                var emission = ps1.emission;
+                //if(transform.root.gameObject.tag !="Manushya")
+                //   Holder.transform.GetChild(1).GetComponent<Collider>().enabled = false;
+                release.SetActive(true);
+                emission.enabled = false;
+                ReleaseServerRpc(true);
+                ReleaseClientRpc(true);
+            }
+
+        
+        
         
     }
     [ServerRpc]
@@ -74,7 +85,8 @@ public class Weapon : NetworkBehaviour
         release.SetActive(status);
         Rigger.layers[1].active = false;
         //release.GetComponent<Collider>().enabled = status;
-        Holder.transform.GetChild(1).GetComponent<Collider>().enabled = status;
+        //if(transform.root.gameObject.tag !="Manushya")
+        //Holder.transform.GetChild(1).GetComponent<Collider>().enabled = status;
 
         
     }
@@ -83,7 +95,8 @@ public class Weapon : NetworkBehaviour
         release.SetActive(status);
         Rigger.layers[1].active = false;
         //release.GetComponent<Collider>().enabled = status;
-        Holder.transform.GetChild(1).GetComponent<Collider>().enabled = status;
+        //if(transform.root.gameObject.tag !="Manushya")
+        //Holder.transform.GetChild(1).GetComponent<Collider>().enabled = status;
        
         
     }
@@ -105,26 +118,18 @@ public class Weapon : NetworkBehaviour
     }
     // Update is called once per frame
     private void OnTriggerEnter(Collider other){
-      
-          if(other.gameObject.name == "Equip"){
+           if(other.gameObject.name == "Equip"&& anim.GetBool("WeaponDraw")==true){
                 gameObject.transform.parent=Holder.transform;
                 gameObject.transform.localPosition = Weaponlocation;
                 gameObject.transform.localEulerAngles = Weaponrotation;
-                if(IsLocalPlayer){
-                     //Camera.main.GetComponent<CameraFollowController>().offset = new Vector3(0.83f,1.81f,-3.33f);
-                }
-               
                 
             }
-        if(other.gameObject.name == "Release" && anim.GetBool("WeaponDraw")==false){
+            if(other.gameObject.name == "Release" && anim.GetBool("WeaponDraw")==false){
                 
                 gameObject.transform.parent=Def.transform;
                 gameObject.transform.localPosition = Weapondeflocation;
                 gameObject.transform.localEulerAngles = Weapondefrotation;
                 Rigger.layers[1].active = true;
-                if(IsLocalPlayer){
-                    //Camera.main.GetComponent<CameraFollowController>().offset = new Vector3(0.0f,2.66f,-3.8f);
-                }
                 
                 
             }
@@ -135,13 +140,17 @@ public class Weapon : NetworkBehaviour
 
                  }
             }
-            
+         
     }
     void Update()
-    {
+    {   
+        if(rearweapon.isGrounded){
+            Holder.transform.GetChild(1).GetComponent<Collider>().enabled = true;
+        }
         if(IsLocalPlayer){
             DrawWeapon();
             Strike();
         }
+       
     }
 }
