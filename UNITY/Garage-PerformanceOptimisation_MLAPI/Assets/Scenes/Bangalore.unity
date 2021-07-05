@@ -1167,7 +1167,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -388.99973, y: -1.9489441}
+  m_AnchoredPosition: {x: -388.99973, y: -1.9489746}
   m_SizeDelta: {x: 778.03, y: 2.0179784}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &758708884
@@ -1357,7 +1357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DontDestroy: 1
   RunInBackground: 1
-  LogLevel: 1
+  LogLevel: 0
   NetworkConfig:
     ProtocolVersion: 0
     NetworkTransport: {fileID: 817729206}
@@ -1365,9 +1365,11 @@ MonoBehaviour:
     - Bangalore
     AllowRuntimeSceneChanges: 0
     NetworkPrefabs:
-    - Prefab: {fileID: 2275398306149214152, guid: c700408919afb410c92797f94ee9fc46, type: 3}
-      PlayerPrefab: 0
+    - Prefab: {fileID: 6034801976009299255, guid: 6d057f829548342cc8d11e09790f5ab5, type: 3}
+      PlayerPrefab: 1
     - Prefab: {fileID: 7375324786553906104, guid: 1146dd8c38ed7461aa6bfc550e07804a, type: 3}
+      PlayerPrefab: 0
+    - Prefab: {fileID: 2275398306149214152, guid: c700408919afb410c92797f94ee9fc46, type: 3}
       PlayerPrefab: 0
     PlayerPrefabHash:
       id: 0
@@ -1384,7 +1386,7 @@ MonoBehaviour:
     EnableNetworkVariable: 1
     EnsureNetworkVariableLengthSafety: 0
     EnableSceneManagement: 1
-    ForceSamePrefabs: 1
+    ForceSamePrefabs: 0
     UsePrefabSync: 0
     RecycleNetworkIds: 1
     NetworkIdRecycleDelay: 120
@@ -1396,7 +1398,9 @@ MonoBehaviour:
   references:
     version: 1
     00000000:
-      type: {class: , ns: , asm: }
+      type: {class: NullableBoolSerializable, ns: MLAPI.Configuration, asm: Unity.Multiplayer.MLAPI.Runtime}
+      data:
+        Value: 15589198230175896383
 --- !u!4 &817729208
 Transform:
   m_ObjectHideFlags: 0
@@ -1524,10 +1528,10 @@ RectTransform:
   m_Father: {fileID: 49809586}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 146, y: 8}
-  m_SizeDelta: {x: 225.6, y: 30}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -254, y: -158}
+  m_SizeDelta: {x: 225.59998, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &896047056
 MonoBehaviour:
@@ -6712,7 +6716,6 @@ GameObject:
   - component: {fileID: 1080774880}
   - component: {fileID: 1080774878}
   - component: {fileID: 1080774882}
-  - component: {fileID: 1080774883}
   - component: {fileID: 1080774884}
   - component: {fileID: 1080774885}
   - component: {fileID: 1080774886}
@@ -6927,18 +6930,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b8bb06bbd6954c2c93bf5a15f3f9f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1080774883
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1080774877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bc750b146b224b408bc7e8e34ca489b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1080774884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6946,7 +6937,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1080774877}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 162a459d233b04032969086f4f1e488a, type: 3}
   m_Name: 
@@ -6982,7 +6973,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1080774877}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 909ac4b7268d84d3caaaaf5166eceb93, type: 3}
   m_Name: 
@@ -6994,7 +6985,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1080774877}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f37b215a25404f40afccef40ae64b7f, type: 3}
   m_Name: 
@@ -8127,7 +8118,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -1.7}
+  m_AnchoredPosition: {x: 0, y: -1.699997}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1651774093
@@ -8325,7 +8316,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1980, y: 1080}
+  m_SizeDelta: {x: 3840, y: 2560}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1827282622
 MonoBehaviour:

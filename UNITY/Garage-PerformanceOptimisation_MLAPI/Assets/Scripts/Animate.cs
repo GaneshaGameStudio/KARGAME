@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using MLAPI;
-using MLAPI.Prototyping;
+//using MLAPI.Prototyping;
 using UnityEngine.Animations.Rigging;
+using UnityEngine.Networking;
 
 public class Animate : NetworkBehaviour
 {
@@ -24,8 +25,10 @@ public class Animate : NetworkBehaviour
             anim.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Animation/Rider");
             gameObject.GetComponent<SimpleBodyController>().enabled = false;
             gameObject.GetComponent<CharacterController>().enabled = false;
-            Destroy(gameObject.GetComponent<NetworkObject>());
-            gameObject.GetComponent<NetworkTransform>().enabled = false;
+            gameObject.GetComponent<Animate>().enabled = true;
+            //gameObject.GetComponent<NetworkTransform>().enabled = false;
+           
+            //Destroy(gameObject.GetComponent<NetworkObject>());
             gameObject.GetComponent<Chat>().enabled = false;
             Component[] capsulecolliders;
 
@@ -45,12 +48,18 @@ public class Animate : NetworkBehaviour
                       allCCs[r].enabled = false;
                 }
             gameObject.GetComponent<RigBuilder>().enabled=true;
+            gameObject.transform.GetChild(2).gameObject.GetComponent<Collider>().enabled=true;
+            
         }
         
     }
     void Start()
-    {
-        anim = gameObject.GetComponent<Animator>();
+    {   
+        if(IsLocalPlayer){
+            anim = gameObject.GetComponent<Animator>();
+        }
+        
+        
     }
     private void OnEnable(){
         playerActionControls.Enable();
@@ -60,32 +69,35 @@ public class Animate : NetworkBehaviour
     }
     // Update is called once per frame
     void Update()
-    {
-        float vel = (float)rb.velocity.magnitude*3.6f;
-        anim.SetFloat("MagVel",vel);
-        Vector2 movementInput = playerActionControls.Vehicle.Move.ReadValue<Vector2>();
-        float a = movementInput[0];
-        float w = movementInput[1];
-        anim.SetFloat("MagDir",a);
-        if(a!=0)
-        {
-            anim.SetBool("keynotPressed",true);
-        }
-        else
-        {
-            anim.SetBool("keynotPressed",false);
-        }
-        var velDir = transform.InverseTransformDirection(rb.velocity);
-        if(w<0 && velDir.z < -0.01)
-        {
-            anim.SetBool("notgoingReverse",false);
-        }
-        else
-        {
-            anim.SetBool("notgoingReverse",true);
-        }
+    {   
+        if(gameObject.transform.root.gameObject.GetComponent<NetworkObject>().IsLocalPlayer){
+            float vel = (float)rb.velocity.magnitude*3.6f;
+            anim.SetFloat("MagVel",vel);
+            Vector2 movementInput = playerActionControls.Vehicle.Move.ReadValue<Vector2>();
+            float a = movementInput[0];
+            float w = movementInput[1];
+            anim.SetFloat("MagDir",a);
+            if(a!=0)
+            {
+                anim.SetBool("keynotPressed",true);
+            }
+            else
+            {
+                anim.SetBool("keynotPressed",false);
+            }
+            var velDir = transform.InverseTransformDirection(rb.velocity);
+            if(w<0 && velDir.z < -0.01)
+            {
+                anim.SetBool("notgoingReverse",false);
+            }
+            else
+            {
+                anim.SetBool("notgoingReverse",true);
+            }
 
-        anim.SetBool("isWheelie",Vehicle.GetComponent<Lean>().isWheelie);
-       
+            anim.SetBool("isWheelie",Vehicle.GetComponent<Lean>().isWheelie);
+        
+            }
+          
     }
 }

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
-public class Lean : MonoBehaviour
+using MLAPI;
+public class Lean : NetworkBehaviour
 {   
     public float maxLeanAngle;
     public float maxWheelieAngle;
@@ -24,7 +24,8 @@ public class Lean : MonoBehaviour
 
     void Start()
     {
-        
+        if(IsLocalPlayer)
+            CameraFollowController.objectToFollow = gameObject.transform;
     }
     private void OnEnable(){
         playerActionControls.Enable();
@@ -90,7 +91,7 @@ public class Lean : MonoBehaviour
     }
     
     void Update()
-    {   
+    {   if(IsLocalPlayer){
         Vector2 movementInput = playerActionControls.Vehicle.Move.ReadValue<Vector2>();
         float wheelieInput = playerActionControls.Vehicle.Wheelie.ReadValue<float>();
         
@@ -99,8 +100,7 @@ public class Lean : MonoBehaviour
         float j = wheelieInput;
         Go(l);
         Wheelie(j);
-
-        
+    }   
     }
 }
 

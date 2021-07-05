@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;  
+
 public class CameraFollowController : MonoBehaviour {
 
 	private bool isWheelieE;
 	void Start()
 	{	MoveCamera.mCameraIndex  = 0;
+        
 		//objectToFollow = GameObject.Find(VehicleID.Vehicle+"(Clone)").transform;
+		    
+		
 	}
 	public void LookAtTarget()
 	{
@@ -29,7 +33,8 @@ public class CameraFollowController : MonoBehaviour {
 
 	private void FixedUpdate()
 	{	
-		if(GameObject.Find(VehicleID.Vehicle+"(Clone)").tag == "2Wheeler"){
+		
+			if(GameObject.Find(VehicleID.Vehicle+"(Clone)").tag == "2Wheeler"){
 			if(GameObject.Find(VehicleID.Vehicle+"(Clone)").GetComponent<Lean>().isWheelie == true)
 				{	
 					followSpeed = 1;
@@ -86,6 +91,8 @@ public class CameraFollowController : MonoBehaviour {
 		}
 		LookAtTarget();
 		MoveToTarget();
+		
+		
 		if(MoveCamera.mCameraIndex==100){
 			SceneManager.LoadScene(VehicleID.Scene);
 		}

@@ -35,6 +35,7 @@ public class SimpleBodyController: NetworkBehaviour
     void Start()
     {if(IsLocalPlayer){
             remainingfuel = FR;
+            CameraFollowController.objectToFollow = gameObject.transform;
             
         }
         anim = gameObject.GetComponent<Animator>();

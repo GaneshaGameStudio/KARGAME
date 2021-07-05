@@ -25,6 +25,8 @@ public class Weapon : NetworkBehaviour
     void Awake()
     {
         playerActionControls = new PlayerActionControls();
+        GameObject.Find("Release").GetComponent<Collider>().enabled=true;
+        
     }
     private void OnEnable(){
         playerActionControls.Enable();
@@ -36,15 +38,17 @@ public class Weapon : NetworkBehaviour
         emission.enabled = false;
         gameObject.transform.localPosition = Weapondeflocation;
         gameObject.transform.localEulerAngles = Weapondefrotation;
+        gameObject.GetComponent<Collider>().enabled = true;
+        gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        Holder.transform.GetChild(1).GetComponent<Collider>().enabled = false;
+        
 
     }
     void DrawWeapon(){
         float drawweapon = playerActionControls.Vehicle.Draw.ReadValue<float>();
         if(drawweapon>0f || ActivateRight.btactright == true){
             Rigger.layers[1].active = false;
-            GameObject.Find("Weapon").GetComponent<Collider>().enabled = true;
-            GameObject.Find("Weapon").GetComponent<Rigidbody>().isKinematic = true;
-            GameObject.Find("Hand.R/Equip").GetComponent<Collider>().enabled = true;
+            Holder.transform.GetChild(1).GetComponent<Collider>().enabled = true;
             var emission = ps1.emission;
             emission.enabled = true;
             anim.SetBool("WeaponDraw",true);
@@ -54,8 +58,10 @@ public class Weapon : NetworkBehaviour
         }
         else{
             //Rigger.layers[1].active = true;
-            var emission = ps1.emission;
             anim.SetBool("WeaponDraw",false);
+            //release.GetComponent<Collider>().enabled = false;
+            var emission = ps1.emission;
+            Holder.transform.GetChild(1).GetComponent<Collider>().enabled = false;
             release.SetActive(true);
             emission.enabled = false;
             ReleaseServerRpc(true);
@@ -65,13 +71,21 @@ public class Weapon : NetworkBehaviour
     }
     [ServerRpc]
     void ReleaseServerRpc(bool status){
-        Rigger.layers[1].active = false;
         release.SetActive(status);
+        Rigger.layers[1].active = false;
+        //release.GetComponent<Collider>().enabled = status;
+        Holder.transform.GetChild(1).GetComponent<Collider>().enabled = status;
+
+        
     }
     [ClientRpc]
     void ReleaseClientRpc(bool status){
         release.SetActive(status);
         Rigger.layers[1].active = false;
+        //release.GetComponent<Collider>().enabled = status;
+        Holder.transform.GetChild(1).GetComponent<Collider>().enabled = status;
+       
+        
     }
     void Strike(){
         float strikeweapon = playerActionControls.Vehicle.Wheelie.ReadValue<float>();
@@ -93,7 +107,6 @@ public class Weapon : NetworkBehaviour
     private void OnTriggerEnter(Collider other){
       
           if(other.gameObject.name == "Equip"){
-                print("equip");
                 gameObject.transform.parent=Holder.transform;
                 gameObject.transform.localPosition = Weaponlocation;
                 gameObject.transform.localEulerAngles = Weaponrotation;
@@ -104,7 +117,7 @@ public class Weapon : NetworkBehaviour
                 
             }
         if(other.gameObject.name == "Release" && anim.GetBool("WeaponDraw")==false){
-              
+                
                 gameObject.transform.parent=Def.transform;
                 gameObject.transform.localPosition = Weapondeflocation;
                 gameObject.transform.localEulerAngles = Weapondefrotation;
