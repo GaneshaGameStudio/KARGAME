@@ -6,13 +6,15 @@ using UnityEngine.SceneManagement;
 public class CheckPlayer : MonoBehaviour
 {
     void Awake(){
-        if(gameObject.transform.root.tag!="Manushya"){
+        Scene scene = SceneManager.GetActiveScene();
+        if(scene.name!="ModShop"){
+                if(gameObject.transform.root.tag!="Manushya"){
             Animator anim = gameObject.GetComponent<Animator>();
             anim.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Animation/Rider");
             gameObject.GetComponent<SimpleBodyController>().enabled = false;
             gameObject.GetComponent<CharacterController>().enabled = false;
-            Scene scene = SceneManager.GetActiveScene();
-            if(scene.name=="Garage"){
+            
+            if(scene.name=="Garage" || scene.name == "ModShop"){
                 gameObject.GetComponent<Animate>().enabled = false;
             }
             else{
@@ -73,4 +75,6 @@ public class CheckPlayer : MonoBehaviour
         }
         
     }
+        }
+        
 }

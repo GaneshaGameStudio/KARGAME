@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine.SceneManagement;  
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using MLAPI;
 public class MoveCameraModShop : MonoBehaviour
 {
     public Vector3[] Positions;
@@ -57,7 +58,9 @@ public class MoveCameraModShop : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position,currentPos,Speed*0.0005f*Time.deltaTime);
         transform.rotation = Quaternion.Slerp(transform.rotation, target,  Speed*0.0005f*Time.deltaTime);
         // Load the vehicle
+        
         Instantiate(Resources.Load("Vehicles_prefabs/" + VehicleID.Vehicle), new Vector3(1.34f, 1f, 0), Quaternion.Euler(new Vector3(0, 0, 0)));
+
         //disable unwanted 
         GameObject.Find("Sphere").SetActive(false);
         //if(GameObject.FindGameObjectWithTag("Manushya")){
