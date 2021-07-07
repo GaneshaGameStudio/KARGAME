@@ -32,6 +32,9 @@ public class LoadVehicle : NetworkBehaviour
         
         go.GetComponent<NetworkObject>().SpawnAsPlayerObject(id);
         go.GetComponent<NetworkObject>().ChangeOwnership(id);
+        GetComponent<NetworkObject>().Despawn();
+        Destroy(gameObject);
+
         
     }
     

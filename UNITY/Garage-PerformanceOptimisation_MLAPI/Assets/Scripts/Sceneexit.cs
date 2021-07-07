@@ -10,6 +10,7 @@ public class Sceneexit: MonoBehaviour {
         MoveCamera.mCameraIndex  = 0;
         PlayerPrefs.Save();
         NetworkManager.Singleton.StopHost();
+        NetworkManager.Singleton.Shutdown();
         SceneManager.LoadScene(scene_name);
     }   
     public void btn_exit_scene(){
