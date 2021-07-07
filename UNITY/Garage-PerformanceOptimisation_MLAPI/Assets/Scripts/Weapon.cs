@@ -144,9 +144,7 @@ public class Weapon : NetworkBehaviour
     }
     void Update()
     {   
-        if(rearweapon.isGrounded){
-            Holder.transform.GetChild(1).GetComponent<Collider>().enabled = true;
-        }
+        
         if(IsLocalPlayer){
             DrawWeapon();
             Strike();

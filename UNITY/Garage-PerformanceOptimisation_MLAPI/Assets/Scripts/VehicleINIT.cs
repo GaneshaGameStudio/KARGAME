@@ -67,7 +67,12 @@ public class VehicleINIT : NetworkBehaviour
                     Texture2D[] Tex = gameObject.transform.GetChild(i).gameObject.GetComponent<TexturesCollect>().TexturesCollection;
                     for(int j=0;j<Tex.Length;j++){
                             if(Tex[j].name == Mat){
-                                    gameObject.transform.GetChild(i).gameObject.GetComponent<Renderer>().sharedMaterial.SetTexture("_BaseMap",Tex[j]);
+                                    gameObject.transform.GetChild(i).gameObject.GetComponent<Renderer>().material.SetTexture("_BaseMap",Tex[j]);
+                                    gameObject.transform.GetChild(i).GetChild(0).gameObject.GetComponent<Renderer>().material.SetTexture("_BaseMap",Tex[j]);
+                                    gameObject.transform.GetChild(i).GetChild(1).gameObject.GetComponent<Renderer>().material.SetTexture("_BaseMap",Tex[j]);
+                                    gameObject.transform.GetChild(i).GetChild(0).GetChild(0).gameObject.GetComponent<Renderer>().material.SetTexture("_BaseMap",Tex[j]);
+                                    gameObject.transform.GetChild(i).GetChild(1).GetChild(0).gameObject.GetComponent<Renderer>().material.SetTexture("_BaseMap",Tex[j]);
+                                    
                      }
                 }
             }

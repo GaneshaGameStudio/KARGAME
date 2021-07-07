@@ -1958,6 +1958,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WC: {fileID: 4048666267227930497}
   Wheel: {fileID: 1436647109464319627}
+  Holder: {fileID: 5836238013751554550}
 --- !u!1 &6588764706193477804
 GameObject:
   m_ObjectHideFlags: 0
@@ -2507,6 +2508,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   kit: 
   mat: 
+  teamKit:
+    m_InternalValue: Stock
+  teamMat:
+    m_InternalValue: 
 --- !u!114 &3292575548292658601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7642,6 +7647,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WC: {fileID: 7375324787168291377}
   Wheel: {fileID: 3650304219770787468}
+  Holder: {fileID: 5836238013751554550}
 --- !u!1 &7599527596370278133
 GameObject:
   m_ObjectHideFlags: 0
@@ -8063,6 +8069,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WC: {fileID: 7000315167571907103}
   Wheel: {fileID: 4185181487829018064}
+  Holder: {fileID: 5836238013751554550}
 --- !u!1 &8266576901708040020
 GameObject:
   m_ObjectHideFlags: 0
@@ -8693,6 +8700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WC: {fileID: 9165702600103428054}
   Wheel: {fileID: 1804325493334289084}
+  Holder: {fileID: 5836238013751554550}
 --- !u!1001 &3957827698970379116
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8877,7 +8885,7 @@ PrefabInstance:
     - target: {fileID: 1497432039869667490, guid: c700408919afb410c92797f94ee9fc46, type: 3}
       propertyPath: rearweapon
       value: 
-      objectReference: {fileID: 7375324787168291377}
+      objectReference: {fileID: 2820511863145236666}
     - target: {fileID: 1497432039869667490, guid: c700408919afb410c92797f94ee9fc46, type: 3}
       propertyPath: Weaponlocation.x
       value: -0.015
