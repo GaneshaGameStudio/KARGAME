@@ -23,7 +23,6 @@ public class Scaler : MonoBehaviour
         playanim = true;
         mSize = 100.0f;
         cSize = 0.0f;
-        print(Chat.isCrash);
         if(Chat.isCrash == true){
             
             GameObject.FindWithTag("UserText").GetComponent<Text>().text = "ºÉÆUÉ >:0";

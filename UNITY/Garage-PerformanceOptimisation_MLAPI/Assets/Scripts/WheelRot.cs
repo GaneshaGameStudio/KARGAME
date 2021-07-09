@@ -31,6 +31,9 @@ public class WheelRot : MonoBehaviour
         if(WC.GetGroundHit(out WheelHit hit)){
             Holder.transform.GetChild(1).GetComponent<Collider>().enabled = true;
         }
+        else{
+            Holder.transform.GetChild(1).GetComponent<Collider>().enabled = false;
+        }
         
         
         Rot();

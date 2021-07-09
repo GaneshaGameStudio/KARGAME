@@ -18,6 +18,7 @@ public class SimpleBodyController: NetworkBehaviour
     public float FR = 1.0f;
     public float maxhealth = 2f;
     public float damage;
+    public GameObject weapon;
     NetworkVariableFloat health = new NetworkVariableFloat(2f);
     
     
@@ -26,6 +27,7 @@ public class SimpleBodyController: NetworkBehaviour
     private void Awake(){
         playerActionControls = new PlayerActionControls();
         health.Value = maxhealth;
+        actualhealth = health.Value;
     }
     
     
@@ -84,19 +86,17 @@ public class SimpleBodyController: NetworkBehaviour
         float n = movementInput[0];
         ApplyInput(l,n,wheelieInput);
     }
-    public void Fall(){
-        if(health.Value<0){
-            if(!IsLocalPlayer){
-
-                //turn off character control
-                //gameObject.GetComponent<CharacterController>().enabled = false;
+     public void Fall(){
+        if(actualhealth<=0f){
+             //turn off character control
+                gameObject.GetComponent<CharacterController>().enabled = false;
                 //turn on root motion
                 anim.applyRootMotion = true;
                 //turn off animator
                 anim.enabled = false;
-                gameObject.transform.Find("Weapon").GetComponent<BoxCollider>().isTrigger = false;
-                gameObject.transform.Find("Weapon").GetComponent<Rigidbody>().isKinematic = false;
-                gameObject.transform.Find("Weapon").GetComponent<Rigidbody>().useGravity = true;
+                weapon.GetComponent<BoxCollider>().isTrigger = false;
+                weapon.GetComponent<Rigidbody>().isKinematic = false;
+                weapon.GetComponent<Rigidbody>().useGravity = true;
 
                 Rigidbody[] allRBs = GetComponentsInChildren<Rigidbody>();
             for (int r=0;r<allRBs.Length;r++) {
@@ -107,17 +107,32 @@ public class SimpleBodyController: NetworkBehaviour
             for (int r=0;r<allCCs.Length;r++) {
                       allCCs[r].enabled = true;
                 }
-            }
-            else{
-            health.Value = 0;
-            Chat.isCrash = true;
-            transform.GetChild(3).gameObject.SetActive(true);
-            GameObject.Find("Life").SetActive(false);
-            }
+                if(IsLocalPlayer){
+                    health.Value = 0;
+                }
+            
+    }
+    }
+    private IEnumerator Coffin(){
+        
+        yield return new WaitForSeconds(1.5f);
+        if(!IsLocalPlayer){
+            gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            gameObject.transform.GetChild(1).gameObject.SetActive(false);
+            gameObject.transform.GetChild(2).gameObject.SetActive(false);
+            gameObject.transform.GetChild(5).gameObject.SetActive(false);
+            gameObject.transform.GetChild(4).gameObject.SetActive(true);
+        }
 
     }
+    [ServerRpc]
+    void ShowCoffinServerRpc(){
+       StartCoroutine("Coffin");
 
-
+    }
+    [ClientRpc]
+    void ShowCoffinClientRpc(){
+        StartCoroutine("Coffin");
     }
     [ServerRpc]
     public void TakeDamageServerRpc(float damage){
@@ -131,15 +146,20 @@ public class SimpleBodyController: NetworkBehaviour
                 if(collision.gameObject.tag=="Weapon" && collision.transform.root.gameObject.GetComponent<NetworkObject>().IsLocalPlayer==false){
                     
                     TakeDamageServerRpc(damage);
-                    if(Chat.Life <= 0){
+                    if(health.Value <= 0f){
                         Chat.isCrash = true;
                         transform.GetChild(3).gameObject.SetActive(true);
+                        ShowCoffinServerRpc();
+                        ShowCoffinClientRpc();
                     }
                     else{
                         Chat.Life=Mathf.CeilToInt((Mathf.Max(0f,actualhealth))); 
-                        print(actualhealth);
-                        print("Life"+Chat.Life.ToString());
-                        GameObject.Find("Life"+Chat.Life.ToString()).SetActive(false);
+                        try{
+                             GameObject.Find("Life"+Chat.Life.ToString()).SetActive(false);
+                        }
+                        catch{
+
+                        }
                         
                     }
                 }
@@ -154,6 +174,5 @@ public class SimpleBodyController: NetworkBehaviour
             MovePlayer();
         }
         actualhealth = health.Value;
-         
     }
 }

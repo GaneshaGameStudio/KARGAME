@@ -33,6 +33,7 @@ public class Weapon : NetworkBehaviour
         playerActionControls.Enable();
         release.SetActive(false);
         ps1 = GetComponent<ParticleSystem>();
+        anim.SetBool("WeaponDraw",false);
         var emission = ps1.emission;
         emission.enabled = false;
         emission = ps2.emission;

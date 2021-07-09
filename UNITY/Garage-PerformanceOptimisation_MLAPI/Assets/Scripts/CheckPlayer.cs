@@ -11,8 +11,8 @@ public class CheckPlayer : MonoBehaviour
                 if(gameObject.transform.root.tag!="Manushya"){
             Animator anim = gameObject.GetComponent<Animator>();
             anim.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Animation/Rider");
-            gameObject.GetComponent<SimpleBodyController>().enabled = false;
-            gameObject.GetComponent<CharacterController>().enabled = false;
+            Destroy(gameObject.GetComponent<SimpleBodyController>());
+            Destroy(gameObject.GetComponent<CharacterController>());
             
             if(scene.name=="Garage" || scene.name == "ModShop"){
                 gameObject.GetComponent<Animate>().enabled = false;
@@ -44,7 +44,7 @@ public class CheckPlayer : MonoBehaviour
             
         }
         else{
-            gameObject.GetComponent<Animate>().enabled = false;
+            Destroy(gameObject.GetComponent<Animate>());
             gameObject.GetComponent<SimpleBodyController>().enabled = true;
             gameObject.GetComponent<CharacterController>().enabled = true;
             gameObject.GetComponent<Chat>().enabled = true;
