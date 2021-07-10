@@ -19,11 +19,12 @@ public class Animate : NetworkBehaviour
     NetworkVariableFloat health = new NetworkVariableFloat(2f);
     public float actualhealth;
     public GameObject weapon;
+    public int Kit;
     // Start is called before the first frame update
     private void Awake(){
-        playerActionControls = new PlayerActionControls();
-        health.Value = maxhealth;
-        actualhealth = health.Value;
+    playerActionControls = new PlayerActionControls();
+    health.Value = maxhealth;
+    actualhealth = health.Value;
         // Do these things if rider and not walker
     }
     
@@ -42,7 +43,7 @@ public class Animate : NetworkBehaviour
         playerActionControls.Disable();
     }
     public void Fall(){
-        if(health.Value<0){
+        if(actualhealth<=0f){
              //turn off character control
                 gameObject.GetComponent<CharacterController>().enabled = false;
                 //turn on root motion
@@ -62,44 +63,44 @@ public class Animate : NetworkBehaviour
             for (int r=0;r<allCCs.Length;r++) {
                       allCCs[r].enabled = true;
                 }
+                if(IsLocalPlayer){
+                    health.Value = 0;
+                }
             
-            if(!IsLocalPlayer){
-                
-
-               
-            }
-            else{
-            PlayerPrefs.SetFloat("SpawnLoc.x",gameObject.transform.position.x);
-            PlayerPrefs.SetFloat("SpawnLoc.y",gameObject.transform.position.y);
-            PlayerPrefs.SetFloat("SpawnLoc.z",gameObject.transform.position.z);
-            
-            IEnumerator coroutine;
-            coroutine = SpawnCoffin(PlayerPrefs.GetFloat("SpawnLoc.x"),PlayerPrefs.GetFloat("SpawnLoc.y"),PlayerPrefs.GetFloat("SpawnLoc.z"));
-            StartCoroutine(coroutine);
-            health.Value = 0;
-            Chat.isCrash = true;
-            transform.GetChild(3).gameObject.SetActive(true);
-            GameObject.Find("Life").SetActive(false);
-            }
-
     }
     }
     
-    private IEnumerator SpawnCoffin(float x, float y, float z){
-        yield return new WaitForSeconds(2f);
-        SpawnCoffinServerRpc(x,y,z);
+    private IEnumerator Coffin(){
+        
+        yield return new WaitForSeconds(1.5f);
+        if(!IsLocalPlayer){
+        gameObject.transform.root.GetChild(0).gameObject.SetActive(false);
+        gameObject.transform.root.GetChild(1).gameObject.SetActive(false);
+        gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        gameObject.transform.GetChild(1).gameObject.SetActive(false);
+        gameObject.transform.GetChild(2).gameObject.SetActive(false);
+        gameObject.transform.GetChild(5).gameObject.SetActive(false);
+        gameObject.transform.GetChild(4).gameObject.SetActive(true);
+        for (int i=0;i<=Kit;i++){
+            gameObject.transform.root.GetChild(2+i).gameObject.SetActive(false);
+        }
+
+            //gameObject.transform.root.GetChild(2).gameObject.SetActive(false);
+            //gameObject.transform.root.GetChild(3).gameObject.SetActive(false);
+            //gameObject.transform.root.GetChild(4).gameObject.SetActive(false);
+            //gameObject.transform.root.GetChild(5).gameObject.SetActive(false);
+            
+        }
 
     }
-    
     [ServerRpc]
-    public void SpawnCoffinServerRpc(float x, float y, float z){
-       
-        GameObject prefab = Resources.Load("Landmarks_prefabs/Coffin") as GameObject; 
-        GameObject go = Instantiate(prefab, new Vector3(x, y, z), Quaternion.Euler(0,0,0));
-        go.GetComponent<NetworkObject>().Spawn();
-        print("spawned");
-        Destroy(gameObject);
+    void ShowCoffinServerRpc(){
+       StartCoroutine("Coffin");
 
+    }
+    [ClientRpc]
+    void ShowCoffinClientRpc(){
+        StartCoroutine("Coffin");
     }
     [ServerRpc]
     public void TakeDamageServerRpc(float damage){
@@ -113,9 +114,11 @@ public class Animate : NetworkBehaviour
                 if(collision.gameObject.tag=="Weapon" && collision.transform.root.gameObject.GetComponent<NetworkObject>().IsLocalPlayer==false){
                     
                     TakeDamageServerRpc(damage);
-                    if(Chat.Life <= 0f){
+                    if(health.Value <= 0f){
                         Chat.isCrash = true;
                         transform.GetChild(3).gameObject.SetActive(true);
+                        ShowCoffinServerRpc();
+                        ShowCoffinClientRpc();
                     }
                     else{
                         Chat.Life=Mathf.CeilToInt((Mathf.Max(0f,actualhealth))); 
@@ -125,7 +128,6 @@ public class Animate : NetworkBehaviour
                         catch{
 
                         }
-                       
                         
                     }
                 }
