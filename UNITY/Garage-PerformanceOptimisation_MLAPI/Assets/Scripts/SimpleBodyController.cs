@@ -5,6 +5,7 @@ using MLAPI;
 using MLAPI.NetworkVariable;
 using MLAPI.Messaging;
 using UnityEngine.Animations.Rigging;
+using TMPro;
 public class SimpleBodyController: NetworkBehaviour
 {   
     public float rotationRate = 360;
@@ -19,6 +20,7 @@ public class SimpleBodyController: NetworkBehaviour
     public float maxhealth = 2f;
     public float damage;
     public GameObject weapon;
+    public int Kit;
     NetworkVariableFloat health = new NetworkVariableFloat(2f);
     
     
@@ -43,7 +45,14 @@ public class SimpleBodyController: NetworkBehaviour
     {if(IsLocalPlayer){
             remainingfuel = FR;
             CameraFollowController.objectToFollow = gameObject.transform;
-            
+            int MoneyP = PlayerPrefs.GetInt("MoneyPocket");
+            int MoneyB = PlayerPrefs.GetInt("MoneyBank");
+            MoneyP = 2000-MoneyP;
+            MoneyB = MoneyB - MoneyP;
+            PlayerPrefs.SetInt("MoneyPocket", 2000);
+            PlayerPrefs.SetInt("MoneyBank", MoneyB);
+            GameObject.Find("Money-number").GetComponent<TextMeshProUGUI>().SetText((PlayerPrefs.GetInt("MoneyPocket")).ToString());
+ 
         }
         anim = gameObject.GetComponent<Animator>();
         
@@ -116,22 +125,28 @@ public class SimpleBodyController: NetworkBehaviour
     private IEnumerator Coffin(){
         
         yield return new WaitForSeconds(1.5f);
+        
         if(!IsLocalPlayer){
             gameObject.transform.GetChild(0).gameObject.SetActive(false);
             gameObject.transform.GetChild(1).gameObject.SetActive(false);
             gameObject.transform.GetChild(2).gameObject.SetActive(false);
-            gameObject.transform.GetChild(5).gameObject.SetActive(false);
             gameObject.transform.GetChild(4).gameObject.SetActive(true);
+            for (int i=5;i<=5+Kit;i++){
+                gameObject.transform.GetChild(i).gameObject.SetActive(false);
+            }
+            
         }
 
     }
     [ServerRpc]
     void ShowCoffinServerRpc(){
+        
        StartCoroutine("Coffin");
 
     }
     [ClientRpc]
     void ShowCoffinClientRpc(){
+       
         StartCoroutine("Coffin");
     }
     [ServerRpc]
@@ -147,6 +162,9 @@ public class SimpleBodyController: NetworkBehaviour
                     
                     TakeDamageServerRpc(damage);
                     if(health.Value <= 0f){
+                        ///gameObject.transform.GetChild(4).gameObject.SetActive(true);
+                        GameObject.Find("Money-number").GetComponent<TextMeshProUGUI>().SetText((0).ToString());
+                        PlayerPrefs.SetInt("MoneyPocket",0);
                         Chat.isCrash = true;
                         transform.GetChild(3).gameObject.SetActive(true);
                         ShowCoffinServerRpc();

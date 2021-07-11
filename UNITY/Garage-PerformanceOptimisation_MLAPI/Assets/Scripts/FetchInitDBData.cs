@@ -59,9 +59,10 @@ public class FetchInitDBData : MonoBehaviour
             PlayerPrefs.SetInt("2WheelerLicense",1);
             PlayerPrefs.SetInt("3WheelerLicense",1);
             PlayerPrefs.SetInt("4WheelerLicense",0);
-            PlayerPrefs.SetFloat("Money",1000);
+            PlayerPrefs.SetInt("MoneyBank",20000);
+            PlayerPrefs.SetInt("MoneyPocket",2000);
             PlayerPrefs.SetInt("Health",50);
-            PlayerPrefs.SetFloat("MoneyPerHealth",5);
+            PlayerPrefs.SetInt("MoneyPerHealth",5);
             PlayerPrefs.SetFloat("TotalDistanceTraveled",0);
             //HN-Dio
             PlayerPrefs.SetString("HN-Dio_Unlocked","1");
@@ -179,7 +180,8 @@ public class FetchInitDBData : MonoBehaviour
         PlayerPrefs.SetString("Timestamp",dbInitData["data"][0]["Timestamp"]);
         PlayerPrefs.SetInt("2WheelerLicense",int.Parse(dbInitData["data"][0]["License2W"]));
         PlayerPrefs.SetInt("4WheelerLicense",int.Parse(dbInitData["data"][0]["License4W"]));
-        PlayerPrefs.SetFloat("Money",float.Parse(dbInitData["data"][0]["Money"]));
+        PlayerPrefs.SetInt("MoneyBank",int.Parse(dbInitData["data"][0]["MoneyBank"]));
+        PlayerPrefs.SetInt("MoneyPocket",int.Parse(dbInitData["data"][0]["MoneyPocket"]));
         PlayerPrefs.SetInt("Health",int.Parse(dbInitData["data"][0]["Health"]));
         PlayerPrefs.SetFloat("MoneyPerHealth",float.Parse(dbInitData["data"][0]["MoneyPerHealth"]));
         PlayerPrefs.SetFloat("TotalDistanceTraveled",float.Parse(dbInitData["data"][0]["TotalDistanceTraveled"]));

@@ -7,6 +7,7 @@ public class SceneChange: MonoBehaviour {
     public void btn_change_scene(string scene_name){
         MoveCamera.mCameraIndex  = 100;
         MoveCameraModShop.mCameraIndex  = 100;
+        Chat.isCrash = false;
         PlayerPrefs.Save();
         if(GameObject.Find(VehicleID.VehicleTag+"Gate")){
             

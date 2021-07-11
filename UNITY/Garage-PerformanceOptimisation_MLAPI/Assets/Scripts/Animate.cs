@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using MLAPI;
+using TMPro;
 using UnityEngine.Animations.Rigging;
 using UnityEngine.Networking;
 using MLAPI.Messaging;
@@ -31,6 +32,14 @@ public class Animate : NetworkBehaviour
     void Start()
     {   
         if(IsLocalPlayer){
+            int MoneyP = PlayerPrefs.GetInt("MoneyPocket");
+            int MoneyB = PlayerPrefs.GetInt("MoneyBank");
+            MoneyP = 2000-MoneyP;
+            MoneyB = MoneyB - MoneyP;
+            PlayerPrefs.SetInt("MoneyPocket", 2000);
+            PlayerPrefs.SetInt("MoneyBank", MoneyB);
+            GameObject.Find("Money-number").GetComponent<TextMeshProUGUI>().SetText((PlayerPrefs.GetInt("MoneyPocket")).ToString());
+ 
             anim = gameObject.GetComponent<Animator>();
         }
         
@@ -65,7 +74,8 @@ public class Animate : NetworkBehaviour
                 }
                 if(IsLocalPlayer){
                     health.Value = 0;
-                }
+                    PlayerPrefs.SetInt("MoneyPocket",0);
+                    }
             
     }
     }
@@ -85,12 +95,7 @@ public class Animate : NetworkBehaviour
             gameObject.transform.root.GetChild(2+i).gameObject.SetActive(false);
         }
 
-            //gameObject.transform.root.GetChild(2).gameObject.SetActive(false);
-            //gameObject.transform.root.GetChild(3).gameObject.SetActive(false);
-            //gameObject.transform.root.GetChild(4).gameObject.SetActive(false);
-            //gameObject.transform.root.GetChild(5).gameObject.SetActive(false);
-            
-        }
+    }
 
     }
     [ServerRpc]
@@ -115,6 +120,8 @@ public class Animate : NetworkBehaviour
                     
                     TakeDamageServerRpc(damage);
                     if(health.Value <= 0f){
+                        GameObject.Find("Money-number").GetComponent<TextMeshProUGUI>().SetText((0).ToString());
+                        PlayerPrefs.SetInt("MoneyPocket",0);
                         Chat.isCrash = true;
                         transform.GetChild(3).gameObject.SetActive(true);
                         ShowCoffinServerRpc();

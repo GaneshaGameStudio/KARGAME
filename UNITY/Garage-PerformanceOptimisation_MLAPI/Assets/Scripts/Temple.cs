@@ -12,18 +12,19 @@ public class Temple : MonoBehaviour, IPointerClickHandler
     private TextMeshProUGUI MoneyPro;
     Animator bellanim;
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {   
-        MoneyINIT = 2560;
-        Moneyperlife = 200;
-        MoneyLeft = MoneyINIT;
-        MoneyPro = GameObject.Find("Money-number").GetComponent<TextMeshProUGUI>();
-        MoneyPro.SetText((MoneyINIT).ToString());
-        bellanim = gameObject.GetComponent<Animator>();
+         bellanim = gameObject.GetComponent<Animator>();
+         MoneyPro = GameObject.Find("Money-number").GetComponent<TextMeshProUGUI>();
+         MoneyLeft = PlayerPrefs.GetInt("MoneyPocket");
+         Moneyperlife = 400;
+ 
+        
     }
    
     public void OnPointerClick (PointerEventData eventData)
-     {
+     {  
+
         MoneyLeft = Mathf.Max(MoneyLeft - Moneyperlife,0);
         if(MoneyLeft!=0){
             bellanim.SetTrigger("Playbell");
@@ -38,13 +39,9 @@ public class Temple : MonoBehaviour, IPointerClickHandler
                 GameObject.Find("Life").transform.Find("Life2").gameObject.SetActive(true);
             }
             MoneyPro.SetText((MoneyLeft).ToString());
-            
+            PlayerPrefs.SetInt("MoneyPocket", MoneyLeft);
+
         }
         
      }
-    // Update is called once per frame
-    void Update()
-    {
-    
-    }
 }

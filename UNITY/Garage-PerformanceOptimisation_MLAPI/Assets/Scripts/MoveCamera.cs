@@ -67,6 +67,8 @@ public class MoveCamera : MonoBehaviour
         currentvehicle = GO[mCurrentIndex].transform.GetChild(mCarIndex).gameObject.name;
         VehicleID.Vehicle = currentvehicle;
         VehicleID.VehicleTag = GO[mCurrentIndex].transform.GetChild(mCarIndex).gameObject.tag;
+        GameObject.Find("Points-number").GetComponent<TextMeshProUGUI>().SetText((PlayerPrefs.GetInt("MoneyBank")).ToString());
+    
     }
     void Start()
     {   
