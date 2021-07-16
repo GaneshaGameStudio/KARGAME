@@ -34,8 +34,8 @@ public class CameraFollowController : MonoBehaviour {
 	private void FixedUpdate()
 	{	
 		
-			if(GameObject.Find(VehicleID.Vehicle+"(Clone)").tag == "2Wheeler"){
-			if(GameObject.Find(VehicleID.Vehicle+"(Clone)").GetComponent<Lean>().isWheelie == true)
+			if(objectToFollow.tag == "2Wheeler"){
+			if(objectToFollow.GetComponent<Lean>().isWheelie == true)
 				{	
 					followSpeed = 1;
 					lookSpeed = 1;

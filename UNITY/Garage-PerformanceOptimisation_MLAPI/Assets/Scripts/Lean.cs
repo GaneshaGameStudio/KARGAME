@@ -17,15 +17,28 @@ public class Lean : NetworkBehaviour
     public GameObject Vehicle;
     private float Torque = 0f;
 
-
     private void Awake(){
         playerActionControls = new PlayerActionControls();
     }
 
     void Start()
-    {
-        if(IsLocalPlayer)
+    {   
+        if(IsLocalPlayer){
             CameraFollowController.objectToFollow = gameObject.transform;
+            fuelreader.GO = gameObject;
+        }
+        if(!IsLocalPlayer){
+            gameObject.layer = LayerMask.NameToLayer("Player");
+            List<Transform> transformList = new List<Transform>();
+            gameObject.GetComponentsInChildren<Transform>(transformList);
+            for(int i=0;i<=transformList.Count-1;i++){
+                transformList[i].gameObject.layer = LayerMask.NameToLayer("Player");
+            }
+            
+            
+        }
+            
+
     }
     private void OnEnable(){
         playerActionControls.Enable();

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using MLAPI;
 
 public class Scaler : MonoBehaviour
 {   
@@ -17,7 +18,7 @@ public class Scaler : MonoBehaviour
     // Start is called before the first frame update
     void OnEnable()
     {   
-        
+        if(gameObject.transform.root.gameObject.GetComponent<NetworkObject>().IsLocalPlayer)
         m_Volume = GameObject.Find("Post-process Volume").GetComponent<Volume>();
         //VolumeProfile profile = m_Volume.sharedProfile;
         playanim = true;
@@ -26,9 +27,10 @@ public class Scaler : MonoBehaviour
         if(Chat.isCrash == true){
             
             GameObject.FindWithTag("UserText").GetComponent<Text>().text = "ºÉÆUÉ >:0";
+            gameObject.SetActive(true);   
             InvokeRepeating("Hoge",0.0f,0.005f);
         }
-        else if(GameObject.FindWithTag("fuel").GetComponent<fuelreader>().isKhali == true){
+        else if(fuelreader.isKhali == true){
             GameObject.FindWithTag("UserText").GetComponent<Text>().text = "SÁ°";
             InvokeRepeating("Khali",0.0f,0.005f);
         }
@@ -48,7 +50,7 @@ public class Scaler : MonoBehaviour
     {
         //coloradj.enabled.value = enabled;
     }
-    // Update is called once per frame
+   
     void Hoge(){
         if(playanim==true){
             if(mSize <=0.0f)
@@ -58,7 +60,8 @@ public class Scaler : MonoBehaviour
             }
         if(cSize >=1.0f){
             CancelInvoke("Hoge");
-        }        
+        } 
+            
         GetComponent<SkinnedMeshRenderer>().SetBlendShapeWeight(0,mSize);
         transform.localScale = new Vector3(cSize, cSize, cSize);
         cSize = cSize + 2f*Time.deltaTime;

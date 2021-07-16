@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MLAPI;
 
 public class SimpleDrive : MonoBehaviour
 {   
@@ -32,6 +33,12 @@ public class SimpleDrive : MonoBehaviour
     {
         WC = this.GetComponent<WheelCollider>();
         remainingfuel = FR;
+        if(gameObject.transform.root.gameObject.GetComponent<NetworkObject>().IsLocalPlayer){
+        fuelreader.TC = tankcap;
+        fuelreader.RF = FR;
+        fuelreader.M = mileage;
+        fuelreader.isKhali = false;
+        }
     }
 
     void Go(float accel, float steer)

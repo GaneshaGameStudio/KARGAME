@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using MLAPI;
 
 public class RoadBoard : MonoBehaviour
 {   
@@ -11,7 +12,7 @@ public class RoadBoard : MonoBehaviour
     // Start is called before the first frame update
     void OnTriggerEnter(Collider other)
     {   
-        if(other.tag=="Kit"){
+        if(other.tag=="Kit" && other.transform.root.gameObject.GetComponent<NetworkObject>().IsLocalPlayer){
             road = GameObject.Find("RoadBoard");
             road.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().SetText(Areaname);
             

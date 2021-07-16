@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MLAPI.Messaging;
+using MLAPI;
+using TMPro;
 
-public class Chat : MonoBehaviour
+public class Chat : NetworkBehaviour
 {   
     public static bool isCrash = false;
     public bool isKhalicheck = false;
@@ -23,6 +26,15 @@ public class Chat : MonoBehaviour
                     Life=Life-1;
                     isCrash = true;
                     transform.Find("LogoAPPchatanim").gameObject.SetActive(true);
+                    if(transform.root.gameObject.tag!="Manushaya"){
+                        if(transform.root.gameObject.GetComponent<NetworkObject>().IsLocalPlayer){
+                        GameObject.Find("Money-number").GetComponent<TextMeshProUGUI>().SetText((0).ToString());
+                        PlayerPrefs.SetInt("MoneyPocket",0);
+                        ShowCoffinServerRpc();
+                        ShowCoffinClientRpc();
+                        }
+                       
+                    }
                 }
                 else{
                     GameObject.Find("Life"+Life.ToString()).SetActive(false);
@@ -34,7 +46,27 @@ public class Chat : MonoBehaviour
             }
         }
     }
+    private IEnumerator CoffinVehicle(){
+        yield return new WaitForSeconds(1.5f);
+        if(!IsLocalPlayer){
+            for(int i =0;i<transform.childCount-1;i++){
+                //Destroy(gameObject.transform.root.GetChild(i).gameObject);
+                gameObject.transform.root.GetChild(i).gameObject.SetActive(false);
+            }
+            Destroy(gameObject.transform.root.GetComponent<Rigidbody>());
+            gameObject.transform.root.GetChild(transform.root.childCount-1).gameObject.SetActive(true);
+            
+        }
+    }
+    [ServerRpc]
+    void ShowCoffinServerRpc(){
+       StartCoroutine("CoffinVehicle");
 
+    }
+    [ClientRpc]
+    void ShowCoffinClientRpc(){
+        StartCoroutine("CoffinVehicle");
+    }
     void OnTriggerEnter(Collider other){
         if(other.tag == "License" )
         {
@@ -45,17 +77,5 @@ public class Chat : MonoBehaviour
             isDisplayMessage = true;
             transform.Find("LogoAPPchatanim").gameObject.SetActive(true);
         }
-    }
-        
-    // Update is called once per frame
-    void Update()
-    {   
-        
-        if(GameObject.FindWithTag("fuel").GetComponent<fuelreader>().isKhali == true){
-        isKhalicheck = true;
-        transform.Find("LogoAPPchatanim").gameObject.SetActive(true);
-        
-        }
-        
     }
 }
