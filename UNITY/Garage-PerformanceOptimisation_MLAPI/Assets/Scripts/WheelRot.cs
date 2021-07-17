@@ -17,7 +17,7 @@ public class WheelRot : MonoBehaviour
         Quaternion quat;
         Vector3 position;
         WC.GetWorldPose(out position, out quat);
-        Wheel.transform.position = position;
+        //Wheel.transform.position = position;
         Wheel.transform.rotation = quat;
     }
     
@@ -28,12 +28,15 @@ public class WheelRot : MonoBehaviour
     void Update()
     
     {   
-        if(WC.GetGroundHit(out WheelHit hit)){
+        if(WC.name!="WheelFC"){
+            if(WC.GetGroundHit(out WheelHit hit)){
             Holder.transform.GetChild(1).GetComponent<Collider>().enabled = true;
         }
         else{
             Holder.transform.GetChild(1).GetComponent<Collider>().enabled = false;
         }
+        }
+        
         
         
         Rot();

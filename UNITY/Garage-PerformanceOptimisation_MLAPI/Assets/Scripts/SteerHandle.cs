@@ -9,6 +9,8 @@ public class SteerHandle : MonoBehaviour
     private PlayerActionControls playerActionControls;
     private float s = 0f;
     public GameObject Vehicle;
+    public WheelCollider WC;
+    public GameObject Wheel;
 
     private void Awake(){
     playerActionControls = new PlayerActionControls();
@@ -31,10 +33,15 @@ public class SteerHandle : MonoBehaviour
         if(currentZEuler>270){
             currentZEuler = currentZEuler - 360;
         }
+        Quaternion quat;
+        Vector3 position;
+        WC.GetWorldPose(out position, out quat);
         var deltaZEuler = (((maxSteerAngleFork)*steer)/(vel*vel) - currentZEuler)*3f*Time.deltaTime;
         transform.Rotate(0, 0, deltaZEuler, Space.Self);
-    }
+        Wheel.transform.Rotate(quat.eulerAngles.x - Wheel.transform.rotation.eulerAngles.x,0,0);
 
+    }
+    
     void Update()
     {   
         Vector2 movementInput = playerActionControls.Vehicle.Move.ReadValue<Vector2>();
@@ -47,6 +54,7 @@ public class SteerHandle : MonoBehaviour
         else
         {
             Go(s);
+            
         }
     }
 }

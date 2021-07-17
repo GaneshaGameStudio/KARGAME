@@ -4,20 +4,26 @@ using UnityEngine;
 
 public class Lights : MonoBehaviour
 {   
-    public bool LightOn;
+    public static bool LightOn;
     public Material[] material;
     private GameObject[] HeadLights;
     // Start is called before the first frame update
     void OnEnable()
     {
-        StartCoroutine("CheckLights");
+        
+        if(gameObject.tag=="Lightsprojector" && Lights.LightOn==true){
+            gameObject.SetActive(false);
+        }
+        else{
+            StartCoroutine("CheckLights");
+        }
     }
     private IEnumerator CheckLights(){
         
         while(true){
                 yield return new WaitForSeconds(1f);
                 HeadLights = GameObject.FindGameObjectsWithTag("Lights");
-        if(LightOn){
+                if(LightOn){
             for (int i = 0; i < material.Length; i++){
                 material[i].EnableKeyword("_EMISSION");
             }

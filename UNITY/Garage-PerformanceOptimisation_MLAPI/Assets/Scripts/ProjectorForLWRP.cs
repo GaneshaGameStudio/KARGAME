@@ -1,10 +1,4 @@
-﻿//
-// ProjectorForLWRP.cs
-//
-// Projector For LWRP
-//
-// Copyright (c) 2019 NYAHOON GAMES PTE. LTD.
-//
+﻿
 
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -15,7 +9,8 @@ namespace ProjectorForLWRP
 	[ExecuteInEditMode]
 	[RequireComponent(typeof(Projector))]
 	public class ProjectorForLWRP : ProjectorForSRP.ProjectorForSRP, ICustomRenderer
-	{
+	{	
+		
 		[System.Flags]
 		public enum StencilTestOptions
 		{

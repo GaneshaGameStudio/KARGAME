@@ -27,16 +27,7 @@ public class Lean : NetworkBehaviour
             CameraFollowController.objectToFollow = gameObject.transform;
             fuelreader.GO = gameObject;
         }
-        if(!IsLocalPlayer){
-            gameObject.layer = LayerMask.NameToLayer("Player");
-            List<Transform> transformList = new List<Transform>();
-            gameObject.GetComponentsInChildren<Transform>(transformList);
-            for(int i=0;i<=transformList.Count-1;i++){
-                transformList[i].gameObject.layer = LayerMask.NameToLayer("Player");
-            }
-            
-            
-        }
+        
             
 
     }

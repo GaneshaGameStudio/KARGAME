@@ -8,7 +8,7 @@ public class SimpleDrive : MonoBehaviour
     public WheelCollider WC;
     public float torque = 75;
     public float maxSteerAngle = 30;
-    public GameObject Wheel;
+    //public GameObject Wheel;
     public GameObject Vehicle;
     public Rigidbody rb;
     private PlayerActionControls playerActionControls;
@@ -53,14 +53,8 @@ public class SimpleDrive : MonoBehaviour
         else{
             WC.motorTorque = 0f;
         }
-        WC.steerAngle = steer*Time.deltaTime*30f;
-        
 
-        Quaternion quat;
-        Vector3 position;
-        WC.GetWorldPose(out position, out quat);
-        Wheel.transform.position = position;
-        Wheel.transform.rotation = quat;
+        WC.steerAngle = Mathf.Lerp(WC.steerAngle, steer, Time.deltaTime*15f);
 
         var velDir = transform.InverseTransformDirection(rb.velocity);
         if (velDir.z < -0.1)
@@ -75,8 +69,8 @@ public class SimpleDrive : MonoBehaviour
     {   
         Vector2 movementInput = playerActionControls.Vehicle.Move.ReadValue<Vector2>();
         float w = movementInput[1];
-        
         a = Mathf.MoveTowards(movementInput[0], a, 0.7f * Time.deltaTime);
+        //a=0f;
         Go(w,a);
 
     }

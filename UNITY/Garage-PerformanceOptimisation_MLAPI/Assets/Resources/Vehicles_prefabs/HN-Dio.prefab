@@ -114,6 +114,8 @@ MonoBehaviour:
   maxSteerAngleFork: 30
   rb: {fileID: 7375324786553906105}
   Vehicle: {fileID: 7375324786553906104}
+  WC: {fileID: 3480069689498304372}
+  Wheel: {fileID: 4223976504710853118}
 --- !u!1 &706968580868635260
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,7 +327,6 @@ MonoBehaviour:
   WC: {fileID: 5383021902623599071}
   torque: 75
   maxSteerAngle: 45
-  Wheel: {fileID: 706968580868635260}
   Vehicle: {fileID: 7375324786553906104}
   rb: {fileID: 7375324786553906105}
   maxSpeed: 80
@@ -799,7 +800,6 @@ MonoBehaviour:
   WC: {fileID: 3480069689498304372}
   torque: 75
   maxSteerAngle: 45
-  Wheel: {fileID: 4223976504710853118}
   Vehicle: {fileID: 7375324786553906104}
   rb: {fileID: 7375324786553906105}
   maxSpeed: 80
@@ -815,8 +815,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2820511863145236661}
-  - component: {fileID: 2820511863145236664}
-  - component: {fileID: 2820511863145236667}
   - component: {fileID: 2820511863145236666}
   - component: {fileID: 2820511863145236660}
   m_Layer: 0
@@ -840,56 +838,6 @@ Transform:
   m_Father: {fileID: 6598188172797979165}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -118.515, y: 0, z: 180}
---- !u!33 &2820511863145236664
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2820511863145236663}
-  m_Mesh: {fileID: -4736947588520929583, guid: b3c63c1793a754184b346a3f8ed50e47, type: 3}
---- !u!23 &2820511863145236667
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2820511863145236663}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: -876546973899608171, guid: b3c63c1793a754184b346a3f8ed50e47, type: 3}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!146 &2820511863145236666
 WheelCollider:
   m_ObjectHideFlags: 0
@@ -898,7 +846,7 @@ WheelCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2820511863145236663}
   m_Center: {x: 0, y: 0, z: 0}
-  m_Radius: 0.19
+  m_Radius: 0.205
   m_SuspensionSpring:
     spring: 9000
     damper: 900
@@ -935,7 +883,6 @@ MonoBehaviour:
   WC: {fileID: 2820511863145236666}
   torque: 75
   maxSteerAngle: 45
-  Wheel: {fileID: 3048856023704094614}
   Vehicle: {fileID: 7375324786553906104}
   rb: {fileID: 7375324786553906105}
   maxSpeed: 80
@@ -1740,6 +1687,8 @@ MonoBehaviour:
   maxSteerAngleFork: 30
   rb: {fileID: 7375324786553906105}
   Vehicle: {fileID: 7375324786553906104}
+  WC: {fileID: 5383021902623599071}
+  Wheel: {fileID: 706968580868635260}
 --- !u!1 &5769411116568079991
 GameObject:
   m_ObjectHideFlags: 0
@@ -1869,7 +1818,6 @@ MonoBehaviour:
   WC: {fileID: 5989613547533659661}
   torque: 75
   maxSteerAngle: 45
-  Wheel: {fileID: 7771973172812633696}
   Vehicle: {fileID: 7375324786553906104}
   rb: {fileID: 7375324786553906105}
   maxSpeed: 80
@@ -2252,6 +2200,8 @@ MonoBehaviour:
   maxSteerAngleFork: 30
   rb: {fileID: 7375324786553906105}
   Vehicle: {fileID: 7375324786553906104}
+  WC: {fileID: 5989613547533659661}
+  Wheel: {fileID: 7771973172812633696}
 --- !u!1 &6598188172797979166
 GameObject:
   m_ObjectHideFlags: 0
@@ -2368,6 +2318,8 @@ MonoBehaviour:
   maxSteerAngleFork: 30
   rb: {fileID: 7375324786553906105}
   Vehicle: {fileID: 7375324786553906104}
+  WC: {fileID: 2820511863145236666}
+  Wheel: {fileID: 3048856023704094614}
 --- !u!1 &7078050103698927310
 GameObject:
   m_ObjectHideFlags: 0

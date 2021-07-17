@@ -37,7 +37,7 @@ public class SimpleCarController : MonoBehaviour {
 		m_steeringAngle = maxSteerAngle * m_horizontalInput * steerFactor;
 		steer = Mathf.Clamp(steer,-1, 1) * maxSteerAngle;
 		WheelFL.steerAngle = Mathf.Lerp(WheelFL.steerAngle, steer, Time.deltaTime*15f);
-		WheelFR.steerAngle = Mathf.Lerp(WheelRL.steerAngle, steer, Time.deltaTime*15f);
+		WheelFR.steerAngle = Mathf.Lerp(WheelFR.steerAngle, steer, Time.deltaTime*15f);
 	}
 	private void Accelerate()
 	{	

@@ -27,10 +27,10 @@ public class DisplayTime : MonoBehaviour
             wordstime = Time.Split(delimiterChars);
             TextPro.SetText(wordstime[1]+" : "+wordstime[2]);
             if(int.Parse(wordstime[1])<7 || int.Parse(wordstime[1])>=17){
-                    Camera.main.GetComponent<Lights>().LightOn = true;
+                    Lights.LightOn = true;
                  }
             else{
-                    Camera.main.GetComponent<Lights>().LightOn = false;
+                    Lights.LightOn = false;
                 }
                 int currenttime = (int.Parse(wordstime[1]))*60 + int.Parse(wordstime[2]);
                 GameObject.Find("Directional Light").GetComponent<SunPosition>().Timecurrent = currenttime;

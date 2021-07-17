@@ -9857,6 +9857,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6162121766131888554, guid: 4b8106601f09e48b4a0bed28ba86df50, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6162121766131888557, guid: 4b8106601f09e48b4a0bed28ba86df50, type: 3}
       propertyPath: m_Name
       value: Projector
@@ -10969,7 +10973,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c464e10e1149044aaaae9eab61710779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LightOn: 0
   material:
   - {fileID: 2100000, guid: 0379c520ca3224f7d82be7dec56453e4, type: 2}
   - {fileID: 2100000, guid: 9a22980389c824a99acda666ca19be69, type: 2}
@@ -14509,7 +14512,7 @@ MonoBehaviour:
   m_stencilTestOptions: 0
 --- !u!119 &1936930839
 Projector:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
