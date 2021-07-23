@@ -3166,18 +3166,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4084112891685363911, guid: 416828cfb41c14878aa9d1e28066a585, type: 3}
---- !u!114 &4528573128409147212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2518154484766660902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad52236e345e1431e8a8e4ce4e07540e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2325081987611004276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3195,6 +3183,18 @@ MonoBehaviour:
   PrefabHashGenerator: YashaswiTutorials-collider
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
+--- !u!114 &4528573128409147212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2518154484766660902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad52236e345e1431e8a8e4ce4e07540e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2565897915938548887
 GameObject:
   m_ObjectHideFlags: 0

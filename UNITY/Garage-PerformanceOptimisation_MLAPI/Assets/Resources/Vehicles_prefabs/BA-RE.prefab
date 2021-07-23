@@ -324,12 +324,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4781547957284305630}
-  m_LocalRotation: {x: 0.24589922, y: -0.24589922, z: 0.6629733, w: 0.6629733}
-  m_LocalPosition: {x: 0.02, y: 0.416, z: 1.074}
+  m_LocalRotation: {x: -0.29491588, y: -0.6426699, z: 0.6426699, w: 0.29491588}
+  m_LocalPosition: {x: -1.1121658, y: 0.45231643, z: -0.0010001659}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6382013060831163305}
-  m_RootOrder: 3
+  m_Father: {fileID: 9163708833385795079}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 40.7, y: 0, z: 90}
 --- !u!23 &4635410108493848625
 MeshRenderer:
@@ -380,15 +380,15 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4781547957284305630}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 20
+  m_Color: {r: 0.990566, g: 0.8577567, b: 0.4438857, a: 1}
+  m_Intensity: 100
   m_Range: 100
-  m_SpotAngle: 62.424706
-  m_InnerSpotAngle: 19.37822
+  m_SpotAngle: 151.52802
+  m_InnerSpotAngle: 139.01505
   m_CookieSize: 10
   m_Shadows:
     m_Type: 1
@@ -397,7 +397,7 @@ Light:
     m_Strength: 1
     m_Bias: 0.02
     m_NormalBias: 0.1
-    m_NearPlane: 3.3643584
+    m_NearPlane: 0.1
     m_CullingMatrixOverride:
       e00: 1
       e01: 0
@@ -427,7 +427,7 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
@@ -5830,6 +5830,8 @@ GameObject:
   - component: {fileID: 8747548816869929008}
   - component: {fileID: 6364301687071960039}
   - component: {fileID: 7672570673429321416}
+  - component: {fileID: 7946130009695669885}
+  - component: {fileID: 1462224387497249450}
   m_Layer: 0
   m_Name: BA-RE
   m_TagString: 3Wheeler
@@ -5851,7 +5853,6 @@ Transform:
   - {fileID: 9163708833385795079}
   - {fileID: 6382013060541977460}
   - {fileID: 6382013060528261212}
-  - {fileID: 8615030613551019109}
   - {fileID: 1220066909192544153}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -5923,6 +5924,71 @@ MonoBehaviour:
     m_InternalValue: Stock
   teamMat:
     m_InternalValue: 
+--- !u!114 &7946130009695669885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6382013060831163311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkInstanceId: 0
+  PrefabHash: 8274091843926577544
+  PrefabHashGenerator: BA-RE
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+--- !u!114 &1462224387497249450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6382013060831163311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FixedSendsPerSecond: 20
+  AssumeSyncedSends: 1
+  InterpolatePosition: 1
+  SnapDistance: 10
+  InterpolateServer: 1
+  MinMeters: 0.15
+  MinDegrees: 1.5
+  ExtrapolatePosition: 0
+  MaxSendsToExtrapolate: 5
+  Channel: 
+  EnableRange: 0
+  EnableNonProvokedResendChecks: 0
+  DistanceSendrate:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 20
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 500
+      value: 20
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &7303260722587105801
 GameObject:
   m_ObjectHideFlags: 0
@@ -6072,6 +6138,7 @@ Transform:
   m_Children:
   - {fileID: 7303260722587105802}
   - {fileID: 5378300615483817691}
+  - {fileID: 8615030613551019109}
   m_Father: {fileID: 6382013060831163305}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -6165,7 +6232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6777293868648239097, guid: 75cc880be1dfd4fa096149a4f7535bce, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6777293868648239097, guid: 75cc880be1dfd4fa096149a4f7535bce, type: 3}
       propertyPath: m_LocalPosition.x

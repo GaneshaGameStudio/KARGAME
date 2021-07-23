@@ -15,6 +15,7 @@ public class VehicleINIT : NetworkBehaviour
     public NetworkVariableString teamMat = new NetworkVariableString();
   
     // Start is called before the first frame update
+   
     void Awake()
     {   
         Scene scene = SceneManager.GetActiveScene();
@@ -38,7 +39,6 @@ public class VehicleINIT : NetworkBehaviour
                     }
             }
         }
-        
     }
     
     void Start(){
@@ -46,8 +46,11 @@ public class VehicleINIT : NetworkBehaviour
 
         kit = PlayerPrefs.GetString(gameObject.name.Replace("(Clone)","").Trim() + "_KIT");
         mat = PlayerPrefs.GetString(gameObject.name.Replace("(Clone)","").Trim()  + "_MAT");
+        Scene scene = SceneManager.GetActiveScene();
+        if(scene.name =="Bangalore"){
         ulong id=NetworkManager.Singleton.LocalClientId;
-        //SelectKit(kit, mat);
+        SelectKitServerRpc(id,kit,mat);
+        }
         if(IsLocalPlayer){
             KitChange(kit,mat);
         }
@@ -55,7 +58,6 @@ public class VehicleINIT : NetworkBehaviour
             KitChange(teamKit.Value,teamMat.Value);
         }
         
-        SelectKitServerRpc(id,kit,mat);
     }
     private void KitChange(string Kit, string Mat){
         Scene scene = SceneManager.GetActiveScene();
@@ -70,8 +72,17 @@ public class VehicleINIT : NetworkBehaviour
                                     gameObject.transform.GetChild(i).gameObject.GetComponent<Renderer>().material.SetTexture("_BaseMap",Tex[j]);
                                     gameObject.transform.GetChild(i).GetChild(0).gameObject.GetComponent<Renderer>().material.SetTexture("_BaseMap",Tex[j]);
                                     gameObject.transform.GetChild(i).GetChild(1).gameObject.GetComponent<Renderer>().material.SetTexture("_BaseMap",Tex[j]);
-                                    gameObject.transform.GetChild(i).GetChild(0).GetChild(0).gameObject.GetComponent<Renderer>().material.SetTexture("_BaseMap",Tex[j]);
-                                    gameObject.transform.GetChild(i).GetChild(1).GetChild(0).gameObject.GetComponent<Renderer>().material.SetTexture("_BaseMap",Tex[j]);
+                                    if(gameObject.tag=="2Wheeler"){
+                                        gameObject.transform.GetChild(i).GetChild(0).GetChild(0).gameObject.GetComponent<Renderer>().material.SetTexture("_BaseMap",Tex[j]);
+                                        gameObject.transform.GetChild(i).GetChild(1).GetChild(0).gameObject.GetComponent<Renderer>().material.SetTexture("_BaseMap",Tex[j]);
+                                    }
+                                    else if(gameObject.tag=="4Wheeler"){
+                                        gameObject.transform.GetChild(i).GetChild(0).GetChild(0).gameObject.GetComponent<Renderer>().material.SetTexture("_BaseMap",Tex[j]);
+                                        gameObject.transform.GetChild(i).GetChild(0).GetChild(1).gameObject.GetComponent<Renderer>().material.SetTexture("_BaseMap",Tex[j]);
+                                        gameObject.transform.GetChild(i).GetChild(0).GetChild(2).gameObject.GetComponent<Renderer>().material.SetTexture("_BaseMap",Tex[j]);
+                                        gameObject.transform.GetChild(i).GetChild(0).GetChild(3).gameObject.GetComponent<Renderer>().material.SetTexture("_BaseMap",Tex[j]);
+                                    }
+                                    
                                     
                      }
                 }

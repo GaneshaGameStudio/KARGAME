@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class SimpleCarController : MonoBehaviour {
+using MLAPI;
+public class SimpleCarController : NetworkBehaviour {
 
 	private PlayerActionControls playerActionControls;
 	public Rigidbody rb;
@@ -14,7 +14,15 @@ public class SimpleCarController : MonoBehaviour {
 	private float a = 0;
 	void Start()
     {
-        remainingfuel = FR;
+		remainingfuel = FR;
+		if(IsLocalPlayer){
+            CameraFollowController.objectToFollow = gameObject.transform;
+            fuelreader.GO = gameObject.transform.parent.gameObject;
+        }
+		fuelreader.TC = tankcap;
+        fuelreader.RF = FR;
+        fuelreader.M = mileage;
+        fuelreader.isKhali = false;
     }
 	private void Awake(){
         playerActionControls = new PlayerActionControls();

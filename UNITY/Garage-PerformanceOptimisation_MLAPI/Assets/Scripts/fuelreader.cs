@@ -56,8 +56,7 @@ public class fuelreader : MonoBehaviour
         {
             //TC = GameObject.FindWithTag("Kit").GetComponent<SimpleCarController>().tankcap;
             //M = GameObject.FindWithTag("Kit").GetComponent<SimpleCarController>().mileage;
-            //RF = SimpleCarController.remainingfuel;
-            
+            RF = SimpleCarController.remainingfuel;
             TotalDistance += (rb.velocity.magnitude * Time.deltaTime);
             remful = RF*TC - (rb.velocity.magnitude * Time.deltaTime/M);
             remainingnorm = remful/TC;
@@ -96,7 +95,6 @@ public class fuelreader : MonoBehaviour
             remful = RF*TC - (rb.velocity.magnitude * Time.deltaTime/M);
             remainingnorm = remful/TC;
             RF = remainingnorm;
-            //print(rb.gameObject.GetComponent<NetworkObject>().IsLocalPlayer);
             SimpleDrive.remainingfuel = remainingnorm;
         }
         else{

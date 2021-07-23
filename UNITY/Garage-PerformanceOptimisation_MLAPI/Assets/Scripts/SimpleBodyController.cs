@@ -22,6 +22,13 @@ public class SimpleBodyController: NetworkBehaviour
     public GameObject weapon;
     public int Kit;
     NetworkVariableFloat health = new NetworkVariableFloat(2f);
+    public LayerMask groundmask;
+    bool isGrounded;
+    public Transform groundcheck;
+    public float grounddistance = 0.4f;
+    private CharacterController charac;
+    Vector3 velocity;
+    public float gravity = -9.81f;
     
     
     // Start is called before the first frame update
@@ -52,8 +59,14 @@ public class SimpleBodyController: NetworkBehaviour
             PlayerPrefs.SetInt("MoneyPocket", 2000);
             PlayerPrefs.SetInt("MoneyBank", MoneyB);
             GameObject.Find("Money-number").GetComponent<TextMeshProUGUI>().SetText((PlayerPrefs.GetInt("MoneyPocket")).ToString());
- 
+            charac = GetComponent<CharacterController>();
+            fuelreader.GO = gameObject;
+            fuelreader.TC = tankcap;
+            fuelreader.RF = FR;
+            fuelreader.M = mileage;
+            fuelreader.isKhali = false;
         }
+        
         anim = gameObject.GetComponent<Animator>();
         
     }
@@ -75,7 +88,9 @@ public class SimpleBodyController: NetworkBehaviour
             }
             
             anim.SetFloat("Mag",input + (wheelieInput*0.5f));
-            transform.position += transform.forward * Time.deltaTime * animspeed * (input + (wheelieInput*0.5f));
+            //transform.position += transform.forward * Time.deltaTime * animspeed * (input + (wheelieInput*0.5f));
+            Vector3 move = transform.forward * (input + (wheelieInput*0.5f));
+            charac.Move(move * animspeed * Time.deltaTime);
         }
         else{
             anim.SetBool("Walk",false);
@@ -190,6 +205,12 @@ public class SimpleBodyController: NetworkBehaviour
     {   
         if(IsLocalPlayer){
             MovePlayer();
+            isGrounded = Physics.CheckSphere(groundcheck.position,grounddistance,groundmask);
+            if(isGrounded && velocity.y < 0f){
+            velocity.y = -2f;
+            }
+            velocity.y += gravity * Time.deltaTime;
+            charac.Move(velocity * Time.deltaTime);
         }
         actualhealth = health.Value;
     }
