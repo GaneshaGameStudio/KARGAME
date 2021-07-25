@@ -14,7 +14,7 @@ public class SimpleBodyController: NetworkBehaviour
     Animator anim;
     public float actualhealth;
     public float tankcap;
-    public float mileage;
+    private float mileage;
 	public static float remainingfuel;
     public float FR = 1.0f;
     public float maxhealth = 2f;
@@ -55,11 +55,22 @@ public class SimpleBodyController: NetworkBehaviour
             int MoneyP = PlayerPrefs.GetInt("MoneyPocket");
             int MoneyB = PlayerPrefs.GetInt("MoneyBank");
             MoneyP = 2000-MoneyP;
-            MoneyB = MoneyB - MoneyP;
-            PlayerPrefs.SetInt("MoneyPocket", 2000);
+            MoneyB = Mathf.Max(0,MoneyB - MoneyP);
+            if(MoneyB!=0){
+                PlayerPrefs.SetInt("MoneyPocket", 2000);
+            }
+            else{
+                PlayerPrefs.SetInt("MoneyPocket", MoneyP);
+            }
             PlayerPrefs.SetInt("MoneyBank", MoneyB);
             GameObject.Find("Money-number").GetComponent<TextMeshProUGUI>().SetText((PlayerPrefs.GetInt("MoneyPocket")).ToString());
             charac = GetComponent<CharacterController>();
+            string s1 = PlayerPrefs.GetString(gameObject.transform.root.name.Replace("(Clone)","").Trim() + "_KIT");
+        	mileage = PlayerPrefs.GetFloat(gameObject.transform.root.name.Replace("(Clone)","").Trim() + "_Mileage") * 1000f / float.Parse("1." + s1.Substring(s1.Length - 1));
+        	tankcap = PlayerPrefs.GetFloat(gameObject.transform.root.name.Replace("(Clone)","").Trim() + "_TankCapacity");
+        	FR = PlayerPrefs.GetFloat(gameObject.transform.root.name.Replace("(Clone)","").Trim() + "_FR");
+			damage = PlayerPrefs.GetFloat(gameObject.transform.root.name.Replace("(Clone)","").Trim() + "_Accl") / float.Parse("1." + s1.Substring(s1.Length - 1));
+
             fuelreader.GO = gameObject;
             fuelreader.TC = tankcap;
             fuelreader.RF = FR;

@@ -5162,19 +5162,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 4931108858413446682}
-  maxSpeed: 120
   tankcap: 50
-  mileage: 100
   FR: 1
   WheelFL: {fileID: 2026814426533209921}
   WheelFR: {fileID: 6020204745203300865}
-  WheelRL: {fileID: 3543909721447905535}
+  WheelRL: {fileID: 8830771573811126205}
   WheelRR: {fileID: 6476504448755355140}
   frontDriverT: {fileID: 4825641633257012997}
   frontPassengerT: {fileID: 4624078411576656053}
   rearDriverT: {fileID: 5144593395910166062}
   rearPassengerT: {fileID: 4452817659531570527}
-  maxSteerAngle: 45
   motorForce: 600
   steerFactor: 2
 --- !u!65 &7286041403667818873
@@ -5591,6 +5588,7 @@ Transform:
   - {fileID: 4092670078421539167}
   - {fileID: 7923000697801808376}
   - {fileID: 5935669894433985958}
+  - {fileID: 3773469903138029585}
   m_Father: {fileID: 346278227825062264}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6165,6 +6163,76 @@ WheelCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4686417747013664671}
+  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 1
+  m_SuspensionSpring:
+    spring: 9000
+    damper: 900
+    targetPosition: 1
+  m_SuspensionDistance: 0.1
+  m_ForceAppPointDistance: 1
+  m_Mass: 20
+  m_WheelDampingRate: 0.25
+  m_ForwardFriction:
+    m_ExtremumSlip: 0.4
+    m_ExtremumValue: 1
+    m_AsymptoteSlip: 0.8
+    m_AsymptoteValue: 0.5
+    m_Stiffness: 1
+  m_SidewaysFriction:
+    m_ExtremumSlip: 0.2
+    m_ExtremumValue: 1
+    m_AsymptoteSlip: 0.5
+    m_AsymptoteValue: 0.75
+    m_Stiffness: 1
+  m_Enabled: 1
+--- !u!1 &4730083788623805274
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3773469903138029585}
+  - component: {fileID: 4574167227432965061}
+  - component: {fileID: 8830771573811126205}
+  m_Layer: 0
+  m_Name: WheelRL
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3773469903138029585
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4730083788623805274}
+  m_LocalRotation: {x: 0.7071067, y: -0.000000053385072, z: 0.00000005338508, w: -0.7071068}
+  m_LocalPosition: {x: -0.887, y: 0.303, z: -1.4391736}
+  m_LocalScale: {x: -0.2964277, y: -0.29642764, z: -0.08659787}
+  m_Children: []
+  m_Father: {fileID: 739154658726680537}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &4574167227432965061
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4730083788623805274}
+  m_Mesh: {fileID: 349513465019809896, guid: b771f0bcba09e472084f4e8dbe6bda8b, type: 3}
+--- !u!146 &8830771573811126205
+WheelCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4730083788623805274}
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 1
   m_SuspensionSpring:
@@ -7408,7 +7476,7 @@ GameObject:
   - component: {fileID: 1664240128650977980}
   - component: {fileID: 3797210389492655177}
   m_Layer: 0
-  m_Name: Stock
+  m_Name: Stock0
   m_TagString: Kit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7502,9 +7570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 4931108858413446682}
-  maxSpeed: 120
   tankcap: 50
-  mileage: 100
   FR: 1
   WheelFL: {fileID: 6423282102580023318}
   WheelFR: {fileID: 1813930906208761272}
@@ -7514,7 +7580,6 @@ MonoBehaviour:
   frontPassengerT: {fileID: 6519265790857146124}
   rearDriverT: {fileID: 7480458002700009638}
   rearPassengerT: {fileID: 1800819769134057344}
-  maxSteerAngle: 50
   motorForce: 600
   steerFactor: 2
 --- !u!65 &3797210389492655177

@@ -293,12 +293,12 @@ MonoBehaviour:
   WC: {fileID: 1868823805198031021}
   torque: 400
   maxSteerAngle: 30
+  maxSpeed: 60
+  FR: 1
+  mileage: 40
+  tankcap: 30
   Vehicle: {fileID: 6382013060831163311}
   rb: {fileID: 6382013060831163310}
-  maxSpeed: 60
-  tankcap: 30
-  mileage: 40
-  FR: 1
 --- !u!1 &4781547957284305630
 GameObject:
   m_ObjectHideFlags: 0
@@ -6119,7 +6119,7 @@ GameObject:
   - component: {fileID: 9163708833385795076}
   - component: {fileID: 1597962917963538000}
   m_Layer: 0
-  m_Name: Stock
+  m_Name: Stock0
   m_TagString: Kit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

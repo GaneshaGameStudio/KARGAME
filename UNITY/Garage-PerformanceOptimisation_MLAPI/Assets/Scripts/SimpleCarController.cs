@@ -6,9 +6,9 @@ public class SimpleCarController : NetworkBehaviour {
 
 	private PlayerActionControls playerActionControls;
 	public Rigidbody rb;
-	public float maxSpeed = 30f;
+	private float maxSpeed;
     public float tankcap;
-    public float mileage;
+    private float mileage;
 	public float FR = 1f;
 	static public float remainingfuel;
 	private float a = 0;
@@ -18,7 +18,17 @@ public class SimpleCarController : NetworkBehaviour {
 		if(IsLocalPlayer){
             CameraFollowController.objectToFollow = gameObject.transform;
             fuelreader.GO = gameObject.transform.parent.gameObject;
+			string s1 = PlayerPrefs.GetString(gameObject.transform.root.name.Replace("(Clone)","").Trim() + "_KIT");
+        	motorForce = PlayerPrefs.GetFloat(gameObject.transform.root.name.Replace("(Clone)","").Trim() + "_Accl") * 1000f * float.Parse("1." + s1.Substring(s1.Length - 1));
+        	maxSteerAngle = PlayerPrefs.GetFloat(gameObject.transform.root.name.Replace("(Clone)","").Trim() + "_Steer") * 1000f * float.Parse("1." + s1.Substring(s1.Length - 1));
+        	maxSpeed = PlayerPrefs.GetFloat(gameObject.transform.root.name.Replace("(Clone)","").Trim() + "_MaxSpeed") * 1000f * float.Parse("1." + s1.Substring(s1.Length - 1));
+        	mileage = PlayerPrefs.GetFloat(gameObject.transform.root.name.Replace("(Clone)","").Trim() + "_Mileage") * 1000f / float.Parse("1." + s1.Substring(s1.Length - 1));
+        	tankcap = PlayerPrefs.GetFloat(gameObject.transform.root.name.Replace("(Clone)","").Trim() + "_TankCapacity");
+        	FR = PlayerPrefs.GetFloat(gameObject.transform.root.name.Replace("(Clone)","").Trim() + "_FR");
+			print(motorForce);
+       
         }
+		 
 		fuelreader.TC = tankcap;
         fuelreader.RF = FR;
         fuelreader.M = mileage;
@@ -102,7 +112,7 @@ public class SimpleCarController : NetworkBehaviour {
 	public WheelCollider WheelRL, WheelRR;
 	public Transform frontDriverT, frontPassengerT;
 	public Transform rearDriverT, rearPassengerT;
-	public float maxSteerAngle = 30;
-	public float motorForce = 50;
+	private float maxSteerAngle;
+	public float motorForce;
 	public float steerFactor = 2;
 }

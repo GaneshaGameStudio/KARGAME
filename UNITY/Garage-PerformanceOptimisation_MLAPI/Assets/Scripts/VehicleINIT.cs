@@ -77,10 +77,11 @@ public class VehicleINIT : NetworkBehaviour
                                         gameObject.transform.GetChild(i).GetChild(1).GetChild(0).gameObject.GetComponent<Renderer>().material.SetTexture("_BaseMap",Tex[j]);
                                     }
                                     else if(gameObject.tag=="4Wheeler"){
-                                        gameObject.transform.GetChild(i).GetChild(0).GetChild(0).gameObject.GetComponent<Renderer>().material.SetTexture("_BaseMap",Tex[j]);
-                                        gameObject.transform.GetChild(i).GetChild(0).GetChild(1).gameObject.GetComponent<Renderer>().material.SetTexture("_BaseMap",Tex[j]);
-                                        gameObject.transform.GetChild(i).GetChild(0).GetChild(2).gameObject.GetComponent<Renderer>().material.SetTexture("_BaseMap",Tex[j]);
-                                        gameObject.transform.GetChild(i).GetChild(0).GetChild(3).gameObject.GetComponent<Renderer>().material.SetTexture("_BaseMap",Tex[j]);
+                                        gameObject.transform.GetChild(i).GetChild(0).gameObject.GetComponent<Renderer>().material.SetTexture("_BaseMap",Tex[j]);
+                                        gameObject.transform.GetChild(i).GetChild(1).GetChild(0).gameObject.GetComponent<Renderer>().material.SetTexture("_BaseMap",Tex[j]);
+                                        gameObject.transform.GetChild(i).GetChild(1).GetChild(1).gameObject.GetComponent<Renderer>().material.SetTexture("_BaseMap",Tex[j]);
+                                        gameObject.transform.GetChild(i).GetChild(1).GetChild(2).gameObject.GetComponent<Renderer>().material.SetTexture("_BaseMap",Tex[j]);
+                                        gameObject.transform.GetChild(i).GetChild(1).GetChild(3).gameObject.GetComponent<Renderer>().material.SetTexture("_BaseMap",Tex[j]);
                                     }
                                     
                                     
