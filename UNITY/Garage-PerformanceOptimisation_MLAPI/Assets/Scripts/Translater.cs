@@ -164,6 +164,8 @@ public class Translater : MonoBehaviour
             translatedinput += "001";
             }
         Translated.SetText((translatedinput).ToString());
-
+        PlayerPrefs.SetString("PlayerName",translatedinput);
     }
+
+    
 }

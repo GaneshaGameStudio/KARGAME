@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 11686425}
-  m_IndirectSpecularColor: {r: 0.683744, g: 0.99436605, b: 0.986575, a: 1}
+  m_IndirectSpecularColor: {r: 0.7331126, g: 1.0414557, b: 1.0074396, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -806,6 +806,8 @@ GameObject:
   - component: {fileID: 142235852}
   - component: {fileID: 142235851}
   - component: {fileID: 142235858}
+  - component: {fileID: 142235860}
+  - component: {fileID: 142235859}
   m_Layer: 0
   m_Name: GarageCamera
   m_TagString: MainCamera
@@ -868,7 +870,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c464e10e1149044aaaae9eab61710779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LightOn: 0
   material:
   - {fileID: 2100000, guid: 0379c520ca3224f7d82be7dec56453e4, type: 2}
 --- !u!114 &142235852
@@ -1006,6 +1007,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f3a255462b924a5792fdbbe1d6364c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &142235859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142235849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3267d7512e9c44a64b8758d75faa7c99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Playername: {fileID: 845812278}
+  id: 1
+  Objectlistshow: []
+  Objectlisthide: []
+--- !u!114 &142235860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142235849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3267d7512e9c44a64b8758d75faa7c99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Playername: {fileID: 1617313984}
+  id: 1
+  Objectlistshow: []
+  Objectlisthide: []
 --- !u!1 &156329099
 GameObject:
   m_ObjectHideFlags: 0
@@ -9981,6 +10014,7 @@ GameObject:
   - component: {fileID: 1585584624}
   - component: {fileID: 1585584626}
   - component: {fileID: 1585584625}
+  - component: {fileID: 1585584627}
   m_Layer: 5
   m_Name: Save
   m_TagString: Untagged
@@ -10107,6 +10141,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1585584623}
   m_CullTransparentMesh: 0
+--- !u!114 &1585584627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585584623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1585584625}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 142235860}
+        m_TargetAssemblyTypeName: FetchInitDBData, Assembly-CSharp
+        m_MethodName: validateAndPushToDB
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1617313982
 GameObject:
   m_ObjectHideFlags: 0
