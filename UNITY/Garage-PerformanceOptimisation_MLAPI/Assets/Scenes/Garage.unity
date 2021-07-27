@@ -290,6 +290,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 20832382}
   m_Mesh: {fileID: -5495902117074765545, guid: ccc8507a682ee4563a67f82f457cc536, type: 3}
+--- !u!1 &71321240 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5717794693928921418, guid: d569584b2687947429d02cb9a738b31a, type: 3}
+  m_PrefabInstance: {fileID: 5717794693980262624}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &79857285
 GameObject:
   m_ObjectHideFlags: 0
@@ -10254,7 +10259,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5717794693928921419, guid: d569584b2687947429d02cb9a738b31a, type: 3}
   m_PrefabInstance: {fileID: 5717794693980262624}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 71321240}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57b539b7ac91448568bb56ae2b38d36f, type: 3}
@@ -11082,6 +11087,8 @@ MonoBehaviour:
   Fade: {fileID: 1852559256}
   spawnloc: {x: 1050.6, y: 0, z: 2130.6}
   spawnrot: {x: 0, y: 205, z: 0}
+  BW: {fileID: 11400000, guid: e3d8a93e69ade4443a947b96359d4b78, type: 2}
+  COLOR: {fileID: 11400000, guid: 10fc4df2da32a41aaa32d77bc913491c, type: 2}
 --- !u!65 &1168024972
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16112,6 +16119,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5717794693928921419, guid: d569584b2687947429d02cb9a738b31a, type: 3}
+      propertyPath: SC
+      value: 
+      objectReference: {fileID: 71321240}
     - target: {fileID: 5717794693928921420, guid: d569584b2687947429d02cb9a738b31a, type: 3}
       propertyPath: m_RootOrder
       value: 0

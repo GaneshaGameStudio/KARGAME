@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;  
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class MoveCamera : MonoBehaviour
 {
@@ -31,9 +33,11 @@ public class MoveCamera : MonoBehaviour
     private float iterator;
     public Vector3 spawnloc;
     public Vector3 spawnrot;
+    private Volume m_Volume;
+    public VolumeProfile BW;
+    public VolumeProfile COLOR;
     //private Animation anim;
     
-
     //activate default objects (always the first object in the tree)
     void SelectCar(int _index, GameObject Goarray)
     {
@@ -42,12 +46,18 @@ public class MoveCamera : MonoBehaviour
             Goarray.transform.GetChild(i).gameObject.SetActive(i == _index);
             currentvehicle = Goarray.transform.GetChild(_index).gameObject.name;
             VehicleID.Vehicle = currentvehicle;
+            if(PlayerPrefs.GetString(VehicleID.Vehicle + "_Unlocked") =="0"){
+                m_Volume.sharedProfile = BW;
+            }
+            else{
+                 m_Volume.sharedProfile = COLOR;
+            }
         }
     }
 
     // Start is called before the first frame update
     private void Awake()
-    {   
+    {   m_Volume = GameObject.Find("Post-process Volume").GetComponent<Volume>();
         Time.timeScale = 1;
         mCameraIndex  = 0;
         mCurrentIndex  = 0;
@@ -72,7 +82,6 @@ public class MoveCamera : MonoBehaviour
     }
     void Start()
     {   
-        
         iterator = 0f;
         Fade.color = new Color(Fade.color.r, Fade.color.g, Fade.color.b, 0f);
         Vector3 finalPos =finalPositions[0];
@@ -91,7 +100,6 @@ public class MoveCamera : MonoBehaviour
 		Dbtn.onClick.AddListener(DTaskOnClick);
         Rbtn.onClick.AddListener(RightClick);
 
-        
     }
     void RightClick(){
         AudioSource audio = Audio.GetComponent<AudioSource>();
@@ -192,12 +200,15 @@ public class MoveCamera : MonoBehaviour
             
         }
         else{
-            Quaternion finaltarget = Quaternion.Euler(finalRotations[0]);
-            transform.position = Vector3.Lerp(transform.position,finalPositions[0],Speed*Time.deltaTime);
-            transform.rotation = Quaternion.Slerp(transform.rotation, finaltarget,  Speed*Time.deltaTime);
-            Fade.color = new Color(Fade.color.r, Fade.color.g, Fade.color.b, iterator);
-            Audio.GetComponent<AudioSource>().volume = Audio.GetComponent<AudioSource>().volume - 0.1f*iterator;
-            iterator = iterator + 0.1f;
+            if(PlayerPrefs.GetString(VehicleID.Vehicle + "_Unlocked") !="0"){
+                 Quaternion finaltarget = Quaternion.Euler(finalRotations[0]);
+                transform.position = Vector3.Lerp(transform.position,finalPositions[0],Speed*Time.deltaTime);
+                transform.rotation = Quaternion.Slerp(transform.rotation, finaltarget,  Speed*Time.deltaTime);
+                Fade.color = new Color(Fade.color.r, Fade.color.g, Fade.color.b, iterator);
+                Audio.GetComponent<AudioSource>().volume = Audio.GetComponent<AudioSource>().volume - 0.1f*iterator;
+                iterator = iterator + 0.1f;
+            }
+           
         }
         
     }
