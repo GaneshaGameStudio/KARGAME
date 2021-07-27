@@ -6,12 +6,15 @@ using MLAPI.Messaging;
 using MLAPI.Spawning;
 using MLAPI.NetworkVariable;
 using MLAPI.Connection;
+using UnityEngine.SceneManagement;
 public class LoadVehicle : NetworkBehaviour
 {   
       
     // Start is called before the first frame update
     void Start()
     {   
+        Scene scene = SceneManager.GetActiveScene();
+        if(scene.name=="Bangalore" || scene.name=="VehicleLicense"){
         ulong id =  NetworkManager.Singleton.LocalClientId;
         string Vehicletype = VehicleID.Vehicle;
         SpawnServerRpc(id, Vehicletype);
@@ -21,6 +24,7 @@ public class LoadVehicle : NetworkBehaviour
             GameObject.Find("rpm").GetComponent<rpmreader>().enabled = true;
             ChunkingV2.directionquadINIT = (int)((180f -45f)/90f);
             }
+        }
     }
     
 

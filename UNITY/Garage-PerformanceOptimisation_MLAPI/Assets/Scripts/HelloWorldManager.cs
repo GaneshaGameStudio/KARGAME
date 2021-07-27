@@ -1,6 +1,6 @@
 using MLAPI;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class HelloWorldManager : MonoBehaviour
     {
@@ -10,6 +10,11 @@ public class HelloWorldManager : MonoBehaviour
             Camera.main.GetComponent<TrafficPool>().enabled = false;
             GameObject.Find("fuel").GetComponent<fuelreader>().enabled = false;
             GameObject.Find("rpm").GetComponent<rpmreader>().enabled = false;
+            Scene scene = SceneManager.GetActiveScene();
+            if(scene.name=="VehicleLicense"){
+                NetworkManager.Singleton.StartHost();
+            }
+
         }
         public void SH(){
             GameObject.Find("SelectNet").SetActive(false);

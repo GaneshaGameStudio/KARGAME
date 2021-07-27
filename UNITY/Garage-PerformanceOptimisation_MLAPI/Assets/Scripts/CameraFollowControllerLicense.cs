@@ -1,13 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using MLAPI;
 public class CameraFollowControllerLicense : MonoBehaviour {
 
 	private bool isWheelieE;
 	void Start()
 	{	
-		
 		objectToFollow = GameObject.Find(VehicleID.Vehicle + "(Clone)").transform;
 	}
 	public void LookAtTarget()

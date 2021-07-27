@@ -47,15 +47,20 @@ public class VehicleINIT : NetworkBehaviour
         kit = PlayerPrefs.GetString(gameObject.name.Replace("(Clone)","").Trim() + "_KIT");
         mat = PlayerPrefs.GetString(gameObject.name.Replace("(Clone)","").Trim()  + "_MAT");
         Scene scene = SceneManager.GetActiveScene();
-        if(scene.name =="Bangalore"){
+        if(scene.name =="Bangalore" || scene.name =="VehicleLicense"){
         ulong id=NetworkManager.Singleton.LocalClientId;
-        SelectKitServerRpc(id,kit,mat);
+        if(scene.name=="VehicleLicense"){
+            kit = "Stock0";
+            mat = VehicleID.Vehicle + "_Stock";
         }
+        SelectKitServerRpc(id,kit,mat);
+        
         if(IsLocalPlayer){
             KitChange(kit,mat);
         }
         else{
             KitChange(teamKit.Value,teamMat.Value);
+        }
         }
         
     }

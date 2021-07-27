@@ -25,7 +25,6 @@ public class SimpleCarController : NetworkBehaviour {
         	mileage = PlayerPrefs.GetFloat(gameObject.transform.root.name.Replace("(Clone)","").Trim() + "_Mileage") * 1000f / float.Parse("1." + s1.Substring(s1.Length - 1));
         	tankcap = PlayerPrefs.GetFloat(gameObject.transform.root.name.Replace("(Clone)","").Trim() + "_TankCapacity");
         	FR = PlayerPrefs.GetFloat(gameObject.transform.root.name.Replace("(Clone)","").Trim() + "_FR");
-			print(motorForce);
        
         }
 		 
