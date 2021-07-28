@@ -52,7 +52,7 @@ public class fuelreader : MonoBehaviour
     void Update()
     {   
         rb = GO.GetComponent<Rigidbody>();
-        if(GO.tag == "4Wheeler")
+        if(GO.tag == "4Wheeler" || GO.tag == "6Wheeler")
         {
             //TC = GameObject.FindWithTag("Kit").GetComponent<SimpleCarController>().tankcap;
             //M = GameObject.FindWithTag("Kit").GetComponent<SimpleCarController>().mileage;
@@ -62,14 +62,6 @@ public class fuelreader : MonoBehaviour
             remainingnorm = remful/TC;
             RF = remainingnorm;
             SimpleCarController.remainingfuel = remainingnorm;
-        }
-        else if (GO.tag == "6Wheeler")
-        {
-            //TC = GameObject.FindWithTag("6Wheeler").GetComponent<SimpleCarController>().tankcap;
-            //M = GameObject.FindWithTag("6Wheeler").GetComponent<SimpleCarController>().mileage;
-            //RF = SimpleCarController.remainingfuel;
-            TotalDistance += (rb.velocity.magnitude * Time.deltaTime);
-            remful = RF*TC - (rb.velocity.magnitude * Time.deltaTime/M);
         }
         else if (GO.tag == "Manushya")
         {
