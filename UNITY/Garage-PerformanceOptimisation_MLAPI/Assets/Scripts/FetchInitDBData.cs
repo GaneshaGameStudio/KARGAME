@@ -238,9 +238,9 @@ public class FetchInitDBData : MonoBehaviour
             PlayerPrefs.SetString("BMTC_1wopass_Unlocked","1");
             PlayerPrefs.SetFloat("BMTC_1wopass_Accl",4.5f);
             PlayerPrefs.SetFloat("BMTC_1wopass_MaxSpeed",0.3f);
-            PlayerPrefs.SetFloat("BMTC_1wopass_TankCapacity",0f);
+            PlayerPrefs.SetFloat("BMTC_1wopass_TankCapacity",50f);
             PlayerPrefs.SetFloat("BMTC_1wopass_Mileage",0.3f);
-            PlayerPrefs.SetFloat("BMTC_1wopass_Brake",-2f);
+            PlayerPrefs.SetFloat("BMTC_1wopass_Brake",-4.5f);
             PlayerPrefs.SetFloat("BMTC_1wopass_Steer",0.030f);
             PlayerPrefs.SetFloat("BMTC_1wopass_FR",1f);
             PlayerPrefs.SetFloat("BMTC_1wopass_TotalDistance",0f);
@@ -251,9 +251,9 @@ public class FetchInitDBData : MonoBehaviour
             PlayerPrefs.SetString("Tempo_Unlocked","1");
             PlayerPrefs.SetFloat("Tempo_Accl",4.5f);
             PlayerPrefs.SetFloat("Tempo_MaxSpeed",0.3f);
-            PlayerPrefs.SetFloat("Tempo_TankCapacity",0f);
+            PlayerPrefs.SetFloat("Tempo_TankCapacity",50f);
             PlayerPrefs.SetFloat("Tempo_Mileage",0.3f);
-            PlayerPrefs.SetFloat("Tempo_Brake",-2f);
+            PlayerPrefs.SetFloat("Tempo_Brake",-4.5f);
             PlayerPrefs.SetFloat("Tempo_Steer",0.030f);
             PlayerPrefs.SetFloat("Tempo_FR",1f);
             PlayerPrefs.SetFloat("Tempo_TotalDistance",0f);
@@ -689,6 +689,14 @@ public class FetchInitDBData : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void update(string keyName){
+        if(PlayerPrefs.HasKey(keyName)){
+
+        }else{
+
+        }
     }
     
 }
