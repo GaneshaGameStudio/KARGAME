@@ -66,6 +66,7 @@ public class FetchInitDBData : MonoBehaviour
             PlayerPrefs.SetInt("2WheelerLicense",1);
             PlayerPrefs.SetInt("3WheelerLicense",1);
             PlayerPrefs.SetInt("4WheelerLicense",0);
+            PlayerPrefs.SetInt("6WheelerLicense",0);
             PlayerPrefs.SetInt("MoneyBank",20000);
             PlayerPrefs.SetInt("MoneyPocket",2000);
             PlayerPrefs.SetInt("Health",50);
@@ -84,7 +85,7 @@ public class FetchInitDBData : MonoBehaviour
             PlayerPrefs.SetFloat("Vibe2009rig-redoCSY_FR",1f);
             PlayerPrefs.SetFloat("Vibe2009rig-redoCSY_TotalDistance",0f);
             PlayerPrefs.SetString("Vibe2009rig-redoCSY_KIT","Stock0");
-            PlayerPrefs.SetString("Vibe2009rig-redoCSY_MAT","HN-Dio_Stock0");
+            PlayerPrefs.SetString("Vibe2009rig-redoCSY_MAT","HN-Dio_Stock");
             #endregion THIRD PERSON
 
             #region TWO WHEELERS
@@ -99,7 +100,7 @@ public class FetchInitDBData : MonoBehaviour
             PlayerPrefs.SetFloat("HN-Dio_FR",1f);
             PlayerPrefs.SetFloat("HN-Dio_TotalDistance",0f);
             PlayerPrefs.SetString("HN-Dio_KIT","Stock0");
-            PlayerPrefs.SetString("HN-Dio_MAT","HN-Dio_Stock0");
+            PlayerPrefs.SetString("HN-Dio_MAT","HN-Dio_Stock");
             //BJ-Chetak
             PlayerPrefs.SetString("BJ-Chetak_Unlocked","1");
             PlayerPrefs.SetFloat("BJ-Chetak_Accl",0.075f);
@@ -111,7 +112,7 @@ public class FetchInitDBData : MonoBehaviour
             PlayerPrefs.SetFloat("BJ-Chetak_FR",1f);
             PlayerPrefs.SetFloat("BJ-Chetak_TotalDistance",0f);
             PlayerPrefs.SetString("BJ-Chetak_KIT","Stock0");
-            PlayerPrefs.SetString("BJ-Chetak_MAT","BJ-Chetak_Stock0");
+            PlayerPrefs.SetString("BJ-Chetak_MAT","BJ-Chetak_Stock");
             //BJ-Pulsar
             PlayerPrefs.SetString("BJ-Pulsar_Unlocked","1");
             PlayerPrefs.SetFloat("BJ-Pulsar_Accl",0.075f);
@@ -123,7 +124,7 @@ public class FetchInitDBData : MonoBehaviour
             PlayerPrefs.SetFloat("BJ-Pulsar_FR",1f);
             PlayerPrefs.SetFloat("BJ-Pulsar_TotalDistance",0f);
             PlayerPrefs.SetString("BJ-Pulsar_KIT","Stock0");
-            PlayerPrefs.SetString("BJ-Pulsar_MAT","BJ-Pulsar_Stock0");
+            PlayerPrefs.SetString("BJ-Pulsar_MAT","BJ-Pulsar_Stock");
 
             #endregion TWO WHEELERS
 
@@ -140,7 +141,7 @@ public class FetchInitDBData : MonoBehaviour
             PlayerPrefs.SetFloat("Ace_FR",1f);
             PlayerPrefs.SetFloat("Ace_TotalDistance",0f);
             PlayerPrefs.SetString("Ace_KIT","Stock0");
-            PlayerPrefs.SetString("Ace_MAT","Ace_Stock0");
+            PlayerPrefs.SetString("Ace_MAT","Ace_Stock");
 
             //Ambassador
             PlayerPrefs.SetString("Ambassador_Unlocked","1");
@@ -153,7 +154,7 @@ public class FetchInitDBData : MonoBehaviour
             PlayerPrefs.SetFloat("Ambassador_FR",1f);
             PlayerPrefs.SetFloat("Ambassador_TotalDistance",0f);
             PlayerPrefs.SetString("Ambassador_KIT","Stock0");
-            PlayerPrefs.SetString("Ambassador_MAT","Ambassador_Stock0");
+            PlayerPrefs.SetString("Ambassador_MAT","Ambassador_Stock");
 
             //Indica
             PlayerPrefs.SetString("Indica_Unlocked","1");
@@ -166,7 +167,7 @@ public class FetchInitDBData : MonoBehaviour
             PlayerPrefs.SetFloat("Indica_FR",1f);
             PlayerPrefs.SetFloat("Indica_TotalDistance",0f);
             PlayerPrefs.SetString("Indica_KIT","Stock0");
-            PlayerPrefs.SetString("Indica_MAT","Indica_Stock0");
+            PlayerPrefs.SetString("Indica_MAT","Indica_Stock");
 
             //MS-800
             PlayerPrefs.SetString("MS-800_Unlocked","1");
@@ -179,7 +180,7 @@ public class FetchInitDBData : MonoBehaviour
             PlayerPrefs.SetFloat("MS-800_FR",1f);
             PlayerPrefs.SetFloat("MS-800_TotalDistance",0f);
             PlayerPrefs.SetString("MS-800_KIT","Stock0");
-            PlayerPrefs.SetString("MS-800_MAT","MS-800_Stock0");
+            PlayerPrefs.SetString("MS-800_MAT","MS-800_Stock");
 
             //MS-Alto
             PlayerPrefs.SetString("MS-Alto_Unlocked","1");
@@ -192,7 +193,7 @@ public class FetchInitDBData : MonoBehaviour
             PlayerPrefs.SetFloat("MS-Alto_FR",1f);
             PlayerPrefs.SetFloat("MS-Alto_TotalDistance",0f);
             PlayerPrefs.SetString("MS-Alto_KIT","Stock0");
-            PlayerPrefs.SetString("MS-Alto_MAT","MS-Alto_Stock0");
+            PlayerPrefs.SetString("MS-Alto_MAT","MS-Alto_Stock");
 
             //Nano
             PlayerPrefs.SetString("Nano_Unlocked","1");
@@ -205,7 +206,7 @@ public class FetchInitDBData : MonoBehaviour
             PlayerPrefs.SetFloat("Nano_FR",1f);
             PlayerPrefs.SetFloat("Nano_TotalDistance",0f);
             PlayerPrefs.SetString("Nano_KIT","Stock0");
-            PlayerPrefs.SetString("Nano_MAT","Nano_Stock0");
+            PlayerPrefs.SetString("Nano_MAT","Nano_Stock");
 
             //Scorpio
             PlayerPrefs.SetString("Scorpio_Unlocked","1");
@@ -218,7 +219,7 @@ public class FetchInitDBData : MonoBehaviour
             PlayerPrefs.SetFloat("Scorpio_FR",1f);
             PlayerPrefs.SetFloat("Scorpio_TotalDistance",0f);
             PlayerPrefs.SetString("Scorpio_KIT","Stock0");
-            PlayerPrefs.SetString("Scorpio_MAT","Scorpio_Stock0");
+            PlayerPrefs.SetString("Scorpio_MAT","Scorpio_Stock");
 
             //VJM02
             PlayerPrefs.SetString("VJM02_Unlocked","1");
@@ -231,7 +232,33 @@ public class FetchInitDBData : MonoBehaviour
             PlayerPrefs.SetFloat("VJM02_FR",1f);
             PlayerPrefs.SetFloat("VJM02_TotalDistance",0f);
             PlayerPrefs.SetString("VJM02_KIT","Stock0");
-            PlayerPrefs.SetString("VJM02_MAT","VJM02_Stock0");
+            PlayerPrefs.SetString("VJM02_MAT","VJM02_Stock");
+
+            //BMTC_1wopass
+            PlayerPrefs.SetString("BMTC_1wopass_Unlocked","1");
+            PlayerPrefs.SetFloat("BMTC_1wopass_Accl",4.5f);
+            PlayerPrefs.SetFloat("BMTC_1wopass_MaxSpeed",0.3f);
+            PlayerPrefs.SetFloat("BMTC_1wopass_TankCapacity",0f);
+            PlayerPrefs.SetFloat("BMTC_1wopass_Mileage",0.3f);
+            PlayerPrefs.SetFloat("BMTC_1wopass_Brake",-2f);
+            PlayerPrefs.SetFloat("BMTC_1wopass_Steer",0.030f);
+            PlayerPrefs.SetFloat("BMTC_1wopass_FR",1f);
+            PlayerPrefs.SetFloat("BMTC_1wopass_TotalDistance",0f);
+            PlayerPrefs.SetString("BMTC_1wopass_KIT","Stock0");
+            PlayerPrefs.SetString("BMTC_1wopass_MAT","BMTC_1wopass_Stock");
+
+            //Tempo
+            PlayerPrefs.SetString("Tempo_Unlocked","1");
+            PlayerPrefs.SetFloat("Tempo_Accl",4.5f);
+            PlayerPrefs.SetFloat("Tempo_MaxSpeed",0.3f);
+            PlayerPrefs.SetFloat("Tempo_TankCapacity",0f);
+            PlayerPrefs.SetFloat("Tempo_Mileage",0.3f);
+            PlayerPrefs.SetFloat("Tempo_Brake",-2f);
+            PlayerPrefs.SetFloat("Tempo_Steer",0.030f);
+            PlayerPrefs.SetFloat("Tempo_FR",1f);
+            PlayerPrefs.SetFloat("Tempo_TotalDistance",0f);
+            PlayerPrefs.SetString("Tempo_KIT","Stock0");
+            PlayerPrefs.SetString("Tempo_MAT","Tempo_Stock");
 
             #endregion FOUR WHEELERS
 
@@ -248,7 +275,7 @@ public class FetchInitDBData : MonoBehaviour
             PlayerPrefs.SetFloat("BA-RE_FR",1f);
             PlayerPrefs.SetFloat("BA-RE_TotalDistance",0f);
             PlayerPrefs.SetString("BA-RE_KIT","Stock0");
-            PlayerPrefs.SetString("BA-RE_MAT","BA-RE_Stock0");
+            PlayerPrefs.SetString("BA-RE_MAT","BA-RE_Stock");
 
             //Ape
             PlayerPrefs.SetString("Ape_Unlocked","1");
@@ -261,7 +288,7 @@ public class FetchInitDBData : MonoBehaviour
             PlayerPrefs.SetFloat("Ape_FR",1f);
             PlayerPrefs.SetFloat("Ape_TotalDistance",0f);
             PlayerPrefs.SetString("Ape_KIT","Stock0");
-            PlayerPrefs.SetString("Ape_MAT","Ape_Stock0");
+            PlayerPrefs.SetString("Ape_MAT","Ape_Stock");
 
             #endregion THREE WHEELERS
 
@@ -376,6 +403,7 @@ public class FetchInitDBData : MonoBehaviour
         playerJson.Add("ID",PlayerPrefs.GetString("PlayerID"));
         playerJson.Add("License2W",PlayerPrefs.GetInt("2WheelerLicense"));
         playerJson.Add("License4W",PlayerPrefs.GetInt("4WheelerLicense"));
+        playerJson.Add("License6W",PlayerPrefs.GetInt("6WheelerLicense"));
         playerJson.Add("Money",PlayerPrefs.GetFloat("Money"));
         playerJson.Add("Health",PlayerPrefs.GetInt("Health"));
         playerJson.Add("TotalDistanceTraveled",PlayerPrefs.GetFloat("TotalDistanceTraveled"));
@@ -559,6 +587,32 @@ public class FetchInitDBData : MonoBehaviour
         PlayerPrefs.SetFloat("VJM02_TotalDistance",float.Parse(dbInitData["data"][0]["VJM02_TotalDistance"]));
         PlayerPrefs.SetString("VJM02_KIT",dbInitData["data"][0]["VJM02_KIT"]);
         PlayerPrefs.SetString("VJM02_MAT",dbInitData["data"][0]["VJM02_MAT"]);
+
+        //BMTC_1wopass
+        PlayerPrefs.SetString("BMTC_1wopass_Unlocked",dbInitData["data"][0]["BMTC_1wopass_Unlocked"]);
+        PlayerPrefs.SetFloat("BMTC_1wopass_Accl",float.Parse(dbInitData["data"][0]["BMTC_1wopass_Accl"]));
+        PlayerPrefs.SetFloat("BMTC_1wopass_MaxSpeed",float.Parse(dbInitData["data"][0]["BMTC_1wopass_MaxSpeed"]));
+        PlayerPrefs.SetFloat("BMTC_1wopass_TankCapacity",float.Parse(dbInitData["data"][0]["BMTC_1wopass_TankCapacity"]));
+        PlayerPrefs.SetFloat("BMTC_1wopass_Mileage",float.Parse(dbInitData["data"][0]["BMTC_1wopass_Mileage"]));
+        PlayerPrefs.SetFloat("BMTC_1wopass_Brake",float.Parse(dbInitData["data"][0]["BMTC_1wopass_Brake"]));
+        PlayerPrefs.SetFloat("BMTC_1wopass_Steer",float.Parse(dbInitData["data"][0]["BMTC_1wopass_Steer"]));
+        PlayerPrefs.SetFloat("BMTC_1wopass_FR",float.Parse(dbInitData["data"][0]["BMTC_1wopass_FR"]));
+        PlayerPrefs.SetFloat("BMTC_1wopass_TotalDistance",float.Parse(dbInitData["data"][0]["BMTC_1wopass_TotalDistance"]));
+        PlayerPrefs.SetString("BMTC_1wopass_KIT",dbInitData["data"][0]["BMTC_1wopass_KIT"]);
+        PlayerPrefs.SetString("BMTC_1wopass_MAT",dbInitData["data"][0]["BMTC_1wopass_MAT"]);
+
+        //Tempo
+        PlayerPrefs.SetString("Tempo_Unlocked",dbInitData["data"][0]["Tempo_Unlocked"]);
+        PlayerPrefs.SetFloat("Tempo_Accl",float.Parse(dbInitData["data"][0]["Tempo_Accl"]));
+        PlayerPrefs.SetFloat("Tempo_MaxSpeed",float.Parse(dbInitData["data"][0]["Tempo_MaxSpeed"]));
+        PlayerPrefs.SetFloat("Tempo_TankCapacity",float.Parse(dbInitData["data"][0]["Tempo_TankCapacity"]));
+        PlayerPrefs.SetFloat("Tempo_Mileage",float.Parse(dbInitData["data"][0]["Tempo_Mileage"]));
+        PlayerPrefs.SetFloat("Tempo_Brake",float.Parse(dbInitData["data"][0]["Tempo_Brake"]));
+        PlayerPrefs.SetFloat("Tempo_Steer",float.Parse(dbInitData["data"][0]["Tempo_Steer"]));
+        PlayerPrefs.SetFloat("Tempo_FR",float.Parse(dbInitData["data"][0]["Tempo_FR"]));
+        PlayerPrefs.SetFloat("Tempo_TotalDistance",float.Parse(dbInitData["data"][0]["Tempo_TotalDistance"]));
+        PlayerPrefs.SetString("Tempo_KIT",dbInitData["data"][0]["Tempo_KIT"]);
+        PlayerPrefs.SetString("Tempo_MAT",dbInitData["data"][0]["Tempo_MAT"]);
 
 
         #endregion FOUR WHEELERS
