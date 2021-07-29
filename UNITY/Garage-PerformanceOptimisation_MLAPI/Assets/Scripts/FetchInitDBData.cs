@@ -290,6 +290,19 @@ public class FetchInitDBData : MonoBehaviour
             PlayerPrefs.SetString("Ape_KIT","Stock0");
             PlayerPrefs.SetString("Ape_MAT","Ape_Stock");
 
+            //BullockCart_1
+            PlayerPrefs.SetString("BullockCart_1_Unlocked","1");
+            PlayerPrefs.SetFloat("BullockCart_1_Accl",0.050f);
+            PlayerPrefs.SetFloat("BullockCart_1_MaxSpeed",0.030f);
+            PlayerPrefs.SetFloat("BullockCart_1_TankCapacity",30f);
+            PlayerPrefs.SetFloat("BullockCart_1_Mileage",0.040f);
+            PlayerPrefs.SetFloat("BullockCart_1_Brake",-0.050f);
+            PlayerPrefs.SetFloat("BullockCart_1_Steer",0.030f);
+            PlayerPrefs.SetFloat("BullockCart_1_FR",1f);
+            PlayerPrefs.SetFloat("BullockCart_1_TotalDistance",0f);
+            PlayerPrefs.SetString("BullockCart_1_KIT","Stock0");
+            PlayerPrefs.SetString("BullockCart_1_MAT","BullockCart_1_Stock");
+
             #endregion THREE WHEELERS
 
 
@@ -644,6 +657,19 @@ public class FetchInitDBData : MonoBehaviour
         PlayerPrefs.SetFloat("Ape_TotalDistance",float.Parse(dbInitData["data"][0]["Ape_TotalDistance"]));
         PlayerPrefs.SetString("Ape_KIT",dbInitData["data"][0]["Ape_KIT"]);
         PlayerPrefs.SetString("Ape_MAT",dbInitData["data"][0]["Ape_MAT"]);
+
+        //BullockCart_1
+        PlayerPrefs.SetString("BullockCart_1_Unlocked",dbInitData["data"][0]["BullockCart_1_Unlocked"]);
+        PlayerPrefs.SetFloat("BullockCart_1_Accl",float.Parse(dbInitData["data"][0]["BullockCart_1_Accl"]));
+        PlayerPrefs.SetFloat("BullockCart_1_MaxSpeed",float.Parse(dbInitData["data"][0]["BullockCart_1_MaxSpeed"]));
+        PlayerPrefs.SetFloat("BullockCart_1_TankCapacity",float.Parse(dbInitData["data"][0]["BullockCart_1_TankCapacity"]));
+        PlayerPrefs.SetFloat("BullockCart_1_Mileage",float.Parse(dbInitData["data"][0]["BullockCart_1_Mileage"]));
+        PlayerPrefs.SetFloat("BullockCart_1_Brake",float.Parse(dbInitData["data"][0]["BullockCart_1_Brake"]));
+        PlayerPrefs.SetFloat("BullockCart_1_Steer",float.Parse(dbInitData["data"][0]["BullockCart_1_Steer"]));
+        PlayerPrefs.SetFloat("BullockCart_1_FR",float.Parse(dbInitData["data"][0]["BullockCart_1_FR"]));
+        PlayerPrefs.SetFloat("BullockCart_1_TotalDistance",float.Parse(dbInitData["data"][0]["BullockCart_1_TotalDistance"]));
+        PlayerPrefs.SetString("BullockCart_1_KIT",dbInitData["data"][0]["BullockCart_1_KIT"]);
+        PlayerPrefs.SetString("BullockCart_1_MAT",dbInitData["data"][0]["BullockCart_1_MAT"]);
 
         #endregion THREE WHEELERS
         
