@@ -17,7 +17,7 @@ public class Temple : MonoBehaviour, IPointerClickHandler
          bellanim = gameObject.GetComponent<Animator>();
          MoneyPro = GameObject.Find("Money-number").GetComponent<TextMeshProUGUI>();
          MoneyLeft = PlayerPrefs.GetInt("MoneyPocket");
-         Moneyperlife = 400;
+         Moneyperlife = PlayerPrefs.GetInt("MoneyPerHealth");
  
         
     }

@@ -18,6 +18,11 @@ public class FetchInitDBData : MonoBehaviour
     private JSONNode dbInitData;
     private string NetworkCheck = "";
     public TextMeshProUGUI Playername;
+    public TextMeshProUGUI Money;
+    public TextMeshProUGUI TotalDistance;
+    public TextMeshProUGUI FoodPrice;
+    public TextMeshProUGUI PetrolPrice;
+    public TextMeshProUGUI LifePrice;
     // public Translater Translate;
 
     public string id = "1";
@@ -42,7 +47,7 @@ public class FetchInitDBData : MonoBehaviour
             NetworkCheck = result;
             // Debug.Log(NetworkCheck);
         }));
-        SetUsernameInClassroom();
+        SetStatsInClassroom();
     }
 
     public void GetDBDataOnClick()
@@ -145,6 +150,8 @@ public class FetchInitDBData : MonoBehaviour
         intValues.Add("MoneyPocket",2000);
         intValues.Add("Health",50);
         intValues.Add("MoneyPerHealth",5);
+        intValues.Add("FoodPrice",50);
+        intValues.Add("PetrolPrice",105);
         floatValues.Add("TotalDistanceTraveled",0f);
 
         //Vibe
@@ -390,12 +397,10 @@ public class FetchInitDBData : MonoBehaviour
 
         //Check if PP already exist; if not, then add.
         //string values
-        Debug.Log("Count is: "+stringValues.Count);
         foreach(KeyValuePair<string,string> stringValue in stringValues){
             if(!PlayerPrefs.HasKey(stringValue.Key)){
                 PlayerPrefs.SetString(stringValue.Key,stringValue.Value);
             }
-            Debug.Log(stringValue.Key);
         }
 
         //int values
@@ -403,7 +408,6 @@ public class FetchInitDBData : MonoBehaviour
             if(!PlayerPrefs.HasKey(intValue.Key)){
                 PlayerPrefs.SetInt(intValue.Key,intValue.Value);
             }
-            Debug.Log(intValues);
         }
 
         //float values
@@ -417,7 +421,6 @@ public class FetchInitDBData : MonoBehaviour
         foreach(KeyValuePair<string,string> stringValue in stringVehicleValues){
             if(!PlayerPrefs.HasKey(stringValue.Key)){
                 PlayerPrefs.SetString(stringValue.Key,stringValue.Value);
-                Debug.Log(stringValue.Value);
             }
         }
 
@@ -432,7 +435,6 @@ public class FetchInitDBData : MonoBehaviour
         foreach(KeyValuePair<string,float> floatValue in floatVehicleValues){
             if(!PlayerPrefs.HasKey(floatValue.Key)){
                 PlayerPrefs.SetFloat(floatValue.Key,floatValue.Value);
-                Debug.Log(floatValue.Value);
             }
         }
 
@@ -549,7 +551,7 @@ public class FetchInitDBData : MonoBehaviour
         playerJson.Add("License2W",PlayerPrefs.GetInt("2WheelerLicense"));
         playerJson.Add("License4W",PlayerPrefs.GetInt("4WheelerLicense"));
         playerJson.Add("License6W",PlayerPrefs.GetInt("6WheelerLicense"));
-        playerJson.Add("Money",PlayerPrefs.GetFloat("Money"));
+        playerJson.Add("MoneyBank",PlayerPrefs.GetFloat("MoneyBank"));
         playerJson.Add("Health",PlayerPrefs.GetInt("Health"));
         playerJson.Add("TotalDistanceTraveled",PlayerPrefs.GetFloat("TotalDistanceTraveled"));
         playerJson.Add("HN-Dio_TotalDistance",PlayerPrefs.GetFloat("HN-Dio_TotalDistance"));
@@ -567,7 +569,9 @@ public class FetchInitDBData : MonoBehaviour
         PlayerPrefs.SetInt("MoneyBank",int.Parse(dbInitData["data"][0]["MoneyBank"]));
         PlayerPrefs.SetInt("MoneyPocket",int.Parse(dbInitData["data"][0]["MoneyPocket"]));
         PlayerPrefs.SetInt("Health",int.Parse(dbInitData["data"][0]["Health"]));
-        PlayerPrefs.SetFloat("MoneyPerHealth",float.Parse(dbInitData["data"][0]["MoneyPerHealth"]));
+        PlayerPrefs.SetInt("MoneyPerHealth",int.Parse(dbInitData["data"][0]["MoneyPerHealth"]));
+        PlayerPrefs.SetInt("FoodPrice",int.Parse(dbInitData["data"][0]["FoodPrice"]));
+        PlayerPrefs.SetInt("PetrolPrice",int.Parse(dbInitData["data"][0]["PetrolPrice"]));
         PlayerPrefs.SetFloat("TotalDistanceTraveled",float.Parse(dbInitData["data"][0]["TotalDistanceTraveled"]));
         
         #region Setting PlayerPrefs with the Vehicle stats from DB
@@ -831,12 +835,27 @@ public class FetchInitDBData : MonoBehaviour
 
     
 
-    public void SetUsernameInClassroom(){
+    public void SetStatsInClassroom(){
         // Playername = GameObject.Find("Playername").GetComponent<TextMeshProUGUI>();
         try{
-            String username = PlayerPrefs.GetString("PlayerName");
-            Playername.SetText((username).ToString());
+            string username = PlayerPrefs.GetString("PlayerName");
+            Playername.SetText(username);
             Debug.Log("Set username in Classroom");
+
+            int MoneyBank = PlayerPrefs.GetInt("MoneyBank");
+            Money.SetText((MoneyBank).ToString());
+
+            float totalDist = PlayerPrefs.GetFloat("TotalDistanceTraveled");
+            TotalDistance.SetText((totalDist).ToString());
+
+            int lifeCost = PlayerPrefs.GetInt("MoneyPerHealth");
+            LifePrice.SetText((lifeCost).ToString());
+
+            int foodCost = PlayerPrefs.GetInt("FoodPrice");
+            FoodPrice.SetText((foodCost).ToString());
+
+            int petrolCost = PlayerPrefs.GetInt("PetrolPrice");
+            PetrolPrice.SetText((petrolCost).ToString());
         }catch{
             Debug.Log("Could not set username");
         }
