@@ -24,6 +24,13 @@ public class FetchInitDBData : MonoBehaviour
     public GameObject[] Objectlistshow;
     public GameObject[] Objectlisthide;
     SimpleJSON.JSONObject playerJson = new SimpleJSON.JSONObject();
+    Dictionary<string,string> stringValues = new Dictionary<string, string>();
+    Dictionary<string,int> intValues = new Dictionary<string, int>();
+    Dictionary<string,float> floatValues = new Dictionary<string, float>();
+
+    Dictionary<string,string> stringVehicleValues = new Dictionary<string, string>();
+    Dictionary<string,int> intVehicleValues = new Dictionary<string, int>();
+    Dictionary<string,float> floatVehicleValues = new Dictionary<string, float>();
 
 
     // Start is called before the first frame update
@@ -33,7 +40,7 @@ public class FetchInitDBData : MonoBehaviour
         Init initDat = new Init();
         StartCoroutine(initDat.Download("", result => {
             NetworkCheck = result;
-            Debug.Log(NetworkCheck);
+            // Debug.Log(NetworkCheck);
         }));
         SetUsernameInClassroom();
     }
@@ -57,264 +64,24 @@ public class FetchInitDBData : MonoBehaviour
             
         
         initData = new Init();
+        
         if(playerID.Equals("0")){
             if(NetworkCheck != null){
                 PlayerPrefs.SetString("PlayerID",unityUserID);
             }
-            #region Setting Default Vehicle Stats to PlayerPrefs
-            PlayerPrefs.SetString("Timestamp",DateTime.Now.ToString());
-            PlayerPrefs.SetInt("2WheelerLicense",1);
-            PlayerPrefs.SetInt("3WheelerLicense",1);
-            PlayerPrefs.SetInt("4WheelerLicense",0);
-            PlayerPrefs.SetInt("6WheelerLicense",0);
-            PlayerPrefs.SetInt("MoneyBank",20000);
-            PlayerPrefs.SetInt("MoneyPocket",2000);
-            PlayerPrefs.SetInt("Health",50);
-            PlayerPrefs.SetInt("MoneyPerHealth",5);
-            PlayerPrefs.SetFloat("TotalDistanceTraveled",0f);
 
-            #region THIRD PERSON
-            //Vibe
-            PlayerPrefs.SetString("Vibe2009rig-redoCSY_Unlocked","1");
-            PlayerPrefs.SetFloat("Vibe2009rig-redoCSY_Accl",0.075f);
-            PlayerPrefs.SetFloat("Vibe2009rig-redoCSY_MaxSpeed",0.080f);
-            PlayerPrefs.SetFloat("Vibe2009rig-redoCSY_TankCapacity",12f);
-            PlayerPrefs.SetFloat("Vibe2009rig-redoCSY_Mileage",0.180f);
-            PlayerPrefs.SetFloat("Vibe2009rig-redoCSY_Brake",-0.075f);
-            PlayerPrefs.SetFloat("Vibe2009rig-redoCSY_Steer",0.045f);
-            PlayerPrefs.SetFloat("Vibe2009rig-redoCSY_FR",1f);
-            PlayerPrefs.SetFloat("Vibe2009rig-redoCSY_TotalDistance",0f);
-            PlayerPrefs.SetString("Vibe2009rig-redoCSY_KIT","Stock0");
-            PlayerPrefs.SetString("Vibe2009rig-redoCSY_MAT","HN-Dio_Stock");
-            #endregion THIRD PERSON
-
-            #region TWO WHEELERS
-            //HN-Dio
-            PlayerPrefs.SetString("HN-Dio_Unlocked","1");
-            PlayerPrefs.SetFloat("HN-Dio_Accl",0.075f);
-            PlayerPrefs.SetFloat("HN-Dio_MaxSpeed",0.080f);
-            PlayerPrefs.SetFloat("HN-Dio_TankCapacity",12f);
-            PlayerPrefs.SetFloat("HN-Dio_Mileage",0.180f);
-            PlayerPrefs.SetFloat("HN-Dio_Brake",-0.075f);
-            PlayerPrefs.SetFloat("HN-Dio_Steer",0.045f);
-            PlayerPrefs.SetFloat("HN-Dio_FR",1f);
-            PlayerPrefs.SetFloat("HN-Dio_TotalDistance",0f);
-            PlayerPrefs.SetString("HN-Dio_KIT","Stock0");
-            PlayerPrefs.SetString("HN-Dio_MAT","HN-Dio_Stock");
-            //BJ-Chetak
-            PlayerPrefs.SetString("BJ-Chetak_Unlocked","1");
-            PlayerPrefs.SetFloat("BJ-Chetak_Accl",0.075f);
-            PlayerPrefs.SetFloat("BJ-Chetak_MaxSpeed",0.070f);
-            PlayerPrefs.SetFloat("BJ-Chetak_TankCapacity",12f);
-            PlayerPrefs.SetFloat("BJ-Chetak_Mileage",0.180f);
-            PlayerPrefs.SetFloat("BJ-Chetak_Brake",-0.075f);
-            PlayerPrefs.SetFloat("BJ-Chetak_Steer",0.045f);
-            PlayerPrefs.SetFloat("BJ-Chetak_FR",1f);
-            PlayerPrefs.SetFloat("BJ-Chetak_TotalDistance",0f);
-            PlayerPrefs.SetString("BJ-Chetak_KIT","Stock0");
-            PlayerPrefs.SetString("BJ-Chetak_MAT","BJ-Chetak_Stock");
-            //BJ-Pulsar
-            PlayerPrefs.SetString("BJ-Pulsar_Unlocked","1");
-            PlayerPrefs.SetFloat("BJ-Pulsar_Accl",0.075f);
-            PlayerPrefs.SetFloat("BJ-Pulsar_MaxSpeed",0.085f);
-            PlayerPrefs.SetFloat("BJ-Pulsar_TankCapacity",12f);
-            PlayerPrefs.SetFloat("BJ-Pulsar_Mileage",0.180f);
-            PlayerPrefs.SetFloat("BJ-Pulsar_Brake",-0.075f);
-            PlayerPrefs.SetFloat("BJ-Pulsar_Steer",0.045f);
-            PlayerPrefs.SetFloat("BJ-Pulsar_FR",1f);
-            PlayerPrefs.SetFloat("BJ-Pulsar_TotalDistance",0f);
-            PlayerPrefs.SetString("BJ-Pulsar_KIT","Stock0");
-            PlayerPrefs.SetString("BJ-Pulsar_MAT","BJ-Pulsar_Stock");
-
-            #endregion TWO WHEELERS
-
-
-            #region FOUR WHEELERS
-            //Ace
-            PlayerPrefs.SetString("Ace_Unlocked","1");
-            PlayerPrefs.SetFloat("Ace_Accl",0.75f);
-            PlayerPrefs.SetFloat("Ace_MaxSpeed",0.040f);
-            PlayerPrefs.SetFloat("Ace_TankCapacity",50f);
-            PlayerPrefs.SetFloat("Ace_Mileage",0.100f);
-            PlayerPrefs.SetFloat("Ace_Brake",-0.075f);
-            PlayerPrefs.SetFloat("Ace_Steer",0.030f);
-            PlayerPrefs.SetFloat("Ace_FR",1f);
-            PlayerPrefs.SetFloat("Ace_TotalDistance",0f);
-            PlayerPrefs.SetString("Ace_KIT","Stock0");
-            PlayerPrefs.SetString("Ace_MAT","Ace_Stock");
-
-            //Ambassador
-            PlayerPrefs.SetString("Ambassador_Unlocked","1");
-            PlayerPrefs.SetFloat("Ambassador_Accl",0.75f);
-            PlayerPrefs.SetFloat("Ambassador_MaxSpeed",0.040f);
-            PlayerPrefs.SetFloat("Ambassador_TankCapacity",50f);
-            PlayerPrefs.SetFloat("Ambassador_Mileage",0.100f);
-            PlayerPrefs.SetFloat("Ambassador_Brake",-0.075f);
-            PlayerPrefs.SetFloat("Ambassador_Steer",0.030f);
-            PlayerPrefs.SetFloat("Ambassador_FR",1f);
-            PlayerPrefs.SetFloat("Ambassador_TotalDistance",0f);
-            PlayerPrefs.SetString("Ambassador_KIT","Stock0");
-            PlayerPrefs.SetString("Ambassador_MAT","Ambassador_Stock");
-
-            //Indica
-            PlayerPrefs.SetString("Indica_Unlocked","1");
-            PlayerPrefs.SetFloat("Indica_Accl",0.50f);
-            PlayerPrefs.SetFloat("Indica_MaxSpeed",0.070f);
-            PlayerPrefs.SetFloat("Indica_TankCapacity",50f);
-            PlayerPrefs.SetFloat("Indica_Mileage",0.100f);
-            PlayerPrefs.SetFloat("Indica_Brake",-0.050f);
-            PlayerPrefs.SetFloat("Indica_Steer",0.030f);
-            PlayerPrefs.SetFloat("Indica_FR",1f);
-            PlayerPrefs.SetFloat("Indica_TotalDistance",0f);
-            PlayerPrefs.SetString("Indica_KIT","Stock0");
-            PlayerPrefs.SetString("Indica_MAT","Indica_Stock");
-
-            //MS-800
-            PlayerPrefs.SetString("MS-800_Unlocked","1");
-            PlayerPrefs.SetFloat("MS-800_Accl",0.75f);
-            PlayerPrefs.SetFloat("MS-800_MaxSpeed",0.030f);
-            PlayerPrefs.SetFloat("MS-800_TankCapacity",50f);
-            PlayerPrefs.SetFloat("MS-800_Mileage",0.100f);
-            PlayerPrefs.SetFloat("MS-800_Brake",-0.075f);
-            PlayerPrefs.SetFloat("MS-800_Steer",0.030f);
-            PlayerPrefs.SetFloat("MS-800_FR",1f);
-            PlayerPrefs.SetFloat("MS-800_TotalDistance",0f);
-            PlayerPrefs.SetString("MS-800_KIT","Stock0");
-            PlayerPrefs.SetString("MS-800_MAT","MS-800_Stock");
-
-            //MS-Alto
-            PlayerPrefs.SetString("MS-Alto_Unlocked","1");
-            PlayerPrefs.SetFloat("MS-Alto_Accl",0.60f);
-            PlayerPrefs.SetFloat("MS-Alto_MaxSpeed",0.120f);
-            PlayerPrefs.SetFloat("MS-Alto_TankCapacity",50f);
-            PlayerPrefs.SetFloat("MS-Alto_Mileage",0.100f);
-            PlayerPrefs.SetFloat("MS-Alto_Brake",-0.060f);
-            PlayerPrefs.SetFloat("MS-Alto_Steer",0.050f);
-            PlayerPrefs.SetFloat("MS-Alto_FR",1f);
-            PlayerPrefs.SetFloat("MS-Alto_TotalDistance",0f);
-            PlayerPrefs.SetString("MS-Alto_KIT","Stock0");
-            PlayerPrefs.SetString("MS-Alto_MAT","MS-Alto_Stock");
-
-            //Nano
-            PlayerPrefs.SetString("Nano_Unlocked","1");
-            PlayerPrefs.SetFloat("Nano_Accl",0.50f);
-            PlayerPrefs.SetFloat("Nano_MaxSpeed",0.030f);
-            PlayerPrefs.SetFloat("Nano_TankCapacity",50f);
-            PlayerPrefs.SetFloat("Nano_Mileage",0.100f);
-            PlayerPrefs.SetFloat("Nano_Brake",-0.050f);
-            PlayerPrefs.SetFloat("Nano_Steer",0.030f);
-            PlayerPrefs.SetFloat("Nano_FR",1f);
-            PlayerPrefs.SetFloat("Nano_TotalDistance",0f);
-            PlayerPrefs.SetString("Nano_KIT","Stock0");
-            PlayerPrefs.SetString("Nano_MAT","Nano_Stock");
-
-            //Scorpio
-            PlayerPrefs.SetString("Scorpio_Unlocked","1");
-            PlayerPrefs.SetFloat("Scorpio_Accl",0.80f);
-            PlayerPrefs.SetFloat("Scorpio_MaxSpeed",0.150f);
-            PlayerPrefs.SetFloat("Scorpio_TankCapacity",50f);
-            PlayerPrefs.SetFloat("Scorpio_Mileage",0.100f);
-            PlayerPrefs.SetFloat("Scorpio_Brake",-0.080f);
-            PlayerPrefs.SetFloat("Scorpio_Steer",0.030f);
-            PlayerPrefs.SetFloat("Scorpio_FR",1f);
-            PlayerPrefs.SetFloat("Scorpio_TotalDistance",0f);
-            PlayerPrefs.SetString("Scorpio_KIT","Stock0");
-            PlayerPrefs.SetString("Scorpio_MAT","Scorpio_Stock");
-
-            //VJM02
-            PlayerPrefs.SetString("VJM02_Unlocked","1");
-            PlayerPrefs.SetFloat("VJM02_Accl",2f);
-            PlayerPrefs.SetFloat("VJM02_MaxSpeed",0.3f);
-            PlayerPrefs.SetFloat("VJM02_TankCapacity",143f);
-            PlayerPrefs.SetFloat("VJM02_Mileage",0.3f);
-            PlayerPrefs.SetFloat("VJM02_Brake",-2f);
-            PlayerPrefs.SetFloat("VJM02_Steer",0.030f);
-            PlayerPrefs.SetFloat("VJM02_FR",1f);
-            PlayerPrefs.SetFloat("VJM02_TotalDistance",0f);
-            PlayerPrefs.SetString("VJM02_KIT","Stock0");
-            PlayerPrefs.SetString("VJM02_MAT","VJM02_Stock");
-
-            //BMTC_1wopass
-            PlayerPrefs.SetString("BMTC_1wopass_Unlocked","1");
-            PlayerPrefs.SetFloat("BMTC_1wopass_Accl",4.5f);
-            PlayerPrefs.SetFloat("BMTC_1wopass_MaxSpeed",0.3f);
-            PlayerPrefs.SetFloat("BMTC_1wopass_TankCapacity",50f);
-            PlayerPrefs.SetFloat("BMTC_1wopass_Mileage",0.3f);
-            PlayerPrefs.SetFloat("BMTC_1wopass_Brake",-4.5f);
-            PlayerPrefs.SetFloat("BMTC_1wopass_Steer",0.030f);
-            PlayerPrefs.SetFloat("BMTC_1wopass_FR",1f);
-            PlayerPrefs.SetFloat("BMTC_1wopass_TotalDistance",0f);
-            PlayerPrefs.SetString("BMTC_1wopass_KIT","Stock0");
-            PlayerPrefs.SetString("BMTC_1wopass_MAT","BMTC_1wopass_Stock");
-
-            //Tempo
-            PlayerPrefs.SetString("Tempo_Unlocked","1");
-            PlayerPrefs.SetFloat("Tempo_Accl",4.5f);
-            PlayerPrefs.SetFloat("Tempo_MaxSpeed",0.3f);
-            PlayerPrefs.SetFloat("Tempo_TankCapacity",50f);
-            PlayerPrefs.SetFloat("Tempo_Mileage",0.3f);
-            PlayerPrefs.SetFloat("Tempo_Brake",-4.5f);
-            PlayerPrefs.SetFloat("Tempo_Steer",0.030f);
-            PlayerPrefs.SetFloat("Tempo_FR",1f);
-            PlayerPrefs.SetFloat("Tempo_TotalDistance",0f);
-            PlayerPrefs.SetString("Tempo_KIT","Stock0");
-            PlayerPrefs.SetString("Tempo_MAT","Tempo_Stock");
-
-            #endregion FOUR WHEELERS
-
-
-            #region THREE WHEELERS
-            //BA-RE
-            PlayerPrefs.SetString("BA-RE_Unlocked","1");
-            PlayerPrefs.SetFloat("BA-RE_Accl",0.4f);
-            PlayerPrefs.SetFloat("BA-RE_MaxSpeed",0.060f);
-            PlayerPrefs.SetFloat("BA-RE_TankCapacity",30f);
-            PlayerPrefs.SetFloat("BA-RE_Mileage",0.040f);
-            PlayerPrefs.SetFloat("BA-RE_Brake",-0.4f);
-            PlayerPrefs.SetFloat("BA-RE_Steer",0.030f);
-            PlayerPrefs.SetFloat("BA-RE_FR",1f);
-            PlayerPrefs.SetFloat("BA-RE_TotalDistance",0f);
-            PlayerPrefs.SetString("BA-RE_KIT","Stock0");
-            PlayerPrefs.SetString("BA-RE_MAT","BA-RE_Stock");
-
-            //Ape
-            PlayerPrefs.SetString("Ape_Unlocked","1");
-            PlayerPrefs.SetFloat("Ape_Accl",0.30f);
-            PlayerPrefs.SetFloat("Ape_MaxSpeed",0.030f);
-            PlayerPrefs.SetFloat("Ape_TankCapacity",30f);
-            PlayerPrefs.SetFloat("Ape_Mileage",0.040f);
-            PlayerPrefs.SetFloat("Ape_Brake",-0.030f);
-            PlayerPrefs.SetFloat("Ape_Steer",0.030f);
-            PlayerPrefs.SetFloat("Ape_FR",1f);
-            PlayerPrefs.SetFloat("Ape_TotalDistance",0f);
-            PlayerPrefs.SetString("Ape_KIT","Stock0");
-            PlayerPrefs.SetString("Ape_MAT","Ape_Stock");
-
-            //BullockCart_1
-            PlayerPrefs.SetString("BullockCart_1_Unlocked","1");
-            PlayerPrefs.SetFloat("BullockCart_1_Accl",0.050f);
-            PlayerPrefs.SetFloat("BullockCart_1_MaxSpeed",0.030f);
-            PlayerPrefs.SetFloat("BullockCart_1_TankCapacity",30f);
-            PlayerPrefs.SetFloat("BullockCart_1_Mileage",0.040f);
-            PlayerPrefs.SetFloat("BullockCart_1_Brake",-0.050f);
-            PlayerPrefs.SetFloat("BullockCart_1_Steer",0.030f);
-            PlayerPrefs.SetFloat("BullockCart_1_FR",1f);
-            PlayerPrefs.SetFloat("BullockCart_1_TotalDistance",0f);
-            PlayerPrefs.SetString("BullockCart_1_KIT","Stock0");
-            PlayerPrefs.SetString("BullockCart_1_MAT","BullockCart_1_Stock");
-
-            #endregion THREE WHEELERS
-
-
-            #endregion Setting Default Vehicle Stats to PlayerPrefs
+            allDefaultPPData();
 
             initData.apiParam = "playerStats/default/"+unityUserID;
             Debug.Log(initData.apiParam);
             skipTimeCheck = true;
         }else{
+            allDefaultPPData();
+
             PlayerPrefs.SetString("Timestamp",DateTime.Now.ToString());
             id = PlayerPrefs.GetString("PlayerID");
             initData.apiParam = "playerStats/"+id;
+            // ppUpdateStuff();
         }
         
 
@@ -364,6 +131,371 @@ public class FetchInitDBData : MonoBehaviour
         }));
         
     }
+
+    private void allDefaultPPData(){
+        #region Setting Default Stats to PlayerPrefs
+            
+        #region THIRD PERSON
+        stringValues.Add("Timestamp",DateTime.Now.ToString());
+        intValues.Add("2WheelerLicense",1);
+        intValues.Add("3WheelerLicense",1);
+        intValues.Add("4WheelerLicense",1);
+        intValues.Add("6WheelerLicense",1);
+        intValues.Add("MoneyBank",20000);
+        intValues.Add("MoneyPocket",2000);
+        intValues.Add("Health",50);
+        intValues.Add("MoneyPerHealth",5);
+        floatValues.Add("TotalDistanceTraveled",0f);
+
+        //Vibe
+        stringValues.Add("Vibe2009rig-redoCSY_Unlocked","1");
+        floatValues.Add("Vibe2009rig-redoCSY_Accl",0.075f);
+        floatValues.Add("Vibe2009rig-redoCSY_MaxSpeed",0.080f);
+        floatValues.Add("Vibe2009rig-redoCSY_TankCapacity",12f);
+        floatValues.Add("Vibe2009rig-redoCSY_Mileage",0.180f);
+        floatValues.Add("Vibe2009rig-redoCSY_Brake",-0.075f);
+        floatValues.Add("Vibe2009rig-redoCSY_Steer",0.045f);
+        floatValues.Add("Vibe2009rig-redoCSY_FR",1f);
+        floatValues.Add("Vibe2009rig-redoCSY_TotalDistance",0f);
+        stringValues.Add("Vibe2009rig-redoCSY_KIT","Stock0");
+        stringValues.Add("Vibe2009rig-redoCSY_MAT","HN-Dio_Stock");
+
+        #endregion THIRD PERSON
+
+
+        #region TWO WHEELERS
+        //HN-Dio
+        stringVehicleValues.Add("HN-Dio_Unlocked","1");
+        floatVehicleValues.Add("HN-Dio_Accl",0.075f);
+        floatVehicleValues.Add("HN-Dio_MaxSpeed",0.080f);
+        floatVehicleValues.Add("HN-Dio_TankCapacity",12f);
+        floatVehicleValues.Add("HN-Dio_Mileage",0.180f);
+        floatVehicleValues.Add("HN-Dio_Brake",-0.075f);
+        floatVehicleValues.Add("HN-Dio_Steer",0.045f);
+        floatVehicleValues.Add("HN-Dio_FR",1f);
+        floatVehicleValues.Add("HN-Dio_TotalDistance",0f);
+        stringVehicleValues.Add("HN-Dio_KIT","Stock0");
+        stringVehicleValues.Add("HN-Dio_MAT","HN-Dio_Stock");
+
+        //BJ-Chetak
+        stringVehicleValues.Add("BJ-Chetak_Unlocked","1");
+        floatVehicleValues.Add("BJ-Chetak_Accl",0.075f);
+        floatVehicleValues.Add("BJ-Chetak_MaxSpeed",0.070f);
+        floatVehicleValues.Add("BJ-Chetak_TankCapacity",12f);
+        floatVehicleValues.Add("BJ-Chetak_Mileage",0.180f);
+        floatVehicleValues.Add("BJ-Chetak_Brake",-0.075f);
+        floatVehicleValues.Add("BJ-Chetak_Steer",0.045f);
+        floatVehicleValues.Add("BJ-Chetak_FR",1f);
+        floatVehicleValues.Add("BJ-Chetak_TotalDistance",0f);
+        stringVehicleValues.Add("BJ-Chetak_KIT","Stock0");
+        stringVehicleValues.Add("BJ-Chetak_MAT","BJ-Chetak_Stock");
+
+        //BJ-Pulsar
+        stringVehicleValues.Add("BJ-Pulsar_Unlocked","1");
+        floatVehicleValues.Add("BJ-Pulsar_Accl",0.075f);
+        floatVehicleValues.Add("BJ-Pulsar_MaxSpeed",0.085f);
+        floatVehicleValues.Add("BJ-Pulsar_TankCapacity",12f);
+        floatVehicleValues.Add("BJ-Pulsar_Mileage",0.180f);
+        floatVehicleValues.Add("BJ-Pulsar_Brake",-0.075f);
+        floatVehicleValues.Add("BJ-Pulsar_Steer",0.045f);
+        floatVehicleValues.Add("BJ-Pulsar_FR",1f);
+        floatVehicleValues.Add("BJ-Pulsar_TotalDistance",0f);
+        stringVehicleValues.Add("BJ-Pulsar_KIT","Stock0");
+        stringVehicleValues.Add("BJ-Pulsar_MAT","BJ-Pulsar_Stock");
+
+        #endregion TWO WHEELERS
+
+
+        #region FOUR WHEELERS
+        //Ace
+        stringVehicleValues.Add("Ace_Unlocked","1");
+        floatVehicleValues.Add("Ace_Accl",0.75f);
+        floatVehicleValues.Add("Ace_MaxSpeed",0.040f);
+        floatVehicleValues.Add("Ace_TankCapacity",50f);
+        floatVehicleValues.Add("Ace_Mileage",0.100f);
+        floatVehicleValues.Add("Ace_Brake",-0.075f);
+        floatVehicleValues.Add("Ace_Steer",0.030f);
+        floatVehicleValues.Add("Ace_FR",1f);
+        floatVehicleValues.Add("Ace_TotalDistance",0f);
+        stringVehicleValues.Add("Ace_KIT","Stock0");
+        stringVehicleValues.Add("Ace_MAT","Ace_Stock");
+
+        //Ambassador
+        stringVehicleValues.Add("Ambassador_Unlocked","1");
+        floatVehicleValues.Add("Ambassador_Accl",0.75f);
+        floatVehicleValues.Add("Ambassador_MaxSpeed",0.040f);
+        floatVehicleValues.Add("Ambassador_TankCapacity",50f);
+        floatVehicleValues.Add("Ambassador_Mileage",0.100f);
+        floatVehicleValues.Add("Ambassador_Brake",-0.075f);
+        floatVehicleValues.Add("Ambassador_Steer",0.030f);
+        floatVehicleValues.Add("Ambassador_FR",1f);
+        floatVehicleValues.Add("Ambassador_TotalDistance",0f);
+        stringVehicleValues.Add("Ambassador_KIT","Stock0");
+        stringVehicleValues.Add("Ambassador_MAT","Ambassador_Stock");
+
+        //Indica
+        stringVehicleValues.Add("Indica_Unlocked","1");
+        floatVehicleValues.Add("Indica_Accl",0.50f);
+        floatVehicleValues.Add("Indica_MaxSpeed",0.070f);
+        floatVehicleValues.Add("Indica_TankCapacity",50f);
+        floatVehicleValues.Add("Indica_Mileage",0.100f);
+        floatVehicleValues.Add("Indica_Brake",-0.050f);
+        floatVehicleValues.Add("Indica_Steer",0.030f);
+        floatVehicleValues.Add("Indica_FR",1f);
+        floatVehicleValues.Add("Indica_TotalDistance",0f);
+        stringVehicleValues.Add("Indica_KIT","Stock0");
+        stringVehicleValues.Add("Indica_MAT","Indica_Stock");
+
+        //MS-800
+        stringVehicleValues.Add("MS-800_Unlocked","1");
+        floatVehicleValues.Add("MS-800_Accl",0.75f);
+        floatVehicleValues.Add("MS-800_MaxSpeed",0.030f);
+        floatVehicleValues.Add("MS-800_TankCapacity",50f);
+        floatVehicleValues.Add("MS-800_Mileage",0.100f);
+        floatVehicleValues.Add("MS-800_Brake",-0.075f);
+        floatVehicleValues.Add("MS-800_Steer",0.030f);
+        floatVehicleValues.Add("MS-800_FR",1f);
+        floatVehicleValues.Add("MS-800_TotalDistance",0f);
+        stringVehicleValues.Add("MS-800_KIT","Stock0");
+        stringVehicleValues.Add("MS-800_MAT","MS-800_Stock");
+
+        //MS-Alto
+        stringVehicleValues.Add("MS-Alto_Unlocked","1");
+        floatVehicleValues.Add("MS-Alto_Accl",0.60f);
+        floatVehicleValues.Add("MS-Alto_MaxSpeed",0.120f);
+        floatVehicleValues.Add("MS-Alto_TankCapacity",50f);
+        floatVehicleValues.Add("MS-Alto_Mileage",0.100f);
+        floatVehicleValues.Add("MS-Alto_Brake",-0.060f);
+        floatVehicleValues.Add("MS-Alto_Steer",0.050f);
+        floatVehicleValues.Add("MS-Alto_FR",1f);
+        floatVehicleValues.Add("MS-Alto_TotalDistance",0f);
+        stringVehicleValues.Add("MS-Alto_KIT","Stock0");
+        stringVehicleValues.Add("MS-Alto_MAT","MS-Alto_Stock");
+
+        //Nano
+        stringVehicleValues.Add("Nano_Unlocked","1");
+        floatVehicleValues.Add("Nano_Accl",0.50f);
+        floatVehicleValues.Add("Nano_MaxSpeed",0.030f);
+        floatVehicleValues.Add("Nano_TankCapacity",50f);
+        floatVehicleValues.Add("Nano_Mileage",0.100f);
+        floatVehicleValues.Add("Nano_Brake",-0.050f);
+        floatVehicleValues.Add("Nano_Steer",0.030f);
+        floatVehicleValues.Add("Nano_FR",1f);
+        floatVehicleValues.Add("Nano_TotalDistance",0f);
+        stringVehicleValues.Add("Nano_KIT","Stock0");
+        stringVehicleValues.Add("Nano_MAT","Nano_Stock");
+
+        //Scorpio
+        stringVehicleValues.Add("Scorpio_Unlocked","1");
+        floatVehicleValues.Add("Scorpio_Accl",0.80f);
+        floatVehicleValues.Add("Scorpio_MaxSpeed",0.150f);
+        floatVehicleValues.Add("Scorpio_TankCapacity",50f);
+        floatVehicleValues.Add("Scorpio_Mileage",0.100f);
+        floatVehicleValues.Add("Scorpio_Brake",-0.080f);
+        floatVehicleValues.Add("Scorpio_Steer",0.030f);
+        floatVehicleValues.Add("Scorpio_FR",1f);
+        floatVehicleValues.Add("Scorpio_TotalDistance",0f);
+        stringVehicleValues.Add("Scorpio_KIT","Stock0");
+        stringVehicleValues.Add("Scorpio_MAT","Scorpio_Stock");
+
+        //VJM02
+        stringVehicleValues.Add("VJM02_Unlocked","1");
+        floatVehicleValues.Add("VJM02_Accl",2f);
+        floatVehicleValues.Add("VJM02_MaxSpeed",0.3f);
+        floatVehicleValues.Add("VJM02_TankCapacity",143f);
+        floatVehicleValues.Add("VJM02_Mileage",0.3f);
+        floatVehicleValues.Add("VJM02_Brake",-2f);
+        floatVehicleValues.Add("VJM02_Steer",0.030f);
+        floatVehicleValues.Add("VJM02_FR",1f);
+        floatVehicleValues.Add("VJM02_TotalDistance",0f);
+        stringVehicleValues.Add("VJM02_KIT","Stock0");
+        stringVehicleValues.Add("VJM02_MAT","VJM02_Stock");
+
+        //BMTC_1wopass
+        stringVehicleValues.Add("BMTC_1wopass_Unlocked","1");
+        floatVehicleValues.Add("BMTC_1wopass_Accl",4.5f);
+        floatVehicleValues.Add("BMTC_1wopass_MaxSpeed",0.3f);
+        floatVehicleValues.Add("BMTC_1wopass_TankCapacity",50f);
+        floatVehicleValues.Add("BMTC_1wopass_Mileage",0.3f);
+        floatVehicleValues.Add("BMTC_1wopass_Brake",-4.5f);
+        floatVehicleValues.Add("BMTC_1wopass_Steer",0.030f);
+        floatVehicleValues.Add("BMTC_1wopass_FR",1f);
+        floatVehicleValues.Add("BMTC_1wopass_TotalDistance",0f);
+        stringVehicleValues.Add("BMTC_1wopass_KIT","Stock0");
+        stringVehicleValues.Add("BMTC_1wopass_MAT","BMTC_1wopass_Stock");
+
+        //Tempo
+        stringVehicleValues.Add("Tempo_Unlocked","1");
+        floatVehicleValues.Add("Tempo_Accl",4.5f);
+        floatVehicleValues.Add("Tempo_MaxSpeed",0.3f);
+        floatVehicleValues.Add("Tempo_TankCapacity",50f);
+        floatVehicleValues.Add("Tempo_Mileage",0.3f);
+        floatVehicleValues.Add("Tempo_Brake",-4.5f);
+        floatVehicleValues.Add("Tempo_Steer",0.030f);
+        floatVehicleValues.Add("Tempo_FR",1f);
+        floatVehicleValues.Add("Tempo_TotalDistance",0f);
+        stringVehicleValues.Add("Tempo_KIT","Stock0");
+        stringVehicleValues.Add("Tempo_MAT","Tempo_Stock");
+
+        #endregion FOUR WHEELERS
+
+
+        #region THREE WHEELERS
+        //BA-RE
+        stringVehicleValues.Add("BA-RE_Unlocked","1");
+        floatVehicleValues.Add("BA-RE_Accl",0.4f);
+        floatVehicleValues.Add("BA-RE_MaxSpeed",0.060f);
+        floatVehicleValues.Add("BA-RE_TankCapacity",30f);
+        floatVehicleValues.Add("BA-RE_Mileage",0.040f);
+        floatVehicleValues.Add("BA-RE_Brake",-0.4f);
+        floatVehicleValues.Add("BA-RE_Steer",0.030f);
+        floatVehicleValues.Add("BA-RE_FR",1f);
+        floatVehicleValues.Add("BA-RE_TotalDistance",0f);
+        stringVehicleValues.Add("BA-RE_KIT","Stock0");
+        stringVehicleValues.Add("BA-RE_MAT","BA-RE_Stock");
+
+        //Ape
+        stringVehicleValues.Add("Ape_Unlocked","1");
+        floatVehicleValues.Add("Ape_Accl",0.30f);
+        floatVehicleValues.Add("Ape_MaxSpeed",0.030f);
+        floatVehicleValues.Add("Ape_TankCapacity",30f);
+        floatVehicleValues.Add("Ape_Mileage",0.040f);
+        floatVehicleValues.Add("Ape_Brake",-0.030f);
+        floatVehicleValues.Add("Ape_Steer",0.030f);
+        floatVehicleValues.Add("Ape_FR",1f);
+        floatVehicleValues.Add("Ape_TotalDistance",0f);
+        stringVehicleValues.Add("Ape_KIT","Stock0");
+        stringVehicleValues.Add("Ape_MAT","Ape_Stock");
+
+        //BullockCart_1
+        stringVehicleValues.Add("BullockCart_1_Unlocked","1");
+        floatVehicleValues.Add("BullockCart_1_Accl",0.050f);
+        floatVehicleValues.Add("BullockCart_1_MaxSpeed",0.030f);
+        floatVehicleValues.Add("BullockCart_1_TankCapacity",30f);
+        floatVehicleValues.Add("BullockCart_1_Mileage",0.040f);
+        floatVehicleValues.Add("BullockCart_1_Brake",-0.050f);
+        floatVehicleValues.Add("BullockCart_1_Steer",0.030f);
+        floatVehicleValues.Add("BullockCart_1_FR",1f);
+        floatVehicleValues.Add("BullockCart_1_TotalDistance",0f);
+        stringVehicleValues.Add("BullockCart_1_KIT","Stock0");
+        stringVehicleValues.Add("BullockCart_1_MAT","BullockCart_1_Stock");
+
+        #endregion THREE WHEELERS
+
+
+        #endregion Setting Default Vehicle Stats to PlayerPrefs
+
+
+
+
+        //Check if PP already exist; if not, then add.
+        //string values
+        Debug.Log("Count is: "+stringValues.Count);
+        foreach(KeyValuePair<string,string> stringValue in stringValues){
+            if(!PlayerPrefs.HasKey(stringValue.Key)){
+                PlayerPrefs.SetString(stringValue.Key,stringValue.Value);
+            }
+            Debug.Log(stringValue.Key);
+        }
+
+        //int values
+        foreach(KeyValuePair<string,int> intValue in intValues){
+            if(!PlayerPrefs.HasKey(intValue.Key)){
+                PlayerPrefs.SetInt(intValue.Key,intValue.Value);
+            }
+            Debug.Log(intValues);
+        }
+
+        //float values
+        foreach(KeyValuePair<string,float> floatValue in floatValues){
+            if(!PlayerPrefs.HasKey(floatValue.Key)){
+                PlayerPrefs.SetFloat(floatValue.Key,floatValue.Value);
+            }
+        }
+
+        //Vehicle string values
+        foreach(KeyValuePair<string,string> stringValue in stringVehicleValues){
+            if(!PlayerPrefs.HasKey(stringValue.Key)){
+                PlayerPrefs.SetString(stringValue.Key,stringValue.Value);
+                Debug.Log(stringValue.Value);
+            }
+        }
+
+        //Vehicle int values
+        foreach(KeyValuePair<string,int> intValue in intVehicleValues){
+            if(!PlayerPrefs.HasKey(intValue.Key)){
+                PlayerPrefs.SetInt(intValue.Key,intValue.Value);
+            }
+        }
+
+        //Vehicle float values
+        foreach(KeyValuePair<string,float> floatValue in floatVehicleValues){
+            if(!PlayerPrefs.HasKey(floatValue.Key)){
+                PlayerPrefs.SetFloat(floatValue.Key,floatValue.Value);
+                Debug.Log(floatValue.Value);
+            }
+        }
+
+        renamePlayerPrefsInNewUpdate();
+        deletePlayerPrefsInNewUpdate();
+    }
+
+
+    private void deletePlayerPrefsInNewUpdate(){
+        //Add PP key name here which needs to be deleted in new game update. For example, the below:
+        //string[] toDelete = new string[] {"PlayerName","TotalDistance"};
+        //DO NOT DELETE ANY EXISTING PP KEY.THESE OLD PP KEYS SHOULD BE PRESENT HERE FOR LIFETIME
+
+        string[] toDelete = new string[] {};
+
+        foreach(string del in toDelete){
+            PlayerPrefs.DeleteKey(del);
+        }
+    }
+
+    private void renamePlayerPrefsInNewUpdate(){
+        //Add PP key name here which needs to be renamed in new game update. For example, the below:
+        //toRename.Add("OldName:string","NewName");
+        //DO NOT DELETE ANY EXISTING PP KEY.THESE OLD PP KEYS SHOULD BE PRESENT HERE FOR LIFETIME
+
+        Dictionary<string,string> toRename = new Dictionary<string, string>();
+        // toRename.Add("OldName:string","NewName");
+
+        foreach(string ren in toRename.Keys){
+            string dataType = ren.Split(':')[1];
+            string oldName = ren.Split(':')[0];
+            string newName = toRename[ren];
+
+            string oldStringPPValue = "";
+            int oldIntPPValue;
+            float oldFloatPPValue;
+
+            switch(dataType){
+                case "string":
+                    oldStringPPValue = PlayerPrefs.GetString(oldName);
+                    PlayerPrefs.DeleteKey(oldName);
+                    PlayerPrefs.SetString(newName,oldStringPPValue);
+                    break;
+                case "int":
+                    oldIntPPValue = PlayerPrefs.GetInt(oldName);
+                    PlayerPrefs.DeleteKey(oldName);
+                    PlayerPrefs.SetInt(newName,oldIntPPValue);
+                    break;
+                case "float":
+                    oldFloatPPValue = PlayerPrefs.GetFloat(oldName);
+                    PlayerPrefs.DeleteKey(oldName);
+                    PlayerPrefs.SetFloat(newName,oldFloatPPValue);
+                    break;
+                default:
+                    Debug.Log("Data type not found to fetch from the PP");
+                    break;
+            }
+
+        }
+
+
+    }
+
 
     public void validateAndPushToDB(){
         initData = new Init();
@@ -717,12 +849,4 @@ public class FetchInitDBData : MonoBehaviour
         
     }
 
-    private void update(string keyName){
-        if(PlayerPrefs.HasKey(keyName)){
-
-        }else{
-
-        }
-    }
-    
 }
