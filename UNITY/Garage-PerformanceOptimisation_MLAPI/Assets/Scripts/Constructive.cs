@@ -20,11 +20,12 @@ public class Constructive : MonoBehaviour
             int rad = Random.Range(0,25);
             if(GameObject.Find("Garbage(Clone)")){
                 GameObject.Find("Garbage(Clone)").transform.position = GameObject.Find("Garbage(Clone)").transform.position + new Vector3(Mathf.Cos(Mathf.Deg2Rad*degree)*rad,0f,Mathf.Sin(Mathf.Deg2Rad*degree)*rad);
+                GameObject.Find("Garbage(Clone)").transform.rotation = Quaternion.Euler(new Vector3(0f,0f,0f));
             
             }
             else
             {
-                GameObject.Instantiate(Resources.Load("Landmarks_Prefabs/Garbage"), transform.position + new Vector3(Mathf.Cos(Mathf.Deg2Rad*degree)*rad,0f,Mathf.Sin(Mathf.Deg2Rad*degree)*rad), transform.rotation);
+                GameObject.Instantiate(Resources.Load("Landmarks_Prefabs/Garbage"), transform.position + new Vector3(Mathf.Cos(Mathf.Deg2Rad*degree)*rad,0f,Mathf.Sin(Mathf.Deg2Rad*degree)*rad), Quaternion.Euler(new Vector3(0f,0f,0f)));
             }
             yield return new WaitForSeconds(120f);
         }
@@ -40,11 +41,11 @@ public class Constructive : MonoBehaviour
             int rad = Random.Range(0,25);
             if(GameObject.Find("Firehazard(Clone)")){
                 GameObject.Find("Firehazard(Clone)").transform.position = GameObject.Find("Firehazard(Clone)").transform.position + new Vector3(Mathf.Cos(Mathf.Deg2Rad*degree)*rad,0f,Mathf.Sin(Mathf.Deg2Rad*degree)*rad);
-            
+                GameObject.Find("Garbage(Clone)").transform.rotation = Quaternion.Euler(new Vector3(0f,0f,0f));
             }
             else
             {
-                GameObject.Instantiate(Resources.Load("Landmarks_Prefabs/Firehazard"), transform.position + new Vector3(Mathf.Cos(Mathf.Deg2Rad*degree)*rad,0f,Mathf.Sin(Mathf.Deg2Rad*degree)*rad), transform.rotation);
+                GameObject.Instantiate(Resources.Load("Landmarks_Prefabs/Firehazard"), transform.position + new Vector3(Mathf.Cos(Mathf.Deg2Rad*degree)*rad,0f,Mathf.Sin(Mathf.Deg2Rad*degree)*rad), Quaternion.Euler(new Vector3(0f,0f,0f)));
             }
             yield return new WaitForSeconds(5000f);
         }
@@ -60,11 +61,11 @@ public class Constructive : MonoBehaviour
             int rad = Random.Range(0,25);
             if(GameObject.Find("Drainage(Clone)")){
                 GameObject.Find("Drainage(Clone)").transform.position = GameObject.Find("Drainage(Clone)").transform.position + new Vector3(Mathf.Cos(Mathf.Deg2Rad*degree)*rad,0f,Mathf.Sin(Mathf.Deg2Rad*degree)*rad);
-            
+                GameObject.Find("Garbage(Clone)").transform.rotation = Quaternion.Euler(new Vector3(0f,0f,0f));
             }
             else
             {
-                GameObject.Instantiate(Resources.Load("Landmarks_Prefabs/Drainage"), transform.position + new Vector3(Mathf.Cos(Mathf.Deg2Rad*degree)*rad,0f,Mathf.Sin(Mathf.Deg2Rad*degree)*rad), transform.rotation);
+                GameObject.Instantiate(Resources.Load("Landmarks_Prefabs/Drainage"), transform.position + new Vector3(Mathf.Cos(Mathf.Deg2Rad*degree)*rad,0f,Mathf.Sin(Mathf.Deg2Rad*degree)*rad), Quaternion.Euler(new Vector3(0f,0f,0f)));
             }
             yield return new WaitForSeconds(120f);
         }

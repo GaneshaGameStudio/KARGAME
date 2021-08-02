@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5348536910794182487}
   - component: {fileID: 5348536910794182486}
   - component: {fileID: 5348536910794182485}
-  - component: {fileID: 5348536910794182484}
   - component: {fileID: 5348536910794182483}
   - component: {fileID: -2954733331338327038}
+  - component: {fileID: 7191086247633953591}
   m_Layer: 0
   m_Name: Firehazard
   m_TagString: Untagged
@@ -102,21 +102,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
---- !u!65 &5348536910794182484
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5348536910794182488}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.3691108, y: 0.41972065, z: 1.4235253}
-  m_Center: {x: 0.05293119, y: 0.2575699, z: -0.07579684}
 --- !u!114 &5348536910794182483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,6 +133,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5465143eadb264b47ac744bf137b8baf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &7191086247633953591
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5348536910794182488}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.3
+  m_Height: 1.38
+  m_Direction: 0
+  m_Center: {x: -0.02942717, y: 0.25, z: -0.15235233}
 --- !u!1 &5348536911304937526
 GameObject:
   m_ObjectHideFlags: 0
