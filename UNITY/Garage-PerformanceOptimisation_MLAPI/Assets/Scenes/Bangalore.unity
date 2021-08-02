@@ -6755,6 +6755,7 @@ GameObject:
   - component: {fileID: 1080774879}
   - component: {fileID: 1080774889}
   - component: {fileID: 1080774891}
+  - component: {fileID: 1080774883}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -6958,6 +6959,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b8bb06bbd6954c2c93bf5a15f3f9f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1080774883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080774877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca99eac4090544a309860179e26ef268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1080774884
@@ -8434,6 +8447,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Playername: {fileID: 0}
+  Money: {fileID: 0}
+  TotalDistance: {fileID: 0}
+  FoodPrice: {fileID: 0}
+  PetrolPrice: {fileID: 0}
+  LifePrice: {fileID: 0}
   id: 1
   Objectlistshow:
   - {fileID: 1217425664}

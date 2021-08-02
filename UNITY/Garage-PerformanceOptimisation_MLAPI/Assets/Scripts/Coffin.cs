@@ -32,7 +32,7 @@ public class Coffin : NetworkBehaviour, IPointerClickHandler
         Destroy(gameObject.transform.root.gameObject);
     }
     void SetMoney(){
-        PlayerPrefs.SetInt("MoneyPocket", Mathf.Max(2000,PlayerPrefs.GetInt("MoneyPocket") + MoneyP.Value));
+        PlayerPrefs.SetInt("MoneyPocket", Mathf.Min(2000,PlayerPrefs.GetInt("MoneyPocket") + MoneyP.Value));
         GameObject.Find("Money-number").GetComponent<TextMeshProUGUI>().SetText((MoneyP.Value).ToString());
     }
     
