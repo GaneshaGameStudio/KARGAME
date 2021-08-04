@@ -825,7 +825,10 @@ public class FetchInitDBData : MonoBehaviour
     public void UnHideTheseObjects(){
         for(int i =0;i<Objectlisthide.Length;i++){
             if(Objectlisthide[i].name == "InputField (TMP)" && PlayerPrefs.HasKey("PlayerName")){
+                string username = PlayerPrefs.GetString("PlayerName");
+                Playername.SetText(username);
                 (Objectlisthide[i]).SetActive(false);
+                
             }else{
                 (Objectlisthide[i]).SetActive(true);
             }

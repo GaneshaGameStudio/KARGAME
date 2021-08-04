@@ -506,7 +506,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.517, y: -292.65604}
+  m_AnchoredPosition: {x: 3.517, y: -195.72499}
   m_SizeDelta: {x: 715.0042, y: 838.9788}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &177680601
@@ -1177,6 +1177,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3267d7512e9c44a64b8758d75faa7c99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Playername: {fileID: 1096643149}
+  Money: {fileID: 0}
+  TotalDistance: {fileID: 0}
+  FoodPrice: {fileID: 0}
+  PetrolPrice: {fileID: 0}
+  LifePrice: {fileID: 0}
   id: 1
   Objectlistshow:
   - {fileID: 1113451505}
@@ -2510,8 +2516,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1438853733}
   m_HandleRect: {fileID: 1931575361}
   m_Direction: 2
-  m_Value: 1.0000004
-  m_Size: 0.30235225
+  m_Value: 0.83439445
+  m_Size: 0.30235228
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
