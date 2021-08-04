@@ -153,6 +153,9 @@ public class FetchInitDBData : MonoBehaviour
         intValues.Add("FoodPrice",50);
         intValues.Add("PetrolPrice",105);
         floatValues.Add("TotalDistanceTraveled",0f);
+        intValues.Add("Garbage_Money",200);
+        intValues.Add("Drinage_Money",200);
+        intValues.Add("Fire_Money",200);
 
         //Vibe
         stringValues.Add("Vibe2009rig-redoCSY_Unlocked","1");
@@ -556,7 +559,6 @@ public class FetchInitDBData : MonoBehaviour
         playerJson.Add("TotalDistanceTraveled",PlayerPrefs.GetFloat("TotalDistanceTraveled"));
         playerJson.Add("HN-Dio_TotalDistance",PlayerPrefs.GetFloat("HN-Dio_TotalDistance"));
         playerJson.Add("BJ-Chetak_TotalDistance",PlayerPrefs.GetFloat("BJ-Chetak_TotalDistance"));
-
 
         // Debug.Log(playerJson.ToString());
     }
