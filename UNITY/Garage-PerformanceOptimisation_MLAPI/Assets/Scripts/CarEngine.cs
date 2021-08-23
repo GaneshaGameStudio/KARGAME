@@ -8,14 +8,14 @@ public class CarEngine : MonoBehaviour
     public Transform path;
     private List<Transform> nodes;
     public int currentNode = 0;
-    public float maxSteerAngle = 40;
+    public float maxSteerAngle = 50;
     public WheelCollider wheelFL, wheelFR;
 	public WheelCollider wheelRL, wheelRR;
 	public Transform frontDriverT, frontPassengerT;
 	public Transform rearDriverT, rearPassengerT;
     public float maxMotorTorque = -500f;
     public float currentSpeed;
-    public float maxSpeed = 30f;
+    public float maxSpeed = 10f;
     public Vector3 centerOfMass;
 
     [Header("Sensors")]
@@ -110,8 +110,8 @@ public class CarEngine : MonoBehaviour
             Vector3 relativeVector = transform.InverseTransformPoint(nodes[currentNode].position);
             relativeVector = relativeVector / relativeVector.magnitude;
             float newSteer = (relativeVector.x / relativeVector.magnitude)*-maxSteerAngle;
-            wheelFL.steerAngle = newSteer;
-            wheelFR.steerAngle = newSteer;
+            wheelFL.steerAngle = newSteer*1.2f;
+            wheelFR.steerAngle = newSteer*1.2f;
         }
         catch (Exception e)
         {
@@ -122,21 +122,21 @@ public class CarEngine : MonoBehaviour
     private void Drive(){
         currentSpeed = - 2 * Mathf.PI * wheelRL.radius * wheelRL.rpm * 60/1000;
         if(currentSpeed<maxSpeed){
-            wheelRL.motorTorque=maxMotorTorque;
-            wheelRR.motorTorque=maxMotorTorque;
+            wheelFL.motorTorque=maxMotorTorque;
+            wheelFR.motorTorque=maxMotorTorque;
         }
         else
         {
-            wheelRL.motorTorque=0;
-            wheelRR.motorTorque=0;
+            wheelFL.motorTorque=0;
+            wheelFR.motorTorque=0;
         }
 
     }
     private void CheckWaypointDistance(){
-        //print(currentNode);
+        print(currentNode);
         //print(nodes.Count);
         try{
-            if(Vector3.Distance(transform.position, nodes[currentNode].position) < 5f){
+            if(Vector3.Distance(transform.position, nodes[currentNode].position) < 20f){
                 if(currentNode == nodes.Count - 1){
                     currentNode = 0;
                 }

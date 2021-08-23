@@ -38,6 +38,7 @@ public class TrafficPool : MonoBehaviour
                     goobject.GetComponent<CarEngine>().currentNode = nodenumber;
                     goobject.GetComponent<CarEngine>().path = respawnpaths[j].transform;
                     float angle;
+                    
                     //Find angle
                     if(i == respawnpaths[j].transform.childCount-1){
                         angle = Mathf.Atan2((respawnpaths[j].transform.GetChild(i).position.x-respawnpaths[j].transform.GetChild(0).position.x),(respawnpaths[j].transform.GetChild(i).position.z-respawnpaths[j].transform.GetChild(0).position.z));
@@ -45,7 +46,8 @@ public class TrafficPool : MonoBehaviour
                     else{
                         angle = Mathf.Atan2((respawnpaths[j].transform.GetChild(i).position.x - respawnpaths[j].transform.GetChild(i+1).position.x),(respawnpaths[j].transform.GetChild(i).position.z - respawnpaths[j].transform.GetChild(i+1).position.z));
                     }
-                    if(GameObject.FindGameObjectsWithTag("Traffic").Length < 2){
+                    //Debug.Log(angle);
+                    if(GameObject.FindGameObjectsWithTag("Traffic").Length < 1){
                         Instantiate(goobject, respawnpaths[j].transform.GetChild(i).position,Quaternion.Euler(0f,angle*57.3f,0f));
                     }
                 }

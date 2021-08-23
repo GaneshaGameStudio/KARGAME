@@ -1716,7 +1716,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3364721099466985507
 Transform:
   m_ObjectHideFlags: 0
@@ -1725,7 +1725,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3188689975671764629}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.5628915, y: 0.6995495, z: -4.23511}
+  m_LocalPosition: {x: -1.26, y: 0.6995495, z: -4.23511}
   m_LocalScale: {x: -0.29642767, y: -0.29642767, z: -0.086597875}
   m_Children: []
   m_Father: {fileID: 1275563773290147765}
@@ -2507,7 +2507,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3040429619843851593
 Transform:
   m_ObjectHideFlags: 0
@@ -3464,7 +3464,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6131434273007660645}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.5628915, y: 0.6995495, z: -4.23511}
+  m_LocalPosition: {x: -1.54, y: 0.6995495, z: -4.23511}
   m_LocalScale: {x: -0.29642767, y: -0.29642767, z: -0.086597875}
   m_Children: []
   m_Father: {fileID: 8521609767944116392}
@@ -3538,7 +3538,7 @@ WheelCollider:
   m_Mass: 20
   m_WheelDampingRate: 0.5
   m_ForwardFriction:
-    m_ExtremumSlip: 0.4
+    m_ExtremumSlip: 0.6
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
@@ -3577,7 +3577,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6131434273684441632}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.4558201, y: 0.6995495, z: -4.23511}
+  m_LocalPosition: {x: 1.44, y: 0.6995495, z: -4.23511}
   m_LocalScale: {x: -0.29642767, y: -0.29642767, z: -0.086597875}
   m_Children: []
   m_Father: {fileID: 8521609767944116392}
@@ -4424,7 +4424,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7791763863400902617
 Transform:
   m_ObjectHideFlags: 0
@@ -4433,7 +4433,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7328965803528876736}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.4558201, y: 0.6995495, z: -4.23511}
+  m_LocalPosition: {x: 1.12, y: 0.6995495, z: -4.23511}
   m_LocalScale: {x: -0.29642767, y: -0.29642767, z: -0.086597875}
   m_Children: []
   m_Father: {fileID: 1275563773290147765}
@@ -4865,7 +4865,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8776711369230661983
 Transform:
   m_ObjectHideFlags: 0
@@ -5362,9 +5362,9 @@ MonoBehaviour:
   frontPassengerT: {fileID: 2238052485705775294}
   rearDriverT: {fileID: 2502261662147467028}
   rearPassengerT: {fileID: 6740746640584724530}
-  maxMotorTorque: -500
+  maxMotorTorque: -1000
   currentSpeed: 0
-  maxSpeed: 30
+  maxSpeed: 20
   centerOfMass: {x: 0, y: 0, z: 0}
   sensorLength: 10
   frontsensorpos: {x: 0, y: -0.5, z: 4.5}
@@ -5984,8 +5984,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.5875907, y: 3.743217, z: 14.344735}
-  m_Center: {x: -0.27564585, y: 1.4188036, z: 0.627983}
+  m_Size: {x: 4.1963387, y: 4.3617244, z: 14.344735}
+  m_Center: {x: -0.19992727, y: 1.7280576, z: 0.627983}
 --- !u!1 &9049497358093278652
 GameObject:
   m_ObjectHideFlags: 0
