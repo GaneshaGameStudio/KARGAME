@@ -4882,9 +4882,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 4931108858413446682}
-  maxSpeed: 150
   tankcap: 50
-  mileage: 100
   FR: 1
   WheelFL: {fileID: 6423282102580023318}
   WheelFR: {fileID: 1813930906208761272}
@@ -4894,7 +4892,6 @@ MonoBehaviour:
   frontPassengerT: {fileID: 6519265790857146124}
   rearDriverT: {fileID: 7480458002700009638}
   rearPassengerT: {fileID: 1800819769134057344}
-  maxSteerAngle: 30
   motorForce: 800
   steerFactor: 2
 --- !u!23 &7482408819744319963
@@ -5452,6 +5449,7 @@ GameObject:
   - component: {fileID: 2280814228381858315}
   - component: {fileID: 4605680608923618034}
   - component: {fileID: 3055970557042330381}
+  - component: {fileID: 8930032471171514705}
   m_Layer: 0
   m_Name: Scorpio
   m_TagString: 4Wheeler
@@ -5593,6 +5591,18 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8930032471171514705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4456806457733832822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9d2cce9a314715419caad587d5cf4e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4686417747013664671
 GameObject:
   m_ObjectHideFlags: 0

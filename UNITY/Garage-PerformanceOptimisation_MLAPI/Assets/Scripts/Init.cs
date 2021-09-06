@@ -17,7 +17,7 @@ public class Init
     public string apiParam;
     
     // static string data = null;
-    private string apiUrl = "http://192.168.0.100:8000/";
+    private string apiUrl = "http://127.0.0.1:8000/";
 
     
 

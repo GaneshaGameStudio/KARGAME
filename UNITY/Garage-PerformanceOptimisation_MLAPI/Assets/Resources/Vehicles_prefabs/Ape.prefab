@@ -292,10 +292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WC: {fileID: 1868823805198031021}
   torque: 300
-  maxSteerAngle: 30
-  maxSpeed: 30
   FR: 1
-  mileage: 40
   tankcap: 30
   Vehicle: {fileID: 6382013060831163311}
   rb: {fileID: 6382013060831163310}
@@ -5832,6 +5829,7 @@ GameObject:
   - component: {fileID: 4526866576527331663}
   - component: {fileID: 3946960182999577810}
   - component: {fileID: 3635467342487718763}
+  - component: {fileID: 3293231622037577004}
   m_Layer: 0
   m_Name: Ape
   m_TagString: 3Wheeler
@@ -5990,6 +5988,18 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3293231622037577004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6382013060831163311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9d2cce9a314715419caad587d5cf4e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7303260722587105801
 GameObject:
   m_ObjectHideFlags: 0

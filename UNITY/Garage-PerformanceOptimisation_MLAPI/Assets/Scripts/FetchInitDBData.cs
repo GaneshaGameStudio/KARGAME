@@ -554,7 +554,7 @@ public class FetchInitDBData : MonoBehaviour
         playerJson.Add("License2W",PlayerPrefs.GetInt("2WheelerLicense"));
         playerJson.Add("License4W",PlayerPrefs.GetInt("4WheelerLicense"));
         playerJson.Add("License6W",PlayerPrefs.GetInt("6WheelerLicense"));
-        playerJson.Add("MoneyBank",PlayerPrefs.GetFloat("MoneyBank"));
+        playerJson.Add("MoneyBank",PlayerPrefs.GetInt("MoneyBank"));
         playerJson.Add("Health",PlayerPrefs.GetInt("Health"));
         playerJson.Add("TotalDistanceTraveled",PlayerPrefs.GetFloat("TotalDistanceTraveled"));
         playerJson.Add("HN-Dio_TotalDistance",PlayerPrefs.GetFloat("HN-Dio_TotalDistance"));
@@ -568,8 +568,9 @@ public class FetchInitDBData : MonoBehaviour
         PlayerPrefs.SetString("Timestamp",dbInitData["data"][0]["Timestamp"]);
         PlayerPrefs.SetInt("2WheelerLicense",int.Parse(dbInitData["data"][0]["License2W"]));
         PlayerPrefs.SetInt("4WheelerLicense",int.Parse(dbInitData["data"][0]["License4W"]));
+        PlayerPrefs.SetInt("6WheelerLicense",int.Parse(dbInitData["data"][0]["License6W"]));
         PlayerPrefs.SetInt("MoneyBank",int.Parse(dbInitData["data"][0]["MoneyBank"]));
-        PlayerPrefs.SetInt("MoneyPocket",int.Parse(dbInitData["data"][0]["MoneyPocket"]));
+        // PlayerPrefs.SetInt("MoneyPocket",int.Parse(dbInitData["data"][0]["MoneyPocket"]));
         PlayerPrefs.SetInt("Health",int.Parse(dbInitData["data"][0]["Health"]));
         PlayerPrefs.SetInt("MoneyPerHealth",int.Parse(dbInitData["data"][0]["MoneyPerHealth"]));
         PlayerPrefs.SetInt("FoodPrice",int.Parse(dbInitData["data"][0]["FoodPrice"]));

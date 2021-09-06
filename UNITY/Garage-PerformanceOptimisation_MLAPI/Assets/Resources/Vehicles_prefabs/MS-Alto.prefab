@@ -5894,6 +5894,7 @@ GameObject:
   - component: {fileID: 2038245445334265876}
   - component: {fileID: 9052729980970803196}
   - component: {fileID: 8157213827050407324}
+  - component: {fileID: 6145921444273998980}
   m_Layer: 0
   m_Name: MS-Alto
   m_TagString: 4Wheeler
@@ -6034,6 +6035,18 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6145921444273998980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4456806457733832822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9d2cce9a314715419caad587d5cf4e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4638475560085720418
 GameObject:
   m_ObjectHideFlags: 0

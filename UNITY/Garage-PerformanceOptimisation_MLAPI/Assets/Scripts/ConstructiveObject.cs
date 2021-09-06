@@ -9,13 +9,13 @@ using MLAPI;
 
 public class ConstructiveObject : NetworkBehaviour, IPointerClickHandler
 {   
-    private int GarbageP = 200;
     private TextMeshProUGUI MoneyPro;
     // Start is called before the first frame update
     void Awake()
     {   
         //MoneyP.Value = PlayerPrefs.GetInt("MoneyPocket");
     }
+
     
     public void OnPointerClick (PointerEventData eventData)
      {  
@@ -36,7 +36,7 @@ public class ConstructiveObject : NetworkBehaviour, IPointerClickHandler
     }
     
     void SetMoney(){
-        PlayerPrefs.SetInt("MoneyPocket", Mathf.Min(2000,PlayerPrefs.GetInt("MoneyPocket") + GarbageP));
+        PlayerPrefs.SetInt("MoneyPocket", Mathf.Min(2000,PlayerPrefs.GetInt("MoneyPocket") + PlayerPrefs.GetInt("Garbage_Money")));
         GameObject.Find("Money-number").GetComponent<TextMeshProUGUI>().SetText(PlayerPrefs.GetInt("MoneyPocket").ToString());
     }
     
