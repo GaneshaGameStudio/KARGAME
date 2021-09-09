@@ -312,12 +312,12 @@ public class Fillfuel : MonoBehaviour
                 if(vahana.gameObject.transform.root.gameObject.GetComponent<NetworkObject>().IsLocalPlayer){
                     // Debug.Log("Child count "+vahana.gameObject.transform.root.GetChild(2).GetChild(0).GetChild(1).gameObject.transform.childCount);
                     // TODO: fix this
-                    for(int i=0; i<vahana.gameObject.transform.root.childCount; i++){
-                        if(vahana.gameObject.transform.root.GetChild(i).name == PlayerPrefs.GetString(vahana.gameObject.transform.root.gameObject.name.Replace("(Clone)","").Trim()+"_KIT")){
+                    // for(int i=0; i<vahana.gameObject.transform.root.childCount; i++){
+                    //    if(vahana.gameObject.transform.root.GetChild(i).name == PlayerPrefs.GetString(vahana.gameObject.transform.root.gameObject.name.Replace("(Clone)","").Trim()+"_KIT")){
                             
 
-                            float tankcapacity = vahana.gameObject.transform.root.GetChild(i).GetChild(0).GetChild(1).gameObject.GetComponent<SimpleBodyController>().tankcap;
-                            tofill = vahana.gameObject.transform.root.GetChild(i).GetChild(0).GetChild(1).gameObject.GetComponent<SimpleBodyController>().tankcap*(1-fuelreader.RF);
+                            float tankcapacity = vahana.gameObject.transform.root.gameObject.GetComponent<SimpleBodyController>().tankcap;
+                            tofill = vahana.gameObject.transform.root.gameObject.GetComponent<SimpleBodyController>().tankcap*(1-fuelreader.RF);
                             // Debug.Log(tofill + "litres");
 
                             
@@ -370,8 +370,8 @@ public class Fillfuel : MonoBehaviour
                             }
 
                             
-                            }
-                        }
+                            //}
+                        //}
                 }
                 
             }

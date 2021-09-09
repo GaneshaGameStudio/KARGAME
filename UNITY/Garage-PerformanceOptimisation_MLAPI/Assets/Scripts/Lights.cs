@@ -12,7 +12,7 @@ public class Lights : MonoBehaviour
     {
         
         if(gameObject.tag=="Lightsprojector" && Lights.LightOn==true){
-            gameObject.SetActive(false);
+            gameObject.SetActive(true);
         }
         else{
             StartCoroutine("CheckLights");
