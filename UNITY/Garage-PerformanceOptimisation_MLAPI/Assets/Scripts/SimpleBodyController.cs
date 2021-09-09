@@ -14,7 +14,7 @@ public class SimpleBodyController: NetworkBehaviour
     Animator anim;
     public float actualhealth;
     public float tankcap;
-    private float mileage;
+    public float mileage;
 	public static float remainingfuel;
     public float FR = 1.0f;
     public float maxhealth = 2f;

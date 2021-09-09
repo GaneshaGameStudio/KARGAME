@@ -133,7 +133,7 @@ public class CarEngine : MonoBehaviour
 
     }
     private void CheckWaypointDistance(){
-        print(currentNode);
+        // print(currentNode);
         //print(nodes.Count);
         try{
             if(Vector3.Distance(transform.position, nodes[currentNode].position) < 20f){

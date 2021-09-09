@@ -309,6 +309,70 @@ public class Fillfuel : MonoBehaviour
                 
             }
             else if(vahana.gameObject.transform.root.tag == "Manushya"){
+                if(vahana.gameObject.transform.root.gameObject.GetComponent<NetworkObject>().IsLocalPlayer){
+                    // Debug.Log("Child count "+vahana.gameObject.transform.root.GetChild(2).GetChild(0).GetChild(1).gameObject.transform.childCount);
+                    // TODO: fix this
+                    for(int i=0; i<vahana.gameObject.transform.root.childCount; i++){
+                        if(vahana.gameObject.transform.root.GetChild(i).name == PlayerPrefs.GetString(vahana.gameObject.transform.root.gameObject.name.Replace("(Clone)","").Trim()+"_KIT")){
+                            
+
+                            float tankcapacity = vahana.gameObject.transform.root.GetChild(i).GetChild(0).GetChild(1).gameObject.GetComponent<SimpleBodyController>().tankcap;
+                            tofill = vahana.gameObject.transform.root.GetChild(i).GetChild(0).GetChild(1).gameObject.GetComponent<SimpleBodyController>().tankcap*(1-fuelreader.RF);
+                            // Debug.Log(tofill + "litres");
+
+                            
+                            int fuelMoneyCheck = 0;
+                            float fuelPercentageFilled = 0;
+                            if(PlayerPrefs.GetInt("MoneyBank")<(Convert.ToInt32(tofill * PlayerPrefs.GetInt("FoodPrice")))){
+                                Debug.Log("Money check "+(Convert.ToInt32(tofill * PlayerPrefs.GetInt("FoodPrice"))));
+                                tofill = (float)(PlayerPrefs.GetInt("MoneyBank"))/(float)PlayerPrefs.GetInt("FoodPrice");
+                                Debug.Log("Rem fuel "+SimpleBodyController.remainingfuel);
+                                fuelPercentageFilled = tankcapacity/tofill;
+                                // fuelPercentageFilled = (tofill*100)/tankcapacity;
+                                Debug.Log(tofill + "litres");
+                                Debug.Log(PlayerPrefs.GetInt("MoneyBank"));
+                                Debug.Log(PlayerPrefs.GetInt("FoodPrice"));
+                                fuelMoneyCheck = 1;
+                                Debug.Log(fuelPercentageFilled);
+                            }
+                            // Debug.Log(tofill + "litres");
+
+                            
+                            Debug.Log(tofill+"---"+(0.3f*tankcapacity));
+                            if(tofill>(0.3f*tankcapacity) | fuelMoneyCheck==1){
+                                Debug.Log(tofill);
+                                PlayerPrefs.SetInt("MoneyBank",((PlayerPrefs.GetInt("MoneyBank"))-(Convert.ToInt32((tofill * PlayerPrefs.GetInt("FoodPrice"))))));
+                                Debug.Log("Set PP to this value "+Convert.ToString((PlayerPrefs.GetInt("MoneyBank"))-Convert.ToInt32((tofill * PlayerPrefs.GetInt("FoodPrice")))));
+                                StartCoroutine(petrolData.Download("fuelCheck/"+id+"/"+tofill, result => {
+                                dbPetData = result;
+                                // Debug.Log("Fuel "+petData.data[0].RemainingFuel);
+
+                                if(dbPetData != null){
+                                    if(dbPetData["data"][0]["RemainingFuel"] != 0){
+                                        
+                                        if(fuelMoneyCheck==1){
+                                            SimpleBodyController.remainingfuel = fuelreader.RF + (1/fuelPercentageFilled);
+                                            // SimpleDrive.remainingfuel = SimpleDrive.remainingfuel + SimpleDrive.remainingfuel * fuelPercentageFilled;
+                                            Debug.Log("Rem fuel "+SimpleBodyController.remainingfuel);
+                                        }else{
+                                            SimpleBodyController.remainingfuel = 1f;
+                                        }
+                                    }else{
+                                        Debug.Log("No petrol in the petrol bunk");
+                                        //Add implementation to display the above message in the game
+                                    }
+                                }else{
+                                    Debug.Log("Couldn't connect to DB");
+                                    //Need to add implementation to display the above message in the game
+                                }
+                                
+                                }));
+                            }
+
+                            
+                            }
+                        }
+                }
                 
             }
         }
