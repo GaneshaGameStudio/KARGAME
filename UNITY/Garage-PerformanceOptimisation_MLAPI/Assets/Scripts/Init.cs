@@ -40,6 +40,7 @@ public class Init
 
             if ((request.result == UnityWebRequest.Result.ConnectionError) || (request.result == UnityWebRequest.Result.ProtocolError))
             {
+                Debug.Log(apiUrl + id);
                 Debug.Log(request.error);
                 if (callback != null)
                 {
