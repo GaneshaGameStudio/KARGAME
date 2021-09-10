@@ -8,7 +8,7 @@ public class OpenWebsite : MonoBehaviour
 {
     public void btn_open_site (string websitename)
      {  
-        Debug.Log(websitename);
-        
+      //   Debug.Log(websitename);
+        Application.OpenURL("http://www."+websitename);
      }
 }
