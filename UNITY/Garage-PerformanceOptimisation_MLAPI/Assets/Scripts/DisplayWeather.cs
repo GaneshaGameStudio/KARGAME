@@ -10,9 +10,10 @@ using System.IO;
 public class DisplayWeather : MonoBehaviour
 {   
     private const string API_KEY = "42d4191ee9409cb50f90142a4630a078";
-    private const string CurrentUrl =
-        "http://api.openweathermap.org/data/2.5/weather?" +
-        "q=Bengaluru,IN@&mode=xml&units=metric&APPID=" + API_KEY;
+    // private const string CurrentUrl =
+    //     "http://api.openweathermap.org/data/2.5/weather?" +
+    //     "q=Bengaluru,IN@&mode=xml&units=metric&APPID=" + API_KEY;
+    private const string CurrentUrl = "http://127.0.0.1:8000/get_weather";
     private const string ForecastUrl =
         "http://api.openweathermap.org/data/2.5/forecast?" +
         "q=Bengaluru,IN&mode=xml&units=metric&APPID=" + API_KEY;
@@ -68,9 +69,9 @@ public class DisplayWeather : MonoBehaviour
             XmlNode weather_node = time_node.SelectSingleNode("weather");
             description = weather_node.Attributes["value"].Value;
             passdescription = description;
-            
             RenderSettings.fogEndDistance = 100f;
-            description="few clouds";
+            // Debug.Log(description);
+            // description="few clouds";
             switch(description){
                 case "clear sky":
                     GameObject.Find("Garage-Canvas/Forecast").GetComponent<RawImage>().texture = m_Texture[0];

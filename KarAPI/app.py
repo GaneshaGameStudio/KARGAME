@@ -1,5 +1,5 @@
 import json
-from flask import Flask, request, jsonify, abort
+from flask import Flask, request, jsonify, abort, make_response
 from decimal import Decimal
 from sqlalchemy import create_engine
 
@@ -19,6 +19,18 @@ def petrolbunksData():
     conn = e.connect()  # open connection to memory data
     query = conn.execute("select distinct name from PetrolBunks")  # query
     return jsonify({'name': [i[0] for i in query.cursor.fetchall()]})  # format results in dict format
+
+#=================FOR XML FORMAT==================
+# @app.route('/petrolbunks', methods=['GET'])
+# def petrolbunksData():
+#     conn = e.connect()  # open connection to memory data
+#     query = conn.execute("select distinct name from PetrolBunks")
+#     dict = [i[0] for i in query.cursor.fetchall()]
+#     xml = dicttoxml(dict, custom_root='name', attr_type=False)
+#     response = make_response(xml)                                           
+#     response.headers['Content-Type'] = 'application/xml; charset=utf-8'
+#     return response
+#=================================================
 
 
 @app.route('/bunks/<int:bunk_id>', methods=['GET'])
@@ -87,7 +99,16 @@ def update_db_with_pp():
 
     return "Successfully posted"
 
-
+@app.route('/get_weather')
+def get_weather():
+    a=[]
+    with open('CurrentWeather.xml', 'r') as f:
+        a = f.read()
+    f.closed
+    print(a)
+    response = make_response(a)                                           
+    response.headers['Content-Type'] = 'application/xml; charset=utf-8'
+    return response
 
 
 if __name__ == "__main__":
