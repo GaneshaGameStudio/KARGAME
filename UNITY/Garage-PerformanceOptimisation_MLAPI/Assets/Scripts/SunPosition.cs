@@ -19,7 +19,7 @@ public class SunPosition : MonoBehaviour
     }
     private IEnumerator SunPositionUpdate(){
         while(true){
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(.5f);
             Xanglecurrent = Xanglerate*Timecurrent + -Xanglerate*Timeintercept;
             transform.rotation = Quaternion.Euler(Xanglecurrent + Time.deltaTime*(Xanglerate/60),East,0);
             DynamicGI.UpdateEnvironment();

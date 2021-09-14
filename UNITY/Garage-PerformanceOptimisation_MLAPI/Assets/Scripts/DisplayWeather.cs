@@ -13,7 +13,7 @@ public class DisplayWeather : MonoBehaviour
     // private const string CurrentUrl =
     //     "http://api.openweathermap.org/data/2.5/weather?" +
     //     "q=Bengaluru,IN@&mode=xml&units=metric&APPID=" + API_KEY;
-    private const string CurrentUrl = "http://127.0.0.1:8000/get_weather";
+    private const string CurrentUrl = "http://106.51.137.163:8000/get_weather";
     private const string ForecastUrl =
         "http://api.openweathermap.org/data/2.5/forecast?" +
         "q=Bengaluru,IN&mode=xml&units=metric&APPID=" + API_KEY;
