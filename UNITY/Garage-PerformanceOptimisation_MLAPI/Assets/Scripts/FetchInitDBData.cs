@@ -168,7 +168,7 @@ public class FetchInitDBData : MonoBehaviour
         floatValues.Add("Vibe2009rig-redoCSY_FR",1f);
         floatValues.Add("Vibe2009rig-redoCSY_TotalDistance",0f);
         stringValues.Add("Vibe2009rig-redoCSY_KIT","Stock0");
-        stringValues.Add("Vibe2009rig-redoCSY_MAT","HN-Dio_Stock");
+        stringValues.Add("Vibe2009rig-redoCSY_MAT","Vibe2009rig-redoCSY_Stock");
 
         #endregion THIRD PERSON
 
@@ -552,13 +552,237 @@ public class FetchInitDBData : MonoBehaviour
         playerJson.Add("Timestamp",PlayerPrefs.GetString("Timestamp"));
         playerJson.Add("ID",PlayerPrefs.GetString("PlayerID"));
         playerJson.Add("License2W",PlayerPrefs.GetInt("2WheelerLicense"));
+        playerJson.Add("License3W",PlayerPrefs.GetInt("3WheelerLicense"));
         playerJson.Add("License4W",PlayerPrefs.GetInt("4WheelerLicense"));
         playerJson.Add("License6W",PlayerPrefs.GetInt("6WheelerLicense"));
         playerJson.Add("MoneyBank",PlayerPrefs.GetInt("MoneyBank"));
         playerJson.Add("Health",PlayerPrefs.GetInt("Health"));
+        playerJson.Add("FoodPrice",PlayerPrefs.GetInt("FoodPrice"));
+        playerJson.Add("PetrolPrice",PlayerPrefs.GetInt("PetrolPrice"));
+        playerJson.Add("MoneyPerHealth",PlayerPrefs.GetInt("MoneyPerHealth"));
         playerJson.Add("TotalDistanceTraveled",PlayerPrefs.GetFloat("TotalDistanceTraveled"));
+        
+        
+        //Vibe
+        playerJson.Add("Vibe2009rig-redoCSY_Unlocked",PlayerPrefs.GetString("Vibe2009rig-redoCSY_Unlocked"));
+        playerJson.Add("Vibe2009rig-redoCSY_KIT",PlayerPrefs.GetString("Vibe2009rig-redoCSY_KIT"));
+        playerJson.Add("Vibe2009rig-redoCSY_MAT",PlayerPrefs.GetString("Vibe2009rig-redoCSY_MAT"));
+        playerJson.Add("Vibe2009rig-redoCSY_Accl",PlayerPrefs.GetFloat("Vibe2009rig-redoCSY_Accl"));
+        playerJson.Add("Vibe2009rig-redoCSY_MaxSpeed",PlayerPrefs.GetFloat("Vibe2009rig-redoCSY_MaxSpeed"));
+        playerJson.Add("Vibe2009rig-redoCSY_TankCapacity",PlayerPrefs.GetFloat("Vibe2009rig-redoCSY_TankCapacity"));
+        playerJson.Add("Vibe2009rig-redoCSY_Mileage",PlayerPrefs.GetFloat("Vibe2009rig-redoCSY_Mileage"));
+        playerJson.Add("Vibe2009rig-redoCSY_Brake",PlayerPrefs.GetFloat("Vibe2009rig-redoCSY_Brake"));
+        playerJson.Add("Vibe2009rig-redoCSY_Steer",PlayerPrefs.GetFloat("Vibe2009rig-redoCSY_Steer"));
+        playerJson.Add("Vibe2009rig-redoCSY_FR",PlayerPrefs.GetFloat("Vibe2009rig-redoCSY_FR"));
+        playerJson.Add("Vibe2009rig-redoCSY_TotalDistance",PlayerPrefs.GetFloat("Vibe2009rig-redoCSY_TotalDistance"));
+
+        //HN-Dio
+        playerJson.Add("HN-Dio_Unlocked",PlayerPrefs.GetString("HN-Dio_Unlocked"));
+        playerJson.Add("HN-Dio_KIT",PlayerPrefs.GetString("HN-Dio_KIT"));
+        playerJson.Add("HN-Dio_MAT",PlayerPrefs.GetString("HN-Dio_MAT"));
+        playerJson.Add("HN-Dio_Accl",PlayerPrefs.GetFloat("HN-Dio_Accl"));
+        playerJson.Add("HN-Dio_MaxSpeed",PlayerPrefs.GetFloat("HN-Dio_MaxSpeed"));
+        playerJson.Add("HN-Dio_TankCapacity",PlayerPrefs.GetFloat("HN-Dio_TankCapacity"));
+        playerJson.Add("HN-Dio_Mileage",PlayerPrefs.GetFloat("HN-Dio_Mileage"));
+        playerJson.Add("HN-Dio_Brake",PlayerPrefs.GetFloat("HN-Dio_Brake"));
+        playerJson.Add("HN-Dio_Steer",PlayerPrefs.GetFloat("HN-Dio_Steer"));
+        playerJson.Add("HN-Dio_FR",PlayerPrefs.GetFloat("HN-Dio_FR"));
         playerJson.Add("HN-Dio_TotalDistance",PlayerPrefs.GetFloat("HN-Dio_TotalDistance"));
+
+        //BJ-Chetak
+        playerJson.Add("BJ-Chetak_Unlocked",PlayerPrefs.GetString("BJ-Chetak_Unlocked"));
+        playerJson.Add("BJ-Chetak_KIT",PlayerPrefs.GetString("BJ-Chetak_KIT"));
+        playerJson.Add("BJ-Chetak_MAT",PlayerPrefs.GetString("BJ-Chetak_MAT"));
+        playerJson.Add("BJ-Chetak_Accl",PlayerPrefs.GetFloat("BJ-Chetak_Accl"));
+        playerJson.Add("BJ-Chetak_MaxSpeed",PlayerPrefs.GetFloat("BJ-Chetak_MaxSpeed"));
+        playerJson.Add("BJ-Chetak_TankCapacity",PlayerPrefs.GetFloat("BJ-Chetak_TankCapacity"));
+        playerJson.Add("BJ-Chetak_Mileage",PlayerPrefs.GetFloat("BJ-Chetak_Mileage"));
+        playerJson.Add("BJ-Chetak_Brake",PlayerPrefs.GetFloat("BJ-Chetak_Brake"));
+        playerJson.Add("BJ-Chetak_Steer",PlayerPrefs.GetFloat("BJ-Chetak_Steer"));
         playerJson.Add("BJ-Chetak_TotalDistance",PlayerPrefs.GetFloat("BJ-Chetak_TotalDistance"));
+        playerJson.Add("BJ-Chetak_FR",PlayerPrefs.GetFloat("BJ-Chetak_FR"));
+
+        //BJ-Pulsar
+        playerJson.Add("BJ-Pulsar_Unlocked",PlayerPrefs.GetString("BJ-Pulsar_Unlocked"));
+        playerJson.Add("BJ-Pulsar_KIT",PlayerPrefs.GetString("BJ-Pulsar_KIT"));
+        playerJson.Add("BJ-Pulsar_MAT",PlayerPrefs.GetString("BJ-Pulsar_MAT"));
+        playerJson.Add("BJ-Pulsar_Accl",PlayerPrefs.GetFloat("BJ-Pulsar_Accl"));
+        playerJson.Add("BJ-Pulsar_MaxSpeed",PlayerPrefs.GetFloat("BJ-Pulsar_MaxSpeed"));
+        playerJson.Add("BJ-Pulsar_TankCapacity",PlayerPrefs.GetFloat("BJ-Pulsar_TankCapacity"));
+        playerJson.Add("BJ-Pulsar_Mileage",PlayerPrefs.GetFloat("BJ-Pulsar_Mileage"));
+        playerJson.Add("BJ-Pulsar_Brake",PlayerPrefs.GetFloat("BJ-Pulsar_Brake"));
+        playerJson.Add("BJ-Pulsar_Steer",PlayerPrefs.GetFloat("BJ-Pulsar_Steer"));
+        playerJson.Add("BJ-Pulsar_FR",PlayerPrefs.GetFloat("BJ-Pulsar_FR"));
+        playerJson.Add("BJ-Pulsar_TotalDistance",PlayerPrefs.GetFloat("BJ-Pulsar_TotalDistance"));
+
+        //Ace
+        playerJson.Add("Ace_Unlocked",PlayerPrefs.GetString("Ace_Unlocked"));
+        playerJson.Add("Ace_KIT",PlayerPrefs.GetString("Ace_KIT"));
+        playerJson.Add("Ace_MAT",PlayerPrefs.GetString("Ace_MAT"));
+        playerJson.Add("Ace_Accl",PlayerPrefs.GetFloat("Ace_Accl"));
+        playerJson.Add("Ace_MaxSpeed",PlayerPrefs.GetFloat("Ace_MaxSpeed"));
+        playerJson.Add("Ace_TankCapacity",PlayerPrefs.GetFloat("Ace_TankCapacity"));
+        playerJson.Add("Ace_Mileage",PlayerPrefs.GetFloat("Ace_Mileage"));
+        playerJson.Add("Ace_Brake",PlayerPrefs.GetFloat("Ace_Brake"));
+        playerJson.Add("Ace_Steer",PlayerPrefs.GetFloat("Ace_Steer"));
+        playerJson.Add("Ace_FR",PlayerPrefs.GetFloat("Ace_FR"));
+        playerJson.Add("Ace_TotalDistance",PlayerPrefs.GetFloat("Ace_TotalDistance"));
+
+        //Ambassador
+        playerJson.Add("Ambassador_Unlocked",PlayerPrefs.GetString("Ambassador_Unlocked"));
+        playerJson.Add("Ambassador_KIT",PlayerPrefs.GetString("Ambassador_KIT"));
+        playerJson.Add("Ambassador_MAT",PlayerPrefs.GetString("Ambassador_MAT"));
+        playerJson.Add("Ambassador_Accl",PlayerPrefs.GetFloat("Ambassador_Accl"));
+        playerJson.Add("Ambassador_MaxSpeed",PlayerPrefs.GetFloat("Ambassador_MaxSpeed"));
+        playerJson.Add("Ambassador_TankCapacity",PlayerPrefs.GetFloat("Ambassador_TankCapacity"));
+        playerJson.Add("Ambassador_Mileage",PlayerPrefs.GetFloat("Ambassador_Mileage"));
+        playerJson.Add("Ambassador_Brake",PlayerPrefs.GetFloat("Ambassador_Brake"));
+        playerJson.Add("Ambassador_Steer",PlayerPrefs.GetFloat("Ambassador_Steer"));
+        playerJson.Add("Ambassador_FR",PlayerPrefs.GetFloat("Ambassador_FR"));
+        playerJson.Add("Ambassador_TotalDistance",PlayerPrefs.GetFloat("Ambassador_TotalDistance"));
+
+        //Indica
+        playerJson.Add("Indica_Unlocked",PlayerPrefs.GetString("Indica_Unlocked"));
+        playerJson.Add("Indica_KIT",PlayerPrefs.GetString("Indica_KIT"));
+        playerJson.Add("Indica_MAT",PlayerPrefs.GetString("Indica_MAT"));
+        playerJson.Add("Indica_Accl",PlayerPrefs.GetFloat("Indica_Accl"));
+        playerJson.Add("Indica_MaxSpeed",PlayerPrefs.GetFloat("Indica_MaxSpeed"));
+        playerJson.Add("Indica_TankCapacity",PlayerPrefs.GetFloat("Indica_TankCapacity"));
+        playerJson.Add("Indica_Mileage",PlayerPrefs.GetFloat("Indica_Mileage"));
+        playerJson.Add("Indica_Brake",PlayerPrefs.GetFloat("Indica_Brake"));
+        playerJson.Add("Indica_Steer",PlayerPrefs.GetFloat("Indica_Steer"));
+        playerJson.Add("Indica_FR",PlayerPrefs.GetFloat("Indica_FR"));
+        playerJson.Add("Indica_TotalDistance",PlayerPrefs.GetFloat("Indica_TotalDistance"));
+
+        //MS-800
+        playerJson.Add("MS-800_Unlocked",PlayerPrefs.GetString("MS-800_Unlocked"));
+        playerJson.Add("MS-800_KIT",PlayerPrefs.GetString("MS-800_KIT"));
+        playerJson.Add("MS-800_MAT",PlayerPrefs.GetString("MS-800_MAT"));
+        playerJson.Add("MS-800_Accl",PlayerPrefs.GetFloat("MS-800_Accl"));
+        playerJson.Add("MS-800_MaxSpeed",PlayerPrefs.GetFloat("MS-800_MaxSpeed"));
+        playerJson.Add("MS-800_TankCapacity",PlayerPrefs.GetFloat("MS-800_TankCapacity"));
+        playerJson.Add("MS-800_Mileage",PlayerPrefs.GetFloat("MS-800_Mileage"));
+        playerJson.Add("MS-800_Brake",PlayerPrefs.GetFloat("MS-800_Brake"));
+        playerJson.Add("MS-800_Steer",PlayerPrefs.GetFloat("MS-800_Steer"));
+        playerJson.Add("MS-800_FR",PlayerPrefs.GetFloat("MS-800_FR"));
+        playerJson.Add("MS-800_TotalDistance",PlayerPrefs.GetFloat("MS-800_TotalDistance"));
+
+        //MS-Alto
+        playerJson.Add("MS-Alto_Unlocked",PlayerPrefs.GetString("MS-Alto_Unlocked"));
+        playerJson.Add("MS-Alto_KIT",PlayerPrefs.GetString("MS-Alto_KIT"));
+        playerJson.Add("MS-Alto_MAT",PlayerPrefs.GetString("MS-Alto_MAT"));
+        playerJson.Add("MS-Alto_Accl",PlayerPrefs.GetFloat("MS-Alto_Accl"));
+        playerJson.Add("MS-Alto_MaxSpeed",PlayerPrefs.GetFloat("MS-Alto_MaxSpeed"));
+        playerJson.Add("MS-Alto_TankCapacity",PlayerPrefs.GetFloat("MS-Alto_TankCapacity"));
+        playerJson.Add("MS-Alto_Mileage",PlayerPrefs.GetFloat("MS-Alto_Mileage"));
+        playerJson.Add("MS-Alto_Brake",PlayerPrefs.GetFloat("MS-Alto_Brake"));
+        playerJson.Add("MS-Alto_Steer",PlayerPrefs.GetFloat("MS-Alto_Steer"));
+        playerJson.Add("MS-Alto_FR",PlayerPrefs.GetFloat("MS-Alto_FR"));
+        playerJson.Add("MS-Alto_TotalDistance",PlayerPrefs.GetFloat("MS-Alto_TotalDistance"));
+
+        //Nano
+        playerJson.Add("Nano_Unlocked",PlayerPrefs.GetString("Nano_Unlocked"));
+        playerJson.Add("Nano_KIT",PlayerPrefs.GetString("Nano_KIT"));
+        playerJson.Add("Nano_MAT",PlayerPrefs.GetString("Nano_MAT"));
+        playerJson.Add("Nano_Accl",PlayerPrefs.GetFloat("Nano_Accl"));
+        playerJson.Add("Nano_MaxSpeed",PlayerPrefs.GetFloat("Nano_MaxSpeed"));
+        playerJson.Add("Nano_TankCapacity",PlayerPrefs.GetFloat("Nano_TankCapacity"));
+        playerJson.Add("Nano_Mileage",PlayerPrefs.GetFloat("Nano_Mileage"));
+        playerJson.Add("Nano_Brake",PlayerPrefs.GetFloat("Nano_Brake"));
+        playerJson.Add("Nano_Steer",PlayerPrefs.GetFloat("Nano_Steer"));
+        playerJson.Add("Nano_FR",PlayerPrefs.GetFloat("Nano_FR"));
+        playerJson.Add("Nano_TotalDistance",PlayerPrefs.GetFloat("Nano_TotalDistance"));
+        
+        //Scorpio
+        playerJson.Add("Scorpio_Unlocked",PlayerPrefs.GetString("Scorpio_Unlocked"));
+        playerJson.Add("Scorpio_KIT",PlayerPrefs.GetString("Scorpio_KIT"));
+        playerJson.Add("Scorpio_MAT",PlayerPrefs.GetString("Scorpio_MAT"));
+        playerJson.Add("Scorpio_Accl",PlayerPrefs.GetFloat("Scorpio_Accl"));
+        playerJson.Add("Scorpio_MaxSpeed",PlayerPrefs.GetFloat("Scorpio_MaxSpeed"));
+        playerJson.Add("Scorpio_TankCapacity",PlayerPrefs.GetFloat("Scorpio_TankCapacity"));
+        playerJson.Add("Scorpio_Mileage",PlayerPrefs.GetFloat("Scorpio_Mileage"));
+        playerJson.Add("Scorpio_Brake",PlayerPrefs.GetFloat("Scorpio_Brake"));
+        playerJson.Add("Scorpio_Steer",PlayerPrefs.GetFloat("Scorpio_Steer"));
+        playerJson.Add("Scorpio_FR",PlayerPrefs.GetFloat("Scorpio_FR"));
+        playerJson.Add("Scorpio_TotalDistance",PlayerPrefs.GetFloat("Scorpio_TotalDistance"));
+
+        //VJM02
+        playerJson.Add("VJM02_Unlocked",PlayerPrefs.GetString("VJM02_Unlocked"));
+        playerJson.Add("VJM02_KIT",PlayerPrefs.GetString("VJM02_KIT"));
+        playerJson.Add("VJM02_MAT",PlayerPrefs.GetString("VJM02_MAT"));
+        playerJson.Add("VJM02_Accl",PlayerPrefs.GetFloat("VJM02_Accl"));
+        playerJson.Add("VJM02_MaxSpeed",PlayerPrefs.GetFloat("VJM02_MaxSpeed"));
+        playerJson.Add("VJM02_TankCapacity",PlayerPrefs.GetFloat("VJM02_TankCapacity"));
+        playerJson.Add("VJM02_Mileage",PlayerPrefs.GetFloat("VJM02_Mileage"));
+        playerJson.Add("VJM02_Brake",PlayerPrefs.GetFloat("VJM02_Brake"));
+        playerJson.Add("VJM02_Steer",PlayerPrefs.GetFloat("VJM02_Steer"));
+        playerJson.Add("VJM02_FR",PlayerPrefs.GetFloat("VJM02_FR"));
+        playerJson.Add("VJM02_TotalDistance",PlayerPrefs.GetFloat("VJM02_TotalDistance"));
+
+        //BMTC_1wopass
+        playerJson.Add("BMTC_1wopass_Unlocked",PlayerPrefs.GetString("BMTC_1wopass_Unlocked"));
+        playerJson.Add("BMTC_1wopass_KIT",PlayerPrefs.GetString("BMTC_1wopass_KIT"));
+        playerJson.Add("BMTC_1wopass_MAT",PlayerPrefs.GetString("BMTC_1wopass_MAT"));
+        playerJson.Add("BMTC_1wopass_Accl",PlayerPrefs.GetFloat("BMTC_1wopass_Accl"));
+        playerJson.Add("BMTC_1wopass_MaxSpeed",PlayerPrefs.GetFloat("BMTC_1wopass_MaxSpeed"));
+        playerJson.Add("BMTC_1wopass_TankCapacity",PlayerPrefs.GetFloat("BMTC_1wopass_TankCapacity"));
+        playerJson.Add("BMTC_1wopass_Mileage",PlayerPrefs.GetFloat("BMTC_1wopass_Mileage"));
+        playerJson.Add("BMTC_1wopass_Brake",PlayerPrefs.GetFloat("BMTC_1wopass_Brake"));
+        playerJson.Add("BMTC_1wopass_Steer",PlayerPrefs.GetFloat("BMTC_1wopass_Steer"));
+        playerJson.Add("BMTC_1wopass_FR",PlayerPrefs.GetFloat("BMTC_1wopass_FR"));
+        playerJson.Add("BMTC_1wopass_TotalDistance",PlayerPrefs.GetFloat("BMTC_1wopass_TotalDistance"));
+
+        //Tempo
+        playerJson.Add("Tempo_Unlocked",PlayerPrefs.GetString("Tempo_Unlocked"));
+        playerJson.Add("Tempo_KIT",PlayerPrefs.GetString("Tempo_KIT"));
+        playerJson.Add("Tempo_MAT",PlayerPrefs.GetString("Tempo_MAT"));
+        playerJson.Add("Tempo_Accl",PlayerPrefs.GetFloat("Tempo_Accl"));
+        playerJson.Add("Tempo_MaxSpeed",PlayerPrefs.GetFloat("Tempo_MaxSpeed"));
+        playerJson.Add("Tempo_TankCapacity",PlayerPrefs.GetFloat("Tempo_TankCapacity"));
+        playerJson.Add("Tempo_Mileage",PlayerPrefs.GetFloat("Tempo_Mileage"));
+        playerJson.Add("Tempo_Brake",PlayerPrefs.GetFloat("Tempo_Brake"));
+        playerJson.Add("Tempo_Steer",PlayerPrefs.GetFloat("Tempo_Steer"));
+        playerJson.Add("Tempo_FR",PlayerPrefs.GetFloat("Tempo_FR"));
+        playerJson.Add("Tempo_TotalDistance",PlayerPrefs.GetFloat("Tempo_TotalDistance"));
+
+        //BA-RE
+        playerJson.Add("BA-RE_Unlocked",PlayerPrefs.GetString("BA-RE_Unlocked"));
+        playerJson.Add("BA-RE_KIT",PlayerPrefs.GetString("BA-RE_KIT"));
+        playerJson.Add("BA-RE_MAT",PlayerPrefs.GetString("BA-RE_MAT"));
+        playerJson.Add("BA-RE_Accl",PlayerPrefs.GetFloat("BA-RE_Accl"));
+        playerJson.Add("BA-RE_MaxSpeed",PlayerPrefs.GetFloat("BA-RE_MaxSpeed"));
+        playerJson.Add("BA-RE_TankCapacity",PlayerPrefs.GetFloat("BA-RE_TankCapacity"));
+        playerJson.Add("BA-RE_Mileage",PlayerPrefs.GetFloat("BA-RE_Mileage"));
+        playerJson.Add("BA-RE_Brake",PlayerPrefs.GetFloat("BA-RE_Brake"));
+        playerJson.Add("BA-RE_Steer",PlayerPrefs.GetFloat("BA-RE_Steer"));
+        playerJson.Add("BA-RE_FR",PlayerPrefs.GetFloat("BA-RE_FR"));
+        playerJson.Add("BA-RE_TotalDistance",PlayerPrefs.GetFloat("BA-RE_TotalDistance"));
+
+        //Ape
+        playerJson.Add("Ape_Unlocked",PlayerPrefs.GetString("Ape_Unlocked"));
+        playerJson.Add("Ape_KIT",PlayerPrefs.GetString("Ape_KIT"));
+        playerJson.Add("Ape_MAT",PlayerPrefs.GetString("Ape_MAT"));
+        playerJson.Add("Ape_Accl",PlayerPrefs.GetFloat("Ape_Accl"));
+        playerJson.Add("Ape_MaxSpeed",PlayerPrefs.GetFloat("Ape_MaxSpeed"));
+        playerJson.Add("Ape_TankCapacity",PlayerPrefs.GetFloat("Ape_TankCapacity"));
+        playerJson.Add("Ape_Mileage",PlayerPrefs.GetFloat("Ape_Mileage"));
+        playerJson.Add("Ape_Brake",PlayerPrefs.GetFloat("Ape_Brake"));
+        playerJson.Add("Ape_Steer",PlayerPrefs.GetFloat("Ape_Steer"));
+        playerJson.Add("Ape_FR",PlayerPrefs.GetFloat("Ape_FR"));
+        playerJson.Add("Ape_TotalDistance",PlayerPrefs.GetFloat("Ape_TotalDistance"));
+
+        //BullockCart_1
+        playerJson.Add("BullockCart_1_Unlocked",PlayerPrefs.GetString("BullockCart_1_Unlocked"));
+        playerJson.Add("BullockCart_1_KIT",PlayerPrefs.GetString("BullockCart_1_KIT"));
+        playerJson.Add("BullockCart_1_MAT",PlayerPrefs.GetString("BullockCart_1_MAT"));
+        playerJson.Add("BullockCart_1_Accl",PlayerPrefs.GetFloat("BullockCart_1_Accl"));
+        playerJson.Add("BullockCart_1_MaxSpeed",PlayerPrefs.GetFloat("BullockCart_1_MaxSpeed"));
+        playerJson.Add("BullockCart_1_TankCapacity",PlayerPrefs.GetFloat("BullockCart_1_TankCapacity"));
+        playerJson.Add("BullockCart_1_Mileage",PlayerPrefs.GetFloat("BullockCart_1_Mileage"));
+        playerJson.Add("BullockCart_1_Brake",PlayerPrefs.GetFloat("BullockCart_1_Brake"));
+        playerJson.Add("BullockCart_1_Steer",PlayerPrefs.GetFloat("BullockCart_1_Steer"));
+        playerJson.Add("BullockCart_1_FR",PlayerPrefs.GetFloat("BullockCart_1_FR"));
+        playerJson.Add("BullockCart_1_TotalDistance",PlayerPrefs.GetFloat("BullockCart_1_TotalDistance"));
 
         // Debug.Log(playerJson.ToString());
     }
@@ -567,6 +791,7 @@ public class FetchInitDBData : MonoBehaviour
         //Read data from dbInitData and write it to PlayerPrefs
         PlayerPrefs.SetString("Timestamp",dbInitData["data"][0]["Timestamp"]);
         PlayerPrefs.SetInt("2WheelerLicense",int.Parse(dbInitData["data"][0]["License2W"]));
+        PlayerPrefs.SetInt("3WheelerLicense",int.Parse(dbInitData["data"][0]["License3W"]));
         PlayerPrefs.SetInt("4WheelerLicense",int.Parse(dbInitData["data"][0]["License4W"]));
         PlayerPrefs.SetInt("6WheelerLicense",int.Parse(dbInitData["data"][0]["License6W"]));
         PlayerPrefs.SetInt("MoneyBank",int.Parse(dbInitData["data"][0]["MoneyBank"]));

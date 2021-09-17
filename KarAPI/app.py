@@ -2,6 +2,7 @@ import json
 from flask import Flask, request, jsonify, abort, make_response
 from decimal import Decimal
 from sqlalchemy import create_engine
+import csv
 
 
 
@@ -76,9 +77,29 @@ def playerStatsData(player_id):
 
 @app.route('/playerStats/default/<string:player_uuid>', methods=['GET'])
 def playerStatsDefaultData(player_uuid):
+
+    with open('defaultPlayerData.csv', mode='r') as infile:
+        reader = csv.reader(infile)
+        mydict = {rows[0]:rows[1] for rows in reader}
+
+    print(mydict)
+    print()
+    # print("INSERT INTO PlayerData (")
+    keys = ""
+    values = ""
+    for key in mydict:
+        keys = keys+"'"+key+"'"+","
+        values = values+"'"+mydict[key]+"'"+","
+    key_str = keys[:-1]
+    val_str=values[:-1]
+    quer = "INSERT INTO PlayerData (ID,"+key_str+") VALUES ('"+player_uuid+"',"+val_str+");"
+
+    # print(quer)
+
     #Create new record with new playerID
     conn = e.connect()
-    conn.execute("INSERT INTO PlayerData (ID,Timestamp,License2W,License4W,Money,Health,MoneyPerHealth,TotalDistanceTraveled,HN_Dio_Unlocked,HN_Dio_Torque,HN_Dio_MaxSpeed,HN_Dio_TankCapacity,HN_Dio_Mileage,HN_Dio_FR,HN_Dio_TotalDistance,BJ_Chetak_Unlocked,BJ_Chetak_Torque,BJ_Chetak_MaxSpeed,BJ_Chetak_TankCapacity,BJ_Chetak_Mileage,BJ_Chetak_FR,BJ_Chetak_TotalDistance) VALUES ('"+player_uuid+"','22-05-2021 21:41:04','0','0','1000','50','50','0','1','80','85','12','180','1','0','0','50','85','15','120','1','0');")
+    # conn.execute("INSERT INTO PlayerData (ID,Timestamp,2WheelerLicense,4WheelerLicense,MoneyBank,MoneyPocket,Health,MoneyPerHealth,TotalDistanceTraveled,HN-Dio_Unlocked,HN-Dio_Torque,HN-Dio_MaxSpeed,HN-Dio_TankCapacity,HN-Dio_Mileage,HN-Dio_FR,HN-Dio-TankCapacity,BJ-Chetak_Unlocked,BJ-Chetak_Torque,BJ-Chetak_MaxSpeed,BJ-Chetak_TankCapacity,BJ-Chetak_Mileage,BJ-Chetak_FR,BJ-Chetak_TotalDistance) VALUES ('"+player_uuid+"','22-05-2021 21:41:04','0','0','1000','50','50','0','1','80','85','12','180','1','0','0','50','85','15','120','1','0');")
+    conn.execute(quer)
     query = conn.execute("select * from PlayerData where ID=?;",(player_uuid,))
     result = {'data': [dict(zip(tuple (query.keys()) ,i)) for i in query.cursor]}
     print("Successfully updated default values in db")

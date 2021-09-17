@@ -23,5 +23,5 @@ def getWeather():
 
 
 while True:
-    sleep(600) #Runs every 10min
     getWeather()
+    sleep(600) #Runs every 10min
