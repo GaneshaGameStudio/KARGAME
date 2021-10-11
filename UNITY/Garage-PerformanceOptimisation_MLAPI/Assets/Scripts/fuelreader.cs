@@ -79,7 +79,7 @@ public class fuelreader : MonoBehaviour
             // Debug.Log("Rem Norm "+remainingnorm);
             SimpleBodyController.remainingfuel = remainingnorm;
         }
-        else if(GO.tag =="2Wheeler")
+        else if(GO.tag =="2Wheeler" || GO.tag =="3Wheeler" )
         {
             //TC = GameObject.FindWithTag("WheelFC").GetComponent<SimpleDrive>().tankcap;
             //M = GameObject.FindWithTag("WheelFC").GetComponent<SimpleDrive>().mileage;

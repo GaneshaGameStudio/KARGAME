@@ -7,6 +7,7 @@ public class ActivateRight : MonoBehaviour
 
      private GameObject btnactright;
      public static bool btactright;
+     private bool toggle;
     // Start is called before the first frame update
     void OnEnable(){
         btnactright = GameObject.Find("Activate-Right");
@@ -24,4 +25,14 @@ public class ActivateRight : MonoBehaviour
         
         }
     }
+    public void ToggleSound()
+     {
+         toggle = !toggle;
+ 
+         if (toggle)
+             AudioListener.volume = 1f;
+ 
+         else
+             AudioListener.volume = 0f;
+     }
 }

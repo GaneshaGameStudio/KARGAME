@@ -10,18 +10,18 @@ using System.IO;
 public class DisplayWeather : MonoBehaviour
 {   
     private const string API_KEY = "42d4191ee9409cb50f90142a4630a078";
-    // private const string CurrentUrl =
-    //     "http://api.openweathermap.org/data/2.5/weather?" +
-    //     "q=Bengaluru,IN@&mode=xml&units=metric&APPID=" + API_KEY;
+    //private const string CurrentUrl ="http://api.openweathermap.org/data/2.5/weather?" + "q=Bengaluru,IN@&mode=xml&units=metric&APPID=" + API_KEY;
     private const string CurrentUrl = "http://106.51.137.163:8000/get_weather";
-    private const string ForecastUrl =
-        "http://api.openweathermap.org/data/2.5/forecast?" +
-        "q=Bengaluru,IN&mode=xml&units=metric&APPID=" + API_KEY;
+    private const string ForecastUrl = "http://api.openweathermap.org/data/2.5/forecast?" + "q=Bengaluru,IN&mode=xml&units=metric&APPID=" + API_KEY;
     public TextMeshProUGUI TextPro;
     public Texture[] m_Texture;
     public Material Skybox;
     private string passdescription;
     public ParticleSystem ps;
+    private string sunrise;
+    private string sunset;
+    private string temperature;
+    private string description;
 
     // Start is called before the first frame update
     void Start()
@@ -36,14 +36,25 @@ public class DisplayWeather : MonoBehaviour
             using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
                 {
                     // Request and wait for the desired page.
+                    string TempDisplay;
                     yield return webRequest.SendWebRequest();
-
-                    string[] pages = uri.Split('/');
-                    int page = pages.Length - 1;
+                    if ((webRequest.result == UnityWebRequest.Result.ConnectionError) || (webRequest.result == UnityWebRequest.Result.ProtocolError))
+                    {
+                        sunrise = "2021-10-12T00:39:21";
+                        sunset = "2021-10-12T12:32:31";
+                        temperature = "20.0";
+                        description = "clear sky";
+                        TempDisplay = temperature;
+                        Debug.Log("server error");
+                    }
+                    else{
+                        string[] pages = uri.Split('/');
+                        int page = pages.Length - 1;
                     
-                    string Weather = webRequest.downloadHandler.text;
-                    string TempDisplay = DispWeather(Weather);
-                    GetSunRise(Weather);
+                        string Weather = webRequest.downloadHandler.text;
+                        TempDisplay = DispWeather(Weather);
+                        GetSunRise(Weather);            
+                    }
                     
                     char[] delimiterChars = {'.'};
                     string[] words = TempDisplay.Split(delimiterChars);
@@ -58,16 +69,15 @@ public class DisplayWeather : MonoBehaviour
         // Load the response into an XML document.
         XmlDocument xml_doc = new XmlDocument();
         xml_doc.LoadXml(xml);
-        string temperature = "";
-        string description = "";
         var emission = ps.emission;
         foreach (XmlNode time_node in xml_doc.SelectNodes("current"))
         {
             XmlNode temp_node = time_node.SelectSingleNode("temperature");
             temperature = temp_node.Attributes["value"].Value;
-
+            print(temperature);
             XmlNode weather_node = time_node.SelectSingleNode("weather");
             description = weather_node.Attributes["value"].Value;
+            print(description);
             passdescription = description;
             RenderSettings.fogEndDistance = 100f;
             // Debug.Log(description);
@@ -216,10 +226,9 @@ public class DisplayWeather : MonoBehaviour
         // Load the response into an XML document.
         XmlDocument xml_doc = new XmlDocument();
         xml_doc.LoadXml(xml);
-        string sunrise = "";
-        string sunset = "";
         foreach (XmlNode sunrise_node in xml_doc.SelectNodes("current/city"))
-        {
+        {   
+            
             XmlNode sun_node = sunrise_node.SelectSingleNode("sun");
             sunrise = sun_node.Attributes["rise"].Value;
             string[] sunrisewords = sunrise.Split('T');

@@ -364,6 +364,19 @@ public class FetchInitDBData : MonoBehaviour
         stringVehicleValues.Add("BA-RE_KIT","Stock0");
         stringVehicleValues.Add("BA-RE_MAT","BA-RE_Stock");
 
+        //BA-RE-goods
+        stringVehicleValues.Add("BA-RE-goods_Unlocked","1");
+        floatVehicleValues.Add("BA-RE-goods_Accl",0.4f);
+        floatVehicleValues.Add("BA-RE-goods_MaxSpeed",0.060f);
+        floatVehicleValues.Add("BA-RE-goods_TankCapacity",30f);
+        floatVehicleValues.Add("BA-RE-goods_Mileage",0.040f);
+        floatVehicleValues.Add("BA-RE-goods_Brake",-0.4f);
+        floatVehicleValues.Add("BA-RE-goods_Steer",0.030f);
+        floatVehicleValues.Add("BA-RE-goods_FR",1f);
+        floatVehicleValues.Add("BA-RE-goods_TotalDistance",0f);
+        stringVehicleValues.Add("BA-RE-goods_KIT","Stock0");
+        stringVehicleValues.Add("BA-RE-goods_MAT","BA-RE_Stock");
+
         //Ape
         stringVehicleValues.Add("Ape_Unlocked","1");
         floatVehicleValues.Add("Ape_Accl",0.30f);
@@ -757,6 +770,19 @@ public class FetchInitDBData : MonoBehaviour
         playerJson.Add("BA-RE_Steer",PlayerPrefs.GetFloat("BA-RE_Steer"));
         playerJson.Add("BA-RE_FR",PlayerPrefs.GetFloat("BA-RE_FR"));
         playerJson.Add("BA-RE_TotalDistance",PlayerPrefs.GetFloat("BA-RE_TotalDistance"));
+
+        //BA-RE-goods
+        playerJson.Add("BA-RE-goods_Unlocked",PlayerPrefs.GetString("BA-RE_Unlocked"));
+        playerJson.Add("BA-RE-goods_KIT",PlayerPrefs.GetString("BA-RE_KIT"));
+        playerJson.Add("BA-RE-goods_MAT",PlayerPrefs.GetString("BA-RE_MAT"));
+        playerJson.Add("BA-RE-goods_Accl",PlayerPrefs.GetFloat("BA-RE_Accl"));
+        playerJson.Add("BA-RE-goods_MaxSpeed",PlayerPrefs.GetFloat("BA-RE_MaxSpeed"));
+        playerJson.Add("BA-RE-goods_TankCapacity",PlayerPrefs.GetFloat("BA-RE_TankCapacity"));
+        playerJson.Add("BA-RE-goods_Mileage",PlayerPrefs.GetFloat("BA-RE_Mileage"));
+        playerJson.Add("BA-RE-goods_Brake",PlayerPrefs.GetFloat("BA-RE_Brake"));
+        playerJson.Add("BA-RE-goods_Steer",PlayerPrefs.GetFloat("BA-RE_Steer"));
+        playerJson.Add("BA-RE-goods_FR",PlayerPrefs.GetFloat("BA-RE_FR"));
+        playerJson.Add("BA-RE-goods_TotalDistance",PlayerPrefs.GetFloat("BA-RE_TotalDistance"));
 
         //Ape
         playerJson.Add("Ape_Unlocked",PlayerPrefs.GetString("Ape_Unlocked"));

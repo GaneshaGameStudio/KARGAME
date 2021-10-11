@@ -174,6 +174,34 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5587181089229571729, guid: 8c7a75d75ce974a5fa6a8af88b47280f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5587181089229571729, guid: 8c7a75d75ce974a5fa6a8af88b47280f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5587181089229571729, guid: 8c7a75d75ce974a5fa6a8af88b47280f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 489713476}
+    - target: {fileID: 5587181089229571729, guid: 8c7a75d75ce974a5fa6a8af88b47280f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5587181089229571729, guid: 8c7a75d75ce974a5fa6a8af88b47280f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 5587181089229571729, guid: 8c7a75d75ce974a5fa6a8af88b47280f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ActivateRight, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5587181089229571729, guid: 8c7a75d75ce974a5fa6a8af88b47280f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5587181089926045793, guid: 8c7a75d75ce974a5fa6a8af88b47280f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -4.7802734
@@ -1838,6 +1866,8 @@ MonoBehaviour:
     - Prefab: {fileID: 2775118931672669667, guid: 6f4249c5e14ef468bb981771f86a9148, type: 3}
       PlayerPrefab: 0
     - Prefab: {fileID: 2775118931672669667, guid: 219ecfd8ce9a84549be64944cc381e44, type: 3}
+      PlayerPrefab: 0
+    - Prefab: {fileID: 919132149155446097, guid: bf038ec9cadd64e99bba234c09e57da7, type: 3}
       PlayerPrefab: 0
     PlayerPrefabHash:
       id: 0
