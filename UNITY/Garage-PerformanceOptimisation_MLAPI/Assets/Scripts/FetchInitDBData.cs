@@ -1035,6 +1035,19 @@ public class FetchInitDBData : MonoBehaviour
         PlayerPrefs.SetString("BA-RE_KIT",dbInitData["data"][0]["BA-RE_KIT"]);
         PlayerPrefs.SetString("BA-RE_MAT",dbInitData["data"][0]["BA-RE_MAT"]);
 
+        //BA-RE-goods
+        PlayerPrefs.SetString("BA-RE-goods_Unlocked",dbInitData["data"][0]["BA-RE-goods_Unlocked"]);
+        PlayerPrefs.SetFloat("BA-RE-goods_Accl",float.Parse(dbInitData["data"][0]["BA-RE-goods_Accl"]));
+        PlayerPrefs.SetFloat("BA-RE-goods_MaxSpeed",float.Parse(dbInitData["data"][0]["BA-RE-goods_MaxSpeed"]));
+        PlayerPrefs.SetFloat("BA-RE-goods_TankCapacity",float.Parse(dbInitData["data"][0]["BA-RE-goods_TankCapacity"]));
+        PlayerPrefs.SetFloat("BA-RE-goods_Mileage",float.Parse(dbInitData["data"][0]["BA-RE-goods_Mileage"]));
+        PlayerPrefs.SetFloat("BA-RE-goods_Brake",float.Parse(dbInitData["data"][0]["BA-RE-goods_Brake"]));
+        PlayerPrefs.SetFloat("BA-RE-goods_Steer",float.Parse(dbInitData["data"][0]["BA-RE-goods_Steer"]));
+        PlayerPrefs.SetFloat("BA-RE-goods_FR",float.Parse(dbInitData["data"][0]["BA-RE-goods_FR"]));
+        PlayerPrefs.SetFloat("BA-RE-goods_TotalDistance",float.Parse(dbInitData["data"][0]["BA-RE-goods_TotalDistance"]));
+        PlayerPrefs.SetString("BA-RE-goods_KIT",dbInitData["data"][0]["BA-RE-goods_KIT"]);
+        PlayerPrefs.SetString("BA-RE-goods_MAT",dbInitData["data"][0]["BA-RE-goods_MAT"]);
+
         //Ape
         PlayerPrefs.SetString("Ape_Unlocked",dbInitData["data"][0]["Ape_Unlocked"]);
         PlayerPrefs.SetFloat("Ape_Accl",float.Parse(dbInitData["data"][0]["Ape_Accl"]));

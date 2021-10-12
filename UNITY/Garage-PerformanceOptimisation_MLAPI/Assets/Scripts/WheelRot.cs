@@ -28,7 +28,7 @@ public class WheelRot : MonoBehaviour
     void Update()
     
     {   
-        if(WC.name!="WheelFC"){
+        if(WC.name!="WheelFC" && gameObject.transform.root.tag == "2Wheeler"){
             if(WC.GetGroundHit(out WheelHit hit)){
             Holder.transform.GetChild(1).GetComponent<Collider>().enabled = true;
         }
