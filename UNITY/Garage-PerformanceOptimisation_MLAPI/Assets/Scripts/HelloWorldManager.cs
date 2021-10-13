@@ -16,7 +16,7 @@ public class HelloWorldManager : MonoBehaviour
             if(scene.name=="VehicleLicense"){
                 NetworkManager.Singleton.StartHost();
             }
-            //SS();
+            // SS();
         }
         public void SH(){
             GameObject.Find("SelectNet").SetActive(false);
@@ -25,17 +25,23 @@ public class HelloWorldManager : MonoBehaviour
             NetworkManager.Singleton.StartHost();
         }
         public void SC(){
-            string IPText = GameObject.Find("TextIP").GetComponent<TextMeshProUGUI>().text;
-            // Debug.Log(IPText);
-            if(IPText!=""){
+            
+            string IPText = "";
+            IPText = GameObject.Find("TextIP").GetComponent<TextMeshProUGUI>().text;
+            Debug.Log(IPText.Length);
+            if(IPText.Length!=1){
                 //Set this IP to Network Manager IP
                 string mTransport = MLAPI.NetworkManager.Singleton.GetComponent<UNetTransport>().ConnectAddress;
                 if (mTransport != null)
                 {
                     Debug.Log(mTransport);
-                    MLAPI.NetworkManager.Singleton.GetComponent<UNetTransport>().ConnectAddress = IPText;
+                    MLAPI.NetworkManager.Singleton.GetComponent<UNetTransport>().ConnectAddress = IPText.Remove(IPText.Length - 1);;
                     Debug.Log(MLAPI.NetworkManager.Singleton.GetComponent<UNetTransport>().ConnectAddress);
+                    Debug.Log(MLAPI.NetworkManager.Singleton.GetComponent<UNetTransport>().ConnectAddress.Length);
                 }
+            }else{
+                MLAPI.NetworkManager.Singleton.GetComponent<UNetTransport>().ConnectAddress = "192.168.29.168";
+                Debug.Log(MLAPI.NetworkManager.Singleton.GetComponent<UNetTransport>().ConnectAddress);
             }
 
             GameObject.Find("SelectNet").SetActive(false);
@@ -46,6 +52,7 @@ public class HelloWorldManager : MonoBehaviour
         public void SS(){
             // Camera.main.GetComponent<CameraFollowController>().enabled = false;
             NetworkManager.Singleton.StartServer();
+            Debug.Log("Server running");
         }
 
        
