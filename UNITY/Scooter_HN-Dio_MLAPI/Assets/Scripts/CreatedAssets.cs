@@ -27,7 +27,7 @@ public class CreatedAssets : MonoBehaviour
         foreach (var asset in Assets)
         {
             //Asset is now fully loaded
-            Debug.Log("Loaded asset: " + asset.name);
+            //Debug.Log("Loaded asset: " + asset.name);
         }
         
         //Task.Delay(TimeSpan.FromSeconds(5));
