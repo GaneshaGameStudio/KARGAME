@@ -15,6 +15,7 @@ public class CreatedAssets : MonoBehaviour
     private void Start()
     {
         CreateAndWaitUntilComplete();
+        camon();
     }
 
     private async Task CreateAndWaitUntilComplete()
@@ -29,17 +30,20 @@ public class CreatedAssets : MonoBehaviour
             Debug.Log("Loaded asset: " + asset.name);
         }
         
-        Task.Delay(TimeSpan.FromSeconds(5));
+        //Task.Delay(TimeSpan.FromSeconds(5));
 
-        CleanUpFinishedAssets(Assets[0]);
-        Camera.main.GetComponent<CameraFollowController>().enabled = true;
+        //CleanUpFinishedAssets(Assets[0]);
+        
         CameraFollowController.objectToFollow = Assets[0].transform;
         NetworkManager.Singleton.StartHost();
     }
-
+    private void camon(){
+        Camera.main.GetComponent<CameraFollowController>().enabled = true;
+    }
     private async Task CleanUpFinishedAssets(Object obj)
     {
         //Addressables.Release(obj);
     }
+    
     
 }

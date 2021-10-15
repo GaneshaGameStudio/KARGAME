@@ -32,7 +32,6 @@ MonoBehaviour:
   m_GroupAssets:
   - {fileID: 11400000, guid: 327af8bbb068a4733a5f6c9d2bbf73f6, type: 2}
   - {fileID: 11400000, guid: d980cad3c5fd944fd80429546b98ffb5, type: 2}
-  - {fileID: 11400000, guid: e7a630b27d952479bacc15b6c99609b2, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -53,7 +52,7 @@ MonoBehaviour:
       - m_Id: 00c458859c847424bb7a08b335f29a0b
         m_Value: ServerData/[BuildTarget]
       - m_Id: 756374ed0742e42df8bfb5c1edec8070
-        m_Value: http://localhost/[BuildTarget]
+        m_Value: http://localhost:8080/ServerData/[BuildTarget]
     - m_InheritedParent: 
       m_Id: 35eb8ab9a302e41ceb2aa4e6c5b512ec
       m_ProfileName: Online
