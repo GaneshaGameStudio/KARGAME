@@ -1,7 +1,7 @@
 
 using MLAPI;
 using UnityEngine;
-
+using UnityEngine.AddressableAssets;
 
 public class HelloWorldManager : MonoBehaviour
     {
@@ -10,6 +10,10 @@ public class HelloWorldManager : MonoBehaviour
         }
         public void SH(){
             Camera.main.GetComponent<CameraFollowController>().enabled = true;
+             
+            //AssetReference m_LogPrefab = Addressables.LoadAssetAsync<GameObject>("HN-Dio_stock.prefab");;
+            //Addressables.InstantiateAsync("HN-Dio_stock.prefab");
+            //CameraFollowController.objectToFollow = spawn.transform;
             NetworkManager.Singleton.StartHost();
         }
         public void SC(){
