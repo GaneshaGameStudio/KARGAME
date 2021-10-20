@@ -7427,6 +7427,76 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 479279009}
   m_Mesh: {fileID: 2504345457074934838, guid: e3164b0c668c24f99a7a46769cb94ba7, type: 3}
+--- !u!1001 &484276302
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 852287411}
+    m_Modifications:
+    - target: {fileID: 6162121766131888552, guid: 4b8106601f09e48b4a0bed28ba86df50, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6162121766131888552, guid: 4b8106601f09e48b4a0bed28ba86df50, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.514
+      objectReference: {fileID: 0}
+    - target: {fileID: 6162121766131888552, guid: 4b8106601f09e48b4a0bed28ba86df50, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6162121766131888552, guid: 4b8106601f09e48b4a0bed28ba86df50, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.264
+      objectReference: {fileID: 0}
+    - target: {fileID: 6162121766131888552, guid: 4b8106601f09e48b4a0bed28ba86df50, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6162121766131888552, guid: 4b8106601f09e48b4a0bed28ba86df50, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6162121766131888552, guid: 4b8106601f09e48b4a0bed28ba86df50, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6162121766131888552, guid: 4b8106601f09e48b4a0bed28ba86df50, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6162121766131888552, guid: 4b8106601f09e48b4a0bed28ba86df50, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6162121766131888552, guid: 4b8106601f09e48b4a0bed28ba86df50, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6162121766131888552, guid: 4b8106601f09e48b4a0bed28ba86df50, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6162121766131888554, guid: 4b8106601f09e48b4a0bed28ba86df50, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6162121766131888555, guid: 4b8106601f09e48b4a0bed28ba86df50, type: 3}
+      propertyPath: m_AspectRatio
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6162121766131888557, guid: 4b8106601f09e48b4a0bed28ba86df50, type: 3}
+      propertyPath: m_Name
+      value: Projector (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4b8106601f09e48b4a0bed28ba86df50, type: 3}
+--- !u!4 &484276303 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6162121766131888552, guid: 4b8106601f09e48b4a0bed28ba86df50, type: 3}
+  m_PrefabInstance: {fileID: 484276302}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &521925536
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9233,7 +9303,7 @@ Transform:
   - {fileID: 1936930837}
   - {fileID: 212051051}
   - {fileID: 1774209451}
-  - {fileID: 1873690829}
+  - {fileID: 484276303}
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14505,79 +14575,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1871303901}
   m_Mesh: {fileID: -3329902420748629119, guid: ccc8507a682ee4563a67f82f457cc536, type: 3}
---- !u!1 &1873690828
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1873690829}
-  - component: {fileID: 1873690831}
-  - component: {fileID: 1873690830}
-  m_Layer: 0
-  m_Name: Projector (4)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1873690829
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1873690828}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.48534203, y: 0.96996933, z: 0.27992725}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 852287411}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!114 &1873690830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1873690828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa3e43c58dd834028baaf021101d7ca8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  renderingLayerMask: -1
-  renderQueueLowerBound: 0
-  renderQueueUpperBound: 2500
-  terrainRenderFlags: 6
-  terrainsToBeFilteredWithRenderFlags: []
-  m_shaderTagList: []
-  m_renderPassEvent: 300
-  m_perObjectData: 0
-  m_stencilPass: {fileID: 2100000, guid: e967173267ec34715b98906ebcae0b8c, type: 2}
-  m_stencilTestOptions: 0
---- !u!119 &1873690831
-Projector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1873690828}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_NearClipPlane: 0.39
-  m_FarClipPlane: 10
-  m_FieldOfView: 40
-  m_AspectRatio: 1.4
-  m_Orthographic: 0
-  m_OrthographicSize: 10
-  m_Material: {fileID: 2100000, guid: 332c79034f2624cfa877077749baa2e6, type: 2}
-  m_IgnoreLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &1875100207
 GameObject:
   m_ObjectHideFlags: 0
@@ -14972,7 +14969,7 @@ MonoBehaviour:
   m_stencilTestOptions: 0
 --- !u!119 &1936930839
 Projector:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}

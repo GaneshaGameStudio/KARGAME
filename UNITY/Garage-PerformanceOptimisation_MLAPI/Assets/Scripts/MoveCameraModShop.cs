@@ -92,7 +92,7 @@ public class MoveCameraModShop : MonoBehaviour
         mat = GO[mCurrentIndex].GetComponent<Renderer>().sharedMaterial;
         mat.SetTexture("_BaseMap",Tex);
         PlayerPrefs.SetString(VehicleID.Vehicle + "_MAT", Tex.name);
-        
+        GameObject.Find("Points-number").GetComponent<TextMeshProUGUI>().SetText((PlayerPrefs.GetInt("MoneyBank")).ToString());
     }
     void Start()
     {   
