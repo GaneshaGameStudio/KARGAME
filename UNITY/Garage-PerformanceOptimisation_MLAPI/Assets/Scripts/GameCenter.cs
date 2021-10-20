@@ -1,32 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using GooglePlayGames;
-using GooglePlayGames.BasicApi;
 using UnityEngine.SocialPlatforms;
 using UnityEngine.UI;
 
-public class PlayStore : MonoBehaviour
+public class GameCenter : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log(SystemInfo.operatingSystem);
-        if(SystemInfo.operatingSystem.Contains("Android")){
-            PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().Build();
-            PlayGamesPlatform.InitializeInstance(config);
-            PlayGamesPlatform.DebugLogEnabled = true;
-            PlayGamesPlatform.Activate();
-        
-            StartCoroutine(KeepCheckingAvatar());
-            PlayGamesPlatform.Instance.Authenticate(SignInInteractivity.CanPromptOnce, (result) =>{
-
-            Debug.Log("Username is"+Social.Active.localUser.userName);
-            Debug.Log("width is"+Social.Active.localUser.image.width);
-            Rect rect = new Rect (0, 0, Social.Active.localUser.image.width, Social.Active.localUser.image.width);
-            GetComponent<Image>().sprite = Sprite.Create(Social.Active.localUser.image, rect, new Vector2(0, 0));
-    });
-        }else if(SystemInfo.operatingSystem.Contains("iOS")){
+        if(SystemInfo.operatingSystem.Contains("iOS")){
             // Authenticate and register a ProcessAuthentication callback
         // This call needs to be made before we can proceed to other calls in the Social API
         Social.localUser.Authenticate (ProcessAuthentication);
@@ -35,20 +19,8 @@ public class PlayStore : MonoBehaviour
             
     
 }
-private IEnumerator KeepCheckingAvatar()
-    {
-        float secondsOfTrying = 10;
-        float secondsPerAttempt = 0.2f;
-        while (Social.Active.localUser.image == null)
-        {
-                yield return null;
-        }
-        Rect rect = new Rect (0, 0, Social.Active.localUser.image.width, Social.Active.localUser.image.width);
-        GetComponent<Image>().sprite = Sprite.Create(Social.Active.localUser.image, rect, new Vector2(0, 0));
-        Debug.Log(Social.Active.localUser.userName);
-    }
 
-    // This function gets called when Authenticate completes
+// This function gets called when Authenticate completes
     // Note that if the operation is successful, Social.localUser will contain data from the server. 
     void ProcessAuthentication (bool success) {
         if (success) {
@@ -69,17 +41,13 @@ private IEnumerator KeepCheckingAvatar()
         float secondsPerAttempt = 0.2f;
         while (secondsOfTrying > 0)
         {
+            Rect rect = new Rect (0, 0, Social.Active.localUser.image.width, Social.Active.localUser.image.width);
+            GetComponent<Image>().sprite = Sprite.Create(Social.Active.localUser.image, rect, new Vector2(0, 0));
             
-            
-                Rect rect = new Rect (0, 0, Social.Active.localUser.image.width, Social.Active.localUser.image.width);
-                GetComponent<Image>().sprite = Sprite.Create(Social.Active.localUser.image, rect, new Vector2(0, 0));
-                Debug.Log(Social.Active.localUser.userName);
-                
-            
-
+            Debug.Log(Social.Active.localUser.userName);
             secondsOfTrying -= secondsPerAttempt;
             yield return new WaitForSeconds(secondsPerAttempt);
         }
     }
-    
+
     }
