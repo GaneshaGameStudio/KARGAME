@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine.SceneManagement;  
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.AddressableAssets;
 
 public class MoveCamera : MonoBehaviour
 {
@@ -173,7 +174,13 @@ public class MoveCamera : MonoBehaviour
 
         if(other.gameObject.name == "SceneTrigger"){
             Fade.color = new Color(Fade.color.r, Fade.color.g, Fade.color.b, 1f);
-            SceneManager.LoadScene(VehicleID.Scene);
+            if(VehicleID.Scene == "Garage"){
+                Addressables.LoadSceneAsync("Garage");
+            }
+            else{
+                SceneManager.LoadScene(VehicleID.Scene);
+            }
+            
         }
         
     }

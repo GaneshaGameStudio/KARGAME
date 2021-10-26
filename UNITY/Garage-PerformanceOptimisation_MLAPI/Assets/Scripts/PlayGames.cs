@@ -7,7 +7,7 @@ using UnityEngine.SocialPlatforms;
 using UnityEngine.UI;
 
 public class PlayGames : MonoBehaviour
-{
+{/*
     // Start is called before the first frame update
     void Start()
     {
@@ -42,5 +42,5 @@ private IEnumerator KeepCheckingAvatar()
         GetComponent<Image>().sprite = Sprite.Create(Social.Active.localUser.image, rect, new Vector2(0, 0));
         Debug.Log(Social.Active.localUser.userName);
     }
-
+*/
     }
