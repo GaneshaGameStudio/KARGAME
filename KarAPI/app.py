@@ -3,6 +3,9 @@ from flask import Flask, request, jsonify, abort, make_response
 from decimal import Decimal
 from sqlalchemy import create_engine
 import csv
+import jwt 
+import datetime
+from functools import wraps
 
 
 
@@ -10,6 +13,8 @@ import csv
 e = create_engine('sqlite:///KarDB.db')  # loads db into memory
 
 app = Flask(__name__)
+
+app.config['SECRET_KEY'] = 'thisisthesecretkey21111993'
 
 @app.route('/', methods=['GET'])
 def get():
@@ -126,10 +131,55 @@ def get_weather():
     with open('CurrentWeather.xml', 'r') as f:
         a = f.read()
     f.closed
-    print(a)
+    # print(a) #To see the complete weather xml which is read from the original openmaps server xml file
     response = make_response(a)                                           
     response.headers['Content-Type'] = 'application/xml; charset=utf-8'
     return response
+
+
+
+########## API JWT TOKEN #############
+
+def token_required(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        token = request.args.get('token') #http://127.0.0.1:8000/route?token=alshfjfjdklsfj89549834ur
+
+        if not token:
+            return jsonify({'message' : 'Token is missing!'}), 403
+
+        try: 
+            data = jwt.decode(token, app.config['SECRET_KEY'])
+        except:
+            return jsonify({'message' : 'Token is invalid!'}), 403
+
+        return f(*args, **kwargs)
+
+    return decorated
+
+@app.route('/unprotected')
+def unprotected():
+    return jsonify({'message' : 'Anyone can view this!'})
+
+@app.route('/protected')
+@token_required
+def protected():
+    return jsonify({'message' : 'This is only available for people with valid tokens.'})
+
+@app.route('/login/<string:player_id>')
+def login(player_id):
+
+    conn = e.connect()
+    query = conn.execute("select * from PlayerData where ID=?;",(player_id,))
+    resultTuple = [dict(zip(tuple (query.keys()) ,i)) for i in query.cursor]
+
+    if len(resultTuple) == 0:
+        return make_response('User not found in Database!', 401)
+    else:
+        token = jwt.encode({'user' : player_id, 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=60)}, app.config['SECRET_KEY'])
+        return jsonify({'token' : token.decode('UTF-8')})
+
+#######################################
 
 
 if __name__ == "__main__":
