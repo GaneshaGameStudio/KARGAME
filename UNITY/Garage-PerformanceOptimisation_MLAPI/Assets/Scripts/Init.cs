@@ -58,9 +58,9 @@ public class Init
     }
 
 
-    public IEnumerator NetCheck(string id, System.Action<string> callback = null)
+    public IEnumerator TokenGet(string id, System.Action<JSONNode> callback = null)
     {
-        using (UnityWebRequest request = UnityWebRequest.Get(apiUrl + id))
+        using (UnityWebRequest request = UnityWebRequest.Get(apiUrl +"/login/"+ id))
         {
             yield return request.SendWebRequest();
 
@@ -76,7 +76,32 @@ public class Init
             {
                 if (callback != null)
                 {
-                    callback.Invoke(request.downloadHandler.text);
+                    callback.Invoke(Processjson(request.downloadHandler.text));
+                }
+            }
+        }
+    }
+
+
+    public IEnumerator TokenAuth(string token, System.Action<JSONNode> callback = null)
+    {
+        using (UnityWebRequest request = UnityWebRequest.Get(apiUrl +"/protected?token="+ token))
+        {
+            yield return request.SendWebRequest();
+
+            if ((request.result == UnityWebRequest.Result.ConnectionError) || (request.result == UnityWebRequest.Result.ProtocolError))
+            {
+                Debug.Log(request.error);
+                if (callback != null)
+                {
+                    callback.Invoke(request.error);
+                }
+            }
+            else
+            {
+                if (callback != null)
+                {
+                    callback.Invoke(Processjson(request.downloadHandler.text));
                 }
             }
         }

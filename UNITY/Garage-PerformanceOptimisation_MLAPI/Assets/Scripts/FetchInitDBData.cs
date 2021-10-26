@@ -10,12 +10,16 @@ using TMPro;
 public class FetchInitDBData : MonoBehaviour
 {
     private Init initData;
-
+    private Boolean tokenAuthenticated = false;
     private string dbTimestamp;
+    private string apiToken;
+    private string apiTokenData;
     private string playerPrefsTimestamp;
 
     private string unityUserID;
     private JSONNode dbInitData;
+    private JSONNode tokenData;
+    private JSONNode tokenAuthData;
     private string NetworkCheck = "";
     public TextMeshProUGUI Playername;
     public TextMeshProUGUI Money;
@@ -89,10 +93,41 @@ public class FetchInitDBData : MonoBehaviour
             // ppUpdateStuff();
         }
         
+        #region API Token Check
+        StartCoroutine(initData.TokenGet(PlayerPrefs.GetString("PlayerID"), result => {
+            tokenData = result;
+            Debug.Log(tokenData);
 
+  
+            apiToken = tokenData["token"];
+            Debug.Log(apiToken);
+
+            // TODO : Implement token logic here to validate if token is authenticated
+            #region  Authentication
+            StartCoroutine(initData.TokenAuth(apiToken, result => {
+                tokenAuthData = result;
+                Debug.Log(tokenAuthData);
+
+                apiTokenData = tokenAuthData["message"];
+
+                if(apiTokenData.Equals("This is only available for people with valid tokens.")){
+                    Debug.Log("Token authenticated");
+                    tokenAuthenticated = true;
+                }else if(apiTokenData.Equals("Token is invalid!")){
+                    Debug.Log("Invalid token");
+                    tokenAuthenticated = false;
+                }else{
+                    Debug.Log("Server error");
+                }
+                    
+            }));
+            #endregion
+
+        }));
+        #endregion API Token Check
         
-        
-        StartCoroutine(initData.Download(initData.apiParam, result => {
+        if(tokenAuthenticated){
+            StartCoroutine(initData.Download(initData.apiParam, result => {
             Debug.Log(initData.apiParam);
             dbInitData = result;
             Debug.Log(dbInitData);
@@ -134,6 +169,9 @@ public class FetchInitDBData : MonoBehaviour
             }
                 
         }));
+        }
+        
+        
         
     }
 
@@ -519,8 +557,9 @@ public class FetchInitDBData : MonoBehaviour
         initData = new Init();
         id = PlayerPrefs.GetString("PlayerID");
         initData.apiParam = "playerStats/"+id;
-        
-        StartCoroutine(initData.Download(initData.apiParam, result => {
+
+        if(tokenAuthenticated){
+            StartCoroutine(initData.Download(initData.apiParam, result => {
             Debug.Log(initData.apiParam);
             dbInitData = result;
             Debug.Log(dbInitData);
@@ -555,6 +594,7 @@ public class FetchInitDBData : MonoBehaviour
 
         }));
         
+        }
     }
 
 
