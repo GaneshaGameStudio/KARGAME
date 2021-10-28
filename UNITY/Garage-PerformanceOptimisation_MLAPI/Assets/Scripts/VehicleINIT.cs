@@ -11,7 +11,7 @@ public class VehicleINIT : NetworkBehaviour
 {   
     public string kit;
     public string mat;
-    public NetworkVariableString teamKit = new NetworkVariableString("Stock");
+    public NetworkVariableString teamKit = new NetworkVariableString("Stock0");
     public NetworkVariableString teamMat = new NetworkVariableString();
   
     // Start is called before the first frame update
@@ -105,6 +105,7 @@ public class VehicleINIT : NetworkBehaviour
     public void SelectKitServerRpc(ulong id, string kit, string mat){
         teamKit.Value = kit;
         teamMat.Value = mat;
+        Debug.Log(teamKit.Value);
         KitChange(teamKit.Value,teamMat.Value);
     }    
         

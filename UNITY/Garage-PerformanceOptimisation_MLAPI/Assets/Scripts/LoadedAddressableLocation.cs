@@ -37,7 +37,9 @@ public class LoadedAddressableLocation : MonoBehaviour
             StartCoroutine(OnLoad(Addressables.DownloadDependenciesAsync(location.PrimaryKey)));
             //AsyncOperationHandle<GameObject> loadOp = Addressables.LoadAssetAsync<GameObject>(location.PrimaryKey);
             Debug.Log(location.PrimaryKey); 
+            
         }
+        Addressables.LoadSceneAsync("Classroom");
     }
 
     IEnumerator OnLoad(AsyncOperationHandle obj)
@@ -47,12 +49,12 @@ public class LoadedAddressableLocation : MonoBehaviour
           {
               yield return new WaitForSeconds(.01f);
               progress = (int)(obj.GetDownloadStatus().Percent * 100f);
-              //progressImg.fillAmount = obj.GetDownloadStatus().Percent;
               progresstext.text = progress.ToString();
               progressbar.GetComponent<RectTransform>().sizeDelta = new Vector2 (300, progress/100f*305f);
-              //print(obj.GetDownloadStatus().Percent * 100f + "%".ToString());
           }
-
-          Addressables.LoadSceneAsync("Classroom");
+        
+        
+            
+          
       }
 }

@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine.SceneManagement;  
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.AddressableAssets;
 public class MoveCameraHajaam : MonoBehaviour
 {
     public Vector3[] Positions;
@@ -36,6 +37,7 @@ public class MoveCameraHajaam : MonoBehaviour
     public VolumeProfile Default;
     private string oldVehicle;
     private string oldVehicleTag;
+    private List<GameObject> Assets { get; } = new List<GameObject>();
     //activate default objects (always the first object in the tree)
     void SelectCar(int _index, List<GameObject> Goarray)
     {
@@ -63,9 +65,17 @@ public class MoveCameraHajaam : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position,currentPos,Speed*0.0005f*Time.deltaTime);
         transform.rotation = Quaternion.Slerp(transform.rotation, target,  Speed*0.0005f*Time.deltaTime);
         // Load the vehicle
-        Instantiate(Resources.Load("Vehicles_prefabs/" + VehicleID.Vehicle), new Vector3(1.34f, 1f, 0), Quaternion.Euler(new Vector3(0, 0, 0)));
+        CreateAddressablesLoader.InitByNameOrLabel("Vehicles_prefabs/" + VehicleID.Vehicle, Assets, new Vector3(1.34f, 1f, 0), Quaternion.Euler(new Vector3(0, 0, 0)));
+        
+        //Instantiate(Resources.Load("Vehicles_prefabs/" + VehicleID.Vehicle), new Vector3(1.34f, 1f, 0), Quaternion.Euler(new Vector3(0, 0, 0)));
         //disable unwanted 
-        GameObject.Find("Sphere").SetActive(false);
+        }
+    IEnumerator Checkspawn(){
+        //disable unwanted 
+        //print("random");
+        while(true){
+            if(CreateAddressablesLoader.Instafin==true){
+                GameObject.Find("Sphere").SetActive(false);
         //if(GameObject.FindGameObjectWithTag("Manushya")){
          //   GameObject.FindGameObjectWithTag("Manushya").SetActive(false);
         //}
@@ -96,9 +106,14 @@ public class MoveCameraHajaam : MonoBehaviour
         mat.SetTexture("_BaseMap",Tex);
         PlayerPrefs.SetString(VehicleID.Vehicle + "_MAT", Tex.name);
         GameObject.Find("Points-number").GetComponent<TextMeshProUGUI>().SetText((PlayerPrefs.GetInt("MoneyBank")).ToString());
-    }
+        break;
+                }
+                yield return new WaitForSeconds(0.1f);
+            }
+        }
     void Start()
     {   
+        StartCoroutine(Checkspawn());
         m_Volume = GameObject.Find("Post-process Volume").GetComponent<Volume>();
         iterator = 0f;
         Fade.color = new Color(Fade.color.r, Fade.color.g, Fade.color.b, 0f);
@@ -190,7 +205,7 @@ public class MoveCameraHajaam : MonoBehaviour
     {
         if(other.gameObject.name == "SceneTrigger"){
             Fade.color = new Color(Fade.color.r, Fade.color.g, Fade.color.b, 1f);
-            SceneManager.LoadScene(VehicleID.Scene);
+             Addressables.LoadSceneAsync(VehicleID.Scene);
         }
         
     }

@@ -11,6 +11,7 @@ public class Temple : MonoBehaviour, IPointerClickHandler
     private int MoneyLeft;
     private TextMeshProUGUI MoneyPro;
     Animator bellanim;
+    public AudioClip Clip;
     // Start is called before the first frame update
     void OnEnable()
     {   
@@ -27,6 +28,7 @@ public class Temple : MonoBehaviour, IPointerClickHandler
 
         MoneyLeft = Mathf.Max(MoneyLeft - Moneyperlife,0);
         if(MoneyLeft!=0){
+            gameObject.GetComponent<AudioSource>().PlayOneShot(Clip);
             bellanim.SetTrigger("Playbell");
             Chat.Life = Mathf.Min(Chat.Life + 1,2);
             if(Chat.Life == 0){

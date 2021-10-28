@@ -45,6 +45,22 @@ public class DisplayWeather : MonoBehaviour
                         temperature = "20.0";
                         description = "clear sky";
                         TempDisplay = temperature;
+                        
+                        string[] sunrisewords = sunrise.Split('T');
+                        string[] sunrisetimewords = sunrisewords[1].Split(':');
+                        int hours = int.Parse(sunrisetimewords[0]) + 5;
+                        int minutes = int.Parse(sunrisetimewords[1])+ 30;
+                        int sunriseminuteday = hours*60 + minutes;
+                        
+                        string[] sunsetwords = sunset.Split('T');
+                        string[] sunsettimewords = sunsetwords[1].Split(':');
+                        hours = int.Parse(sunsettimewords[0]) + 5;
+                        minutes = int.Parse(sunsettimewords[1])+ 30;
+                        int sunsetminuteday = hours*60 + minutes;
+                        
+                        float sunrate = 180f/(sunsetminuteday - sunriseminuteday);
+                        GameObject.Find("Directional Light").GetComponent<SunPosition>().Xanglerate = sunrate;
+                        GameObject.Find("Directional Light").GetComponent<SunPosition>().Timeintercept = sunriseminuteday;
                         Debug.Log("server error");
                     }
                     else{

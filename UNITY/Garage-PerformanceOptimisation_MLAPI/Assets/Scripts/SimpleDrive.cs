@@ -35,7 +35,7 @@ public class SimpleDrive : MonoBehaviour
         WC = this.GetComponent<WheelCollider>();
         remainingfuel = FR;
         Scene scene = SceneManager.GetActiveScene();
-        if(scene.name =="Bangalore"){
+        if(scene.name =="Bangalore" || scene.name =="VehicleLicense"){
             if(gameObject.transform.root.gameObject.GetComponent<NetworkObject>().IsLocalPlayer){
         }
         

@@ -26,6 +26,7 @@ public class Lean : NetworkBehaviour
         if(IsLocalPlayer){
             CameraFollowController.objectToFollow = gameObject.transform;
             fuelreader.GO = gameObject;
+            Debug.Log("Camfollow");
         }
         
             
@@ -33,6 +34,7 @@ public class Lean : NetworkBehaviour
     }
     private void OnEnable(){
         playerActionControls.Enable();
+        
     }
     private void OnDisable(){
         playerActionControls.Disable();

@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using MLAPI;
+using UnityEngine.AddressableAssets;
 public class MoveCameraModShop : MonoBehaviour
 {
     public Vector3[] Positions;
@@ -35,6 +36,7 @@ public class MoveCameraModShop : MonoBehaviour
     private Volume m_Volume;
     public VolumeProfile Glitch;
     public VolumeProfile Default;
+    private List<GameObject> Assets { get; } = new List<GameObject>();
     //activate default objects (always the first object in the tree)
     void SelectCar(int _index, List<GameObject> Goarray)
     {
@@ -58,44 +60,60 @@ public class MoveCameraModShop : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position,currentPos,Speed*0.0005f*Time.deltaTime);
         transform.rotation = Quaternion.Slerp(transform.rotation, target,  Speed*0.0005f*Time.deltaTime);
         // Load the vehicle
-        
-        Instantiate(Resources.Load("Vehicles_prefabs/" + VehicleID.Vehicle), new Vector3(1.34f, 1f, 0), Quaternion.Euler(new Vector3(0, 0, 0)));
+        CreateAddressablesLoader.InitByNameOrLabel("Vehicles_prefabs/" + VehicleID.Vehicle, Assets, new Vector3(1.34f, 1f, 0), Quaternion.Euler(new Vector3(0, 0, 0)));
+        //Instantiate(Resources.Load("Vehicles_prefabs/" + VehicleID.Vehicle), new Vector3(1.34f, 1f, 0), Quaternion.Euler(new Vector3(0, 0, 0)));
 
+        
+    }
+    
+    IEnumerator Checkspawn(){
         //disable unwanted 
-        GameObject.Find("Sphere").SetActive(false);
-        //if(GameObject.FindGameObjectWithTag("Manushya")){
-         //   GameObject.FindGameObjectWithTag("Manushya").SetActive(false);
-        //}
+        //print("random");
+        while(true){
+            if(CreateAddressablesLoader.Instafin==true){
+                print("random");
+                Debug.Log(CreateAddressablesLoader.Instafin);
+                GameObject.Find("Sphere").SetActive(false);
+                //if(GameObject.FindGameObjectWithTag("Manushya")){
+                //   GameObject.FindGameObjectWithTag("Manushya").SetActive(false);
+                //}
+                
+                GameObject.FindWithTag(VehicleID.VehicleTag).GetComponent<Chat>().enabled = false;
+                GameObject.FindWithTag(VehicleID.VehicleTag).GetComponent<VehicleINIT>().enabled = false;
+                if(VehicleID.VehicleTag=="2Wheeler"){
+                    VehicleText.SetText(VehicleType[0]);
+                    GameObject.FindGameObjectWithTag("Manushya").SetActive(false);
+                }
+                else if(VehicleID.VehicleTag=="3Wheeler"){
+                    VehicleText.SetText(VehicleType[1]);
+                }
+                else if(VehicleID.VehicleTag=="4Wheeler"){
+                    VehicleText.SetText(VehicleType[2]);
+                }
+                else{
+                    VehicleText.SetText(VehicleType[4]);
+                }
+                
+                for(int i=0;i<GameObject.FindWithTag(VehicleID.VehicleTag).transform.childCount;i++){
+                    if(GameObject.FindWithTag(VehicleID.VehicleTag).transform.GetChild(i).tag == "Kit"){
+                        GO.Add(GameObject.FindWithTag(VehicleID.VehicleTag).transform.GetChild(i).gameObject);
+                    };
+                }
+                Texture2D Tex = GO[mCurrentIndex].GetComponent<TexturesCollect>().TexturesCollection[mCarIndex];
+                mat = GO[mCurrentIndex].GetComponent<Renderer>().sharedMaterial;
+                mat.SetTexture("_BaseMap",Tex);
+                PlayerPrefs.SetString(VehicleID.Vehicle + "_MAT", Tex.name);
+                GameObject.Find("Points-number").GetComponent<TextMeshProUGUI>().SetText((PlayerPrefs.GetInt("MoneyBank")).ToString());
+                break;
+                }
+                yield return new WaitForSeconds(0.1f);
+            }
+        //yield return null;
         
-        GameObject.FindWithTag(VehicleID.VehicleTag).GetComponent<Chat>().enabled = false;
-        GameObject.FindWithTag(VehicleID.VehicleTag).GetComponent<VehicleINIT>().enabled = false;
-        if(VehicleID.VehicleTag=="2Wheeler"){
-            VehicleText.SetText(VehicleType[0]);
-            GameObject.FindGameObjectWithTag("Manushya").SetActive(false);
-        }
-        else if(VehicleID.VehicleTag=="3Wheeler"){
-            VehicleText.SetText(VehicleType[1]);
-        }
-        else if(VehicleID.VehicleTag=="4Wheeler"){
-            VehicleText.SetText(VehicleType[2]);
-        }
-        else{
-            VehicleText.SetText(VehicleType[4]);
-        }
-        
-        for(int i=0;i<GameObject.FindWithTag(VehicleID.VehicleTag).transform.childCount;i++){
-            if(GameObject.FindWithTag(VehicleID.VehicleTag).transform.GetChild(i).tag == "Kit"){
-                GO.Add(GameObject.FindWithTag(VehicleID.VehicleTag).transform.GetChild(i).gameObject);
-            };
-        }
-        Texture2D Tex = GO[mCurrentIndex].GetComponent<TexturesCollect>().TexturesCollection[mCarIndex];
-        mat = GO[mCurrentIndex].GetComponent<Renderer>().sharedMaterial;
-        mat.SetTexture("_BaseMap",Tex);
-        PlayerPrefs.SetString(VehicleID.Vehicle + "_MAT", Tex.name);
-        GameObject.Find("Points-number").GetComponent<TextMeshProUGUI>().SetText((PlayerPrefs.GetInt("MoneyBank")).ToString());
     }
     void Start()
     {   
+        StartCoroutine(Checkspawn());
         m_Volume = GameObject.Find("Post-process Volume").GetComponent<Volume>();
         iterator = 0f;
         Fade.color = new Color(Fade.color.r, Fade.color.g, Fade.color.b, 0f);
@@ -187,7 +205,7 @@ public class MoveCameraModShop : MonoBehaviour
     {
         if(other.gameObject.name == "SceneTrigger"){
             Fade.color = new Color(Fade.color.r, Fade.color.g, Fade.color.b, 1f);
-            SceneManager.LoadScene(VehicleID.Scene);
+            Addressables.LoadSceneAsync(VehicleID.Scene);
         }
         
     }

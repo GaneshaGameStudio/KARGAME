@@ -174,12 +174,9 @@ public class MoveCamera : MonoBehaviour
 
         if(other.gameObject.name == "SceneTrigger"){
             Fade.color = new Color(Fade.color.r, Fade.color.g, Fade.color.b, 1f);
-            if(VehicleID.Scene == "Garage"){
-                Addressables.LoadSceneAsync("Garage");
-            }
-            else{
-                SceneManager.LoadScene(VehicleID.Scene);
-            }
+            
+            Addressables.LoadSceneAsync(VehicleID.Scene);
+            
             
         }
         
