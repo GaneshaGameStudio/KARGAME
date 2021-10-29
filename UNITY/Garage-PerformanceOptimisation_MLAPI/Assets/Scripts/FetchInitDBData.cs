@@ -9,6 +9,7 @@ using TMPro;
 
 public class FetchInitDBData : MonoBehaviour
 {
+    private string apiUrl = "http://106.51.137.163:8000/";
     private Init initData;
     private Boolean tokenAuthenticated = false;
     private string dbTimestamp;
@@ -47,7 +48,7 @@ public class FetchInitDBData : MonoBehaviour
     {   
         HideTheseObjects();
         Init initDat = new Init();
-        StartCoroutine(initDat.Download("", result => {
+        StartCoroutine(initDat.Download(apiUrl, result => {
             NetworkCheck = result;
             // Debug.Log(NetworkCheck);
         }));
@@ -94,7 +95,7 @@ public class FetchInitDBData : MonoBehaviour
         }
         
         #region API Token Check
-        StartCoroutine(initData.TokenGet(PlayerPrefs.GetString("PlayerID"), result => {
+        StartCoroutine(initData.TokenGet(apiUrl +"/login/"+PlayerPrefs.GetString("PlayerID")+"?token="+apiToken, result => {
             tokenData = result;
             Debug.Log(tokenData);
 
@@ -104,7 +105,7 @@ public class FetchInitDBData : MonoBehaviour
 
             // TODO : Implement token logic here to validate if token is authenticated
             #region  Authentication
-            StartCoroutine(initData.TokenAuth(apiToken, result => {
+            StartCoroutine(initData.TokenAuth(apiUrl +"/protected?token="+ apiToken, result => {
                 tokenAuthData = result;
                 Debug.Log(tokenAuthData);
 
@@ -127,7 +128,7 @@ public class FetchInitDBData : MonoBehaviour
         #endregion API Token Check
         
         if(tokenAuthenticated){
-            StartCoroutine(initData.Download(initData.apiParam, result => {
+            StartCoroutine(initData.Download(apiUrl+initData.apiParam+"?token="+apiToken, result => {
             Debug.Log(initData.apiParam);
             dbInitData = result;
             Debug.Log(dbInitData);
@@ -559,7 +560,7 @@ public class FetchInitDBData : MonoBehaviour
         initData.apiParam = "playerStats/"+id;
 
         if(tokenAuthenticated){
-            StartCoroutine(initData.Download(initData.apiParam, result => {
+            StartCoroutine(initData.Download(apiUrl+initData.apiParam+"?token="+apiToken, result => {
             Debug.Log(initData.apiParam);
             dbInitData = result;
             Debug.Log(dbInitData);
@@ -586,7 +587,7 @@ public class FetchInitDBData : MonoBehaviour
                 //write db with pp data
                 pushDataToDB();
 
-                StartCoroutine(initData.Post(playerJson, result =>{
+                StartCoroutine(initData.Post(playerJson,apiToken, result =>{
                     string res = result;
                     Debug.Log("Post status "+res);
                 }));

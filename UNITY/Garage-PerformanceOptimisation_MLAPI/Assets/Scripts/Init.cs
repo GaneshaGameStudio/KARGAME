@@ -34,13 +34,13 @@ public class Init
 
     public IEnumerator Download(string id, System.Action<JSONNode> callback = null)
     {
-        using (UnityWebRequest request = UnityWebRequest.Get(apiUrl + id))
+        using (UnityWebRequest request = UnityWebRequest.Get(id))
         {
             yield return request.SendWebRequest();
 
             if ((request.result == UnityWebRequest.Result.ConnectionError) || (request.result == UnityWebRequest.Result.ProtocolError))
             {
-                Debug.Log(apiUrl + id);
+                Debug.Log(id);
                 Debug.Log(request.error);
                 if (callback != null)
                 {
@@ -60,7 +60,7 @@ public class Init
 
     public IEnumerator TokenGet(string id, System.Action<JSONNode> callback = null)
     {
-        using (UnityWebRequest request = UnityWebRequest.Get(apiUrl +"/login/"+ id))
+        using (UnityWebRequest request = UnityWebRequest.Get(id))
         {
             yield return request.SendWebRequest();
 
@@ -85,7 +85,7 @@ public class Init
 
     public IEnumerator TokenAuth(string token, System.Action<JSONNode> callback = null)
     {
-        using (UnityWebRequest request = UnityWebRequest.Get(apiUrl +"/protected?token="+ token))
+        using (UnityWebRequest request = UnityWebRequest.Get(token))
         {
             yield return request.SendWebRequest();
 
@@ -109,10 +109,10 @@ public class Init
 
 
 
-    public IEnumerator Post(JSONObject jobject,System.Action<string> callback = null)
+    public IEnumerator Post(JSONObject jobject,string token,System.Action<string> callback = null)
     {
         string postData = jobject.ToString();
-        var request = new UnityWebRequest(apiUrl+"playerprefspush", "POST");
+        var request = new UnityWebRequest(apiUrl+"playerprefspush?token="+token, "POST");
         byte[] bodyRaw = Encoding.UTF8.GetBytes(postData);
         request.uploadHandler = (UploadHandler) new UploadHandlerRaw(bodyRaw);
         request.downloadHandler = (DownloadHandler) new DownloadHandlerBuffer();
