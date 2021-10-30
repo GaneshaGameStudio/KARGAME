@@ -13,7 +13,7 @@ public class FetchInitDBData : MonoBehaviour
     private Init initData;
     private Boolean tokenAuthenticated = false;
     private string dbTimestamp;
-    private string apiToken;
+    public static string apiToken;
     private string apiTokenData;
     private string playerPrefsTimestamp;
 

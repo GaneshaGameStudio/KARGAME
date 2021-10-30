@@ -11,7 +11,7 @@ public class DisplayWeather : MonoBehaviour
 {   
     private const string API_KEY = "42d4191ee9409cb50f90142a4630a078";
     //private const string CurrentUrl ="http://api.openweathermap.org/data/2.5/weather?" + "q=Bengaluru,IN@&mode=xml&units=metric&APPID=" + API_KEY;
-    private const string CurrentUrl = "http://106.51.137.163:8000/get_weather";
+    private string CurrentUrl = "http://106.51.137.163:8000/get_weather?token="+FetchInitDBData.apiToken;
     private const string ForecastUrl = "http://api.openweathermap.org/data/2.5/forecast?" + "q=Bengaluru,IN&mode=xml&units=metric&APPID=" + API_KEY;
     public TextMeshProUGUI TextPro;
     public Texture[] m_Texture;
