@@ -506,7 +506,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.517, y: -217.54004}
+  m_AnchoredPosition: {x: 3.517, y: -292.55286}
   m_SizeDelta: {x: 715.0042, y: 838.9788}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &177680601
@@ -1524,7 +1524,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 977472572}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e421e5a916586427d9fcf664a52f6ca1, type: 3}
+  m_Script: {fileID: 11500000, guid: beed35f6a755bb94f838ebdca518afd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &977472574
@@ -1888,7 +1888,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 977472573}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Sceneexit, Assembly-CSharp
         m_MethodName: btn_exit_scene
         m_Mode: 1
@@ -2423,8 +2423,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1438853733}
   m_HandleRect: {fileID: 1931575361}
   m_Direction: 2
-  m_Value: 0.9999847
-  m_Size: 0.48140123
+  m_Value: 0.99998474
+  m_Size: 0.3025765
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2771,8 +2771,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 977472573}
-        m_TargetAssemblyTypeName: Sceneexit, Assembly-CSharp
-        m_MethodName: btn_change_scene
+        m_TargetAssemblyTypeName: SceneexitInit, Assembly-CSharp
+        m_MethodName: btn_scene_change
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
