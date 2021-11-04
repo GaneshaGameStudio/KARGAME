@@ -251,7 +251,7 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 90312010}
-  m_CullTransparentMesh: 1
+  m_CullTransparentMesh: 0
 --- !u!114 &90312014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,7 +259,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 90312010}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 333bab800b463154ba77cfe7ff6621f0, type: 3}
   m_Name: 
@@ -506,7 +506,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.517, y: -292.55286}
+  m_AnchoredPosition: {x: 3.517, y: -292.54663}
   m_SizeDelta: {x: 715.0042, y: 838.9788}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &177680601
@@ -2423,8 +2423,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1438853733}
   m_HandleRect: {fileID: 1931575361}
   m_Direction: 2
-  m_Value: 0.99998474
-  m_Size: 0.3025765
+  m_Value: 0.9999999
+  m_Size: 0.30261245
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

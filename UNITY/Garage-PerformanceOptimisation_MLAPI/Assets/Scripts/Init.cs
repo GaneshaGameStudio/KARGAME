@@ -17,7 +17,7 @@ public class Init
     public string apiParam;
     
     // static string data = null;
-    private string apiUrl = "http://106.51.137.163:8000/";
+    private string apiUrl = "http://kardb.kargame.in/";
 
     
 

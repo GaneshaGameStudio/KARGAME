@@ -9,9 +9,9 @@ using TMPro;
 
 public class FetchInitDBData : MonoBehaviour
 {
-    private string apiUrl = "http://106.51.137.163:8000/";
+    private string apiUrl = "http://kardb.kargame.in/";
     private Init initData;
-    private Boolean tokenAuthenticated = false;
+    private bool tokenAuthenticated = false;
     private string dbTimestamp;
     public static string apiToken;
     private string apiTokenData;
@@ -95,7 +95,7 @@ public class FetchInitDBData : MonoBehaviour
         }
         
         #region API Token Check
-        StartCoroutine(initData.TokenGet(apiUrl +"/login/"+PlayerPrefs.GetString("PlayerID")+"?token="+apiToken, result => {
+        StartCoroutine(initData.TokenGet(apiUrl +"/login/"+PlayerPrefs.GetString("PlayerID"), result => {
             tokenData = result;
             Debug.Log(tokenData);
 

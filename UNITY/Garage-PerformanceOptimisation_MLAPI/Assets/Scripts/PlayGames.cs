@@ -7,12 +7,11 @@ using UnityEngine.SocialPlatforms;
 using UnityEngine.UI;
 
 public class PlayGames : MonoBehaviour
-{/*
+{
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log(SystemInfo.operatingSystem);
-        if(SystemInfo.operatingSystem.Contains("Android")){
             PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().Build();
             PlayGamesPlatform.InitializeInstance(config);
             PlayGamesPlatform.DebugLogEnabled = true;
@@ -26,7 +25,6 @@ public class PlayGames : MonoBehaviour
             Rect rect = new Rect (0, 0, Social.Active.localUser.image.width, Social.Active.localUser.image.width);
             GetComponent<Image>().sprite = Sprite.Create(Social.Active.localUser.image, rect, new Vector2(0, 0));
     });
-        }
             
     
 }
@@ -42,5 +40,5 @@ private IEnumerator KeepCheckingAvatar()
         GetComponent<Image>().sprite = Sprite.Create(Social.Active.localUser.image, rect, new Vector2(0, 0));
         Debug.Log(Social.Active.localUser.userName);
     }
-*/
+
     }

@@ -6,13 +6,18 @@ using System.Xml;
 using TMPro;
 using UnityEngine.UI;
 using System.IO;
+using SimpleJSON;
 
 public class DisplayWeather : MonoBehaviour
 {   
+    public JSONNode jsonResult;
+    private string apiUrl = "http://kardb.kargame.in/";
     private const string API_KEY = "42d4191ee9409cb50f90142a4630a078";
     //private const string CurrentUrl ="http://api.openweathermap.org/data/2.5/weather?" + "q=Bengaluru,IN@&mode=xml&units=metric&APPID=" + API_KEY;
-    private string CurrentUrl = "http://106.51.137.163:8000/get_weather?token="+FetchInitDBData.apiToken;
+    private string apiToken="";
+    private string CurrentUrl = "http://kardb.kargame.in/get_weather?token=";
     private const string ForecastUrl = "http://api.openweathermap.org/data/2.5/forecast?" + "q=Bengaluru,IN&mode=xml&units=metric&APPID=" + API_KEY;
+    private JSONNode tokenData;
     public TextMeshProUGUI TextPro;
     public Texture[] m_Texture;
     public Material Skybox;
@@ -22,19 +27,63 @@ public class DisplayWeather : MonoBehaviour
     private string sunset;
     private string temperature;
     private string description;
+    private bool tokenAuthenticated = false;
+    private string apiTokenData;
+    private JSONNode tokenAuthData;
 
     // Start is called before the first frame update
     void Start()
     {   
         //ps = GetComponent<ParticleSystem>();
         GameObject.Find("Rain").GetComponent<ParticleSystem>().Stop();
-        StartCoroutine(GetWeatherRequest(CurrentUrl));
+
+        if(!apiToken.Equals("")){
+            StartCoroutine(TokenAuth(apiUrl +"/protected?token="+ apiToken, result => {
+                tokenAuthData = result;
+                Debug.Log(tokenAuthData);
+
+                apiTokenData = tokenAuthData["message"];
+
+                if(apiTokenData.Equals("This is only available for people with valid tokens.")){
+                    Debug.Log("Token authenticated");
+                    tokenAuthenticated = true;
+                }else if(apiTokenData.Equals("Token is invalid!")){
+                    Debug.Log("Invalid token");
+                    tokenAuthenticated = false;
+                    Debug.Log("Token changed to invalid");
+                }else{
+                    Debug.Log("Server error");
+                }
+                    
+            }));
+
+        }
+        
+        if(tokenAuthenticated==false){
+            StartCoroutine(TokenGet(apiUrl +"login/"+PlayerPrefs.GetString("PlayerID"), result => {
+            tokenData = result;
+            Debug.Log(tokenData);
+
+  
+            apiToken = tokenData["token"];
+            Debug.Log("Weather token "+apiToken);
+            StartCoroutine(GetWeatherRequest(CurrentUrl+apiToken.Trim()));
+            }));
+        // StartCoroutine(GetWeatherRequest(CurrentUrl));
+        }else{
+            StartCoroutine(GetWeatherRequest(CurrentUrl+apiToken.Trim()));
+            Debug.Log("Reusing token");
+        }
+
+
+        
     }
     IEnumerator GetWeatherRequest(string uri)
     {   
         while(true){
             using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
                 {
+                    Debug.Log("Weather URI "+uri);
                     // Request and wait for the desired page.
                     string TempDisplay;
                     yield return webRequest.SendWebRequest();
@@ -79,6 +128,62 @@ public class DisplayWeather : MonoBehaviour
                 }
             }
     }
+
+
+    public IEnumerator TokenGet(string id, System.Action<JSONNode> callback = null)
+    {
+        using (UnityWebRequest request = UnityWebRequest.Get(id))
+        {
+            yield return request.SendWebRequest();
+
+            if ((request.result == UnityWebRequest.Result.ConnectionError) || (request.result == UnityWebRequest.Result.ProtocolError))
+            {
+                Debug.Log(request.error);
+                if (callback != null)
+                {
+                    callback.Invoke(request.error);
+                }
+            }
+            else
+            {
+                if (callback != null)
+                {
+                    callback.Invoke(Processjson(request.downloadHandler.text));
+                    // StartCoroutine(GetWeatherRequest(CurrentUrl));
+                }
+            }
+        }
+    }
+
+    public IEnumerator TokenAuth(string token, System.Action<JSONNode> callback = null)
+    {
+        using (UnityWebRequest request = UnityWebRequest.Get(token))
+        {
+            yield return request.SendWebRequest();
+
+            if ((request.result == UnityWebRequest.Result.ConnectionError) || (request.result == UnityWebRequest.Result.ProtocolError))
+            {
+                Debug.Log(request.error);
+                if (callback != null)
+                {
+                    callback.Invoke(request.error);
+                }
+            }
+            else
+            {
+                if (callback != null)
+                {
+                    callback.Invoke(Processjson(request.downloadHandler.text));
+                }
+            }
+        }
+    }
+
+    private JSONNode Processjson(string jsonString)
+     {
+        jsonResult = JSON.Parse(jsonString);
+        return jsonResult;
+     }
 
     private string DispWeather(string xml)
     {

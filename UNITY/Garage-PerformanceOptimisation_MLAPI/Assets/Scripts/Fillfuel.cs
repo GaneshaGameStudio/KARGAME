@@ -11,6 +11,7 @@ public class Fillfuel : MonoBehaviour
     public string id;
     private Init petrolData;
     private JSONNode dbPetData;
+    private string apiUrl = "http://kardb.kargame.in/";
     
 
 
@@ -67,7 +68,7 @@ public class Fillfuel : MonoBehaviour
                                 Debug.Log(tofill);
                                 PlayerPrefs.SetInt("MoneyBank",((PlayerPrefs.GetInt("MoneyBank"))-(Convert.ToInt32((tofill * PlayerPrefs.GetInt("PetrolPrice"))))));
                                 Debug.Log("Set PP to this value "+Convert.ToString((PlayerPrefs.GetInt("MoneyBank"))-Convert.ToInt32((tofill * PlayerPrefs.GetInt("PetrolPrice")))));
-                                StartCoroutine(petrolData.Download("fuelCheck/"+id+"/"+tofill, result => {
+                                StartCoroutine(petrolData.Download(apiUrl+"fuelCheck/"+id+"/"+tofill+"?token="+FetchInitDBData.apiToken, result => {
                                 dbPetData = result;
                                 // Debug.Log("Fuel "+petData.data[0].RemainingFuel);
 
@@ -136,7 +137,7 @@ public class Fillfuel : MonoBehaviour
                                 Debug.Log(tofill);
                                 PlayerPrefs.SetInt("MoneyBank",((PlayerPrefs.GetInt("MoneyBank"))-(Convert.ToInt32((tofill * PlayerPrefs.GetInt("PetrolPrice"))))));
                                 Debug.Log("Set PP to this value "+Convert.ToString((PlayerPrefs.GetInt("MoneyBank"))-Convert.ToInt32((tofill * PlayerPrefs.GetInt("PetrolPrice")))));
-                                StartCoroutine(petrolData.Download("fuelCheck/"+id+"/"+tofill, result => {
+                                StartCoroutine(petrolData.Download(apiUrl+"fuelCheck/"+id+"/"+tofill+"?token="+FetchInitDBData.apiToken, result => {
                                 dbPetData = result;
                                 // Debug.Log("Fuel "+petData.data[0].RemainingFuel);
 
@@ -207,7 +208,7 @@ public class Fillfuel : MonoBehaviour
                                 Debug.Log(tofill);
                                 PlayerPrefs.SetInt("MoneyBank",((PlayerPrefs.GetInt("MoneyBank"))-(Convert.ToInt32((tofill * PlayerPrefs.GetInt("PetrolPrice"))))));
                                 Debug.Log("Set PP to this value "+Convert.ToString((PlayerPrefs.GetInt("MoneyBank"))-Convert.ToInt32((tofill * PlayerPrefs.GetInt("PetrolPrice")))));
-                                StartCoroutine(petrolData.Download("fuelCheck/"+id+"/"+tofill, result => {
+                                StartCoroutine(petrolData.Download(apiUrl+"fuelCheck/"+id+"/"+tofill+"?token="+FetchInitDBData.apiToken, result => {
                                 dbPetData = result;
                                 // Debug.Log("Fuel "+petData.data[0].RemainingFuel);
 
@@ -274,7 +275,7 @@ public class Fillfuel : MonoBehaviour
                                 Debug.Log(tofill);
                                 PlayerPrefs.SetInt("MoneyBank",((PlayerPrefs.GetInt("MoneyBank"))-(Convert.ToInt32((tofill * PlayerPrefs.GetInt("PetrolPrice"))))));
                                 Debug.Log("Set PP to this value "+Convert.ToString((PlayerPrefs.GetInt("MoneyBank"))-Convert.ToInt32((tofill * PlayerPrefs.GetInt("PetrolPrice")))));
-                                StartCoroutine(petrolData.Download("fuelCheck/"+id+"/"+tofill, result => {
+                                StartCoroutine(petrolData.Download(apiUrl+"fuelCheck/"+id+"/"+tofill+"?token="+FetchInitDBData.apiToken, result => {
                                 dbPetData = result;
                                 // Debug.Log("Fuel "+petData.data[0].RemainingFuel);
 
@@ -343,7 +344,7 @@ public class Fillfuel : MonoBehaviour
                                 Debug.Log(tofill);
                                 PlayerPrefs.SetInt("MoneyBank",((PlayerPrefs.GetInt("MoneyBank"))-(Convert.ToInt32((tofill * PlayerPrefs.GetInt("FoodPrice"))))));
                                 Debug.Log("Set PP to this value "+Convert.ToString((PlayerPrefs.GetInt("MoneyBank"))-Convert.ToInt32((tofill * PlayerPrefs.GetInt("FoodPrice")))));
-                                StartCoroutine(petrolData.Download("fuelCheck/"+id+"/"+tofill, result => {
+                                StartCoroutine(petrolData.Download(apiUrl+"fuelCheck/"+id+"/"+tofill+"?token="+FetchInitDBData.apiToken, result => {
                                 dbPetData = result;
                                 // Debug.Log("Fuel "+petData.data[0].RemainingFuel);
 
@@ -390,7 +391,7 @@ public class Fillfuel : MonoBehaviour
             //         tofill = GameObject.FindWithTag("4Wheeler").GetComponent<SimpleCarController>().tankcap*(1-fuelreader.RF); 
             //         print(tofill + "litres");
 
-            //         StartCoroutine(petrolData.Download("fuelCheck/"+id+"/"+tofill, result => {
+            //         StartCoroutine(petrolData.Download(apiUrl+"fuelCheck/"+id+"/"+tofill, result => {
             //         dbPetData = result;
             //         // Debug.Log("Fuel "+petData.data[0].RemainingFuel);
 
@@ -422,7 +423,7 @@ public class Fillfuel : MonoBehaviour
             //             //SimpleDrive.remainingfuel = 1f;
 
                         
-            //                 StartCoroutine(petrolData.Download("fuelCheck/"+id+"/"+tofill, result => {
+            //                 StartCoroutine(petrolData.Download(apiUrl+"fuelCheck/"+id+"/"+tofill, result => {
             //                 dbPetData = result;
             //                 // Debug.Log("Fuel "+petData.data[0].RemainingFuel);
 
