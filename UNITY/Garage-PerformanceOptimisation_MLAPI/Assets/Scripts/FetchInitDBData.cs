@@ -128,7 +128,7 @@ public class FetchInitDBData : MonoBehaviour
         #endregion API Token Check
         
         if(tokenAuthenticated){
-            StartCoroutine(initData.Download(apiUrl+initData.apiParam+"?token="+apiToken, result => {
+            StartCoroutine(initData.Download(apiUrl+initData.apiParam, result => {
             Debug.Log(initData.apiParam);
             dbInitData = result;
             Debug.Log(dbInitData);
@@ -587,7 +587,7 @@ public class FetchInitDBData : MonoBehaviour
                 //write db with pp data
                 pushDataToDB();
 
-                StartCoroutine(initData.Post(playerJson,apiToken, result =>{
+                StartCoroutine(initData.Post(playerJson, result =>{
                     string res = result;
                     Debug.Log("Post status "+res);
                 }));

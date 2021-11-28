@@ -109,10 +109,10 @@ public class Init
 
 
 
-    public IEnumerator Post(JSONObject jobject,string token,System.Action<string> callback = null)
+    public IEnumerator Post(JSONObject jobject,System.Action<string> callback = null)
     {
         string postData = jobject.ToString();
-        var request = new UnityWebRequest(apiUrl+"playerprefspush?token="+token, "POST");
+        var request = new UnityWebRequest(apiUrl+"playerprefspush", "POST");
         byte[] bodyRaw = Encoding.UTF8.GetBytes(postData);
         request.uploadHandler = (UploadHandler) new UploadHandlerRaw(bodyRaw);
         request.downloadHandler = (DownloadHandler) new DownloadHandlerBuffer();

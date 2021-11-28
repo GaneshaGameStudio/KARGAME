@@ -68,7 +68,7 @@ public class Fillfuel : MonoBehaviour
                                 Debug.Log(tofill);
                                 PlayerPrefs.SetInt("MoneyBank",((PlayerPrefs.GetInt("MoneyBank"))-(Convert.ToInt32((tofill * PlayerPrefs.GetInt("PetrolPrice"))))));
                                 Debug.Log("Set PP to this value "+Convert.ToString((PlayerPrefs.GetInt("MoneyBank"))-Convert.ToInt32((tofill * PlayerPrefs.GetInt("PetrolPrice")))));
-                                StartCoroutine(petrolData.Download(apiUrl+"fuelCheck/"+id+"/"+tofill+"?token="+FetchInitDBData.apiToken, result => {
+                                StartCoroutine(petrolData.Download(apiUrl+"fuelCheck/"+id+"/"+tofill, result => {
                                 dbPetData = result;
                                 // Debug.Log("Fuel "+petData.data[0].RemainingFuel);
 
@@ -137,7 +137,7 @@ public class Fillfuel : MonoBehaviour
                                 Debug.Log(tofill);
                                 PlayerPrefs.SetInt("MoneyBank",((PlayerPrefs.GetInt("MoneyBank"))-(Convert.ToInt32((tofill * PlayerPrefs.GetInt("PetrolPrice"))))));
                                 Debug.Log("Set PP to this value "+Convert.ToString((PlayerPrefs.GetInt("MoneyBank"))-Convert.ToInt32((tofill * PlayerPrefs.GetInt("PetrolPrice")))));
-                                StartCoroutine(petrolData.Download(apiUrl+"fuelCheck/"+id+"/"+tofill+"?token="+FetchInitDBData.apiToken, result => {
+                                StartCoroutine(petrolData.Download(apiUrl+"fuelCheck/"+id+"/"+tofill, result => {
                                 dbPetData = result;
                                 // Debug.Log("Fuel "+petData.data[0].RemainingFuel);
 
@@ -208,7 +208,7 @@ public class Fillfuel : MonoBehaviour
                                 Debug.Log(tofill);
                                 PlayerPrefs.SetInt("MoneyBank",((PlayerPrefs.GetInt("MoneyBank"))-(Convert.ToInt32((tofill * PlayerPrefs.GetInt("PetrolPrice"))))));
                                 Debug.Log("Set PP to this value "+Convert.ToString((PlayerPrefs.GetInt("MoneyBank"))-Convert.ToInt32((tofill * PlayerPrefs.GetInt("PetrolPrice")))));
-                                StartCoroutine(petrolData.Download(apiUrl+"fuelCheck/"+id+"/"+tofill+"?token="+FetchInitDBData.apiToken, result => {
+                                StartCoroutine(petrolData.Download(apiUrl+"fuelCheck/"+id+"/"+tofill, result => {
                                 dbPetData = result;
                                 // Debug.Log("Fuel "+petData.data[0].RemainingFuel);
 
@@ -275,7 +275,7 @@ public class Fillfuel : MonoBehaviour
                                 Debug.Log(tofill);
                                 PlayerPrefs.SetInt("MoneyBank",((PlayerPrefs.GetInt("MoneyBank"))-(Convert.ToInt32((tofill * PlayerPrefs.GetInt("PetrolPrice"))))));
                                 Debug.Log("Set PP to this value "+Convert.ToString((PlayerPrefs.GetInt("MoneyBank"))-Convert.ToInt32((tofill * PlayerPrefs.GetInt("PetrolPrice")))));
-                                StartCoroutine(petrolData.Download(apiUrl+"fuelCheck/"+id+"/"+tofill+"?token="+FetchInitDBData.apiToken, result => {
+                                StartCoroutine(petrolData.Download(apiUrl+"fuelCheck/"+id+"/"+tofill, result => {
                                 dbPetData = result;
                                 // Debug.Log("Fuel "+petData.data[0].RemainingFuel);
 
@@ -344,7 +344,7 @@ public class Fillfuel : MonoBehaviour
                                 Debug.Log(tofill);
                                 PlayerPrefs.SetInt("MoneyBank",((PlayerPrefs.GetInt("MoneyBank"))-(Convert.ToInt32((tofill * PlayerPrefs.GetInt("FoodPrice"))))));
                                 Debug.Log("Set PP to this value "+Convert.ToString((PlayerPrefs.GetInt("MoneyBank"))-Convert.ToInt32((tofill * PlayerPrefs.GetInt("FoodPrice")))));
-                                StartCoroutine(petrolData.Download(apiUrl+"fuelCheck/"+id+"/"+tofill+"?token="+FetchInitDBData.apiToken, result => {
+                                StartCoroutine(petrolData.Download(apiUrl+"fuelCheck/"+id+"/"+tofill, result => {
                                 dbPetData = result;
                                 // Debug.Log("Fuel "+petData.data[0].RemainingFuel);
 
