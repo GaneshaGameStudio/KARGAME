@@ -14,9 +14,9 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  m_FogMode: 3
+  m_Fog: 1
+  m_FogColor: {r: 0.6509804, g: 0.6666667, b: 0.7058824, a: 1}
+  m_FogMode: 1
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
@@ -25,7 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
-  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SubtractiveShadowColor: {r: 0.5647059, g: 0.5647059, b: 0.5647059, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 33d57cebb7b414fb6acb169f112ec856, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 11686425}
-  m_IndirectSpecularColor: {r: 0.6953538, g: 1.0067912, b: 0.9890251, a: 1}
+  m_IndirectSpecularColor: {r: 0.040445976, g: 0.038530126, b: 0.060897484, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,8 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 2325d9163ae7f478e9dcfd504e3ab904, type: 2}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: aac631579dd70450687059a2f8fd5878, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 18a2398f454484b42a3b9c70ac768749, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1841,7 +1841,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 253947118}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 333bab800b463154ba77cfe7ff6621f0, type: 3}
+  m_Script: {fileID: 11500000, guid: da991520112354a498ef04486f198d2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &318791546
@@ -8838,7 +8838,6 @@ GameObject:
   - component: {fileID: 852556563}
   - component: {fileID: 852556562}
   - component: {fileID: 852556564}
-  - component: {fileID: 852556565}
   m_Layer: 5
   m_Name: PlayerPic
   m_TagString: Untagged
@@ -8910,21 +8909,9 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 852556560}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da991520112354a498ef04486f198d2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &852556565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 852556560}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 333bab800b463154ba77cfe7ff6621f0, type: 3}
+  m_Script: {fileID: 11500000, guid: da991520112354a498ef04486f198d2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &956947900
