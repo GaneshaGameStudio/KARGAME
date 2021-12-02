@@ -34,7 +34,8 @@ public class ChunkingV2 : MonoBehaviour
     void readcsv()
     {   
         int bs = 0;
-        using(var reader = new StreamReader("Assets/Resources/Map4_Busroute_tracker.csv"))
+        print(Application.streamingAssetsPath);
+        using(var reader = new StreamReader(Application.streamingAssetsPath + "/Map4_Busroute_tracker.csv"))
         {
             
             while (!reader.EndOfStream)
