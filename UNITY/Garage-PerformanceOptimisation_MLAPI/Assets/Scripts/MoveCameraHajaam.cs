@@ -65,7 +65,7 @@ public class MoveCameraHajaam : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position,currentPos,Speed*0.0005f*Time.deltaTime);
         transform.rotation = Quaternion.Slerp(transform.rotation, target,  Speed*0.0005f*Time.deltaTime);
         // Load the vehicle
-        CreateAddressablesLoader.InitByNameOrLabel("Vehicles_prefabs/" + VehicleID.Vehicle, Assets, new Vector3(1.34f, 1f, 0), Quaternion.Euler(new Vector3(0, 0, 0)));
+        CreateAddressablesLoader.InitByNameOrLabel("Vehicles_prefabs/" + VehicleID.Vehicle, Assets, new Vector3(0f, 0f, 0f), Quaternion.Euler(new Vector3(0f, 0f, 0f)));
         
         //Instantiate(Resources.Load("Vehicles_prefabs/" + VehicleID.Vehicle), new Vector3(1.34f, 1f, 0), Quaternion.Euler(new Vector3(0, 0, 0)));
         //disable unwanted 

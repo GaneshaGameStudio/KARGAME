@@ -20,7 +20,7 @@ public class LoadedAddressableLocation : MonoBehaviour
 
     private void Start()
     {
-        Caching.ClearCache();
+        
     }
     public void LoadAssets(string _label){
         InitAndWaitUntilLoaded(_label);

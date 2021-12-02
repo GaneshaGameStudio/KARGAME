@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 public class TrafficPool : MonoBehaviour
 {   
     private int nodenumber;
@@ -26,8 +27,16 @@ public class TrafficPool : MonoBehaviour
             gopath = other.gameObject;
         }
     }
+    private void Gamehandle_Completed(AsyncOperationHandle<GameObject> handle) {
+    if (handle.Status == AsyncOperationStatus.Succeeded) {
+        goobject = handle.Result;
+    }
+    }
     void spawntraffic(){
-        goobject = Resources.Load("Vehicles_prefabs/" + "BMTC_1_Traffic") as GameObject;
+        //goobject = Resources.Load("Vehicles_prefabs/" + "BMTC_1_Traffic") as GameObject;
+        var request = Addressables.LoadAssetAsync<GameObject>("Vehicles_prefabs/" + "BMTC_1_Traffic");
+        request.Completed += Gamehandle_Completed;
+        
         for (int j=0;j<respawnpaths.Length;j++){
             for(int i=0; i<respawnpaths[j].transform.childCount;i++)
             {   

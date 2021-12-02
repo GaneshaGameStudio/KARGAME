@@ -60,7 +60,7 @@ public class MoveCameraModShop : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position,currentPos,Speed*0.0005f*Time.deltaTime);
         transform.rotation = Quaternion.Slerp(transform.rotation, target,  Speed*0.0005f*Time.deltaTime);
         // Load the vehicle
-        CreateAddressablesLoader.InitByNameOrLabel("Vehicles_prefabs/" + VehicleID.Vehicle, Assets, new Vector3(1.34f, 1f, 0), Quaternion.Euler(new Vector3(0, 0, 0)));
+        CreateAddressablesLoader.InitByNameOrLabel("Vehicles_prefabs/" + VehicleID.Vehicle, Assets, new Vector3(0.0f, 1f, 0), Quaternion.Euler(new Vector3(0, 0, 0)));
         //Instantiate(Resources.Load("Vehicles_prefabs/" + VehicleID.Vehicle), new Vector3(1.34f, 1f, 0), Quaternion.Euler(new Vector3(0, 0, 0)));
 
         
@@ -71,8 +71,8 @@ public class MoveCameraModShop : MonoBehaviour
         //print("random");
         while(true){
             if(CreateAddressablesLoader.Instafin==true){
-                print("random");
-                Debug.Log(CreateAddressablesLoader.Instafin);
+                //print("random");
+                //Debug.Log(CreateAddressablesLoader.Instafin);
                 GameObject.Find("Sphere").SetActive(false);
                 //if(GameObject.FindGameObjectWithTag("Manushya")){
                 //   GameObject.FindGameObjectWithTag("Manushya").SetActive(false);
@@ -81,8 +81,9 @@ public class MoveCameraModShop : MonoBehaviour
                 GameObject.FindWithTag(VehicleID.VehicleTag).GetComponent<Chat>().enabled = false;
                 GameObject.FindWithTag(VehicleID.VehicleTag).GetComponent<VehicleINIT>().enabled = false;
                 if(VehicleID.VehicleTag=="2Wheeler"){
-                    VehicleText.SetText(VehicleType[0]);
                     GameObject.FindGameObjectWithTag("Manushya").SetActive(false);
+                    VehicleText.SetText(VehicleType[0]);
+                    
                 }
                 else if(VehicleID.VehicleTag=="3Wheeler"){
                     VehicleText.SetText(VehicleType[1]);
@@ -108,6 +109,7 @@ public class MoveCameraModShop : MonoBehaviour
                 }
                 yield return new WaitForSeconds(0.1f);
             }
+            CreateAddressablesLoader.Instafin=false;
         //yield return null;
         
     }
