@@ -184,7 +184,7 @@ public class FetchInitDBData : MonoBehaviour
         intValues.Add("2WheelerLicense",1);
         intValues.Add("3WheelerLicense",1);
         intValues.Add("4WheelerLicense",1);
-        intValues.Add("6WheelerLicense",1);
+        intValues.Add("6WheelerLicense",0);
         intValues.Add("MoneyBank",20000);
         intValues.Add("MoneyPocket",2000);
         intValues.Add("Health",50);
@@ -240,7 +240,7 @@ public class FetchInitDBData : MonoBehaviour
         stringVehicleValues.Add("BJ-Chetak_MAT","BJ-Chetak_Stock");
 
         //BJ-Pulsar
-        stringVehicleValues.Add("BJ-Pulsar_Unlocked","1");
+        stringVehicleValues.Add("BJ-Pulsar_Unlocked","0");
         floatVehicleValues.Add("BJ-Pulsar_Accl",0.075f);
         floatVehicleValues.Add("BJ-Pulsar_MaxSpeed",0.085f);
         floatVehicleValues.Add("BJ-Pulsar_TankCapacity",12f);
@@ -257,7 +257,7 @@ public class FetchInitDBData : MonoBehaviour
 
         #region FOUR WHEELERS
         //Ace
-        stringVehicleValues.Add("Ace_Unlocked","1");
+        stringVehicleValues.Add("Ace_Unlocked","0");
         floatVehicleValues.Add("Ace_Accl",0.75f);
         floatVehicleValues.Add("Ace_MaxSpeed",0.040f);
         floatVehicleValues.Add("Ace_TankCapacity",50f);
@@ -270,7 +270,7 @@ public class FetchInitDBData : MonoBehaviour
         stringVehicleValues.Add("Ace_MAT","Ace_Stock");
 
         //Ambassador
-        stringVehicleValues.Add("Ambassador_Unlocked","1");
+        stringVehicleValues.Add("Ambassador_Unlocked","0");
         floatVehicleValues.Add("Ambassador_Accl",0.75f);
         floatVehicleValues.Add("Ambassador_MaxSpeed",0.040f);
         floatVehicleValues.Add("Ambassador_TankCapacity",50f);
@@ -283,7 +283,7 @@ public class FetchInitDBData : MonoBehaviour
         stringVehicleValues.Add("Ambassador_MAT","Ambassador_Stock");
 
         //Indica
-        stringVehicleValues.Add("Indica_Unlocked","1");
+        stringVehicleValues.Add("Indica_Unlocked","0");
         floatVehicleValues.Add("Indica_Accl",0.50f);
         floatVehicleValues.Add("Indica_MaxSpeed",0.070f);
         floatVehicleValues.Add("Indica_TankCapacity",50f);
@@ -296,7 +296,7 @@ public class FetchInitDBData : MonoBehaviour
         stringVehicleValues.Add("Indica_MAT","Indica_Stock");
 
         //MS-800
-        stringVehicleValues.Add("MS-800_Unlocked","1");
+        stringVehicleValues.Add("MS-800_Unlocked","0");
         floatVehicleValues.Add("MS-800_Accl",0.75f);
         floatVehicleValues.Add("MS-800_MaxSpeed",0.030f);
         floatVehicleValues.Add("MS-800_TankCapacity",50f);
@@ -322,7 +322,7 @@ public class FetchInitDBData : MonoBehaviour
         stringVehicleValues.Add("MS-Alto_MAT","MS-Alto_Stock");
 
         //Nano
-        stringVehicleValues.Add("Nano_Unlocked","1");
+        stringVehicleValues.Add("Nano_Unlocked","0");
         floatVehicleValues.Add("Nano_Accl",0.50f);
         floatVehicleValues.Add("Nano_MaxSpeed",0.030f);
         floatVehicleValues.Add("Nano_TankCapacity",50f);
@@ -335,7 +335,7 @@ public class FetchInitDBData : MonoBehaviour
         stringVehicleValues.Add("Nano_MAT","Nano_Stock");
 
         //Scorpio
-        stringVehicleValues.Add("Scorpio_Unlocked","1");
+        stringVehicleValues.Add("Scorpio_Unlocked","0");
         floatVehicleValues.Add("Scorpio_Accl",0.80f);
         floatVehicleValues.Add("Scorpio_MaxSpeed",0.150f);
         floatVehicleValues.Add("Scorpio_TankCapacity",50f);
@@ -348,7 +348,7 @@ public class FetchInitDBData : MonoBehaviour
         stringVehicleValues.Add("Scorpio_MAT","Scorpio_Stock");
 
         //VJM02
-        stringVehicleValues.Add("VJM02_Unlocked","1");
+        stringVehicleValues.Add("VJM02_Unlocked","0");
         floatVehicleValues.Add("VJM02_Accl",2f);
         floatVehicleValues.Add("VJM02_MaxSpeed",0.3f);
         floatVehicleValues.Add("VJM02_TankCapacity",143f);
@@ -361,7 +361,7 @@ public class FetchInitDBData : MonoBehaviour
         stringVehicleValues.Add("VJM02_MAT","VJM02_Stock");
 
         //BMTC_1wopass
-        stringVehicleValues.Add("BMTC_1wopass_Unlocked","1");
+        stringVehicleValues.Add("BMTC_1wopass_Unlocked","0");
         floatVehicleValues.Add("BMTC_1wopass_Accl",4.5f);
         floatVehicleValues.Add("BMTC_1wopass_MaxSpeed",0.3f);
         floatVehicleValues.Add("BMTC_1wopass_TankCapacity",50f);
@@ -374,7 +374,7 @@ public class FetchInitDBData : MonoBehaviour
         stringVehicleValues.Add("BMTC_1wopass_MAT","BMTC_1wopass_Stock");
 
         //Tempo
-        stringVehicleValues.Add("Tempo_Unlocked","1");
+        stringVehicleValues.Add("Tempo_Unlocked","0");
         floatVehicleValues.Add("Tempo_Accl",4.5f);
         floatVehicleValues.Add("Tempo_MaxSpeed",0.3f);
         floatVehicleValues.Add("Tempo_TankCapacity",50f);
@@ -404,7 +404,7 @@ public class FetchInitDBData : MonoBehaviour
         stringVehicleValues.Add("BA-RE_MAT","BA-RE_Stock");
 
         //BA-RE-goods
-        stringVehicleValues.Add("BA-RE-goods_Unlocked","1");
+        stringVehicleValues.Add("BA-RE-goods_Unlocked","0");
         floatVehicleValues.Add("BA-RE-goods_Accl",0.4f);
         floatVehicleValues.Add("BA-RE-goods_MaxSpeed",0.060f);
         floatVehicleValues.Add("BA-RE-goods_TankCapacity",30f);
@@ -417,7 +417,7 @@ public class FetchInitDBData : MonoBehaviour
         stringVehicleValues.Add("BA-RE-goods_MAT","BA-RE_Stock");
 
         //Ape
-        stringVehicleValues.Add("Ape_Unlocked","1");
+        stringVehicleValues.Add("Ape_Unlocked","0");
         floatVehicleValues.Add("Ape_Accl",0.30f);
         floatVehicleValues.Add("Ape_MaxSpeed",0.030f);
         floatVehicleValues.Add("Ape_TankCapacity",30f);
@@ -430,7 +430,7 @@ public class FetchInitDBData : MonoBehaviour
         stringVehicleValues.Add("Ape_MAT","Ape_Stock");
 
         //BullockCart_1
-        stringVehicleValues.Add("BullockCart_1_Unlocked","1");
+        stringVehicleValues.Add("BullockCart_1_Unlocked","0");
         floatVehicleValues.Add("BullockCart_1_Accl",0.050f);
         floatVehicleValues.Add("BullockCart_1_MaxSpeed",0.030f);
         floatVehicleValues.Add("BullockCart_1_TankCapacity",30f);
