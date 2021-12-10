@@ -559,8 +559,8 @@ public class FetchInitDBData : MonoBehaviour
         id = PlayerPrefs.GetString("PlayerID");
         initData.apiParam = "playerStats/"+id;
 
-        if(tokenAuthenticated){
-            StartCoroutine(initData.Download(apiUrl+initData.apiParam+"?token="+apiToken, result => {
+        // if(tokenAuthenticated){
+            StartCoroutine(initData.Download(apiUrl+initData.apiParam, result => {
             Debug.Log(initData.apiParam);
             dbInitData = result;
             Debug.Log(dbInitData);
@@ -595,7 +595,7 @@ public class FetchInitDBData : MonoBehaviour
 
         }));
         
-        }
+        // }
     }
 
 

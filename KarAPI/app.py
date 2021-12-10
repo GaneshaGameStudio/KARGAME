@@ -10,11 +10,56 @@ from functools import wraps
 
 
 # Assuming KarDB.db is in your app root folder
-e = create_engine('sqlite:///KarDB.db')  # loads db into memory
+e = create_engine('sqlite:////home/arun/Documents/KarAPI/KarDB.db')  # loads db into memory
 
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'thisisthesecretkey21111993'
+
+
+########## API JWT TOKEN #############
+
+def token_required(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        token = request.args.get('token') #http://127.0.0.1:8000/route?token=alshfjfjdklsfj89549834ur
+
+        if not token:
+            return jsonify({'message' : 'Token is missing!'}), 403
+
+        try: 
+            data = jwt.decode(token, app.config['SECRET_KEY'])
+        except:
+            return jsonify({'message' : 'Token is invalid!'}), 403
+
+        return f(*args, **kwargs)
+
+    return decorated
+
+@app.route('/unprotected')
+def unprotected():
+    return jsonify({"message" : "Anyone can view this!"})
+
+@app.route('/protected')
+@token_required
+def protected():
+    return jsonify({"message" : "This is only available for people with valid tokens."})
+
+@app.route('/login/<string:player_id>')
+def login(player_id):
+
+    conn = e.connect()
+    query = conn.execute("select * from PlayerData where ID=?;",(player_id,))
+    resultTuple = [dict(zip(tuple (query.keys()) ,i)) for i in query.cursor]
+
+    if len(resultTuple) == 0:
+        return make_response('User not found in Database!', 401)
+    else:
+        token = jwt.encode({'user' : player_id, 'exp' : datetime.datetime.utcnow() + datetime.timedelta(hours=5)}, app.config['SECRET_KEY'])
+        return jsonify({"token" : token.decode('UTF-8')})
+
+#######################################
+
 
 @app.route('/', methods=['GET'])
 def get():
@@ -120,7 +165,7 @@ def update_db_with_pp():
     print("Successfully posted")
 
     conn = e.connect()
-    conn.execute("Update PlayerData Set Timestamp='"+str(request.json['Timestamp'])+"', License2W='"+str(request.json['License2W'])+"', License4W='"+str(request.json['License4W'])+"', Money='"+str(request.json['Money'])+"', Health='"+str(request.json['Health'])+"', TotalDistanceTraveled='"+str(request.json['TotalDistanceTraveled'])+"', HN_Dio_TotalDistance='"+str(request.json['HN_Dio_TotalDistance'])+"', BJ_Chetak_TotalDistance='"+str(request.json['BJ_Chetak_TotalDistance'])+"' Where ID='"+str(request.json['ID'])+"'")
+    conn.execute("Update PlayerData Set Timestamp='"+str(request.json['Timestamp'])+"', License2W='"+str(request.json['License2W'])+"', License4W='"+str(request.json['License4W'])+"', License6W='"+str(request.json['License6W'])+"', MoneyBank='"+str(request.json['MoneyBank'])+"', Health='"+str(request.json['Health'])+"', TotalDistanceTraveled='"+str(request.json['TotalDistanceTraveled'])+"' Where ID='"+str(request.json['ID'])+"'")
     # conn.execute("Update PlayerData Set License2W='"+str(request.json['License2W'])+"' Where ID='"+str(request.json['ID'])+"'")
 
     return "Successfully posted"
@@ -138,48 +183,7 @@ def get_weather():
 
 
 
-########## API JWT TOKEN #############
 
-def token_required(f):
-    @wraps(f)
-    def decorated(*args, **kwargs):
-        token = request.args.get('token') #http://127.0.0.1:8000/route?token=alshfjfjdklsfj89549834ur
-
-        if not token:
-            return jsonify({'message' : 'Token is missing!'}), 403
-
-        try: 
-            data = jwt.decode(token, app.config['SECRET_KEY'])
-        except:
-            return jsonify({'message' : 'Token is invalid!'}), 403
-
-        return f(*args, **kwargs)
-
-    return decorated
-
-@app.route('/unprotected')
-def unprotected():
-    return jsonify({'message' : 'Anyone can view this!'})
-
-@app.route('/protected')
-@token_required
-def protected():
-    return jsonify({'message' : 'This is only available for people with valid tokens.'})
-
-@app.route('/login/<string:player_id>')
-def login(player_id):
-
-    conn = e.connect()
-    query = conn.execute("select * from PlayerData where ID=?;",(player_id,))
-    resultTuple = [dict(zip(tuple (query.keys()) ,i)) for i in query.cursor]
-
-    if len(resultTuple) == 0:
-        return make_response('User not found in Database!', 401)
-    else:
-        token = jwt.encode({'user' : player_id, 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=60)}, app.config['SECRET_KEY'])
-        return jsonify({'token' : token.decode('UTF-8')})
-
-#######################################
 
 
 if __name__ == "__main__":
