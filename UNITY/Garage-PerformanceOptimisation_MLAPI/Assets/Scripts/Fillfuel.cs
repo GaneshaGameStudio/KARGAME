@@ -11,7 +11,7 @@ public class Fillfuel : MonoBehaviour
     public string id;
     private Init petrolData;
     private JSONNode dbPetData;
-    private string apiUrl = "http://kardb.kargame.in/";
+    private string apiUrl = "https://kardb.kargame.in/";
     
 
 

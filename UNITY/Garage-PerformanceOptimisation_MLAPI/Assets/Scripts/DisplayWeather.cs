@@ -11,12 +11,12 @@ using SimpleJSON;
 public class DisplayWeather : MonoBehaviour
 {   
     public JSONNode jsonResult;
-    private string apiUrl = "http://kardb.kargame.in/";
+    private string apiUrl = "https://kardb.kargame.in/";
     private const string API_KEY = "42d4191ee9409cb50f90142a4630a078";
     //private const string CurrentUrl ="http://api.openweathermap.org/data/2.5/weather?" + "q=Bengaluru,IN@&mode=xml&units=metric&APPID=" + API_KEY;
     private string apiToken="";
-    private string CurrentUrl = "http://kardb.kargame.in/get_weather";
-    private const string ForecastUrl = "http://api.openweathermap.org/data/2.5/forecast?" + "q=Bengaluru,IN&mode=xml&units=metric&APPID=" + API_KEY;
+    private string CurrentUrl = "https://kardb.kargame.in/get_weather";
+    private const string ForecastUrl = "https://api.openweathermap.org/data/2.5/forecast?" + "q=Bengaluru,IN&mode=xml&units=metric&APPID=" + API_KEY;
     private JSONNode tokenData;
     public TextMeshProUGUI TextPro;
     public Texture[] m_Texture;

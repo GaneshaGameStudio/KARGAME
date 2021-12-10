@@ -9,7 +9,7 @@ using TMPro;
 
 public class FetchInitDBData : MonoBehaviour
 {
-    private string apiUrl = "http://kardb.kargame.in/";
+    private string apiUrl = "https://kardb.kargame.in/";
     private Init initData;
     private bool tokenAuthenticated = false;
     private string dbTimestamp;
