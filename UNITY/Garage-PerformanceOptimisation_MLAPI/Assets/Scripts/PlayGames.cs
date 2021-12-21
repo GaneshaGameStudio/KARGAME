@@ -5,11 +5,23 @@
 // using GooglePlayGames.BasicApi;
 // using UnityEngine.SocialPlatforms;
 // using UnityEngine.UI;
+// using UnityEngine.SceneManagement;
 
 // public class PlayGames : MonoBehaviour
 // {
 //     // Start is called before the first frame update
 //     void Start()
+//     {
+//         Scene scene = SceneManager.GetActiveScene();
+//         if(scene.name=="Classroom"){
+//             Debug.Log(SystemInfo.operatingSystem);
+//             StartCoroutine(KeepCheckingAvatar());
+//         }
+        
+// }
+
+
+//     void OnEnable()
 //     {
 //         Debug.Log(SystemInfo.operatingSystem);
 //             PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().Build();
@@ -25,6 +37,8 @@
 //             Rect rect = new Rect (0, 0, Social.Active.localUser.image.width, Social.Active.localUser.image.width);
 //             GetComponent<Image>().sprite = Sprite.Create(Social.Active.localUser.image, rect, new Vector2(0, 0));
 //     });
+
+    
             
     
 // }
