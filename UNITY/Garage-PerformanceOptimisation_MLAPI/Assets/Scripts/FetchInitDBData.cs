@@ -5,7 +5,11 @@ using System.IO;
 using SimpleJSON;
 using System;
 using TMPro;
-
+#if UNITY_IOS
+using Unity.Advertisement.IosSupport;
+using UnityEngine.iOS;
+#endif
+using TMPro;
 
 public class FetchInitDBData : MonoBehaviour
 {
@@ -29,7 +33,7 @@ public class FetchInitDBData : MonoBehaviour
     public TextMeshProUGUI PetrolPrice;
     public TextMeshProUGUI LifePrice;
     // public Translater Translate;
-
+    public GameObject popup;
     public string id = "1";
     public GameObject[] Objectlistshow;
     public GameObject[] Objectlisthide;
@@ -54,9 +58,23 @@ public class FetchInitDBData : MonoBehaviour
         }));
         SetStatsInClassroom();
     }
+    private void RequestTrackingPermission()
+    {
+        #if UNITY_IOS
+
+        if(ATTrackingStatusBinding.GetAuthorizationTrackingStatus() == 
+        ATTrackingStatusBinding.AuthorizationTrackingStatus.NOT_DETERMINED)
+        {
+
+            ATTrackingStatusBinding.RequestAuthorizationTracking();
+
+        }
+        #endif
+    }
 
     public void GetDBDataOnClick()
-    {
+    {   
+        
         // Debug.Log(NetworkCheck);
         bool skipTimeCheck = false;
         string playerID="0";
@@ -553,48 +571,74 @@ public class FetchInitDBData : MonoBehaviour
 
     }
 
-
     public void validateAndPushToDB(){
-        initData = new Init();
-        id = PlayerPrefs.GetString("PlayerID");
-        initData.apiParam = "playerStats/"+id;
-
-        // if(tokenAuthenticated){
-            StartCoroutine(initData.Download(apiUrl+initData.apiParam, result => {
-            Debug.Log(initData.apiParam);
-            dbInitData = result;
-            Debug.Log(dbInitData);
-            string timeStamp = DateTime.Now.ToString();
-            Debug.Log(timeStamp);
-            
-            dbTimestamp = dbInitData["data"][0]["Timestamp"];
-            playerPrefsTimestamp = PlayerPrefs.GetString("Timestamp");
-            Debug.Log("PP Timestamp "+playerPrefsTimestamp);
-
-            DateTime dbDate = Convert.ToDateTime(dbTimestamp);
-            DateTime ppDate = Convert.ToDateTime(playerPrefsTimestamp);
-
-            Debug.Log(dbDate);
-            Debug.Log(ppDate);
-
-            int value = DateTime.Compare(dbDate, ppDate);
-            Debug.Log("date compared: "+value);
-
-            // comparing date and time
-            if (value < 0)
-            {
-                Debug.Log("dbDate is before the ppDate. ");
-                //write db with pp data
-                pushDataToDB();
-
-                StartCoroutine(initData.Post(playerJson, result =>{
-                    string res = result;
-                    Debug.Log("Post status "+res);
-                }));
+        bool track;
+        RequestTrackingPermission();
+        if(SystemInfo.operatingSystem.Contains("iOS")){
+            if(ATTrackingStatusBinding.GetAuthorizationTrackingStatus() == 
+                ATTrackingStatusBinding.AuthorizationTrackingStatus.AUTHORIZED)
+                {
+                    track = true;
+                }
+            else{
+                track = false;
             }
-
-        }));
+        }
+        else{
+                track = true;
+        }
         
+        if(track==true){
+            initData = new Init();
+            id = PlayerPrefs.GetString("PlayerID");
+            initData.apiParam = "playerStats/"+id;
+
+            // if(tokenAuthenticated){
+                StartCoroutine(initData.Download(apiUrl+initData.apiParam, result => {
+                Debug.Log(initData.apiParam);
+                dbInitData = result;
+                Debug.Log(dbInitData);
+                string timeStamp = DateTime.Now.ToString();
+                Debug.Log(timeStamp);
+                
+                dbTimestamp = dbInitData["data"][0]["Timestamp"];
+                playerPrefsTimestamp = PlayerPrefs.GetString("Timestamp");
+                Debug.Log("PP Timestamp "+playerPrefsTimestamp);
+
+                DateTime dbDate = Convert.ToDateTime(dbTimestamp);
+                DateTime ppDate = Convert.ToDateTime(playerPrefsTimestamp);
+
+                Debug.Log(dbDate);
+                Debug.Log(ppDate);
+
+                int value = DateTime.Compare(dbDate, ppDate);
+                Debug.Log("date compared: "+value);
+
+                // comparing date and time
+                if (value < 0)
+                {
+                    Debug.Log("dbDate is before the ppDate. ");
+                    //write db with pp data
+                    pushDataToDB();
+
+                    StartCoroutine(initData.Post(playerJson, result =>{
+                        string res = result;
+                        Debug.Log("Post status "+res);
+                    }));
+                }
+
+            }));
+            
+            PlayerPrefs.SetString("Popupmessage", "C¥ÉÆèqï AiÀÄ±À¹éAiÀiÁVzÉ");
+            popup.SetActive(true);
+            //popup.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "C¥ÉÆèqï AiÀÄ±À¹éAiÀiÁVzÉ";
+        }
+        else{
+            
+            PlayerPrefs.SetString("Popupmessage", "F PÁAiÀÄðªÀ£ÀÄß §½¸À®Ä<font=\"Berkelium1541\"> App tracking </font>¸ÀQæAiÀÄUÉÆ½¹<font=\"Berkelium1541\">Settings > kargame > Allow Tracking </font>");
+            popup.SetActive(true);
+            //popup.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text ="F PÁAiÀÄðªÀ£ÀÄß §½¸À®Ä<font=\"Berkelium1541\"> App tracking </font>¸ÀQæAiÀÄUÉÆ½¹<font=\"Berkelium1541\">Settings > kargame > Allow Tracking </font>";
+        }
         // }
     }
 

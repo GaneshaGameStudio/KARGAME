@@ -16,7 +16,6 @@ public class GameCenter : MonoBehaviour
         Social.localUser.Authenticate (ProcessAuthentication);
         StartCoroutine(KeepCheckingAvatarIOS());
         }
-            
     
 }
 
