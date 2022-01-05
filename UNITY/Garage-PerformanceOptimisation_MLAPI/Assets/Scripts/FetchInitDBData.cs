@@ -572,9 +572,10 @@ public class FetchInitDBData : MonoBehaviour
     }
 
     public void validateAndPushToDB(){
-        bool track;
+        bool track=false;
         RequestTrackingPermission();
         if(SystemInfo.operatingSystem.Contains("iOS")){
+            #if UNITY_IOS
             if(ATTrackingStatusBinding.GetAuthorizationTrackingStatus() == 
                 ATTrackingStatusBinding.AuthorizationTrackingStatus.AUTHORIZED)
                 {
@@ -583,6 +584,7 @@ public class FetchInitDBData : MonoBehaviour
             else{
                 track = false;
             }
+            #endif
         }
         else{
                 track = true;

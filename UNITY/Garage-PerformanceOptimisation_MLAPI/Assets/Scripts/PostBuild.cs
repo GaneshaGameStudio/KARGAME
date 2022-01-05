@@ -25,6 +25,7 @@ public static void OnPostprocessBuild(BuildTarget buildTarget, string pathToXcod
 
 static void AddPListValues(string pathToXcode)
 {
+    #if UNITY_IOS
     // Get Plist from Xcode project 
     string plistPath = pathToXcode + "/Info.plist";
     // Read in Plist 
@@ -36,6 +37,7 @@ static void AddPListValues(string pathToXcode)
     plistRoot.SetString("NSUserTrackingUsageDescription", TrackingDescription);
     // save
     File.WriteAllText(plistPath, plistObj.WriteToString());
+    #endif
     }
 }
 #endif
